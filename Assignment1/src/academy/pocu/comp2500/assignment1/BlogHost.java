@@ -4,24 +4,36 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BlogHost {
-    private final ArrayList<String> articleTitles = new ArrayList<String>();
-    private final HashMap<String, String> articles = new HashMap<String, String>();
+    private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
+    private final BlogAuthor host;
 
     public BlogHost() {
+        this.mapContents = new HashMap<>();
+        this.host = new BlogAuthor();
     }
 
-    public final boolean post(String titleName, String contents) {
-        if (this.articleTitles.contains(titleName)) {
-            return false;
+    public final void post(String title, String article) {
+        Content content = new Content(this.getID(), title, article, this.host);
+        this.addContent(content);
+    }
+
+    public final void post(BlogAuthor writer, String title, String article) {
+        Content content = new Content(this.getID(), title, article, writer);
+        this.addContent(content);
+    }
+
+    private final void addContent(Content content) {
+        if (this.mapContents.containsKey(content.getAuthor())) {
+            this.mapContents.get(content.getAuthor()).add(content);
+        } else {
+            ArrayList<Content> array = new ArrayList<>();
+            array.add(content);
+            this.mapContents.put(content.getAuthor(), array);
         }
-
-        this.articleTitles.add(titleName);
-        articles.put(titleName, contents);
-        return true;
     }
 
-    public final ArrayList<String> content() {
-
-        return this.articleTitles;
+    private final int getID() {
+        return this.mapContents.size() + 1;
     }
+
 }
