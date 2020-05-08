@@ -1,7 +1,10 @@
 package academy.pocu.comp2500.assignment1;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BlogHost {
     private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
@@ -12,14 +15,48 @@ public class BlogHost {
         this.host = new BlogAuthor();
     }
 
+    // Author functions
     public final void post(String title, String article) {
-        Content content = new Content(this.getID(), title, article, this.host);
-        this.addContent(content);
+        this.addContent(new Content(this.getID(), title, article, this.host));
     }
 
-    public final void post(BlogAuthor writer, String title, String article) {
-        Content content = new Content(this.getID(), title, article, writer);
-        this.addContent(content);
+    public final void addPost(BlogAuthor author, String title, String article) {
+        this.addContent(new Content(this.getID(), title, article, author));
+    }
+
+    public final void setTitle(BlogAuthor author, String title, String modified) {
+        this.mapContents.get(author)
+                .stream()
+                .filter(content -> {
+                    return content.getTitle() == title;
+                }).findFirst()
+                .orElseThrow()
+                .modifyPostTitle(modified);
+    }
+
+    public final void setArticle(BlogAuthor author, String title, String modified) {
+        this.mapContents.get(author)
+                .stream()
+                .filter(content -> {
+                    return content.getTitle() == title;
+                }).findFirst()
+                .orElseThrow()
+                .modifyPostArticle(modified);
+    }
+
+    public final void addTag(BlogAuthor author, int postId, String tag) {
+        this.mapContents.entrySet()
+                .stream()
+                .map(e -> {
+                    return e.getValue();
+                })
+                .flatMap(Collection::stream)
+                .filter(e -> {
+                    return e.getId() == postId;
+                })
+                .findFirst()
+                .orElseThrow()
+                .addPostTag(tag);
     }
 
     private final void addContent(Content content) {
@@ -36,4 +73,15 @@ public class BlogHost {
         return this.mapContents.size() + 1;
     }
 
+    // Visitor functions
+
+    public final ArrayList<Content> getAllContents() {
+        return new ArrayList<Content>(this.mapContents.entrySet()
+                .stream()
+                .map(e -> {
+                    return e.getValue();
+                })
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList()));
+    }
 }

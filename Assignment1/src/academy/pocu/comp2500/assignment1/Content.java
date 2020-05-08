@@ -1,17 +1,18 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public class Content {
     private int id = 0;
     private String title = "";
     private String article = "";
-    private LocalDateTime createDate;
-    private LocalDateTime modifyDate;
+    private OffsetDateTime createDate;
+    private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
     private BlogAuthor author;
     private ArrayList<Comment> comments;
@@ -20,7 +21,7 @@ public class Content {
     public Content(int id, String title, String article, BlogAuthor author) {
         this.id = id;
         this.title = title;
-        this.createDate = LocalDateTime.now();
+        this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
         this.author = author;
 
@@ -32,7 +33,7 @@ public class Content {
     public Content(int id, String title, String article, BlogAuthor author, String tag) {
         this.id = id;
         this.title = title;
-        this.createDate = LocalDateTime.now();
+        this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
         this.author = author;
 
@@ -46,26 +47,34 @@ public class Content {
         return this.author;
     }
 
+    public final int getId() {
+        return this.id;
+    }
+
     public final void updatePost(String title, String article, String tag) {
-        this.modifyDate = LocalDateTime.now();
+        this.modifyDate = OffsetDateTime.now();
         this.title = title;
         this.article = article;
         this.tag.add(tag);
     }
 
-    public final void updatePostTitle(String title) {
-        this.modifyDate = LocalDateTime.now();
+    public final void modifyPostTitle(String title) {
+        this.modifyDate = OffsetDateTime.now();
         this.title = title;
     }
 
-    public final void updatePostArticle(String article) {
-        this.modifyDate = LocalDateTime.now();
+    public final void modifyPostArticle(String article) {
+        this.modifyDate = OffsetDateTime.now();
         this.article = article;
     }
 
     public final void addPostTag(String tag) {
-        this.modifyDate = LocalDateTime.now();
+        this.modifyDate = OffsetDateTime.now();
         this.tag.add(tag);
+    }
+
+    public final String getTitle() {
+        return this.title;
     }
 
     public final void addComment(String comment) {
