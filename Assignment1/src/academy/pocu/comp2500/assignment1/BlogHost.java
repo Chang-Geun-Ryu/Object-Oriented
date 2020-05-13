@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment1;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BlogHost {
+public final class BlogHost {
     private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
     private final BlogAuthor host;
 
@@ -19,11 +19,6 @@ public class BlogHost {
         this.mapContents = new HashMap<>();
         this.host = new BlogAuthor();
     }
-
-    // Author functions
-//    public final void addPost(String title, String article) {
-//        this.addContent(new Content(this.getID(), title, article, this.host));
-//    }
 
     public final void addPost(BlogAuthor author, String title, String article) {
         this.addContent(new Content(this.getID(), title, article, author));

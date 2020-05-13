@@ -2,6 +2,7 @@ package academy.pocu.comp2500.assignment1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import academy.pocu.comp2500.assignment1.registry.Registry;
 
 public class Program {
 
@@ -20,5 +21,9 @@ public class Program {
         blog.getTagContents("tag 2").forEach(e -> {
             System.out.print(e.getTitle());
         });
+
+        Registry registry = new Registry();
+        App app = new App(registry);
+        registry.validate();
     }
 }
