@@ -9,40 +9,16 @@ public class Program {
 
     public static void main(String[] args) {
 	    // write your code here
-        HashMap<BlogAuthor, ArrayList<String>> map = new HashMap<>();
+        BlogHost blog = new BlogHost();
 
-        BlogAuthor a = new BlogAuthor();
-        BlogAuthor b = new BlogAuthor();
+        BlogAuthor author = new BlogAuthor();
+        blog.addPost(author,"1", "article 1");
+        blog.addPost(author,"2", "article 2");
+        blog.addTag(author, 1, "tag 1");
+        blog.addTag(author, 2, "tag 2");
 
-        ArrayList<String> list = new ArrayList<>();
-        list.add("a");
-        map.put(a, list);
-//        map.put(b, "b");
-
-        add(a);
-
-        if (map.containsKey(get())) {
-            map.get(get()).add("aaa");
-            System.out.println("finded a");
-        } else {
-            System.out.println("can't find a");
-        }
-
-        if (map.containsKey(b)) {
-            System.out.println("finded b");
-        } else {
-            System.out.println("can't find b");
-        }
-
-        System.out.println("map:" + map);
-
-    }
-
-    public static void add(BlogAuthor author) {
-        Program.A = author;
-    }
-
-    public static BlogAuthor get() {
-        return Program.A;
+        blog.getTagContents("tag 2").forEach(e -> {
+            System.out.print(e.getTitle());
+        });
     }
 }

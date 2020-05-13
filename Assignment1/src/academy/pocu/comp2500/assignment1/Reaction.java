@@ -7,7 +7,7 @@ public class Reaction {
     private boolean bFun;
     private boolean bLove;
 
-    public enum ReactionType {
+    public enum Type {
         Great,
         Sad,
         Angry,
@@ -18,7 +18,7 @@ public class Reaction {
     public Reaction() {
     }
 
-    public  void setStatus(ReactionType type, boolean status) {
+    public  void setStatus(Type type, boolean status) {
         switch (type) {
             case Great:
                 this.bGreat = status;

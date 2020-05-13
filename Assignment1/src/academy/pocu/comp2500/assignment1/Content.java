@@ -1,11 +1,9 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
+import java.util.*;
 import java.time.OffsetDateTime;
+import java.util.stream.Collectors;
 
 public class Content {
     private int id = 0;
@@ -15,7 +13,7 @@ public class Content {
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
     private BlogAuthor author;
-    private ArrayList<Comment> comments;
+    private HashMap<BlogVisitor, ArrayList<Comment>> comments;
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
     public Content(int id, String title, String article, BlogAuthor author) {
@@ -26,7 +24,7 @@ public class Content {
         this.author = author;
 
         this.tag = new ArrayList<String>();
-        this.comments = new ArrayList<Comment>();
+        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
         this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
@@ -39,7 +37,7 @@ public class Content {
 
         this.tag = new ArrayList<String>();
         this.tag.add(tag);
-        this.comments = new ArrayList<Comment>();
+        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
         this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
@@ -77,11 +75,40 @@ public class Content {
         return this.title;
     }
 
-    public final void addComment(String comment) {
-        this.comments.add(new Comment(comment));
+    public final void addComment(BlogVisitor visitor, String comment) {
+//        this.comments.add(new Comment(comment));
+        if (this.comments.containsKey(visitor)) {
+            this.comments.get(visitor).add(new Comment(comment));
+        } else {
+            ArrayList<Comment> array = new ArrayList<>();
+            array.add(new Comment(comment));
+            this.comments.put(visitor, array);
+        }
     }
 
-    public final void setReactions(BlogVisitor visitor, Reaction.ReactionType type, boolean status) {
+    public final ArrayList<String> getTag() {
+        return this.tag;
+    }
+
+    public final long getPostTime() {
+        return this.createDate.getLong(ChronoField.MICRO_OF_DAY);
+    }
+
+    public final long getModifyTime() {
+        return this.modifyDate.getLong(ChronoField.MICRO_OF_DAY);
+    }
+
+    public final ArrayList<Comment> getComments() {
+        return new ArrayList<Comment>(this.comments.entrySet()
+                .stream()
+                .map(e -> {
+                    return e.getValue();
+                })
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList()));
+    }
+
+    public final void setReactions(BlogVisitor visitor, Reaction.Type type, boolean status) {
         if (mapReactions.containsKey(visitor)) {
             mapReactions.get(visitor).setStatus(type, status);
         } else {
@@ -92,7 +119,8 @@ public class Content {
     }
 
     public final ArrayList<Comment> getSortedComments() {
-        Collections.sort(this.comments, new Comparator<Comment>() {
+        ArrayList<Comment> sortComment = getComments();
+        Collections.sort(sortComment, new Comparator<Comment>() {
             @Override
             public int compare(Comment lhs, Comment rhs) {
                 // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
@@ -100,7 +128,7 @@ public class Content {
             }
         });
 
-        return this.comments;
+        return sortComment;
     }
 
 }
