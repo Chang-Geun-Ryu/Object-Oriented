@@ -8,7 +8,7 @@ public class App {
         // registry.registerPostAdder("Foo", "bar");
 
         registry.registerBlogCreator("BlogHost");
-        registry.registerTagFilterSetter("BlogHost", "addTag");
+        registry.registerTagFilterSetter("BlogVisitor", "getTagContents");
         registry.registerAuthorFilterSetter("BlogHost", "getBlogAuthorContents");
         registry.registerPostOrderSetter("BlogHost", "getSortContents");
         registry.registerPostListGetter("BlogHost", "getAllContents");
