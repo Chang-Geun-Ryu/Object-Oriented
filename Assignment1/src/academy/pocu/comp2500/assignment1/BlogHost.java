@@ -28,8 +28,8 @@ public final class BlogHost {
 //        this.addContent(new Content(this.getID(), title, body, authorId));
 //    }
 
-    public final void addPost(BlogAuthor author, String title, String body) {
-        this.addContent(new Content(this.getID(), title, body, author));
+    public final void addPost(Content post) {
+        this.addContent(post);
     }
 
     public final void setTitle(String author, String title, String text) {
