@@ -8,11 +8,11 @@ public class Reaction {
     private boolean bLove;
 
     public enum Type {
-        Great,
-        Sad,
-        Angry,
-        Fun,
-        Love
+        GRATE,
+        SAD,
+        ANGRY,
+        FUN,
+        LOVE
     }
 
     public Reaction() {
@@ -20,19 +20,19 @@ public class Reaction {
 
     public  void setStatus(Type type, boolean status) {
         switch (type) {
-            case Great:
+            case GRATE:
                 this.bGreat = status;
                 break;
-            case Sad:
+            case SAD:
                 this.bSad = status;
                 break;
-            case Angry:
+            case ANGRY:
                 this.bAngry = status;
                 break;
-            case Fun:
+            case FUN:
                 this.bFun = status;
                 break;
-            case Love:
+            case LOVE:
                 this.bLove = status;
                 break;
             default:

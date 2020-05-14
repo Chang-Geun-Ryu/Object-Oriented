@@ -1,8 +1,8 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import academy.pocu.comp2500.assignment1.registry.Registry;
+
 
 public class Program {
 
@@ -11,6 +11,7 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
         BlogHost blog = new BlogHost();
+
 
         BlogAuthor author = new BlogAuthor();
         blog.addPost(author,"1", "article 1");

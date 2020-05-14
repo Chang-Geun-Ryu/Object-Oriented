@@ -1,6 +1,10 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.Collections;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public final class BlogHost {
@@ -8,11 +12,11 @@ public final class BlogHost {
     private final BlogAuthor host;
 
     public enum SortType {
-        descendingPost,
-        ascendingPost,
-        descendingModify,
-        ascendingModify,
-        ascendingTitle
+        DESCENDINGPOST,
+        ASCENDINGPOST,
+        DESCENDINGMODIFY,
+        ASCENDINGMODIFY,
+        ASCENDINGTITLE
     }
 
     public BlogHost() {
@@ -34,14 +38,14 @@ public final class BlogHost {
                 .modifyPostTitle(modified);
     }
 
-    public final void setArticle(BlogAuthor author, String title, String modified) {
+    public final void setArticle(BlogAuthor author, String title, String text) {
         this.mapContents.get(author)
                 .stream()
                 .filter(content -> {
                     return content.getTitle() == title;
                 }).findFirst()
                 .orElseThrow()
-                .modifyPostArticle(modified);
+                .modifyPostArticle(text);
     }
 
     public final void addTag(BlogAuthor author, int postId, String tag) {
@@ -110,15 +114,15 @@ public final class BlogHost {
                 public int compare(Content lhs, Content rhs) {
                     // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
                     switch (sortingType) {
-                        case descendingPost:
+                        case DESCENDINGPOST:
                             return lhs.getPostTime() > rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
-                        case ascendingPost:
+                        case ASCENDINGPOST:
                             return lhs.getPostTime() < rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
-                        case descendingModify:
+                        case DESCENDINGMODIFY:
                             return lhs.getModifyTime() > rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
-                        case ascendingModify:
+                        case ASCENDINGMODIFY:
                             return lhs.getModifyTime() < rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
-                        case ascendingTitle:
+                        case ASCENDINGTITLE:
                             return lhs.getTitle().compareTo(rhs.getTitle());
                         default:
                             assert(true);

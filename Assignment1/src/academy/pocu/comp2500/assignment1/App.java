@@ -20,7 +20,7 @@ public class App {
         registry.registerSubcommentAdder("BlogVisitor", "addSubComment");
         registry.registerCommentUpdater("BlogVisitor","modifyComment");
         registry.registerSubcommentUpdater("BlogVisitor","modifySubcomment");
-        registry.registerReactionAdder("BlogVisitor","reactionPost");
+        registry.registerReactionAdder("BlogVisitor","setReactionPost");
         registry.registerReactionRemover("BlogVisitor","removeReactionPost");
         registry.registerCommentUpvoter("BlogVisitor","upvote");
         registry.registerCommentDownvoter("BlogVisitor","doownvote");

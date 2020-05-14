@@ -61,7 +61,7 @@ public class BlogVisitor {
         comment.setComment(text);
     }
 
-    public final void reactionPost(Content post, Reaction.Type type) {
+    public final void setReactionPost(Content post, Reaction.Type type) {
         post.setReactions(this, type, true);
     }
 
