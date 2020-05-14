@@ -24,8 +24,8 @@ public final class BlogHost {
         this.host = new BlogAuthor(id);
     }
 
-    public final void addPost(String author, String title, String article) {
-        this.addContent(new Content(this.getID(), title, article, author));
+    public final void addPost(String authorId, String title, String body) {
+        this.addContent(new Content(this.getID(), title, body, authorId));
     }
 
     public final void setTitle(String author, String title, String text) {
@@ -102,7 +102,7 @@ public final class BlogHost {
                 .collect(Collectors.toList()));
     }
 
-    public final ArrayList<Content> getBlogAuthorContents(BlogAuthor author) {
+    public final ArrayList<Content> getBlogAuthorContents(String author) {
         return this.mapContents.get(author);
     }
 
