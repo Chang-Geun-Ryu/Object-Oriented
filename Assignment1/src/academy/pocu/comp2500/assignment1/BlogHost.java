@@ -28,14 +28,14 @@ public final class BlogHost {
         this.addContent(new Content(this.getID(), title, article, author));
     }
 
-    public final void setTitle(BlogAuthor author, String title, String modified) {
+    public final void setTitle(BlogAuthor author, String title, String text) {
         this.mapContents.get(author)
                 .stream()
                 .filter(content -> {
                     return content.getTitle() == title;
                 }).findFirst()
                 .orElseThrow()
-                .modifyPostTitle(modified);
+                .modifyPostTitle(text);
     }
 
     public final void setArticle(BlogAuthor author, String title, String text) {
