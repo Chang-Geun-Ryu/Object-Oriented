@@ -16,11 +16,12 @@ public class Content {
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
-    private BlogAuthor author;
+//    private BlogAuthor author;
+    private String author;
     private HashMap<BlogVisitor, ArrayList<Comment>> comments;
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
-    public Content(int id, String title, String article, BlogAuthor author) {
+    public Content(int id, String title, String article, String author) {
         this.id = id;
         this.title = title;
         this.createDate = OffsetDateTime.now();
@@ -32,20 +33,7 @@ public class Content {
         this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
-    public Content(int id, String title, String article, BlogAuthor author, String tag) {
-        this.id = id;
-        this.title = title;
-        this.createDate = OffsetDateTime.now();
-        this.modifyDate = this.createDate;
-        this.author = author;
-
-        this.tag = new ArrayList<String>();
-        this.tag.add(tag);
-        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
-        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
-    }
-
-    public final BlogAuthor getAuthor() {
+    public final String getAuthor() {
         return this.author;
     }
 
@@ -126,13 +114,6 @@ public class Content {
         ArrayList<Comment> sortComment = getComments();
 
         Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(lhs.getScore(), rhs.getScore()));
-//        Collections.sort(sortComment, new Comparator<Comment>() {
-//            @Override
-//            public int compare(Comment lhs, Comment rhs) {
-//                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-//                return lhs.getScore() > rhs.getScore() ? -1 : (lhs.getScore() < rhs.getScore()) ? 1 : 0;
-//            }
-//        });
 
         return sortComment;
     }

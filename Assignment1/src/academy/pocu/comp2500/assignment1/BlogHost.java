@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.util.Comparator;
 import java.util.Collections;
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,7 +7,8 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public final class BlogHost {
-    private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
+//    private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
+    private final HashMap<String, ArrayList<Content>> mapContents;
     private final BlogAuthor host;
 
     public enum SortType {
@@ -19,16 +19,16 @@ public final class BlogHost {
         ASCENDINGTITLE
     }
 
-    public BlogHost() {
+    public BlogHost(String id) {
         this.mapContents = new HashMap<>();
-        this.host = new BlogAuthor();
+        this.host = new BlogAuthor(id);
     }
 
-    public final void addPost(BlogAuthor author, String title, String article) {
+    public final void addPost(String author, String title, String article) {
         this.addContent(new Content(this.getID(), title, article, author));
     }
 
-    public final void setTitle(BlogAuthor author, String title, String text) {
+    public final void setTitle(String author, String title, String text) {
         this.mapContents.get(author)
                 .stream()
                 .filter(content -> {
@@ -38,7 +38,7 @@ public final class BlogHost {
                 .modifyPostTitle(text);
     }
 
-    public final void setArticle(BlogAuthor author, String title, String text) {
+    public final void setArticle(String author, String title, String text) {
         this.mapContents.get(author)
                 .stream()
                 .filter(content -> {
@@ -48,7 +48,7 @@ public final class BlogHost {
                 .modifyPostArticle(text);
     }
 
-    public final void addTag(BlogAuthor author, int postId, String tag) {
+    public final void addTag(String author, int postId, String tag) {
         this.mapContents.entrySet()
                 .stream()
                 .map(e -> {
@@ -109,7 +109,6 @@ public final class BlogHost {
     public final ArrayList<Content> getSortContents(SortType sortingType) {
         ArrayList<Content> contents = getAllContents();
 
-
         Collections.sort(contents, (lhs, rhs) -> {
             switch (sortingType) {
                 case DESCENDINGPOST:
@@ -127,29 +126,6 @@ public final class BlogHost {
                     return 1;
             }
         });
-//            Collections.sort(contents, new Comparator<Content>() {
-//                @Override
-//                public int compare(Content lhs, Content rhs) {
-//                    // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-//                    switch (sortingType) {
-//                        case DESCENDINGPOST:
-//                            return lhs.getPostTime() > rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
-//                        case ASCENDINGPOST:
-//                            return lhs.getPostTime() < rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
-//                        case DESCENDINGMODIFY:
-//                            return lhs.getModifyTime() > rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
-//                        case ASCENDINGMODIFY:
-//                            return lhs.getModifyTime() < rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
-//                        case ASCENDINGTITLE:
-//                            return lhs.getTitle().compareTo(rhs.getTitle());
-//                        default:
-//                            assert(true);
-//                            return 1;
-//                    }
-//
-////                return lhs.getScore() > rhs.getScore() ? -1 : (lhs.getScore() < rhs.getScore()) ? 1 : 0;
-//                }
-//            });
 
         return contents;
     }
