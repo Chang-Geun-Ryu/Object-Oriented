@@ -12,21 +12,21 @@ public class App {
         registry.registerAuthorFilterSetter("BlogHost", "getBlogAuthorContents");
         registry.registerPostOrderSetter("BlogHost", "getSortContents");
         registry.registerPostListGetter("BlogHost", "getAllContents");
-        registry.registerPostAdder("BlogHost", "addPost");
-        registry.registerPostTitleUpdater("BlogHost", "setTitle");
-        registry.registerPostBodyUpdater("BlogHost", "setArticle");
-        registry.registerPostTagAdder("BlogHost", "addTag");
+        registry.registerPostAdder("BlogAuthor", "addPost");
+        registry.registerPostTitleUpdater("BlogAuthor", "setTitle");
+        registry.registerPostBodyUpdater("BlogAuthor", "setArticle");
+        registry.registerPostTagAdder("BlogAuthor", "addTag");
         registry.registerCommentAdder("BlogVisitor", "addComment");
         registry.registerSubcommentAdder("BlogVisitor", "addSubComment");
-        registry.registerCommentUpdater("BlogVisitor","modifyComment");
-        registry.registerSubcommentUpdater("BlogVisitor","modifySubcomment");
-        registry.registerReactionAdder("BlogVisitor","setReactionPost");
-        registry.registerReactionRemover("BlogVisitor","removeReactionPost");
-        registry.registerCommentUpvoter("BlogVisitor","upvote");
-        registry.registerCommentDownvoter("BlogVisitor","doownvote");
-        registry.registerCommentListGetter("BlogVisitor","readComments");
-        registry.registerSubCommentListGetter("BlogVisitor","readSubcomments");
-        registry.registerSubcommentUpvoter("BlogVisitor","upvote");
-        registry.registerSubcommentDownvoter("BlogVisitor","doownvote");
+        registry.registerCommentUpdater("BlogVisitor", "modifyComment");
+        registry.registerSubcommentUpdater("BlogVisitor", "modifySubcomment");
+        registry.registerReactionAdder("BlogVisitor", "setReactionPost");
+        registry.registerReactionRemover("BlogVisitor", "removeReactionPost");
+        registry.registerCommentUpvoter("BlogVisitor", "upvote");
+        registry.registerCommentDownvoter("BlogVisitor", "doownvote");
+        registry.registerCommentListGetter("BlogVisitor", "readComments");
+        registry.registerSubCommentListGetter("BlogVisitor", "readSubcomments");
+        registry.registerSubcommentUpvoter("BlogVisitor", "upvote");
+        registry.registerSubcommentDownvoter("BlogVisitor", "doownvote");
     }
 }

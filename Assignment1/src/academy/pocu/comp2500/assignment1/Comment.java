@@ -4,31 +4,31 @@ import java.util.ArrayList;
 
 public class Comment {
     private String sComment;
-    private ArrayList<BlogVisitor> Likes;
-    private ArrayList<BlogVisitor> Hates;
+    private ArrayList<BlogVisitor> likes;
+    private ArrayList<BlogVisitor> hates;
     private final ArrayList<Comment> subcomment;
 
     public Comment(String comment) {
-        this.Likes = new ArrayList<BlogVisitor>();
-        this.Hates = new ArrayList<BlogVisitor>();
+        this.likes = new ArrayList<BlogVisitor>();
+        this.hates = new ArrayList<BlogVisitor>();
         this.sComment = comment;
         this.subcomment = new ArrayList<Comment>();
     }
 
     public final void addLike(BlogVisitor visitor) {
-        if (this.Likes.contains(visitor) == false) {
-            this.Likes.add(visitor);
+        if (this.likes.contains(visitor) == false) {
+            this.likes.add(visitor);
         }
     }
 
     public final void addHate(BlogVisitor visitor) {
-        if (this.Hates.contains(visitor) == false) {
-            this.Hates.add(visitor);
+        if (this.hates.contains(visitor) == false) {
+            this.hates.add(visitor);
         }
     }
 
     public final int getScore() {
-        return this.Likes.size() - this.Hates.size();
+        return this.likes.size() - this.hates.size();
     }
 
     public final void setComment(String comment) {
