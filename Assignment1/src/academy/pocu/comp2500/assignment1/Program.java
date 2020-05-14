@@ -12,7 +12,6 @@ public class Program {
 	    // write your code here
         BlogHost blog = new BlogHost();
 
-
         BlogAuthor author = new BlogAuthor();
         blog.addPost(author,"1", "article 1");
         blog.addPost(author,"2", "article 2");
