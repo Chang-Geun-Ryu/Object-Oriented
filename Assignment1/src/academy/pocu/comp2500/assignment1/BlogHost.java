@@ -109,29 +109,47 @@ public final class BlogHost {
     public final ArrayList<Content> getSortContents(SortType sortingType) {
         ArrayList<Content> contents = getAllContents();
 
-            Collections.sort(contents, new Comparator<Content>() {
-                @Override
-                public int compare(Content lhs, Content rhs) {
-                    // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                    switch (sortingType) {
-                        case DESCENDINGPOST:
-                            return lhs.getPostTime() > rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
-                        case ASCENDINGPOST:
-                            return lhs.getPostTime() < rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
-                        case DESCENDINGMODIFY:
-                            return lhs.getModifyTime() > rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
-                        case ASCENDINGMODIFY:
-                            return lhs.getModifyTime() < rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
-                        case ASCENDINGTITLE:
-                            return lhs.getTitle().compareTo(rhs.getTitle());
-                        default:
-                            assert(true);
-                            return 1;
-                    }
 
-//                return lhs.getScore() > rhs.getScore() ? -1 : (lhs.getScore() < rhs.getScore()) ? 1 : 0;
-                }
-            });
+        Collections.sort(contents, (lhs, rhs) -> {
+            switch (sortingType) {
+                case DESCENDINGPOST:
+                    return Long.compare(lhs.getPostTime(), rhs.getPostTime());
+                case ASCENDINGPOST:
+                    return Long.compare(rhs.getPostTime(), lhs.getPostTime());
+                case DESCENDINGMODIFY:
+                    return Long.compare(lhs.getModifyTime(), rhs.getModifyTime());
+                case ASCENDINGMODIFY:
+                    return Long.compare(rhs.getModifyTime(), lhs.getModifyTime());
+                case ASCENDINGTITLE:
+                    return lhs.getTitle().compareTo(rhs.getTitle());
+                default:
+                    assert(true);
+                    return 1;
+            }
+        });
+//            Collections.sort(contents, new Comparator<Content>() {
+//                @Override
+//                public int compare(Content lhs, Content rhs) {
+//                    // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+//                    switch (sortingType) {
+//                        case DESCENDINGPOST:
+//                            return lhs.getPostTime() > rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
+//                        case ASCENDINGPOST:
+//                            return lhs.getPostTime() < rhs.getPostTime() ? -1 : (lhs.getPostTime() < rhs.getPostTime()) ? 1 : 0;
+//                        case DESCENDINGMODIFY:
+//                            return lhs.getModifyTime() > rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
+//                        case ASCENDINGMODIFY:
+//                            return lhs.getModifyTime() < rhs.getModifyTime() ? -1 : (lhs.getModifyTime() < rhs.getModifyTime()) ? 1 : 0;
+//                        case ASCENDINGTITLE:
+//                            return lhs.getTitle().compareTo(rhs.getTitle());
+//                        default:
+//                            assert(true);
+//                            return 1;
+//                    }
+//
+////                return lhs.getScore() > rhs.getScore() ? -1 : (lhs.getScore() < rhs.getScore()) ? 1 : 0;
+//                }
+//            });
 
         return contents;
     }

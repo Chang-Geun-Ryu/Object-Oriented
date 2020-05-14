@@ -124,13 +124,15 @@ public class Content {
 
     public final ArrayList<Comment> getSortedComments() {
         ArrayList<Comment> sortComment = getComments();
-        Collections.sort(sortComment, new Comparator<Comment>() {
-            @Override
-            public int compare(Comment lhs, Comment rhs) {
-                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                return lhs.getScore() > rhs.getScore() ? -1 : (lhs.getScore() < rhs.getScore()) ? 1 : 0;
-            }
-        });
+
+        Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(lhs.getScore(), rhs.getScore()));
+//        Collections.sort(sortComment, new Comparator<Comment>() {
+//            @Override
+//            public int compare(Comment lhs, Comment rhs) {
+//                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+//                return lhs.getScore() > rhs.getScore() ? -1 : (lhs.getScore() < rhs.getScore()) ? 1 : 0;
+//            }
+//        });
 
         return sortComment;
     }
