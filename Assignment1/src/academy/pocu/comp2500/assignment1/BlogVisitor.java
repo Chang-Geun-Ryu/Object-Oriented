@@ -19,9 +19,9 @@ public class BlogVisitor {
         this.contents.addAll(blog.getTagContents(tag));
     }
 
-    public final void getAurthorContents(BlogHost blog, BlogAuthor author) {
+    public final void getAurthorContents(BlogHost blog, String authorId) {
         this.contents.removeAll(this.contents);
-        this.contents.addAll(blog.getBlogAuthorContents(author));
+        this.contents.addAll(blog.getBlogAuthorContents(authorId));
     }
 
     public final void getSortedContents(BlogHost blog, BlogHost.SortType sortingType) {
