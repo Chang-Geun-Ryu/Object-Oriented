@@ -10,8 +10,8 @@ public class BlogAuthor {
         this.id = id;
     }
 
-    public final void addPost(BlogHost blog, String title, String article) {
-        blog.addPost(this.id, title, article);
+    public final void addPost(BlogHost blog) {
+        blog.addPost(this.id, "title", "article");
     }
 
     public final void setTitle(BlogHost blog, String title, String text) {

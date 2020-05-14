@@ -12,10 +12,10 @@ public class App {
         registry.registerAuthorFilterSetter("BlogHost", "getBlogAuthorContents");
         registry.registerPostOrderSetter("BlogHost", "getSortContents");
         registry.registerPostListGetter("BlogHost", "getAllContents");
-        registry.registerPostAdder("BlogAuthor", "addPost");
-        registry.registerPostTitleUpdater("BlogAuthor", "setTitle");
-        registry.registerPostBodyUpdater("BlogAuthor", "setArticle");
-        registry.registerPostTagAdder("BlogAuthor", "addTag");
+        registry.registerPostAdder("BlogHost", "addPost");
+        registry.registerPostTitleUpdater("BlogHost", "setTitle");
+        registry.registerPostBodyUpdater("BlogHost", "setArticle");
+        registry.registerPostTagAdder("BlogHost", "addTag");
         registry.registerCommentAdder("BlogVisitor", "addComment");
         registry.registerSubcommentAdder("BlogVisitor", "addSubComment");
         registry.registerCommentUpdater("BlogVisitor", "modifyComment");
