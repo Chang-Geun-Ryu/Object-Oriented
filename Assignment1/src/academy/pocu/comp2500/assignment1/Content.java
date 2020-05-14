@@ -16,12 +16,12 @@ public class Content {
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
-//    private BlogAuthor author;
-    private String author;
+    private BlogAuthor author;
+//    private String author;
     private HashMap<BlogVisitor, ArrayList<Comment>> comments;
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
-    public Content(int id, String title, String article, String author) {
+    public Content(int id, String title, String article, BlogAuthor author) {
         this.id = id;
         this.title = title;
         this.createDate = OffsetDateTime.now();
@@ -33,7 +33,7 @@ public class Content {
         this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
-    public final String getAuthor() {
+    public final BlogAuthor getAuthor() {
         return this.author;
     }
 

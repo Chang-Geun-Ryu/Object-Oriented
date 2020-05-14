@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public final class BlogHost {
-//    private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
-    private final HashMap<String, ArrayList<Content>> mapContents;
-    private final BlogAuthor host;
+    private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
+//    private final HashMap<String, ArrayList<Content>> mapContents;
+//    private final BlogAuthor host;
 
     public enum SortType {
         DESCENDINGPOST,
@@ -19,13 +19,17 @@ public final class BlogHost {
         ASCENDINGTITLE
     }
 
-    public BlogHost(String id) {
+    public BlogHost() {
         this.mapContents = new HashMap<>();
-        this.host = new BlogAuthor(id);
+//        this.host = new BlogAuthor();
     }
 
-    public final void addPost(String authorId, String title, String body) {
-        this.addContent(new Content(this.getID(), title, body, authorId));
+//    public final void addPost(String authorId, String title, String body) {
+//        this.addContent(new Content(this.getID(), title, body, authorId));
+//    }
+
+    public final void addPost(BlogAuthor author, String title, String body) {
+        this.addContent(new Content(this.getID(), title, body, author));
     }
 
     public final void setTitle(String author, String title, String text) {

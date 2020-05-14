@@ -11,7 +11,7 @@ public class BlogAuthor {
     }
 
     public final void addPost(BlogHost blog) {
-        blog.addPost(this.id, "title", "article");
+//        blog.addPost(this.id, "title", "article");
     }
 
     public final void setTitle(BlogHost blog, String title, String text) {

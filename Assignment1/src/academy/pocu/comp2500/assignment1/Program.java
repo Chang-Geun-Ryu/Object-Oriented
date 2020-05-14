@@ -10,16 +10,16 @@ public class Program {
 
     public static void main(String[] args) {
 	    // write your code here
-        BlogHost blog = new BlogHost("1");
+        BlogHost blog = new BlogHost();
 
-        blog.addPost("author","1", "article 1");
-        blog.addPost("author","2", "article 2");
-        blog.addTag("author", 1, "tag 1");
-        blog.addTag("author", 2, "tag 2");
-        blog.addTag("author11", 2, "tag 2");
-        blog.getTagContents("tag 2").forEach(e -> {
-            System.out.print(e.getTitle());
-        });
+//        blog.addPost("author","1", "article 1");
+//        blog.addPost("author","2", "article 2");
+//        blog.addTag("author", 1, "tag 1");
+//        blog.addTag("author", 2, "tag 2");
+//        blog.addTag("author11", 2, "tag 2");
+//        blog.getTagContents("tag 2").forEach(e -> {
+//            System.out.print(e.getTitle());
+//        });
 
         Registry registry = new Registry();
         App app = new App(registry);
