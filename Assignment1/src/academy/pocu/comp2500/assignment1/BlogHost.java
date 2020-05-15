@@ -23,8 +23,8 @@ public final class BlogHost {
         this.mapContents = new HashMap<>();
     }
 
-    public final void addPost(Content post) {
-        this.addContent(post);
+    public final void addPost(BlogAuthor author) {
+        this.addContent(author.getPost());
     }
 
     public final void setTitle(String author, String title, String text) {

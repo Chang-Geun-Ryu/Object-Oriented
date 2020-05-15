@@ -11,17 +11,11 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
         BlogHost blog = new BlogHost();
-        BlogAuthor author = new BlogAuthor("1");
-        BlogAuthor author2 = new BlogAuthor("2");
+        BlogAuthor author = new BlogAuthor("title", "body");
+        BlogAuthor author2 = new BlogAuthor("title2", "body");
 
-        author.createPost("title", "body");
-        author2.createPost("title2", "body2");
-        author.addPost(blog);//, "title", "body");
-        author.addPost(blog);//, "title2", "body2");
-        author2.addPost(blog);//, "title3", "body3");
-        author.addPost(blog);//,"title11", "body");
-        author.addPost(blog);//, "title22", "body2");
-        author2.addPost(blog);//, "title33", "body33");
+        blog.addPost(author);
+        blog.addPost(author);
 
         blog.getSortContents(BlogHost.SortType.ASCENDINGTITLE).forEach(e -> System.out.println(e.getTitle()));
 

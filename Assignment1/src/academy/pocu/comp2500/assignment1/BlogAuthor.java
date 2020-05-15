@@ -11,8 +11,12 @@ public class BlogAuthor {
         post = new Content(title, body, this);
     }
 
-    public final void addPost(BlogHost blog) {
-        blog.addPost(post);
+//    public final void addPost(BlogHost blog) {
+//        blog.addPost(post);
+//    }
+
+    public final Content getPost() {
+        return this.post;
     }
 
     public final void createPost(String title, String body) {
