@@ -17,7 +17,7 @@ public class Program {
 //        blog.addTag("host", "title", "1");
 //        blog.addTag("host", "title1", "2");
 //        blog.getTagContents("2").forEach(e -> System.out.println(e.getTitle()));
-        blog.getBlogAuthorContents("author").forEach(e -> System.out.println(e.getTitle()));
+        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getTitle()));
 //        BlogAuthor author = new BlogAuthor("title", "body");
 //        BlogAuthor author2 = new BlogAuthor("title2", "body");
 //

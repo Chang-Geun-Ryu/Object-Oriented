@@ -10,48 +10,63 @@ import java.util.Collections;
 import java.util.Collection;
 
 public class Content {
-    private int id = 0;
     private String title = "";
     private String article = "";
+    private String author;
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
-//    private BlogAuthor author;
-    private String author;
     private HashMap<BlogVisitor, ArrayList<Comment>> comments;
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
-//    public Content(String title, String article, BlogAuthor author) {
-//        this(title, article);
-//        this.createDate = OffsetDateTime.now();
-//        this.modifyDate = this.createDate;
-//        this.author = author;
-
-//        this.tag = new ArrayList<String>();
-//        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
-//        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
-//    }
-
     public Content(String title, String body, String authorId) {
-        this.id = id;
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
         this.author = authorId;
         this.title = title;
-        this.article = article;
+        this.article = body;
 
         this.tag = new ArrayList<String>();
         this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
         this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
+    public final String getTitle() {
+        return this.title;
+    }
+
+    public final String getArticle() {
+        return this.article;
+    }
 
     public final String getAuthor() {
         return this.author;
     }
 
-    public final int getId() {
-        return this.id;
+    public final ArrayList<String> getTag() {
+        return this.tag;
+    }
+
+    public final long getPostTime() {
+        return this.createDate.getLong(ChronoField.MICRO_OF_DAY);
+    }
+
+    public final long getModifyTime() {
+        return this.modifyDate.getLong(ChronoField.MICRO_OF_DAY);
+    }
+
+    public final ArrayList<Comment> getComments() {
+        return new ArrayList<Comment>(this.comments.entrySet()
+                .stream()
+                .map(e -> {
+                    return e.getValue();
+                })
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList()));
+    }
+
+    public final HashMap<BlogVisitor, Reaction> getMapReactions() {
+        return this.mapReactions;
     }
 
     public final void updatePost(String title, String article, String tag) {
@@ -76,10 +91,6 @@ public class Content {
         this.tag.add(tag);
     }
 
-    public final String getTitle() {
-        return this.title;
-    }
-
     public final void addComment(BlogVisitor visitor, String comment) {
 //        this.comments.add(new Comment(comment));
         if (this.comments.containsKey(visitor)) {
@@ -89,28 +100,6 @@ public class Content {
             array.add(new Comment(comment));
             this.comments.put(visitor, array);
         }
-    }
-
-    public final ArrayList<String> getTag() {
-        return this.tag;
-    }
-
-    public final long getPostTime() {
-        return this.createDate.getLong(ChronoField.MICRO_OF_DAY);
-    }
-
-    public final long getModifyTime() {
-        return this.modifyDate.getLong(ChronoField.MICRO_OF_DAY);
-    }
-
-    public final ArrayList<Comment> getComments() {
-        return new ArrayList<Comment>(this.comments.entrySet()
-                .stream()
-                .map(e -> {
-                    return e.getValue();
-                })
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList()));
     }
 
     public final void setReactions(BlogVisitor visitor, Reaction.Type type, boolean status) {

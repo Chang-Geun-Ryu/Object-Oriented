@@ -1,7 +1,7 @@
-package academy.pocu.comp2500.assignment1;
+//package academy.pocu.comp2500.assignment1;
 
 import java.util.ArrayList;
-
+/*
 public class BlogAuthor {
     private Content post;
     private String id;
@@ -35,3 +35,4 @@ public class BlogAuthor {
         blog.addTag(this.id, title, tag);
     }
 }
+*/
