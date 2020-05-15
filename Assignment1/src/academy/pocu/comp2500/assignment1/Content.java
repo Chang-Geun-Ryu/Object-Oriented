@@ -22,8 +22,13 @@ public class Content {
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
     public Content(int id, String title, String article, BlogAuthor author) {
-        this.id = id;
+        this(id, author);
         this.title = title;
+        this.article = article;
+    }
+
+    public Content(int id, BlogAuthor author) {
+        this.id = id;
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
         this.author = author;

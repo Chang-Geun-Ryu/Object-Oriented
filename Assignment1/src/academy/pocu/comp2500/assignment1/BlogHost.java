@@ -8,8 +8,7 @@ import java.util.stream.Collectors;
 
 public final class BlogHost {
     private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
-//    private final HashMap<String, ArrayList<Content>> mapContents;
-//    private final BlogAuthor host;
+    private final ArrayList<Integer> contentIds;
 
     public enum SortType {
         DESCENDINGPOST,
@@ -21,15 +20,15 @@ public final class BlogHost {
 
     public BlogHost() {
         this.mapContents = new HashMap<>();
-//        this.host = new BlogAuthor();
+        this.contentIds = new ArrayList<>();
     }
 
 //    public final void addPost(String authorId, String title, String body) {
 //        this.addContent(new Content(this.getID(), title, body, authorId));
 //    }
 
-    public final void addPost(Content post) {
-        this.addContent(post);
+    public final void addPost(BlogAuthor author) {
+        this.addContent(author.createPost(this.getID(), author));
     }
 
     public final void setTitle(String author, String title, String text) {
