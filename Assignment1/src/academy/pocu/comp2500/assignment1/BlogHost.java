@@ -111,7 +111,7 @@ public final class BlogHost {
                 .collect(Collectors.toList()));
     }
 
-    public final ArrayList<Content> getBlogAuthorContents(String author) {
+    public final ArrayList<Content> getBlogAuthorContents(BlogAuthor author) {
         return this.mapContents.get(author);
     }
 
