@@ -16,8 +16,10 @@ public class Content {
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
-    private HashMap<BlogVisitor, ArrayList<Comment>> comments;
-    private HashMap<BlogVisitor, Reaction> mapReactions;
+//    private HashMap<BlogVisitor, ArrayList<Comment>> comments;
+//    private HashMap<BlogVisitor, Reaction> mapReactions;
+    private ArrayList<Comment> comments;
+    private ArrayList<Reaction> reactions;
 
     public Content(String title, String body, String authorId) {
         this.createDate = OffsetDateTime.now();
@@ -27,8 +29,10 @@ public class Content {
         this.article = body;
 
         this.tag = new ArrayList<String>();
-        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
-        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
+        this.comments = new ArrayList<>();
+        this.reactions = new ArrayList<>();
+//        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
+//        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
     public final String getTitle() {
@@ -56,17 +60,18 @@ public class Content {
     }
 
     public final ArrayList<Comment> getComments() {
-        return new ArrayList<Comment>(this.comments.entrySet()
-                .stream()
-                .map(e -> {
-                    return e.getValue();
-                })
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList()));
+        return this.comments;
+//        return new ArrayList<Comment>(this.comments.entrySet()
+//                .stream()
+//                .map(e -> {
+//                    return e.getValue();
+//                })
+//                .flatMap(Collection::stream)
+//                .collect(Collectors.toList()));
     }
 
-    public final HashMap<BlogVisitor, Reaction> getMapReactions() {
-        return this.mapReactions;
+    public final ArrayList<Reaction> getReactions() {
+        return this.reactions;
     }
 
     public final void updatePost(String title, String article, String tag) {
@@ -91,25 +96,27 @@ public class Content {
         this.tag.add(tag);
     }
 
-    public final void addComment(BlogVisitor visitor, String comment) {
+    public final void addComment(Comment comment) {
+        this.comments.add(comment);
 //        this.comments.add(new Comment(comment));
-        if (this.comments.containsKey(visitor)) {
-            this.comments.get(visitor).add(new Comment(comment));
-        } else {
-            ArrayList<Comment> array = new ArrayList<>();
-            array.add(new Comment(comment));
-            this.comments.put(visitor, array);
-        }
+//        if (this.comments.containsKey(comment)) {
+//            this.comments.get(visitor).add(new Comment(comment));
+//        } else {
+//            ArrayList<Comment> array = new ArrayList<>();
+//            array.add(new Comment(comment));
+//            this.comments.put(visitor, array);
+//        }
     }
 
-    public final void setReactions(BlogVisitor visitor, Reaction.Type type, boolean status) {
-        if (mapReactions.containsKey(visitor)) {
-            mapReactions.get(visitor).setStatus(type, status);
-        } else {
-            Reaction reaction = new Reaction();
-            reaction.setStatus(type, status);
-            mapReactions.put(visitor, reaction);
-        }
+    public final void setReactions(Reaction.Type type, boolean status) {
+
+//        if (mapReactions.containsKey(visitor)) {
+//            mapReactions.get(visitor).setStatus(type, status);
+//        } else {
+//            Reaction reaction = new Reaction();
+//            reaction.setStatus(type, status);
+//            mapReactions.put(visitor, reaction);
+//        }
     }
 
     public final ArrayList<Comment> getSortedComments() {

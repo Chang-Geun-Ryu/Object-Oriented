@@ -103,8 +103,8 @@ public final class BlogHost {
                 .collect(Collectors.toList()));
     }
 
-    public final ArrayList<Content> getBlogAuthorContents(String author) {
-        return this.mapContents.get(author);
+    public final ArrayList<Content> getBlogAuthorContents(String authorId) {
+        return this.mapContents.get(authorId);
     }
 
     public final ArrayList<Content> getSortContents(SortType sortingType) {

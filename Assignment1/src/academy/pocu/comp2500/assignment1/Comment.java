@@ -4,24 +4,24 @@ import java.util.ArrayList;
 
 public class Comment {
     private String sComment;
-    private ArrayList<BlogVisitor> likes;
-    private ArrayList<BlogVisitor> hates;
+    private ArrayList<String> likes;
+    private ArrayList<String> hates;
     private final ArrayList<Comment> subcomment;
 
     public Comment(String comment) {
-        this.likes = new ArrayList<BlogVisitor>();
-        this.hates = new ArrayList<BlogVisitor>();
+        this.likes = new ArrayList<>();
+        this.hates = new ArrayList<>();
         this.sComment = comment;
-        this.subcomment = new ArrayList<Comment>();
+        this.subcomment = new ArrayList<>();
     }
 
-    public final void addLike(BlogVisitor visitor) {
+    public final void addLike(String visitor) {
         if (this.likes.contains(visitor) == false) {
             this.likes.add(visitor);
         }
     }
 
-    public final void addHate(BlogVisitor visitor) {
+    public final void addHate(String visitor) {
         if (this.hates.contains(visitor) == false) {
             this.hates.add(visitor);
         }

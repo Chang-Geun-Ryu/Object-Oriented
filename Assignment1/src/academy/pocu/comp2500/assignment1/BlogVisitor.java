@@ -1,6 +1,9 @@
+/*
 package academy.pocu.comp2500.assignment1;
 
+
 import java.util.ArrayList;
+
 
 public class BlogVisitor {
     private final ArrayList<Content> contents;
@@ -77,3 +80,4 @@ public class BlogVisitor {
         comment.addHate(this);
     }
 }
+*/
