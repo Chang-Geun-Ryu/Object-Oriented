@@ -22,29 +22,29 @@ public class Content {
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
     public Content(String title, String article, BlogAuthor author) {
-//        this(id, author);
-        this.title = title;
-        this.article = article;
-//        this.id = id;
+        this(title, article);
+//        this.createDate = OffsetDateTime.now();
+//        this.modifyDate = this.createDate;
+        this.author = author;
+
+//        this.tag = new ArrayList<String>();
+//        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
+//        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
+    }
+
+    public Content(String title, String article) {
+        this.id = id;
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
         this.author = author;
+        this.title = title;
+        this.article = article;
 
         this.tag = new ArrayList<String>();
         this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
         this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
-//    public Content(int id, BlogAuthor author) {
-//        this.id = id;
-//        this.createDate = OffsetDateTime.now();
-//        this.modifyDate = this.createDate;
-//        this.author = author;
-//
-//        this.tag = new ArrayList<String>();
-//        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
-//        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
-//    }
 
     public final BlogAuthor getAuthor() {
         return this.author;

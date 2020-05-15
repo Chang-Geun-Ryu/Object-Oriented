@@ -14,8 +14,8 @@ public class Program {
         BlogAuthor author = new BlogAuthor("title", "body");
         BlogAuthor author2 = new BlogAuthor("title2", "body");
 
-        blog.addPost(author);
-        blog.addPost(author);
+        blog.addPost(new Content("title", "body"));
+        blog.addPost(new Content("title2", "body2"));
 
         blog.getSortContents(BlogHost.SortType.ASCENDINGTITLE).forEach(e -> System.out.println(e.getTitle()));
 
