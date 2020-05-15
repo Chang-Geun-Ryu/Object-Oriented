@@ -14,12 +14,14 @@ public class Program {
         BlogAuthor author = new BlogAuthor("1");
         BlogAuthor author2 = new BlogAuthor("2");
 
-        author.addPost(blog, "title", "body");
-        author.addPost(blog, "title2", "body2");
-        author2.addPost(blog, "title3", "body3");
-        author.addPost(blog,"title11", "body");
-        author.addPost(blog, "title22", "body2");
-        author2.addPost(blog, "title33", "body33");
+        author.createPost("title", "body");
+        author2.createPost("title2", "body2");
+        author.addPost(blog);//, "title", "body");
+        author.addPost(blog);//, "title2", "body2");
+        author2.addPost(blog);//, "title3", "body3");
+        author.addPost(blog);//,"title11", "body");
+        author.addPost(blog);//, "title22", "body2");
+        author2.addPost(blog);//, "title33", "body33");
 
         blog.getSortContents(BlogHost.SortType.ASCENDINGTITLE).forEach(e -> System.out.println(e.getTitle()));
 

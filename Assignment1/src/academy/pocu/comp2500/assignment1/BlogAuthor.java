@@ -3,23 +3,19 @@ package academy.pocu.comp2500.assignment1;
 import java.util.ArrayList;
 
 public class BlogAuthor {
-    String id;
-
-    ArrayList<Integer> postIds;
+    private Content post;
+    private String id;
 
     public BlogAuthor(String id) {
-//        this.contents = new ArrayList<>();
         this.id = id;
-        postIds = new ArrayList<>();
     }
 
-    public final void addPost(BlogHost blog, String title, String body) {
-        Content post = new Content(title, body, this);
+    public final void addPost(BlogHost blog) {
         blog.addPost(post);
     }
 
-    public final Content createPost(String title, String body) {
-        return new Content(title, body, this);
+    public final void createPost(String title, String body) {
+        this.post = new Content(title, body, this);
     }
 
     public final void setTitle(BlogHost blog, String title, String text) {
