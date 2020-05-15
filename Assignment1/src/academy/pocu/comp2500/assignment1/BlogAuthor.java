@@ -13,8 +13,9 @@ public class BlogAuthor {
         postIds = new ArrayList<>();
     }
 
-    public final void addPost(BlogHost blog) {
-//        blog.addPost(this.id, "title", "article");
+    public final void addPost(BlogHost blog, String title, String body) {
+        Content post = new Content(title, body, this);
+        blog.addPost(post);
     }
 
     public final Content createPost(String title, String body) {

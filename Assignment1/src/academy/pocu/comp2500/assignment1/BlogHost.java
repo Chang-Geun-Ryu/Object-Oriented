@@ -10,6 +10,7 @@ public final class BlogHost {
     private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
     private final ArrayList<Integer> contentIds;
 
+
     public enum SortType {
         DESCENDINGPOST,
         ASCENDINGPOST,
@@ -31,10 +32,9 @@ public final class BlogHost {
         this.addContent(post);
     }
 
-//    public final Content addPost(String title, String body) {
+//    public final void addPost(String , String title, String body) {
 //        Content post = new Content(title, body, null);
 //        this.addContent(post);
-//        return post;
 //    }
 
     public final void setTitle(String author, String title, String text) {

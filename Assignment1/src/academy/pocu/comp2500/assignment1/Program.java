@@ -14,11 +14,16 @@ public class Program {
         BlogAuthor author = new BlogAuthor("1");
         BlogAuthor author2 = new BlogAuthor("2");
 
-        blog.addPost(author.createPost("title", "body"));
-        blog.addPost(author.createPost("title2", "body2"));
-        blog.addPost(author2.createPost("title3", "body3"));
+        author.addPost(blog, "title", "body");
+        author.addPost(blog, "title2", "body2");
+        author2.addPost(blog, "title3", "body3");
+        author.addPost(blog,"title11", "body");
+        author.addPost(blog, "title22", "body2");
+        author2.addPost(blog, "title33", "body33");
 
-        blog.getBlogAuthorContents(author2).forEach(e -> System.out.println(e.getTitle()));
+        blog.getSortContents(BlogHost.SortType.ASCENDINGTITLE).forEach(e -> System.out.println(e.getTitle()));
+
+//        blog.getBlogAuthorContents(author2).forEach(e -> System.out.println(e.getTitle()));
 //        blog.getAllContents().forEach(e -> System.out.println(e.getTitle()));
 
         Registry registry = new Registry();
