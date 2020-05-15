@@ -6,8 +6,9 @@ public class BlogAuthor {
     private Content post;
     private String id;
 
-    public BlogAuthor(String id) {
-        this.id = id;
+    public BlogAuthor(String title, String body) {
+        this.id = "1";
+        post = new Content(title, body, this);
     }
 
     public final void addPost(BlogHost blog) {
