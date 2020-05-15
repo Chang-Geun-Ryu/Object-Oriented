@@ -32,7 +32,7 @@ public class Content {
 //        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
 //    }
 
-    public Content(String title, String article, String authorId) {
+    public Content(String title, String body, String authorId) {
         this.id = id;
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
