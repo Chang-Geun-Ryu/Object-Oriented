@@ -19,7 +19,7 @@ public class BlogVisitor {
         this.contents.addAll(blog.getTagContents(tag));
     }
 
-    public final void getAurthorContents(BlogHost blog, BlogAuthor author) {
+    public final void getAurthorContents(BlogHost blog, String author) {
         this.contents.removeAll(this.contents);
         this.contents.addAll(blog.getBlogAuthorContents(author));
     }

@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 
 public final class BlogHost {
     private final HashMap<String, ArrayList<Content>> mapContents;
-//    private final ArrayList<Integer> contentIds;
-
 
     public enum SortType {
         DESCENDINGPOST,
@@ -105,7 +103,7 @@ public final class BlogHost {
                 .collect(Collectors.toList()));
     }
 
-    public final ArrayList<Content> getBlogAuthorContents(BlogAuthor author) {
+    public final ArrayList<Content> getBlogAuthorContents(String author) {
         return this.mapContents.get(author);
     }
 
