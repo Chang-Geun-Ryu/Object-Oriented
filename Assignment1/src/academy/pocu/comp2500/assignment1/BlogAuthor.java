@@ -17,8 +17,8 @@ public class BlogAuthor {
 //        blog.addPost(this.id, "title", "article");
     }
 
-    public final Content createPost(int id, BlogAuthor author) {
-        return new Content(id, this);
+    public final Content createPost(String title, String body) {
+        return new Content(title, body, this);
     }
 
     public final void setTitle(BlogHost blog, String title, String text) {

@@ -21,11 +21,11 @@ public class Content {
     private HashMap<BlogVisitor, ArrayList<Comment>> comments;
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
-    public Content(int id, String title, String article, BlogAuthor author) {
+    public Content(String title, String article, BlogAuthor author) {
 //        this(id, author);
         this.title = title;
         this.article = article;
-        this.id = id;
+//        this.id = id;
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
         this.author = author;

@@ -13,8 +13,12 @@ public class Program {
         BlogHost blog = new BlogHost();
         BlogAuthor author = new BlogAuthor("1");
 
-        blog.addPost(author);
+        Content post = author.createPost("title", "body");
+        blog.addPost(post);
+        Content post2 = author.createPost("title2", "body2");
+        blog.addPost(post2);
 
+        blog.getAllContents().forEach(e -> System.out.println(e.getTitle()));
 
         Registry registry = new Registry();
         App app = new App(registry);

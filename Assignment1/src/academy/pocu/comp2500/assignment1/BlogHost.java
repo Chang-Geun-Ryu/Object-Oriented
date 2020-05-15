@@ -31,6 +31,12 @@ public final class BlogHost {
         this.addContent(post);
     }
 
+//    public final Content addPost(String title, String body) {
+//        Content post = new Content(title, body, null);
+//        this.addContent(post);
+//        return post;
+//    }
+
     public final void setTitle(String author, String title, String text) {
         this.mapContents.get(author)
                 .stream()
