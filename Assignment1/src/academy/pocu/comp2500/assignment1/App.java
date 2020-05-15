@@ -13,9 +13,9 @@ public class App {
         registry.registerPostOrderSetter("BlogHost", "getSortContents");
         registry.registerPostListGetter("BlogHost", "getAllContents");
         registry.registerPostAdder("BlogHost", "addPost");
-        registry.registerPostTitleUpdater("BlogAuthor", "setTitle");
-        registry.registerPostBodyUpdater("BlogAuthor", "setArticle");
-        registry.registerPostTagAdder("BlogAuthor", "addTag");
+        registry.registerPostTitleUpdater("BlogHost", "setTitle");
+        registry.registerPostBodyUpdater("BlogHost", "setArticle");
+        registry.registerPostTagAdder("BlogHost", "addTag");
         registry.registerCommentAdder("BlogVisitor", "addComment");
         registry.registerSubcommentAdder("BlogVisitor", "addSubComment");
         registry.registerCommentUpdater("BlogVisitor", "modifyComment");

@@ -8,7 +8,7 @@ public class BlogAuthor {
 
     public BlogAuthor(String title, String body) {
         this.id = "1";
-        post = new Content(title, body, this);
+        post = new Content(title, body, "this");
     }
 
 //    public final void addPost(BlogHost blog) {
@@ -20,7 +20,7 @@ public class BlogAuthor {
     }
 
     public final void createPost(String title, String body) {
-        this.post = new Content(title, body, this);
+        this.post = new Content(title, body, "this");
     }
 
     public final void setTitle(BlogHost blog, String title, String text) {
@@ -31,7 +31,7 @@ public class BlogAuthor {
         blog.setArticle(this.id, title, text);
     }
 
-    public final void addTag(BlogHost blog, int postId, String tag) {
-        blog.addTag(this.id, postId, tag);
+    public final void addTag(BlogHost blog, String title, String tag) {
+        blog.addTag(this.id, title, tag);
     }
 }

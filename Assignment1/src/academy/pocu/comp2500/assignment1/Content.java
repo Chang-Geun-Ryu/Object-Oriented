@@ -16,27 +16,27 @@ public class Content {
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
-    private BlogAuthor author;
-//    private String author;
+//    private BlogAuthor author;
+    private String author;
     private HashMap<BlogVisitor, ArrayList<Comment>> comments;
     private HashMap<BlogVisitor, Reaction> mapReactions;
 
-    public Content(String title, String article, BlogAuthor author) {
-        this(title, article);
+//    public Content(String title, String article, BlogAuthor author) {
+//        this(title, article);
 //        this.createDate = OffsetDateTime.now();
 //        this.modifyDate = this.createDate;
-        this.author = author;
+//        this.author = author;
 
 //        this.tag = new ArrayList<String>();
 //        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
 //        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
-    }
+//    }
 
-    public Content(String title, String article) {
+    public Content(String title, String article, String authorId) {
         this.id = id;
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
-        this.author = author;
+        this.author = authorId;
         this.title = title;
         this.article = article;
 
@@ -46,7 +46,7 @@ public class Content {
     }
 
 
-    public final BlogAuthor getAuthor() {
+    public final String getAuthor() {
         return this.author;
     }
 

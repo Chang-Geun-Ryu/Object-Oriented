@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public final class BlogHost {
-    private final HashMap<BlogAuthor, ArrayList<Content>> mapContents;
+    private final HashMap<String, ArrayList<Content>> mapContents;
 //    private final ArrayList<Integer> contentIds;
 
 
@@ -23,8 +23,8 @@ public final class BlogHost {
         this.mapContents = new HashMap<>();
     }
 
-    public final void addPost(String title, String body) {
-        this.addContent(new Content(title, body));
+    public final void addPost(Content post) {
+        this.addContent(post);
     }
 
     public final void setTitle(String author, String title, String text) {
@@ -47,15 +47,19 @@ public final class BlogHost {
                 .modifyPostArticle(text);
     }
 
-    public final void addTag(String author, int postId, String tag) {
+    public final void addTag(String author, String title, String tag) {
         this.mapContents.entrySet()
                 .stream()
                 .map(e -> {
+
+//                    System.out.println(e.getValue());
                     return e.getValue();
                 })
                 .flatMap(Collection::stream)
                 .filter(e -> {
-                    return e.getId() == postId;
+//                    System.out.println(title);
+//                    System.out.println(e.getId());
+                    return e.getTitle() == title;
                 })
                 .findFirst()
                 .orElseThrow()
