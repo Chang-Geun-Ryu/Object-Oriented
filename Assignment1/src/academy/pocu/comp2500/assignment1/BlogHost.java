@@ -42,7 +42,7 @@ public final class BlogHost {
                     return content.getTitle() == title;
                 }).findFirst()
                 .orElseThrow()
-                .modifyPostArticle(text);
+                .modifyPostBody(text);
     }
 
     public final void addTag(String author, String title, String tag) {
@@ -65,12 +65,12 @@ public final class BlogHost {
     }
 
     private final void addContent(Content content) {
-        if (this.mapContents.containsKey(content.getAuthor())) {
-            this.mapContents.get(content.getAuthor()).add(content);
+        if (this.mapContents.containsKey(content.getAuthorId())) {
+            this.mapContents.get(content.getAuthorId()).add(content);
         } else {
             ArrayList<Content> array = new ArrayList<>();
             array.add(content);
-            this.mapContents.put(content.getAuthor(), array);
+            this.mapContents.put(content.getAuthorId(), array);
         }
     }
 
@@ -93,13 +93,9 @@ public final class BlogHost {
     public final ArrayList<Content> getTagContents(String tag) {
         return new ArrayList<Content>(this.mapContents.entrySet()
                 .stream()
-                .map(e -> {
-                    return e.getValue();
-                })
+                .map(e -> { return e.getValue();})
                 .flatMap(Collection::stream)
-                .filter(e -> {
-                    return e.getTag().contains(tag);
-                })
+                .filter(e -> { return e.getTag().contains(tag);})
                 .collect(Collectors.toList()));
     }
 

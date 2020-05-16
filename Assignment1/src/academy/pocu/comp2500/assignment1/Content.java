@@ -11,8 +11,8 @@ import java.util.Collection;
 
 public class Content {
     private String title = "";
-    private String article = "";
-    private String author;
+    private String body = "";
+    private String authorId;
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
@@ -24,9 +24,9 @@ public class Content {
     public Content(String title, String body, String authorId) {
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
-        this.author = authorId;
+        this.authorId = authorId;
         this.title = title;
-        this.article = body;
+        this.body = body;
 
         this.tag = new ArrayList<String>();
         this.comments = new ArrayList<>();
@@ -39,12 +39,12 @@ public class Content {
         return this.title;
     }
 
-    public final String getArticle() {
-        return this.article;
+    public final String getBody() {
+        return this.body;
     }
 
-    public final String getAuthor() {
-        return this.author;
+    public final String getAuthorId() {
+        return this.authorId;
     }
 
     public final ArrayList<String> getTag() {
@@ -74,10 +74,10 @@ public class Content {
         return this.reactions;
     }
 
-    public final void updatePost(String title, String article, String tag) {
+    public final void updatePost(String title, String authorId, String tag) {
         this.modifyDate = OffsetDateTime.now();
         this.title = title;
-        this.article = article;
+        this.authorId = authorId;
         this.tag.add(tag);
     }
 
@@ -86,9 +86,9 @@ public class Content {
         this.title = title;
     }
 
-    public final void modifyPostArticle(String article) {
+    public final void modifyPostBody(String body) {
         this.modifyDate = OffsetDateTime.now();
-        this.article = article;
+        this.body = body;
     }
 
     public final void addPostTag(String tag) {
@@ -108,8 +108,8 @@ public class Content {
 //        }
     }
 
-    public final void setReactions(Reaction.Type type, boolean status) {
-
+    public final void setReaction(Reaction.Type type, String visitorId) {
+        this.reactions.add(new Reaction(type, visitorId));
 //        if (mapReactions.containsKey(visitor)) {
 //            mapReactions.get(visitor).setStatus(type, status);
 //        } else {
@@ -117,6 +117,14 @@ public class Content {
 //            reaction.setStatus(type, status);
 //            mapReactions.put(visitor, reaction);
 //        }
+    }
+
+    public final void removeReaction(Reaction.Type type, String visitorId) {
+        Reaction reaction = this.reactions.stream()
+                .filter(e -> e.getVisitorId() == visitorId)
+                .findFirst()
+                .orElseThrow();
+        this.reactions.remove(reaction);
     }
 
     public final ArrayList<Comment> getSortedComments() {

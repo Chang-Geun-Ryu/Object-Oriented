@@ -6,6 +6,7 @@ public class Reaction {
     private boolean bAngry;
     private boolean bFun;
     private boolean bLove;
+    private String visitorId;
 
     public enum Type {
         GRATE,
@@ -15,10 +16,12 @@ public class Reaction {
         LOVE
     }
 
-    public Reaction() {
+    public Reaction(Type type, String visitorId) {
+        this.visitorId = visitorId;
+        this.setStatus(type, true);
     }
 
-    public  void setStatus(Type type, boolean status) {
+    private void setStatus(Type type, boolean status) {
         switch (type) {
             case GRATE:
                 this.bGreat = status;
@@ -58,5 +61,9 @@ public class Reaction {
 
     public boolean isLove() {
         return bLove;
+    }
+
+    public String getVisitorId() {
+        return this.visitorId;
     }
 }
