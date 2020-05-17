@@ -58,6 +58,7 @@ public class Content {
     }
 
     public final ArrayList<Comment> getComments() {
+
         return this.comments;
 //        return new ArrayList<Comment>(this.comments.entrySet()
 //                .stream()
@@ -130,7 +131,7 @@ public class Content {
     public final ArrayList<Comment> getSortedComments() {
         ArrayList<Comment> sortComment = getComments();
 
-        Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(lhs.getScore(), rhs.getScore()));
+        Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(rhs.getScore(), lhs.getScore()));
 
         return sortComment;
     }

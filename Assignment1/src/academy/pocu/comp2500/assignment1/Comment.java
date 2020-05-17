@@ -39,8 +39,8 @@ public class Comment {
         }
     }
 
-    public final void addSubcomment(String subcomment, String userId) {
-        this.subcomment.add(new Comment(subcomment, userId));
+    public final void addSubcomment(Comment comment) {
+        this.subcomment.add(comment);
     }
 
     public final ArrayList<Comment> getSubcomment() {
