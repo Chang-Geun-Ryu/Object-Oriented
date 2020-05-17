@@ -4,6 +4,7 @@ package academy.pocu.comp2500.assignment1;
 import java.util.Collections;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Content {
@@ -16,7 +17,18 @@ public class Content {
 //    private HashMap<String, String> tag;
     private HashSet<String> tag;
     private ArrayList<Comment> comments;
-    private ArrayList<Reaction> reactions;
+//    private ArrayList<Reaction> reactions;
+//    private ArrayList<Type> reactions;
+    private HashMap<Type, ArrayList<String>> reactions;
+
+    public enum Type {
+        GRATE,
+        SAD,
+        ANGRY,
+        FUN,
+        LOVE
+    }
+
 
     public Content(String title, String body, String authorId) {
         this.createDate = OffsetDateTime.now();
@@ -27,7 +39,13 @@ public class Content {
 
         this.tag = new HashSet<String>();
         this.comments = new ArrayList<>();
-        this.reactions = new ArrayList<>();
+//        this.reactions = new ArrayList<>();
+        this.reactions = new HashMap<Type, ArrayList<String>>();
+        this.reactions.put(Type.ANGRY, new ArrayList<>());
+        this.reactions.put(Type.FUN, new ArrayList<>());
+        this.reactions.put(Type.GRATE, new ArrayList<>());
+        this.reactions.put(Type.LOVE, new ArrayList<>());
+        this.reactions.put(Type.SAD, new ArrayList<>());
     }
 
     public final String getTitle() {
@@ -58,7 +76,7 @@ public class Content {
         return this.comments;
     }
 
-    public final ArrayList<Reaction> getReactions() {
+    public final HashMap<Type, ArrayList<String>> getReactions() {
         return this.reactions;
     }
 
@@ -82,20 +100,33 @@ public class Content {
         this.comments.add(comment);
     }
 
-    public final void setReaction(Reaction.Type type, String userId) {
-        this.reactions.add(new Reaction(type, userId));
+    public final void setReaction(Type type, String userId) {
+//        this.reactions.add(new Reaction(type, userId));
+//        this.reactions.put(type, userId);
+        if (this.reactions.containsKey(type)) {
+            this.reactions.get(type).add(userId);
+        } else {
+            ArrayList<String> array = new ArrayList<>();
+            array.add(userId);
+            this.reactions.put(type, array);
+        }
     }
 
-    public final void removeReaction(Reaction.Type type, String userId) {
-        try {
-            Reaction reaction = this.reactions.stream()
-                    .filter(e -> e.getUserId() == userId)
-                    .findFirst()
-                    .orElseThrow();
-            this.reactions.remove(reaction);
-        } catch (Exception e) {
-            System.out.println(e);
+    public final void removeReaction(Type type, String userId) {
+//        try {
+//            Reaction reaction = this.reactions.stream()
+//                    .filter(e -> e.getUserId() == userId)
+//                    .findFirst()
+//                    .orElseThrow();
+//            this.reactions.remove(reaction);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+
+        if (this.reactions.get(type).contains(userId)) {
+            this.reactions.get(type).remove(userId);
         }
+
     }
 
     public final ArrayList<Comment> getSortedComments() {

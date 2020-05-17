@@ -7,19 +7,19 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
         BlogHost blog = new BlogHost();
-        Content post = new Content("title", "body2", "host");
-        Content post2 = new Content("title1", "body1", "host");
+        Content post = new Content("title1", "body2", "host");
+        Content post2 = new Content("title2", "body1", "host");
         blog.addPost(post);
         blog.addPost(post2);
-        Content post3 = new Content("title", "body2", "vi");
-        Content post4 = new Content("title1", "body1", "vi");
+        Content post3 = new Content("title3", "body2", "vi");
+        Content post4 = new Content("title4", "body1", "vi");
         blog.addPost(post3);
         blog.addPost(post4);
 //        blog.addPost(new Content("title2", "body", "host"));
 
-        post4.setReaction(Reaction.Type.ANGRY, "123");
+//        post4.setReaction(Reaction.Type.ANGRY, "123");
 
-        post4.getReactions().forEach(e-> System.out.println(e.getUserId()));
+//        post4.getReactions().forEach(e-> System.out.println(e.getUserId()));
 
 //        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getBody()));
 //        blog.getAllContents().forEach(e -> {
@@ -28,7 +28,7 @@ public class Program {
 //            System.out.println(e.getBody());
 //        });
 
-//        blog.getSortContents(BlogHost.SortType.DESCENDINGMODIFY).forEach(e -> System.out.println(e.getTitle()));
+        blog.getSortContents(BlogHost.SortType.ASCENDINGTITLE).forEach(e -> System.out.println(e.getTitle()));
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
