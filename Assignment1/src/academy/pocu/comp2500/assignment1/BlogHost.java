@@ -41,17 +41,16 @@ public final class BlogHost {
         }
     }
 
-    public final void setBody(String authorId, String title, String text) {
+    public final void setBody(String authorId, String body, String text) {
         try {
             this.mapContents.get(authorId)
                     .stream()
                     .filter(content -> {
-                        return content.getTitle() == title;
+                        return content.getBody() == body;
                     }).findFirst()
                     .orElseThrow()
                     .modifyPostBody(text);
         } catch (Exception e) {
-
             System.out.println(e);
         }
     }
@@ -75,7 +74,6 @@ public final class BlogHost {
                     .orElseThrow()
                     .addPostTag(tag);
         } catch (Exception e) {
-
             System.out.println(e);
         }
     }
@@ -119,7 +117,7 @@ public final class BlogHost {
         if (this.mapContents.size() > 0) {
             return this.mapContents.get(authorId);
         }
-        return null;
+        return new ArrayList<Content>();
     }
 
     public final ArrayList<Content> getSortContents(SortType sortingType) {
@@ -128,13 +126,13 @@ public final class BlogHost {
         Collections.sort(contents, (lhs, rhs) -> {
             switch (sortingType) {
                 case DESCENDINGPOST:
-                    return Long.compare(lhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY), rhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY));
+                    return Long.compare(lhs.getPostTime().getLong(ChronoField.NANO_OF_DAY), rhs.getPostTime().getLong(ChronoField.NANO_OF_DAY));
                 case ASCENDINGPOST:
-                    return Long.compare(rhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY), lhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY));
+                    return Long.compare(rhs.getPostTime().getLong(ChronoField.NANO_OF_DAY), lhs.getPostTime().getLong(ChronoField.NANO_OF_DAY));
                 case DESCENDINGMODIFY:
-                    return Long.compare(lhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY), rhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY));
+                    return Long.compare(lhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY), rhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY));
                 case ASCENDINGMODIFY:
-                    return Long.compare(rhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY), lhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY));
+                    return Long.compare(rhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY), lhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY));
                 case ASCENDINGTITLE:
                     return lhs.getTitle().compareTo(rhs.getTitle());
                 default:

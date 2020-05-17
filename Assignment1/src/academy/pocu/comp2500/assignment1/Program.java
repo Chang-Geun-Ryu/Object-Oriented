@@ -9,20 +9,21 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
         BlogHost blog = new BlogHost();
-
-        blog.addPost(new Content("title", "body", "host"));
-        blog.addPost(new Content("title1", "body", "host"));
+        Content post = new Content("title", "body2", "host");
+        blog.addPost(post);
+        blog.addPost(new Content("title1", "body1", "host"));
         blog.addPost(new Content("title2", "body", "host"));
-
 
         blog.setTitle("host", "1", "22");
         blog.setTitle("host", "title", "modititle");
-        blog.setBody("host", "title2", "body111");
+        blog.setBody("host", "body", "body111");
 //        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getBody()));
         blog.getAllContents().forEach(e -> {
-            System.out.println(e.getTitle());
+            System.out.print(e.getTitle());
+            System.out.print("_");
             System.out.println(e.getBody());
         });
+
 
 //        blog.getSortContents(BlogHost.SortType.DESCENDINGMODIFY).forEach(e -> System.out.println(e.getTitle()));
         Registry registry = new Registry();

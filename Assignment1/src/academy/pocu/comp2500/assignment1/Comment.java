@@ -17,15 +17,15 @@ public class Comment {
         this.subcomment = new ArrayList<>();
     }
 
-    public final void addLike(String user) {
-        if (this.likes.contains(user) == false) {
-            this.likes.add(user);
+    public final void addLike(String userId) {
+        if (this.likes.contains(userId) == false) {
+            this.likes.add(userId);
         }
     }
 
-    public final void addHate(String user) {
-        if (this.hates.contains(user) == false) {
-            this.hates.add(user);
+    public final void addHate(String userId) {
+        if (this.hates.contains(userId) == false) {
+            this.hates.add(userId);
         }
     }
 
@@ -33,8 +33,10 @@ public class Comment {
         return this.likes.size() - this.hates.size();
     }
 
-    public final void setComment(String comment) {
-        this.sComment = comment;
+    public final void setComment(String comment, String userId) {
+        if (userId == this.userId) {
+            this.sComment = comment;
+        }
     }
 
     public final void addSubcomment(String subcomment, String userId) {
