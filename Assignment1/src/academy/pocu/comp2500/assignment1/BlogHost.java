@@ -36,7 +36,7 @@ public final class BlogHost {
                 .modifyPostTitle(text);
     }
 
-    public final void setArticle(String authorId, String title, String text) {
+    public final void setBody(String authorId, String title, String text) {
         this.mapContents.get(authorId)
                 .stream()
                 .filter(content -> {
@@ -101,7 +101,10 @@ public final class BlogHost {
     }
 
     public final ArrayList<Content> getBlogAuthorContents(String authorId) {
-        return this.mapContents.get(authorId);
+        if (this.mapContents.size() > 0) {
+            return this.mapContents.get(authorId);
+        }
+        return null;
     }
 
     public final ArrayList<Content> getSortContents(SortType sortingType) {

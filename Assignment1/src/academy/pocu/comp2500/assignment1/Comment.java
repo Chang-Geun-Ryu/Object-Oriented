@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 public class Comment {
     private String sComment;
+    private String userId;
     private ArrayList<String> likes;
     private ArrayList<String> hates;
     private final ArrayList<Comment> subcomment;
 
-    public Comment(String comment) {
+    public Comment(String comment, String userId) {
         this.likes = new ArrayList<>();
         this.hates = new ArrayList<>();
         this.sComment = comment;
+        this.userId = userId;
         this.subcomment = new ArrayList<>();
     }
 
@@ -35,8 +37,8 @@ public class Comment {
         this.sComment = comment;
     }
 
-    public final void addSubcomment(String subcomment) {
-        this.subcomment.add(new Comment(subcomment));
+    public final void addSubcomment(String subcomment, String userId) {
+        this.subcomment.add(new Comment(subcomment, userId));
     }
 
     public final ArrayList<Comment> getSubcomment() {

@@ -15,9 +15,13 @@ public class Program {
         blog.addPost(new Content("title2", "body", "host"));
 
 
-//        blog.setTitle("host", "title", "modititle");
-//        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getTitle()));
-
+        blog.setTitle("host", "title", "modititle");
+        blog.setBody("host", "title2", "body111");
+//        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getBody()));
+        blog.getAllContents().forEach(e -> {
+            System.out.println(e.getTitle());
+            System.out.println(e.getBody());
+        });
 
 //        blog.getSortContents(BlogHost.SortType.DESCENDINGMODIFY).forEach(e -> System.out.println(e.getTitle()));
         Registry registry = new Registry();
