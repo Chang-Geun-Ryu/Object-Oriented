@@ -125,13 +125,13 @@ public final class BlogHost {
 
         Collections.sort(contents, (lhs, rhs) -> {
             switch (sortingType) {
-                case DESCENDINGPOST:
+                case ASCENDINGPOST://DESCENDINGPOST:
                     return Long.compare(lhs.getPostTime().getLong(ChronoField.NANO_OF_DAY), rhs.getPostTime().getLong(ChronoField.NANO_OF_DAY));
-                case ASCENDINGPOST:
+                case DESCENDINGPOST://ASCENDINGPOST:
                     return Long.compare(rhs.getPostTime().getLong(ChronoField.NANO_OF_DAY), lhs.getPostTime().getLong(ChronoField.NANO_OF_DAY));
-                case DESCENDINGMODIFY:
+                case ASCENDINGMODIFY://DESCENDINGMODIFY:
                     return Long.compare(lhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY), rhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY));
-                case ASCENDINGMODIFY:
+                case DESCENDINGMODIFY://ASCENDINGMODIFY:
                     return Long.compare(rhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY), lhs.getModifyTime().getLong(ChronoField.NANO_OF_DAY));
                 case ASCENDINGTITLE:
                     return lhs.getTitle().compareTo(rhs.getTitle());

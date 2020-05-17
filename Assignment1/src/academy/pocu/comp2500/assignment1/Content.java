@@ -1,13 +1,10 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.time.temporal.ChronoField;
-import java.time.OffsetDateTime;
-import java.util.stream.Collectors;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Comparator;
+
 import java.util.Collections;
-import java.util.Collection;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Content {
     private String title = "";
@@ -15,8 +12,9 @@ public class Content {
     private String authorId;
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
-    private ArrayList<String> tag;
+//    private ArrayList<String> tag;
 //    private HashMap<String, String> tag;
+    private HashSet<String> tag;
     private ArrayList<Comment> comments;
     private ArrayList<Reaction> reactions;
 
@@ -27,12 +25,9 @@ public class Content {
         this.title = title;
         this.body = body;
 
-        this.tag = new ArrayList<String>();
-//        this.tag = new HashMap<>();
+        this.tag = new HashSet<String>();
         this.comments = new ArrayList<>();
         this.reactions = new ArrayList<>();
-//        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
-//        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
     }
 
     public final String getTitle() {
@@ -48,39 +43,24 @@ public class Content {
     }
 
     public final ArrayList<String> getTag() {
-        return tag;
+        return new ArrayList<String>(this.tag);
     }
 
     public final OffsetDateTime getPostTime() {
-        return this.createDate;//.getLong(ChronoField.MICRO_OF_DAY);
+        return this.createDate;
     }
 
     public final OffsetDateTime getModifyTime() {
-        return this.modifyDate; //.getLong(ChronoField.MICRO_OF_DAY);
+        return this.modifyDate;
     }
 
     public final ArrayList<Comment> getComments() {
-
         return this.comments;
-//        return new ArrayList<Comment>(this.comments.entrySet()
-//                .stream()
-//                .map(e -> {
-//                    return e.getValue();
-//                })
-//                .flatMap(Collection::stream)
-//                .collect(Collectors.toList()));
     }
 
     public final ArrayList<Reaction> getReactions() {
         return this.reactions;
     }
-
-//    public final void updatePost(String title, String authorId, String tag) {
-//        this.modifyDate = OffsetDateTime.now();
-//        this.title = title;
-//        this.authorId = authorId;
-//        this.tag.add(tag);
-//    }
 
     public final void modifyPostTitle(String title) {
         this.modifyDate = OffsetDateTime.now();
@@ -95,40 +75,27 @@ public class Content {
     }
 
     public final void addPostTag(String tag) {
-//        this.modifyDate = OffsetDateTime.now();
         this.tag.add(tag);
-//        this.tag.put(userId, tag);
     }
 
     public final void addComment(Comment comment) {
         this.comments.add(comment);
-//        this.comments.add(new Comment(comment));
-//        if (this.comments.containsKey(comment)) {
-//            this.comments.get(visitor).add(new Comment(comment));
-//        } else {
-//            ArrayList<Comment> array = new ArrayList<>();
-//            array.add(new Comment(comment));
-//            this.comments.put(visitor, array);
-//        }
     }
 
     public final void setReaction(Reaction.Type type, String userId) {
         this.reactions.add(new Reaction(type, userId));
-//        if (mapReactions.containsKey(visitor)) {
-//            mapReactions.get(visitor).setStatus(type, status);
-//        } else {
-//            Reaction reaction = new Reaction();
-//            reaction.setStatus(type, status);
-//            mapReactions.put(visitor, reaction);
-//        }
     }
 
     public final void removeReaction(Reaction.Type type, String userId) {
-        Reaction reaction = this.reactions.stream()
-                .filter(e -> e.getUserId() == userId)
-                .findFirst()
-                .orElseThrow();
-        this.reactions.remove(reaction);
+        try {
+            Reaction reaction = this.reactions.stream()
+                    .filter(e -> e.getUserId() == userId)
+                    .findFirst()
+                    .orElseThrow();
+            this.reactions.remove(reaction);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public final ArrayList<Comment> getSortedComments() {
