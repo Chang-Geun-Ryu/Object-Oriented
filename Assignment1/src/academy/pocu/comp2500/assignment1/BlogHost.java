@@ -27,42 +27,57 @@ public final class BlogHost {
     }
 
     public final void setTitle(String authorId, String title, String text) {
-        this.mapContents.get(authorId)
-                .stream()
-                .filter(content -> {
-                    return content.getTitle() == title;
-                }).findFirst()
-                .orElseThrow()
-                .modifyPostTitle(text);
+        try {
+            this.mapContents.get(authorId)
+                    .stream()
+                    .filter(content -> {
+                        return content.getTitle() == title;
+                    }).findFirst()
+                    .orElseThrow()
+                    .modifyPostTitle(text);
+        } catch (Exception e) {
+            System.out.println(e);
+//            assert (true);
+        }
     }
 
     public final void setBody(String authorId, String title, String text) {
-        this.mapContents.get(authorId)
-                .stream()
-                .filter(content -> {
-                    return content.getTitle() == title;
-                }).findFirst()
-                .orElseThrow()
-                .modifyPostBody(text);
+        try {
+            this.mapContents.get(authorId)
+                    .stream()
+                    .filter(content -> {
+                        return content.getTitle() == title;
+                    }).findFirst()
+                    .orElseThrow()
+                    .modifyPostBody(text);
+        } catch (Exception e) {
+
+            System.out.println(e);
+        }
     }
 
     public final void addTag(String authorId, String title, String tag) {
-        this.mapContents.entrySet()
-                .stream()
-                .map(e -> {
+        try {
+            this.mapContents.entrySet()
+                    .stream()
+                    .map(e -> {
 
 //                    System.out.println(e.getValue());
-                    return e.getValue();
-                })
-                .flatMap(Collection::stream)
-                .filter(e -> {
+                        return e.getValue();
+                    })
+                    .flatMap(Collection::stream)
+                    .filter(e -> {
 //                    System.out.println(title);
 //                    System.out.println(e.getId());
-                    return e.getTitle() == title;
-                })
-                .findFirst()
-                .orElseThrow()
-                .addPostTag(tag);
+                        return e.getTitle() == title;
+                    })
+                    .findFirst()
+                    .orElseThrow()
+                    .addPostTag(tag);
+        } catch (Exception e) {
+
+            System.out.println(e);
+        }
     }
 
     private final void addContent(Content content) {
