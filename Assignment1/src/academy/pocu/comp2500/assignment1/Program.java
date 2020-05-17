@@ -26,13 +26,18 @@ public class Program {
 
         Comment comment = new Comment("com1", "1");
         Comment comment2 = new Comment("com2", "2");
+        Comment sub1 = new Comment("sub1", "2");
+        Comment sub2 = new Comment("sub2", "3");
         post.addComment(comment);
         post.addComment(comment2);
 
         comment2.addLike("11");
-
+        comment.addSubcomment(sub1);
+        comment.addSubcomment(sub2);
+        sub2.addLike("22");
         post.getSortedComments().forEach(e -> System.out.println(e.getComment()));
 
+        comment.getSortedSubcomments().forEach(e -> System.out.println(e.getComment()));
 
 //        blog.getSortContents(BlogHost.SortType.DESCENDINGMODIFY).forEach(e -> System.out.println(e.getTitle()));
         Registry registry = new Registry();

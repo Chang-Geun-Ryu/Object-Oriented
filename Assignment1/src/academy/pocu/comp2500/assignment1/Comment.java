@@ -1,6 +1,7 @@
 package academy.pocu.comp2500.assignment1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Comment {
     private String sComment;
@@ -43,8 +44,16 @@ public class Comment {
         this.subcomment.add(comment);
     }
 
-    public final ArrayList<Comment> getSubcomment() {
+    private final ArrayList<Comment> getSubcomment() {
         return this.subcomment;
+    }
+
+    public final ArrayList<Comment> getSortedSubcomments() {
+        ArrayList<Comment> sortComment = getSubcomment();
+
+        Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(rhs.getScore(), lhs.getScore()));
+
+        return sortComment;
     }
 
     public final String getComment() {

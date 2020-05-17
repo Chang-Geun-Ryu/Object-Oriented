@@ -23,7 +23,7 @@ public class App {
         registry.registerCommentUpvoter("Comment", "addLike");
         registry.registerCommentDownvoter("Comment", "addHate");
         registry.registerCommentListGetter("Content", "getSortedComments");
-        registry.registerSubCommentListGetter("Comment", "getComment");
+        registry.registerSubCommentListGetter("Comment", "getSortedSubcomments");
         registry.registerSubcommentUpvoter("Comment", "addLike");
         registry.registerSubcommentDownvoter("Comment", "addHate");
     }
