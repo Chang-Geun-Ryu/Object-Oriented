@@ -10,34 +10,24 @@ public class Program {
 	    // write your code here
         BlogHost blog = new BlogHost();
         Content post = new Content("title", "body2", "host");
+        Content post2 = new Content("title1", "body1", "host");
         blog.addPost(post);
-        blog.addPost(new Content("title1", "body1", "host"));
-        blog.addPost(new Content("title2", "body", "host"));
+        blog.addPost(post2);
+        Content post3 = new Content("title", "body2", "vi");
+        Content post4 = new Content("title1", "body1", "vi");
+        blog.addPost(post3);
+        blog.addPost(post4);
+//        blog.addPost(new Content("title2", "body", "host"));
 
-        blog.setTitle("host", "1", "22");
-        blog.setTitle("host", "title", "modititle");
-        blog.setBody("host", "body", "body111");
+
+
+
 //        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getBody()));
         blog.getAllContents().forEach(e -> {
             System.out.print(e.getTitle());
             System.out.print("_");
             System.out.println(e.getBody());
         });
-
-        Comment comment = new Comment("com1", "1");
-        Comment comment2 = new Comment("com2", "2");
-        Comment sub1 = new Comment("sub1", "2");
-        Comment sub2 = new Comment("sub2", "3");
-        post.addComment(comment);
-        post.addComment(comment2);
-
-        comment2.addLike("11");
-        comment.addSubcomment(sub1);
-        comment.addSubcomment(sub2);
-        sub2.addLike("22");
-        post.getSortedComments().forEach(e -> System.out.println(e.getComment()));
-
-        comment.getSortedSubcomments().forEach(e -> System.out.println(e.getComment()));
 
 //        blog.getSortContents(BlogHost.SortType.DESCENDINGMODIFY).forEach(e -> System.out.println(e.getTitle()));
         Registry registry = new Registry();

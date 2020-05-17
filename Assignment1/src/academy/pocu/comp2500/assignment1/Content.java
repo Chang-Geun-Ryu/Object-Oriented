@@ -16,6 +16,7 @@ public class Content {
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
+//    private HashMap<String, String> tag;
     private ArrayList<Comment> comments;
     private ArrayList<Reaction> reactions;
 
@@ -27,6 +28,7 @@ public class Content {
         this.body = body;
 
         this.tag = new ArrayList<String>();
+//        this.tag = new HashMap<>();
         this.comments = new ArrayList<>();
         this.reactions = new ArrayList<>();
 //        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
@@ -46,7 +48,7 @@ public class Content {
     }
 
     public final ArrayList<String> getTag() {
-        return this.tag;
+        return tag;
     }
 
     public final OffsetDateTime getPostTime() {
@@ -73,12 +75,12 @@ public class Content {
         return this.reactions;
     }
 
-    public final void updatePost(String title, String authorId, String tag) {
-        this.modifyDate = OffsetDateTime.now();
-        this.title = title;
-        this.authorId = authorId;
-        this.tag.add(tag);
-    }
+//    public final void updatePost(String title, String authorId, String tag) {
+//        this.modifyDate = OffsetDateTime.now();
+//        this.title = title;
+//        this.authorId = authorId;
+//        this.tag.add(tag);
+//    }
 
     public final void modifyPostTitle(String title) {
         this.modifyDate = OffsetDateTime.now();
@@ -95,6 +97,7 @@ public class Content {
     public final void addPostTag(String tag) {
 //        this.modifyDate = OffsetDateTime.now();
         this.tag.add(tag);
+//        this.tag.put(userId, tag);
     }
 
     public final void addComment(Comment comment) {
