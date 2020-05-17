@@ -39,6 +39,10 @@ public class Comment {
         this.subcomment.add(new Comment(subcomment));
     }
 
+    public final ArrayList<Comment> getSubcomment() {
+        return this.subcomment;
+    }
+
     public final String getComment() {
         return sComment;
     }

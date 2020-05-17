@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.time.temporal.ChronoField;
 
 public final class BlogHost {
     private final HashMap<String, ArrayList<Content>> mapContents;
@@ -25,8 +26,8 @@ public final class BlogHost {
         this.addContent(post);
     }
 
-    public final void setTitle(String author, String title, String text) {
-        this.mapContents.get(author)
+    public final void setTitle(String authorId, String title, String text) {
+        this.mapContents.get(authorId)
                 .stream()
                 .filter(content -> {
                     return content.getTitle() == title;
@@ -35,8 +36,8 @@ public final class BlogHost {
                 .modifyPostTitle(text);
     }
 
-    public final void setArticle(String author, String title, String text) {
-        this.mapContents.get(author)
+    public final void setArticle(String authorId, String title, String text) {
+        this.mapContents.get(authorId)
                 .stream()
                 .filter(content -> {
                     return content.getTitle() == title;
@@ -45,7 +46,7 @@ public final class BlogHost {
                 .modifyPostBody(text);
     }
 
-    public final void addTag(String author, String title, String tag) {
+    public final void addTag(String authorId, String title, String tag) {
         this.mapContents.entrySet()
                 .stream()
                 .map(e -> {
@@ -109,13 +110,13 @@ public final class BlogHost {
         Collections.sort(contents, (lhs, rhs) -> {
             switch (sortingType) {
                 case DESCENDINGPOST:
-                    return Long.compare(lhs.getPostTime(), rhs.getPostTime());
+                    return Long.compare(lhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY), rhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY));
                 case ASCENDINGPOST:
-                    return Long.compare(rhs.getPostTime(), lhs.getPostTime());
+                    return Long.compare(rhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY), lhs.getPostTime().getLong(ChronoField.MICRO_OF_DAY));
                 case DESCENDINGMODIFY:
-                    return Long.compare(lhs.getModifyTime(), rhs.getModifyTime());
+                    return Long.compare(lhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY), rhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY));
                 case ASCENDINGMODIFY:
-                    return Long.compare(rhs.getModifyTime(), lhs.getModifyTime());
+                    return Long.compare(rhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY), lhs.getModifyTime().getLong(ChronoField.MICRO_OF_DAY));
                 case ASCENDINGTITLE:
                     return lhs.getTitle().compareTo(rhs.getTitle());
                 default:

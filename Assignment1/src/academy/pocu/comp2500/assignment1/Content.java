@@ -16,8 +16,6 @@ public class Content {
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
     private ArrayList<String> tag;
-//    private HashMap<BlogVisitor, ArrayList<Comment>> comments;
-//    private HashMap<BlogVisitor, Reaction> mapReactions;
     private ArrayList<Comment> comments;
     private ArrayList<Reaction> reactions;
 
@@ -51,12 +49,12 @@ public class Content {
         return this.tag;
     }
 
-    public final long getPostTime() {
-        return this.createDate.getLong(ChronoField.MICRO_OF_DAY);
+    public final OffsetDateTime getPostTime() {
+        return this.createDate;//.getLong(ChronoField.MICRO_OF_DAY);
     }
 
-    public final long getModifyTime() {
-        return this.modifyDate.getLong(ChronoField.MICRO_OF_DAY);
+    public final OffsetDateTime getModifyTime() {
+        return this.modifyDate; //.getLong(ChronoField.MICRO_OF_DAY);
     }
 
     public final ArrayList<Comment> getComments() {
@@ -84,15 +82,17 @@ public class Content {
     public final void modifyPostTitle(String title) {
         this.modifyDate = OffsetDateTime.now();
         this.title = title;
+        System.out.println(this.modifyDate);
     }
 
     public final void modifyPostBody(String body) {
         this.modifyDate = OffsetDateTime.now();
         this.body = body;
+        System.out.println(this.modifyDate);
     }
 
     public final void addPostTag(String tag) {
-        this.modifyDate = OffsetDateTime.now();
+//        this.modifyDate = OffsetDateTime.now();
         this.tag.add(tag);
     }
 
