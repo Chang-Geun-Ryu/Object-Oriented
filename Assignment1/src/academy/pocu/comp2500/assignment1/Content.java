@@ -108,8 +108,8 @@ public class Content {
 //        }
     }
 
-    public final void setReaction(Reaction.Type type, String visitorId) {
-        this.reactions.add(new Reaction(type, visitorId));
+    public final void setReaction(Reaction.Type type, String userId) {
+        this.reactions.add(new Reaction(type, userId));
 //        if (mapReactions.containsKey(visitor)) {
 //            mapReactions.get(visitor).setStatus(type, status);
 //        } else {
@@ -119,9 +119,9 @@ public class Content {
 //        }
     }
 
-    public final void removeReaction(Reaction.Type type, String visitorId) {
+    public final void removeReaction(Reaction.Type type, String userId) {
         Reaction reaction = this.reactions.stream()
-                .filter(e -> e.getVisitorId() == visitorId)
+                .filter(e -> e.getUserId() == userId)
                 .findFirst()
                 .orElseThrow();
         this.reactions.remove(reaction);

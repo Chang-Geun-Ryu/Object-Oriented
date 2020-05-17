@@ -15,15 +15,15 @@ public class Comment {
         this.subcomment = new ArrayList<>();
     }
 
-    public final void addLike(String visitor) {
-        if (this.likes.contains(visitor) == false) {
-            this.likes.add(visitor);
+    public final void addLike(String user) {
+        if (this.likes.contains(user) == false) {
+            this.likes.add(user);
         }
     }
 
-    public final void addHate(String visitor) {
-        if (this.hates.contains(visitor) == false) {
-            this.hates.add(visitor);
+    public final void addHate(String user) {
+        if (this.hates.contains(user) == false) {
+            this.hates.add(user);
         }
     }
 
