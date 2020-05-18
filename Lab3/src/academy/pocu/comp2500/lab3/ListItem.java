@@ -57,7 +57,7 @@ final public class ListItem {
             String str = e.toString();
             ArrayList<String> ss = new ArrayList<String>(Arrays.asList(str.split(System.lineSeparator())));
 //            System.out.println("<<<<<----");
-            ss.forEach(c-> {
+            ss.forEach(c -> {
                 s.append("    ");
                 s.append(c);
                 s.append(System.lineSeparator());
