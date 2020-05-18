@@ -9,6 +9,17 @@ import java.time.temporal.ChronoField;
 
 public final class BlogHost {
     private final HashMap<String, ArrayList<Content>> mapContents;
+    private final ArrayList<String> tags;
+    private final ArrayList<String> authors;
+    private SortType sortType;
+//    private FilterType  filterType;
+
+    private enum FilterType {
+        TAG,
+        AUTHOR,
+        SORT,
+        NULL
+    }
 
     public enum SortType {
         DESCENDINGPOST,
@@ -20,6 +31,10 @@ public final class BlogHost {
 
     public BlogHost() {
         this.mapContents = new HashMap<>();
+        this.tags = new ArrayList<>();
+        this.authors = new ArrayList<>();
+        this.sortType = null;
+//        this.filterType = null;
     }
 
     public final void addPost(Content post) {
@@ -55,6 +70,7 @@ public final class BlogHost {
         }
     }
 
+    /*
     public final void addTag(String authorId, String title, String tag) {
         try {
             this.mapContents.entrySet()
@@ -76,7 +92,7 @@ public final class BlogHost {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
+    }*/
 
     private final void addContent(Content content) {
         if (this.mapContents.containsKey(content.getAuthorId())) {
@@ -94,7 +110,39 @@ public final class BlogHost {
 
     // Visitor functions
 
-    public final ArrayList<Content> getAllContents() {
+    public final void setTags(String tag) {
+        if (this.tags.contains(tag)) {
+            this.tags.remove(tag);
+        } else {
+            this.tags.add(tag);
+        }
+    }
+
+    public final void setAuthors(String authorId) {
+        if (this.authors.contains(authorId)) {
+            this.authors.remove(authorId);
+        } else {
+            this.authors.add(authorId);
+        }
+    }
+
+    public final void setSortType(SortType type) {
+        if (this.sortType == type) {
+            this.sortType = null;
+        } else {
+            this.sortType = type;
+        }
+
+    }
+
+    public final ArrayList<Content> getContents() {
+        if (authors.size() > 0) {
+            return getBlogAuthorContents(authors);
+        } else if (tags.size() > 0) {
+            return getTagContents(tags);
+        } else if (sortType != null) {
+            return getSortContents(sortType);
+        } else {
         return new ArrayList<Content>(this.mapContents.entrySet()
                 .stream()
                 .map(e -> {
@@ -102,26 +150,70 @@ public final class BlogHost {
                 })
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList()));
-    }
-
-    public final ArrayList<Content> getTagContents(String tag) {
-        return new ArrayList<Content>(this.mapContents.entrySet()
-                .stream()
-                .map(e -> { return e.getValue();})
-                .flatMap(Collection::stream)
-                .filter(e -> { return e.getTag().contains(tag);})
-                .collect(Collectors.toList()));
-    }
-
-    public final ArrayList<Content> getBlogAuthorContents(String authorId) {
-        if (this.mapContents.size() > 0) {
-            return this.mapContents.get(authorId);
         }
-        return new ArrayList<Content>();
+    }
+
+    public final ArrayList<Content> getTagContents(ArrayList<String> tags) {
+        ArrayList<Content> contents = new ArrayList<>();
+
+        if (tags == null) {
+            return new ArrayList<Content>();
+        }
+
+        tags.forEach(e-> {
+            contents.addAll(new ArrayList<Content>(this.mapContents.entrySet()
+                    .stream()
+                    .map(c -> { return c.getValue();})
+                    .flatMap(Collection::stream)
+                    .filter(c -> { return c.getTag().contains(e);})
+                    .collect(Collectors.toList())));
+        });
+
+        return contents;
+//        new ArrayList<Content>(this.mapContents.entrySet()
+//                .stream()
+//                .map(e -> { return e.getValue();})
+//                .flatMap(Collection::stream)
+//                .filter(e -> { return e.getTag().contains(tag);})
+//                .collect(Collectors.toList()));
+    }
+
+//    public final ArrayList<Content> getBlogAuthorContents(String authorId) {
+    public final ArrayList<Content> getBlogAuthorContents(ArrayList<String> authorId) {
+        ArrayList<Content> contents = new ArrayList<>();
+
+        if (authorId == null) {
+            return new ArrayList<Content>();
+        }
+
+        authorId.forEach(e-> {
+            contents.addAll(this.mapContents.get(e));
+        });
+
+        if (contents == null) {
+            return new ArrayList<Content>();
+        }
+
+        return contents;
+
+//        if (this.mapContents.size() > 0) {
+//            try {
+//                return this.mapContents.get(authorId);
+//            } catch (Exception e) {
+//                return new ArrayList<Content>();
+//            }
+//        }
+//        return new ArrayList<Content>();
     }
 
     public final ArrayList<Content> getSortContents(SortType sortingType) {
-        ArrayList<Content> contents = getAllContents();
+        ArrayList<Content> contents = new ArrayList<Content>(this.mapContents.entrySet()
+                .stream()
+                .map(e -> {
+                    return e.getValue();
+                })
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList()));
 
         Collections.sort(contents, (lhs, rhs) -> {
             switch (sortingType) {
@@ -136,8 +228,8 @@ public final class BlogHost {
                 case ASCENDINGTITLE:
                     return lhs.getTitle().compareTo(rhs.getTitle());
                 default:
-                    assert(true);
-                    return 1;
+//                    assert(true);
+                    return 0;
             }
         });
 

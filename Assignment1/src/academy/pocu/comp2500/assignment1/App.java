@@ -6,10 +6,10 @@ public class App {
     public App(Registry registry) {
         // Register like this
         registry.registerBlogCreator("BlogHost");
-        registry.registerTagFilterSetter("BlogHost", "getTagContents");
-        registry.registerAuthorFilterSetter("BlogHost", "getBlogAuthorContents");
-        registry.registerPostOrderSetter("BlogHost", "getSortContents");
-        registry.registerPostListGetter("BlogHost", "getAllContents");
+        registry.registerTagFilterSetter("BlogHost", "setTags");
+        registry.registerAuthorFilterSetter("BlogHost", "setAuthors");
+        registry.registerPostOrderSetter("BlogHost", "setSortType");
+        registry.registerPostListGetter("BlogHost", "getContents");
         registry.registerPostAdder("BlogHost", "addPost");
         registry.registerPostTitleUpdater("Content", "modifyPostTitle");
         registry.registerPostBodyUpdater("Content", "modifyPostBody");
