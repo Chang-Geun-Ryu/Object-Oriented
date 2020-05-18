@@ -1,3 +1,4 @@
+/*
 package academy.pocu.comp2500.assignment1;
 
 public class Reaction {
@@ -67,3 +68,4 @@ public class Reaction {
         return this.userId;
     }
 }
+*/
