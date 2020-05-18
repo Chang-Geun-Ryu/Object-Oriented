@@ -1,6 +1,7 @@
 package academy.pocu.comp2500.lab3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 final public class ListItem {
     private String text;
@@ -53,12 +54,17 @@ final public class ListItem {
         s.append(this.text);
         s.append(System.lineSeparator());
         sublistItems.forEach(e -> {
-            s.append("\t");
-            s.append(e.toString());
+            String str = e.toString();
+            ArrayList<String> ss = new ArrayList<String>(Arrays.asList(str.split(System.lineSeparator())));
+//            System.out.println("<<<<<----");
+            ss.forEach(c-> {
+                s.append("    ");
+                s.append(c);
+                s.append(System.lineSeparator());
+            });
+//            System.out.println("---->>>>");
         });
 
-        System.out.print(s);
-        System.out.println("------)");
         return s.toString();
     }
 }
