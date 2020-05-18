@@ -6,7 +6,6 @@ public class App {
     public App(Registry registry) {
         // Register like this
         // registry.registerPostAdder("Foo", "bar");
-
         registry.registerBlogCreator("BlogHost");
         registry.registerTagFilterSetter("BlogHost", "getTagContents");
         registry.registerAuthorFilterSetter("BlogHost", "getBlogAuthorContents");
