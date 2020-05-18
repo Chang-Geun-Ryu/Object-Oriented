@@ -12,14 +12,6 @@ public final class BlogHost {
     private final ArrayList<String> tags;
     private final ArrayList<String> authors;
     private SortType sortType;
-//    private FilterType  filterType;
-
-//    private enum FilterType {
-//        TAG,
-//        AUTHOR,
-//        SORT,
-//        NULL
-//    }
 
     public enum SortType {
         DESCENDINGPOST,
@@ -34,7 +26,6 @@ public final class BlogHost {
         this.tags = new ArrayList<>();
         this.authors = new ArrayList<>();
         this.sortType = null;
-//        this.filterType = null;
     }
 
     public final void addPost(Content post) {
@@ -84,14 +75,13 @@ public final class BlogHost {
         return this.mapContents.size() + 1;
     }
 
-    // Visitor functions
-
     public final void setTags(String tag) {
         if (this.tags.contains(tag)) {
             this.tags.remove(tag);
         } else {
             this.tags.add(tag);
         }
+        System.out.println(tags);
     }
 
     public final void setAuthors(String authorId) {
@@ -108,6 +98,7 @@ public final class BlogHost {
         } else {
             this.sortType = type;
         }
+
     }
 
     public final ArrayList<Content> getContents() {
