@@ -141,17 +141,17 @@ public final class BlogHost {
 
         ArrayList<Content> tagContent = new ArrayList<Content>();
 
-        tags.forEach(e-> {
-            tagContent.addAll(contents.stream()
-                    .filter(f -> f.getTag().contains(e))
-                    .collect(Collectors.toList()));
-//            contents.addAll(new ArrayList<Content>(this.mapContents.entrySet()
-//                    .stream()
-//                    .map(c -> { return c.getValue();})
-//                    .flatMap(Collection::stream)
-//                    .filter(c -> { return c.getTag().contains(e);})
-//                    .collect(Collectors.toList())));
-        });
+
+        tagContent.addAll(contents.stream()
+                .filter(e -> {
+                    for (String tag: tags) {
+                        if (e.getTag().contains(tag)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .collect(Collectors.toList()));
 
         return tagContent;
     }

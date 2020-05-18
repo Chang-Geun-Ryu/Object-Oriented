@@ -14,21 +14,22 @@ public class Program {
         blog.addPost(post);
         blog.addPost(post2);
         Content post3 = new Content("3", "body2", "a2");
-        Content post4 = new Content("4", "body1", "a2");
+//        Content post4 = new Content("4", "body1", "a2");
         blog.addPost(post3);
-        blog.addPost(post4);
+//        blog.addPost(post4);
 
         post.addPostTag("t1");
         post2.addPostTag("t2");
         post3.addPostTag("t1");
-        post4.addPostTag("t2");
+//        post4.addPostTag("t2");
 
         blog.setTags("t1");
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
 
         blog.setTags("t1");
-        blog.setAuthors("a1");
+        blog.setTags("t2");
+//        blog.setAuthors("a1");
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
 
