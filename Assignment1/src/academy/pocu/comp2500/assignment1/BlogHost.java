@@ -113,9 +113,9 @@ public final class BlogHost {
                 .collect(Collectors.toList()));
     }
 
-    public final ArrayList<Content> getBlogAuthorContents(String authorId) {
+    public final ArrayList<Content> getBlogAuthorContents(String userId) {
         if (this.mapContents.size() > 0) {
-            return this.mapContents.get(authorId);
+            return this.mapContents.get(userId);
         }
         return new ArrayList<Content>();
     }
@@ -140,7 +140,10 @@ public final class BlogHost {
                     return 1;
             }
         });
-
-        return contents;
+        if (contents.size() > 0) {
+            return contents;
+        } else {
+            return new ArrayList<Content>();
+        }
     }
 }
