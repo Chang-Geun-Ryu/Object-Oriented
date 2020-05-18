@@ -1,128 +1,138 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.time.temporal.ChronoField;
+
+import java.util.Collections;
 import java.time.OffsetDateTime;
-import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Comparator;
-import java.util.Collections;
-import java.util.Collection;
+import java.util.HashSet;
 
 public class Content {
     private String title = "";
-    private String article = "";
-    private String author;
+    private String body = "";
+    private String authorId;
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
-    private ArrayList<String> tag;
-//    private HashMap<BlogVisitor, ArrayList<Comment>> comments;
-//    private HashMap<BlogVisitor, Reaction> mapReactions;
+//    private ArrayList<String> tag;
+//    private HashMap<String, String> tag;
+    private HashSet<String> tag;
     private ArrayList<Comment> comments;
-    private ArrayList<Reaction> reactions;
+//    private ArrayList<Reaction> reactions;
+//    private ArrayList<Type> reactions;
+    private HashMap<Type, ArrayList<String>> reactions;
+
+    public enum Type {
+        GRATE,
+        SAD,
+        ANGRY,
+        FUN,
+        LOVE
+    }
+
 
     public Content(String title, String body, String authorId) {
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
-        this.author = authorId;
+        this.authorId = authorId;
         this.title = title;
-        this.article = body;
+        this.body = body;
 
-        this.tag = new ArrayList<String>();
+        this.tag = new HashSet<String>();
         this.comments = new ArrayList<>();
-        this.reactions = new ArrayList<>();
-//        this.comments = new HashMap<BlogVisitor, ArrayList<Comment>>();
-//        this.mapReactions = new HashMap<BlogVisitor, Reaction>();
+//        this.reactions = new ArrayList<>();
+        this.reactions = new HashMap<Type, ArrayList<String>>();
+        this.reactions.put(Type.ANGRY, new ArrayList<>());
+        this.reactions.put(Type.FUN, new ArrayList<>());
+        this.reactions.put(Type.GRATE, new ArrayList<>());
+        this.reactions.put(Type.LOVE, new ArrayList<>());
+        this.reactions.put(Type.SAD, new ArrayList<>());
     }
 
     public final String getTitle() {
         return this.title;
     }
 
-    public final String getArticle() {
-        return this.article;
+    public final String getBody() {
+        return this.body;
     }
 
-    public final String getAuthor() {
-        return this.author;
+    public final String getAuthorId() {
+        return this.authorId;
     }
 
     public final ArrayList<String> getTag() {
-        return this.tag;
+        return new ArrayList<String>(this.tag);
     }
 
-    public final long getPostTime() {
-        return this.createDate.getLong(ChronoField.MICRO_OF_DAY);
+    public final OffsetDateTime getPostTime() {
+        return this.createDate;
     }
 
-    public final long getModifyTime() {
-        return this.modifyDate.getLong(ChronoField.MICRO_OF_DAY);
+    public final OffsetDateTime getModifyTime() {
+        return this.modifyDate;
     }
 
     public final ArrayList<Comment> getComments() {
         return this.comments;
-//        return new ArrayList<Comment>(this.comments.entrySet()
-//                .stream()
-//                .map(e -> {
-//                    return e.getValue();
-//                })
-//                .flatMap(Collection::stream)
-//                .collect(Collectors.toList()));
     }
 
-    public final ArrayList<Reaction> getReactions() {
+    public final HashMap<Type, ArrayList<String>> getReactions() {
         return this.reactions;
-    }
-
-    public final void updatePost(String title, String article, String tag) {
-        this.modifyDate = OffsetDateTime.now();
-        this.title = title;
-        this.article = article;
-        this.tag.add(tag);
     }
 
     public final void modifyPostTitle(String title) {
         this.modifyDate = OffsetDateTime.now();
         this.title = title;
+        System.out.println(this.modifyDate);
     }
 
-    public final void modifyPostArticle(String article) {
+    public final void modifyPostBody(String body) {
         this.modifyDate = OffsetDateTime.now();
-        this.article = article;
+        this.body = body;
+        System.out.println(this.modifyDate);
     }
 
     public final void addPostTag(String tag) {
-        this.modifyDate = OffsetDateTime.now();
         this.tag.add(tag);
     }
 
     public final void addComment(Comment comment) {
         this.comments.add(comment);
-//        this.comments.add(new Comment(comment));
-//        if (this.comments.containsKey(comment)) {
-//            this.comments.get(visitor).add(new Comment(comment));
-//        } else {
-//            ArrayList<Comment> array = new ArrayList<>();
-//            array.add(new Comment(comment));
-//            this.comments.put(visitor, array);
-//        }
     }
 
-    public final void setReactions(Reaction.Type type, boolean status) {
+    public final void setReaction(Type type, String userId) {
+//        this.reactions.add(new Reaction(type, userId));
+//        this.reactions.put(type, userId);
+        if (this.reactions.containsKey(type)) {
+            this.reactions.get(type).add(userId);
+        } else {
+            ArrayList<String> array = new ArrayList<>();
+            array.add(userId);
+            this.reactions.put(type, array);
+        }
+    }
 
-//        if (mapReactions.containsKey(visitor)) {
-//            mapReactions.get(visitor).setStatus(type, status);
-//        } else {
-//            Reaction reaction = new Reaction();
-//            reaction.setStatus(type, status);
-//            mapReactions.put(visitor, reaction);
+    public final void removeReaction(Type type, String userId) {
+//        try {
+//            Reaction reaction = this.reactions.stream()
+//                    .filter(e -> e.getUserId() == userId)
+//                    .findFirst()
+//                    .orElseThrow();
+//            this.reactions.remove(reaction);
+//        } catch (Exception e) {
+//            System.out.println(e);
 //        }
+
+        if (this.reactions.get(type).contains(userId)) {
+            this.reactions.get(type).remove(userId);
+        }
+
     }
 
     public final ArrayList<Comment> getSortedComments() {
         ArrayList<Comment> sortComment = getComments();
 
-        Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(lhs.getScore(), rhs.getScore()));
+        Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(rhs.getScore(), lhs.getScore()));
 
         return sortComment;
     }

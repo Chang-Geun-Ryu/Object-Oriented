@@ -1,8 +1,8 @@
 /*
 package academy.pocu.comp2500.assignment1;
 
-
 import java.util.ArrayList;
+
 
 
 public class BlogVisitor {
@@ -65,15 +65,15 @@ public class BlogVisitor {
     }
 
     public final void setReactionPost(Content post, Reaction.Type type) {
-        post.setReactions(this, type, true);
+        post.setReactions(type,true);
     }
 
     public final void removeReactionPost(Content post, Reaction.Type type) {
-        post.setReactions(this, type, false);
+        post.setReactions( type, false);
     }
 
     public final void upvote(Comment comment) {
-        comment.addLike(this);
+        comment.addLike("1");
     }
 
     public final void doownvote(Comment comment) {

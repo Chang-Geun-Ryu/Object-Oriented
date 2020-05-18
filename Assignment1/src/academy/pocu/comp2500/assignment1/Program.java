@@ -1,39 +1,34 @@
 package academy.pocu.comp2500.assignment1;
 
-
 import academy.pocu.comp2500.assignment1.registry.Registry;
-
 
 public class Program {
 
     public static void main(String[] args) {
 	    // write your code here
         BlogHost blog = new BlogHost();
+        Content post = new Content("title1", "body2", "host");
+        Content post2 = new Content("title2", "body1", "host");
+        blog.addPost(post);
+        blog.addPost(post2);
+        Content post3 = new Content("title3", "body2", "vi");
+        Content post4 = new Content("title4", "body1", "vi");
+        blog.addPost(post3);
+        blog.addPost(post4);
+//        blog.addPost(new Content("title2", "body", "host"));
 
-        blog.addPost(new Content("title", "body", "host"));
-        blog.addPost(new Content("title1", "body", "host"));
-        blog.addPost(new Content("title2", "body", "author"));
+//        post4.setReaction(Reaction.Type.ANGRY, "123");
 
-//        blog.addTag("host", "title", "1");
-//        blog.addTag("host", "title1", "2");
-//        blog.getTagContents("2").forEach(e -> System.out.println(e.getTitle()));
-        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getTitle()));
-//        BlogAuthor author = new BlogAuthor("title", "body");
-//        BlogAuthor author2 = new BlogAuthor("title2", "body");
-//
-//        blog.addPost(new Content("title", "body", "a"));
-//        blog.addPost(new Content("title2", "body2", "b"));
-//        blog.addPost(new Content("title3", "body3", "c"));
-//
-//        blog.addTag("a", "title", "aaa");
+//        post4.getReactions().forEach(e-> System.out.println(e.getUserId()));
 
-//        blog.getAllContents().forEach(e -> System.out.println(e.getTitle()));
-//        blog.getTagContents("aaa").forEach(e -> System.out.println(e.getTitle()));
-//        blog.getSortContents(BlogHost.SortType.ASCENDINGTITLE).forEach(e -> System.out.println(e.getTitle()));
+//        blog.getBlogAuthorContents("host").forEach(e -> System.out.println(e.getBody()));
+//        blog.getAllContents().forEach(e -> {
+//            System.out.print(e.getTitle());
+//            System.out.print("_");
+//            System.out.println(e.getBody());
+//        });
 
-//        blog.getBlogAuthorContents(author2).forEach(e -> System.out.println(e.getTitle()));
-//        blog.getAllContents().forEach(e -> System.out.println(e.getTitle()));
-
+        blog.getSortContents(BlogHost.SortType.ASCENDINGTITLE).forEach(e -> System.out.println(e.getTitle()));
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
