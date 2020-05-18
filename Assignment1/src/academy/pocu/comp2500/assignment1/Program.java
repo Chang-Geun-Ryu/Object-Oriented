@@ -42,8 +42,10 @@ public class Program {
 //        ArrayList<String> con = new ArrayList<>();
 //        con.add("1");
 //        con.add("3");
-//        blog.setAuthors("vi");
+//        blog.setAuthors("vi2");
 //        blog.setAuthors("host");
+        blog.setTags("1");
+//        blog.setTags("4");
         blog.setSortType(BlogHost.SortType.ASCENDINGTITLE);
         blog.getContents().forEach(e -> System.out.println(e.getTitle()));
 

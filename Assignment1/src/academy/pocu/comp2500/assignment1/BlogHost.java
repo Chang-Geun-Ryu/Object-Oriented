@@ -135,20 +135,25 @@ public final class BlogHost {
     }
 
     private final ArrayList<Content> getTagContents(ArrayList<Content> contents, ArrayList<String> tags) {
-        if (tags == null) {
-            return new ArrayList<Content>();
+        if (tags == null || tags.size() <= 0) {
+            return contents;
         }
 
+        ArrayList<Content> tagContent = new ArrayList<Content>();
+
         tags.forEach(e-> {
-            contents.addAll(new ArrayList<Content>(this.mapContents.entrySet()
-                    .stream()
-                    .map(c -> { return c.getValue();})
-                    .flatMap(Collection::stream)
-                    .filter(c -> { return c.getTag().contains(e);})
-                    .collect(Collectors.toList())));
+            tagContent.addAll(contents.stream()
+                    .filter(f -> f.getTag().contains(e))
+                    .collect(Collectors.toList()));
+//            contents.addAll(new ArrayList<Content>(this.mapContents.entrySet()
+//                    .stream()
+//                    .map(c -> { return c.getValue();})
+//                    .flatMap(Collection::stream)
+//                    .filter(c -> { return c.getTag().contains(e);})
+//                    .collect(Collectors.toList())));
         });
 
-        return contents;
+        return tagContent;
     }
 
     private final ArrayList<Content> getBlogAuthorContents(ArrayList<String> authorId) {
