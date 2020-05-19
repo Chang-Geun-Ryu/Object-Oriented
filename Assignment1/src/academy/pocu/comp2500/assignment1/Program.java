@@ -25,7 +25,10 @@ public class Program {
 
         ArrayList<String> tags = new ArrayList<>();
 
-        blog.setAuthors("a1");
+        tags.add("t1");
+        tags.add("t2");
+
+        blog.setAuthors("");
         blog.setTags(tags);
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
