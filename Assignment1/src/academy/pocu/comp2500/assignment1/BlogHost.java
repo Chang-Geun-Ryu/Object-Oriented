@@ -29,7 +29,7 @@ public final class BlogHost {
         this.tags = new ArrayList<>();
 //        this.authors = new ArrayList<>();
         this.sortType = null;
-        this.author = "";
+        this.author = null;
     }
 
     public final void addPost(Content post) {
@@ -105,7 +105,7 @@ public final class BlogHost {
 //            this.tags.add(tag);
 //        }
 //        this.tags = tags;
-        this.tags.clear();
+//        this.tags.clear();
         this.tags = tags;
     }
 
@@ -171,7 +171,7 @@ public final class BlogHost {
             contents = this.arrContents;
         }
 
-        if (this.tags != null) {
+        if (this.tags != null && this.tags.size() > 0) {
              contents = (ArrayList<Content>) contents.stream()
                     .filter(e -> {
                         for (String tag: tags) {

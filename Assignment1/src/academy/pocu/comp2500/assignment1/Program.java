@@ -23,6 +23,9 @@ public class Program {
         post3.addPostTag("t1");
         post4.addPostTag("t2");
 
+        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+
+        System.out.println("------");
         ArrayList<String> tags = new ArrayList<>();
 
 //        tags.add("t1");
@@ -33,31 +36,29 @@ public class Program {
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
 
+        tags.add("t1");
+//        tags.add("t2");
+        blog.setAuthors(null);
+        blog.setTags(null);
+        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+        System.out.println("------");
 //        tags.add("t1");
 
-//        blog.setTags("t1");
-//        blog.setTags("t2");
-//        blog.setAuthors("a1");
-//        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
-//        System.out.println("------");
+        blog.setSortType(BlogHost.SortType.DESCENDINGPOST);
+        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+        System.out.println("------");
 
-//        blog.setAuthors("a1");
-//        blog.setTags("t1");
-//        blog.setAuthors("a2");
-//        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
-//        System.out.println("------");
-//
-//        blog.setTags("t1");
-//        blog.setTags("t2");
-//        blog.setAuthors("a2");
-//        blog.setAuthors("a1");
-//
-//        blog.setTags("t2");
-//        blog.setAuthors("a1");
-//        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
-//
-//        blog.setAuthors("");
+        blog.setSortType(null);
+        blog.setAuthors(null);
+        blog.setTags(null);
+        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+        System.out.println("------");
 
+        blog.setTitle("a2", "3", "7");
+        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+        System.out.println("------");
+        blog.setSortType(BlogHost.SortType.ASCENDINGMODIFY);
+        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
 
         Registry registry = new Registry();
         App app = new App(registry);
