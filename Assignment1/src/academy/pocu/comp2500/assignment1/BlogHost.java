@@ -88,7 +88,9 @@ public final class BlogHost {
 //        } else {
 //            this.tags.add(tag);
 //        }
-        this.tags = tags;
+//        this.tags = tags;
+        this.tags.clear();
+        this.tags.addAll(tags);
     }
 
     public final void setAuthors(String authorId) {
