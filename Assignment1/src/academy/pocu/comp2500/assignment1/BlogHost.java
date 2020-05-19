@@ -121,7 +121,7 @@ public final class BlogHost {
 
 //        if (authors.size() > 0) {
 //            contents = getBlogAuthorContents(authors);
-        if (this.author != "" && this.author != null) {
+        if (this.author != null) {
             contents = getBlogAuthorContents(this.author);
         } else {
             contents = new ArrayList<Content>(this.mapContents.entrySet()
@@ -167,7 +167,7 @@ public final class BlogHost {
 //
 //    private final ArrayList<Content> getBlogAuthorContents(ArrayList<String> authorId) {
     private final ArrayList<Content> getBlogAuthorContents(String authorId) {
-        ArrayList<Content> contents = new ArrayList<>();
+        ArrayList<Content> contents;// = new ArrayList<>();
 
 //        if (authorId == null) {
 //            return new ArrayList<Content>();
@@ -176,7 +176,8 @@ public final class BlogHost {
 //        authorId.forEach(e-> {
 //            contents.addAll(this.mapContents.get(e));
 //        });
-        contents.addAll(this.mapContents.get(authorId));
+//        contents.addAll(this.mapContents.get(authorId));
+        contents = this.mapContents.get(authorId);
 
         if (contents == null) {
             return new ArrayList<Content>();
