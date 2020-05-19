@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import java.time.temporal.ChronoField;
 
 public final class BlogHost {
-    private final HashMap<String, ArrayList<Content>> mapContents;
-//    private final ArrayList<Content> arrContents;
+//    private final HashMap<String, ArrayList<Content>> mapContents;
+    private final ArrayList<Content> arrContents;
     private ArrayList<String> tags;
 //    private final ArrayList<String> authors;
     private SortType sortType;
@@ -24,8 +24,8 @@ public final class BlogHost {
     }
 
     public BlogHost() {
-        this.mapContents = new HashMap<>();
-//        this.arrContents = new ArrayList<>();
+//        this.mapContents = new HashMap<>();
+        this.arrContents = new ArrayList<>();
         this.tags = new ArrayList<>();
 //        this.authors = new ArrayList<>();
         this.sortType = null;
@@ -33,50 +33,66 @@ public final class BlogHost {
     }
 
     public final void addPost(Content post) {
-        this.addContent(post);
+        this.arrContents.add(post);
+//        this.addContent(post);
     }
 
     public final void setTitle(String authorId, String title, String text) {
-        try {
-            this.mapContents.get(authorId)
-                    .stream()
-                    .filter(content -> {
-                        return content.getTitle() == title;
-                    }).findFirst()
-                    .orElseThrow()
-                    .modifyPostTitle(text);
-        } catch (Exception e) {
-            System.out.println(e);
-//            assert (true);
-        }
+        this.arrContents.stream()
+                .forEach(e -> {
+                   if (e.getAuthorId() == authorId && e.getTitle() == title) {
+                       e.modifyPostTitle(text);
+                   }
+                });
+//        try {
+//            this.mapContents.get(authorId)
+//                    .stream()
+//                    .filter(content -> {
+//                        return content.getTitle() == title;
+//                    }).findFirst()
+//                    .orElseThrow()
+//                    .modifyPostTitle(text);
+//
+//
+//        } catch (Exception e) {
+//            System.out.println(e);
+////            assert (true);
+//        }
     }
 
     public final void setBody(String authorId, String body, String text) {
-        try {
-            this.mapContents.get(authorId)
-                    .stream()
-                    .filter(content -> {
-                        return content.getBody() == body;
-                    }).findFirst()
-                    .orElseThrow()
-                    .modifyPostBody(text);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        this.arrContents.stream()
+                .forEach(e -> {
+                    if (e.getAuthorId() == authorId && e.getTitle() == body) {
+                        e.modifyPostTitle(text);
+                    }
+                });
+//        try {
+//            this.mapContents.get(authorId)
+//                    .stream()
+//                    .filter(content -> {
+//                        return content.getBody() == body;
+//                    }).findFirst()
+//                    .orElseThrow()
+//                    .modifyPostBody(text);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }
 
-    private final void addContent(Content content) {
-        if (this.mapContents.containsKey(content.getAuthorId())) {
-            this.mapContents.get(content.getAuthorId()).add(content);
-        } else {
-            ArrayList<Content> array = new ArrayList<>();
-            array.add(content);
-            this.mapContents.put(content.getAuthorId(), array);
-        }
-    }
+//    private final void addContent(Content content) {
+//        if (this.mapContents.containsKey(content.getAuthorId())) {
+//            this.mapContents.get(content.getAuthorId()).add(content);
+//        } else {
+//            ArrayList<Content> array = new ArrayList<>();
+//            array.add(content);
+//            this.mapContents.put(content.getAuthorId(), array);
+//        }
+//    }
 
     private final int getID() {
-        return this.mapContents.size() + 1;
+        return this.arrContents.size() + 1;
+//        return this.mapContents.size() + 1;
     }
 
     public final void setTags(ArrayList<String> tags) {
@@ -90,7 +106,7 @@ public final class BlogHost {
 //        }
 //        this.tags = tags;
         this.tags.clear();
-        this.tags.addAll(tags);
+        this.tags = tags;
     }
 
     public final void setAuthors(String authorId) {
@@ -116,29 +132,61 @@ public final class BlogHost {
         }
     }
 
+//    public final ArrayList<Content> getContents() {
+//        ArrayList<Content> contents;
+//
+////        if (authors.size() > 0) {
+////            contents = getBlogAuthorContents(authors);
+//        if (this.author != null) {
+//            contents = getBlogAuthorContents(this.author);
+//        } else {
+//            contents = new ArrayList<Content>(this.mapContents.entrySet()
+//                    .stream()
+//                    .map(e -> {
+//                        return e.getValue();
+//                    })
+//                    .flatMap(Collection::stream)
+//                    .collect(Collectors.toList()));
+//        }
+//        if (this.tags != null && this.tags.size() > 0) {
+//            contents = getTagContents(contents, tags);
+//        }
+//        if (sortType != null) {
+//            contents = getSortContents(contents, sortType);
+//        }
+//
+//        return contents;
+//    }
+
     public final ArrayList<Content> getContents() {
         ArrayList<Content> contents;
 
-//        if (authors.size() > 0) {
-//            contents = getBlogAuthorContents(authors);
         if (this.author != null) {
-            contents = getBlogAuthorContents(this.author);
-        } else {
-            contents = new ArrayList<Content>(this.mapContents.entrySet()
-                    .stream()
-                    .map(e -> {
-                        return e.getValue();
+            contents = (ArrayList<Content>) this.arrContents.stream()
+                    .filter(e -> {
+                        return e.getAuthorId() == this.author;
                     })
-                    .flatMap(Collection::stream)
-                    .collect(Collectors.toList()));
-        }
-        if (this.tags.size() > 0 && this.tags != null) {
-            contents = getTagContents(contents, tags);
-        }
-        if (sortType != null) {
-            contents = getSortContents(contents, sortType);
+                    .collect(Collectors.toList());
+        } else {
+            contents = this.arrContents;
         }
 
+        if (this.tags != null) {
+            contents.stream()
+                    .filter(e -> {
+                        for (String tag: tags) {
+                            if (e.getTag().contains(tag)) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    });
+        }
+
+        if (this.sortType != null) {
+            contents = getSortContents(contents, this.sortType);
+        }
+        
         return contents;
     }
 
@@ -166,8 +214,8 @@ public final class BlogHost {
     }
 //
 //    private final ArrayList<Content> getBlogAuthorContents(ArrayList<String> authorId) {
-    private final ArrayList<Content> getBlogAuthorContents(String authorId) {
-        ArrayList<Content> contents;// = new ArrayList<>();
+//    private final ArrayList<Content> getBlogAuthorContents(String authorId) {
+//        ArrayList<Content> contents;// = new ArrayList<>();
 
 //        if (authorId == null) {
 //            return new ArrayList<Content>();
@@ -177,14 +225,14 @@ public final class BlogHost {
 //            contents.addAll(this.mapContents.get(e));
 //        });
 //        contents.addAll(this.mapContents.get(authorId));
-        contents = this.mapContents.get(authorId);
+//        contents = this.mapContents.get(authorId);
 
-        if (contents == null) {
-            return new ArrayList<Content>();
-        }
-
-        return contents;
-    }
+//        if (contents == null) {
+//            return new ArrayList<Content>();
+//        }
+//
+//        return contents;
+//    }
 
     private final ArrayList<Content> getSortContents(ArrayList<Content> contents, SortType sortingType) {
         Collections.sort(contents, (lhs, rhs) -> {

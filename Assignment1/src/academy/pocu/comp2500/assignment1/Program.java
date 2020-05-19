@@ -25,11 +25,11 @@ public class Program {
 
         ArrayList<String> tags = new ArrayList<>();
 
-        tags.add("t1");
-        tags.add("t2");
+//        tags.add("t1");
+        tags.add(null);
 
-        blog.setAuthors("");
-        blog.setTags(tags);
+        blog.setAuthors(null);
+        blog.setTags(null);
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
 
