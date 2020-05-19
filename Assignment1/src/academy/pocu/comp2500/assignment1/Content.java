@@ -13,12 +13,8 @@ public class Content {
     private String authorId;
     private OffsetDateTime createDate;
     private OffsetDateTime modifyDate;
-//    private ArrayList<String> tag;
-//    private HashMap<String, String> tag;
     private HashSet<String> tag;
     private ArrayList<Comment> comments;
-//    private ArrayList<Reaction> reactions;
-//    private ArrayList<Type> reactions;
     private HashMap<Type, ArrayList<String>> reactions;
 
     public enum Type {
@@ -29,7 +25,6 @@ public class Content {
         LOVE
     }
 
-
     public Content(String title, String body, String authorId) {
         this.createDate = OffsetDateTime.now();
         this.modifyDate = this.createDate;
@@ -39,7 +34,6 @@ public class Content {
 
         this.tag = new HashSet<String>();
         this.comments = new ArrayList<>();
-//        this.reactions = new ArrayList<>();
         this.reactions = new HashMap<Type, ArrayList<String>>();
         this.reactions.put(Type.ANGRY, new ArrayList<>());
         this.reactions.put(Type.FUN, new ArrayList<>());
@@ -101,8 +95,6 @@ public class Content {
     }
 
     public final void setReaction(Type type, String userId) {
-//        this.reactions.add(new Reaction(type, userId));
-//        this.reactions.put(type, userId);
         if (this.reactions.containsKey(type)) {
             this.reactions.get(type).add(userId);
         } else {
@@ -113,27 +105,14 @@ public class Content {
     }
 
     public final void removeReaction(Type type, String userId) {
-//        try {
-//            Reaction reaction = this.reactions.stream()
-//                    .filter(e -> e.getUserId() == userId)
-//                    .findFirst()
-//                    .orElseThrow();
-//            this.reactions.remove(reaction);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-
         if (this.reactions.get(type).contains(userId)) {
             this.reactions.get(type).remove(userId);
         }
-
     }
 
     public final ArrayList<Comment> getSortedComments() {
         ArrayList<Comment> sortComment = getComments();
-
         Collections.sort(sortComment, (lhs, rhs) -> Integer.compare(rhs.getScore(), lhs.getScore()));
-
         return sortComment;
     }
 
