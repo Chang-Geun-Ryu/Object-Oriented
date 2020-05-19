@@ -172,7 +172,7 @@ public final class BlogHost {
         }
 
         if (this.tags != null) {
-            contents.stream()
+             contents = (ArrayList<Content>) contents.stream()
                     .filter(e -> {
                         for (String tag: tags) {
                             if (e.getTag().contains(tag)) {
@@ -180,7 +180,8 @@ public final class BlogHost {
                             }
                         }
                         return false;
-                    });
+                    })
+                     .collect(Collectors.toList());
         }
 
         if (this.sortType != null) {

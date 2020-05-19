@@ -26,10 +26,10 @@ public class Program {
         ArrayList<String> tags = new ArrayList<>();
 
 //        tags.add("t1");
-        tags.add(null);
-
-        blog.setAuthors(null);
-        blog.setTags(null);
+        tags.add("t1");
+//        tags.add("t2");
+        blog.setAuthors("a2");
+        blog.setTags(tags);
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
 
