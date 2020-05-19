@@ -48,6 +48,7 @@ public class Program {
         blog.setAuthors("a1");
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
 
+        blog.setAuthors("");
 
 
         Registry registry = new Registry();

@@ -9,6 +9,7 @@ import java.time.temporal.ChronoField;
 
 public final class BlogHost {
     private final HashMap<String, ArrayList<Content>> mapContents;
+//    private final ArrayList<Content> arrContents;
     private final ArrayList<String> tags;
     private final ArrayList<String> authors;
     private SortType sortType;
@@ -23,6 +24,7 @@ public final class BlogHost {
 
     public BlogHost() {
         this.mapContents = new HashMap<>();
+//        this.arrContents = new ArrayList<>();
         this.tags = new ArrayList<>();
         this.authors = new ArrayList<>();
         this.sortType = null;
@@ -76,6 +78,9 @@ public final class BlogHost {
     }
 
     public final void setTags(String tag) {
+        if (tag == null || tag == "") {
+            this.tags.clear();
+        }
         if (this.tags.contains(tag)) {
             this.tags.remove(tag);
         } else {
@@ -85,6 +90,9 @@ public final class BlogHost {
     }
 
     public final void setAuthors(String authorId) {
+        if (authorId == null || authorId == "") {
+            this.authors.clear();
+        }
         if (this.authors.contains(authorId)) {
             this.authors.remove(authorId);
         } else {
