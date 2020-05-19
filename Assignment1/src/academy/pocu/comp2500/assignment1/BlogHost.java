@@ -109,7 +109,7 @@ public final class BlogHost {
         this.tags = tags;
     }
 
-    public final void setAuthors(String authorId) {
+    public final void setAuthor(String authorId) {
         if (authorId == null) {
 //            this.authors.clear();
         }

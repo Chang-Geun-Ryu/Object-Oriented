@@ -31,14 +31,14 @@ public class Program {
 //        tags.add("t1");
         tags.add("t1");
 //        tags.add("t2");
-        blog.setAuthors("a2");
+        blog.setAuthor("a2");
         blog.setTags(tags);
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
 
         tags.add("t1");
 //        tags.add("t2");
-        blog.setAuthors(null);
+        blog.setAuthor(null);
         blog.setTags(null);
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
@@ -49,7 +49,7 @@ public class Program {
         System.out.println("------");
 
         blog.setSortType(null);
-        blog.setAuthors(null);
+        blog.setAuthor(null);
         blog.setTags(null);
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
