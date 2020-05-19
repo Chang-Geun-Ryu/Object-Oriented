@@ -23,32 +23,37 @@ public class Program {
         post3.addPostTag("t1");
         post4.addPostTag("t2");
 
-        blog.setTags("t1");
+        ArrayList<String> tags = new ArrayList<>();
+
+        blog.setAuthors("a1");
+        blog.setTags(tags);
         blog.getContents().forEach(e-> System.out.println(e.getTitle()));
         System.out.println("------");
 
-        blog.setTags("t1");
-        blog.setTags("t2");
+//        tags.add("t1");
+
+//        blog.setTags("t1");
+//        blog.setTags("t2");
 //        blog.setAuthors("a1");
-        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
-        System.out.println("------");
+//        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+//        System.out.println("------");
 
-        blog.setAuthors("a1");
-        blog.setTags("t1");
-        blog.setAuthors("a2");
-        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
-        System.out.println("------");
-
-        blog.setTags("t1");
-        blog.setTags("t2");
-        blog.setAuthors("a2");
-        blog.setAuthors("a1");
-
-        blog.setTags("t2");
-        blog.setAuthors("a1");
-        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
-
-        blog.setAuthors("");
+//        blog.setAuthors("a1");
+//        blog.setTags("t1");
+//        blog.setAuthors("a2");
+//        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+//        System.out.println("------");
+//
+//        blog.setTags("t1");
+//        blog.setTags("t2");
+//        blog.setAuthors("a2");
+//        blog.setAuthors("a1");
+//
+//        blog.setTags("t2");
+//        blog.setAuthors("a1");
+//        blog.getContents().forEach(e-> System.out.println(e.getTitle()));
+//
+//        blog.setAuthors("");
 
 
         Registry registry = new Registry();

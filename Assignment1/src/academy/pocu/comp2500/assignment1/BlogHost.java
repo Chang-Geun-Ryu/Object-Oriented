@@ -10,9 +10,10 @@ import java.time.temporal.ChronoField;
 public final class BlogHost {
     private final HashMap<String, ArrayList<Content>> mapContents;
 //    private final ArrayList<Content> arrContents;
-    private final ArrayList<String> tags;
-    private final ArrayList<String> authors;
+    private ArrayList<String> tags;
+//    private final ArrayList<String> authors;
     private SortType sortType;
+    private String author;
 
     public enum SortType {
         DESCENDINGPOST,
@@ -26,8 +27,9 @@ public final class BlogHost {
         this.mapContents = new HashMap<>();
 //        this.arrContents = new ArrayList<>();
         this.tags = new ArrayList<>();
-        this.authors = new ArrayList<>();
+//        this.authors = new ArrayList<>();
         this.sortType = null;
+        this.author = "";
     }
 
     public final void addPost(Content post) {
@@ -77,26 +79,28 @@ public final class BlogHost {
         return this.mapContents.size() + 1;
     }
 
-    public final void setTags(String tag) {
-        if (tag == null) {
-            this.tags.clear();
-        }
-        if (this.tags.contains(tag)) {
-            this.tags.remove(tag);
-        } else {
-            this.tags.add(tag);
-        }
+    public final void setTags(ArrayList<String> tags) {
+//        if (tag == null) {
+//            this.tags.clear();
+//        }
+//        if (this.tags.contains(tag)) {
+//            this.tags.remove(tag);
+//        } else {
+//            this.tags.add(tag);
+//        }
+        this.tags = tags;
     }
 
     public final void setAuthors(String authorId) {
         if (authorId == null) {
-            this.authors.clear();
+//            this.authors.clear();
         }
-        if (this.authors.contains(authorId)) {
-            this.authors.remove(authorId);
-        } else {
-            this.authors.add(authorId);
-        }
+        this.author = authorId;
+//        if (this.authors.contains(authorId)) {
+//            this.authors.remove(authorId);
+//        } else {
+//            this.authors.add(authorId);
+//        }
     }
 
     public final void setSortType(SortType type) {
@@ -113,8 +117,10 @@ public final class BlogHost {
     public final ArrayList<Content> getContents() {
         ArrayList<Content> contents;
 
-        if (authors.size() > 0) {
-            contents = getBlogAuthorContents(authors);
+//        if (authors.size() > 0) {
+//            contents = getBlogAuthorContents(authors);
+        if (this.author != "" && this.author != null) {
+            contents = getBlogAuthorContents(this.author);
         } else {
             contents = new ArrayList<Content>(this.mapContents.entrySet()
                     .stream()
@@ -124,7 +130,7 @@ public final class BlogHost {
                     .flatMap(Collection::stream)
                     .collect(Collectors.toList()));
         }
-        if (tags.size() > 0) {
+        if (this.tags.size() > 0 && this.tags != null) {
             contents = getTagContents(contents, tags);
         }
         if (sortType != null) {
@@ -156,17 +162,19 @@ public final class BlogHost {
 
         return tagContent;
     }
-
-    private final ArrayList<Content> getBlogAuthorContents(ArrayList<String> authorId) {
+//
+//    private final ArrayList<Content> getBlogAuthorContents(ArrayList<String> authorId) {
+    private final ArrayList<Content> getBlogAuthorContents(String authorId) {
         ArrayList<Content> contents = new ArrayList<>();
 
-        if (authorId == null) {
-            return new ArrayList<Content>();
-        }
+//        if (authorId == null) {
+//            return new ArrayList<Content>();
+//        }
 
-        authorId.forEach(e-> {
-            contents.addAll(this.mapContents.get(e));
-        });
+//        authorId.forEach(e-> {
+//            contents.addAll(this.mapContents.get(e));
+//        });
+        contents.addAll(this.mapContents.get(authorId));
 
         if (contents == null) {
             return new ArrayList<Content>();
