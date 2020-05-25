@@ -7,55 +7,22 @@ import java.util.HashMap;
 public class MemoryCache {
     static private HashMap<String, MemoryCache> instances = new HashMap<String, MemoryCache>();
     static private int instancesSize = 0;
-//    static private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
-    private OffsetDateTime createTime;
     private OffsetDateTime usingTime;
     private HashMap<String, Entry> memory;
     private int memorySize;
     private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
-    private class Entry {
-        private OffsetDateTime createTime;
-        private OffsetDateTime usingTime ;
-        private String value;
-
-        public Entry(String value) {
-            this.createTime = OffsetDateTime.now();
-            this.usingTime = this.createTime;
-            this.value = value;
-        }
-
-        public OffsetDateTime getCreateTime() {
-            return createTime;
-        }
-
-        public OffsetDateTime getUsingTime() {
-            return usingTime;
-        }
-
-        public String getValue() {
-            this.usingTime = OffsetDateTime.now();
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-            this.usingTime = OffsetDateTime.now();
-        }
-    }
-
     private MemoryCache() {
         this.memory = new HashMap<String, Entry>();
-        this.createTime = OffsetDateTime.now();
-        this.usingTime = this.createTime;
+        this.usingTime = OffsetDateTime.now();
         this.memorySize = 0;
     }
 
     static final public MemoryCache getInstance(String name) {
         if (MemoryCache.instances.containsKey(name)) {
             MemoryCache instance = MemoryCache.instances.get(name);
-            instance.usingTime = OffsetDateTime.now();
+//            instance.usingTime = OffsetDateTime.now();
 
             return instance;
         } else {
@@ -90,6 +57,15 @@ public class MemoryCache {
 
             MemoryCache.instances.remove(deleteKey);
         }
+    }
+
+    static final public void clear() {
+        MemoryCache.instances.clear();
+    }
+
+    static final public void setMaxInstanceCount(int size) {
+        MemoryCache.instancesSize = size;
+        MemoryCache.deleteInstance(0);
     }
 
 
@@ -137,22 +113,13 @@ public class MemoryCache {
         return result;
     }
 
-    static final public void clear() {
-        MemoryCache.instances.clear();
-    }
-
-    static final public void setMaxInstanceCount(int size) {
-        MemoryCache.instancesSize = size;
-        MemoryCache.deleteInstance(0);
-    }
-
     final public void setEvictionPolicy(EvictionPolicy policy) {
-        this.usingTime = OffsetDateTime.now();
+//        this.usingTime = OffsetDateTime.now();
         this.policy = policy;
     }
 
     final public void addEntry(String key, String entry) {
-        this.usingTime = OffsetDateTime.now();
+//        this.usingTime = OffsetDateTime.now();
         if (this.memory.containsKey(key)) {
             this.memory.get(key).setValue(entry);
         } else {
@@ -162,7 +129,7 @@ public class MemoryCache {
     }
 
     final public String getEntryOrNull(String key) {
-        this.usingTime = OffsetDateTime.now();
+//        this.usingTime = OffsetDateTime.now();
         if (this.memory.get(key) != null) {
             return this.memory.get(key).getValue();
         } else {
@@ -171,7 +138,7 @@ public class MemoryCache {
     }
 
     final public void setMaxEntryCount(int size) {
-        this.usingTime = OffsetDateTime.now();
+//        this.usingTime = OffsetDateTime.now();
         this.memorySize = size;
         deleteEntry(0);
     }

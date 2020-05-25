@@ -3,23 +3,20 @@ package academy.pocu.comp2500.lab4;
 public class Program {
 
     public static void main(String[] args) {
-        {
-            MemoryCache.getInstance("1");
-            MemoryCache.getInstance("2");
-            MemoryCache.getInstance("3");
-            MemoryCache.getInstance("4");
-            MemoryCache.getInstance("5");
+//        {
+//            MemoryCache o1 = MemoryCache.getInstance("1");
+//            MemoryCache o2 = MemoryCache.getInstance("2");
+//            MemoryCache o3 = MemoryCache.getInstance("3");
+//            MemoryCache o4 = MemoryCache.getInstance("4");
+//            MemoryCache o5 = MemoryCache.getInstance("5");
+//
+//            o1.addEntry("a", "a");
+//
+//            MemoryCache.setMaxInstanceCount(3);
+//            MemoryCache a = MemoryCache.getInstance("A");
+//            MemoryCache b = MemoryCache.getInstance("B");
+//        }
 
-            MemoryCache.getInstance("5");
-            MemoryCache.getInstance("4");
-            MemoryCache.getInstance("3");
-            MemoryCache.getInstance("2");
-            MemoryCache.getInstance("1");
-
-            MemoryCache.setMaxInstanceCount(3);
-            MemoryCache a = MemoryCache.getInstance("A");
-            MemoryCache b = MemoryCache.getInstance("B");
-        }
         {
             MemoryCache memCacheA = MemoryCache.getInstance("A");
 
