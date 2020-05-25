@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class MemoryCache {
     static private HashMap<String, MemoryCache> instances = new HashMap<String, MemoryCache>();
-    static private int instancesSize = 10;
+    static private int instancesSize = 0;
 //    static private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
     private OffsetDateTime createTime;
@@ -49,34 +49,30 @@ public class MemoryCache {
         this.memory = new HashMap<String, Entry>();
         this.createTime = OffsetDateTime.now();
         this.usingTime = this.createTime;
-        this.memorySize = 10;
+        this.memorySize = 0;
     }
 
     static final public MemoryCache getInstance(String name) {
-        if (name == null || name.length() <= 0) {
-            return null;
-        }
+        if (MemoryCache.instances.containsKey(name)) {
+            MemoryCache instance = MemoryCache.instances.get(name);
+            instance.usingTime = OffsetDateTime.now();
 
-        MemoryCache instance = MemoryCache.instances.get(name);
-
-        if (instance == null) {
-            MemoryCache.deleteInstance();
+            return instance;
+        } else {
+            MemoryCache.deleteInstance(1);
             MemoryCache newInstance = new MemoryCache();
             MemoryCache.instances.put(name, newInstance);
 
             return newInstance;
         }
-
-        instance.usingTime = OffsetDateTime.now();
-        return instance;
     }
 
-    static final private void deleteInstance() {
-        if (MemoryCache.instancesSize > MemoryCache.instances.size() + 1) {
+    static final private void deleteInstance(int addSize) {
+        if (MemoryCache.instancesSize == 0 || MemoryCache.instancesSize > MemoryCache.instances.size() + addSize) {
             return;
         }
 
-        int repeatCount = MemoryCache.instances.size() + 1 - MemoryCache.instancesSize;
+        int repeatCount = MemoryCache.instances.size() + addSize - MemoryCache.instancesSize;
 
         for(int i = 0; i < repeatCount; i++) {
             String deleteKey = "";
@@ -90,30 +86,6 @@ public class MemoryCache {
                         > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
                     deleteKey = key;
                 }
-
-//                switch (MemoryCache.policy) {
-//                    case FIRST_IN_FIRST_OUT:
-//                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
-//                                > MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
-//                            deleteKey = key;
-//                        }
-//                        continue;
-//                    case LAST_IN_FIRST_OUT:
-//                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
-//                                < MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
-//                            deleteKey = key;
-//                        }
-//                        continue;
-//                    case LEAST_RECENTLY_USED:
-//                        if (MemoryCache.instances.get(deleteKey).usingTime.getLong(ChronoField.NANO_OF_DAY)
-//                                > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
-//                            deleteKey = key;
-//                        }
-//                        continue;
-//                    default:
-//                        assert (true);
-
-//                }
             }
 
             MemoryCache.instances.remove(deleteKey);
@@ -122,7 +94,7 @@ public class MemoryCache {
 
 
     final private void deleteEntry(int addSize) {
-        if (this.memorySize >= this.memory.size() + addSize) {
+        if (this.memorySize == 0 || this.memorySize >= this.memory.size() + addSize) {
             return;
         }
 
@@ -171,6 +143,7 @@ public class MemoryCache {
 
     static final public void setMaxInstanceCount(int size) {
         MemoryCache.instancesSize = size;
+        MemoryCache.deleteInstance(0);
     }
 
     final public void setEvictionPolicy(EvictionPolicy policy) {
