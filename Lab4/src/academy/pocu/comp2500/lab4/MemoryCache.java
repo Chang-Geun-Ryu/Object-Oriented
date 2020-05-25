@@ -53,6 +53,10 @@ public class MemoryCache {
     }
 
     static final public MemoryCache getInstance(String name) {
+        if (name == null || name.length() <= 0) {
+            return null;
+        }
+
         MemoryCache instance = MemoryCache.instances.get(name);
 
         if (instance == null) {
