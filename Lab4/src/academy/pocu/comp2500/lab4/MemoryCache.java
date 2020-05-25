@@ -7,12 +7,13 @@ import java.util.HashMap;
 public class MemoryCache {
     static private HashMap<String, MemoryCache> instances = new HashMap<String, MemoryCache>();
     static private int instancesSize = 10;
-    static private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
+//    static private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
     private OffsetDateTime createTime;
     private OffsetDateTime usingTime;
     private HashMap<String, Entry> memory;
     private int memorySize;
+    private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
     private class Entry {
         private OffsetDateTime createTime;
@@ -81,29 +82,34 @@ public class MemoryCache {
                     continue;
                 }
 
-                switch (MemoryCache.policy) {
-                    case FIRST_IN_FIRST_OUT:
-                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
-                                > MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
-                            deleteKey = key;
-                        }
-                        continue;
-                    case LAST_IN_FIRST_OUT:
-                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
-                                < MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
-                            deleteKey = key;
-                        }
-                        continue;
-                    case LEAST_RECENTLY_USED:
-                        if (MemoryCache.instances.get(deleteKey).usingTime.getLong(ChronoField.NANO_OF_DAY)
-                                > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
-                            deleteKey = key;
-                        }
-                        continue;
-                    default:
-                        assert (true);
-
+                if (MemoryCache.instances.get(deleteKey).usingTime.getLong(ChronoField.NANO_OF_DAY)
+                        > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
+                    deleteKey = key;
                 }
+
+//                switch (MemoryCache.policy) {
+//                    case FIRST_IN_FIRST_OUT:
+//                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
+//                                > MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
+//                            deleteKey = key;
+//                        }
+//                        continue;
+//                    case LAST_IN_FIRST_OUT:
+//                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
+//                                < MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
+//                            deleteKey = key;
+//                        }
+//                        continue;
+//                    case LEAST_RECENTLY_USED:
+//                        if (MemoryCache.instances.get(deleteKey).usingTime.getLong(ChronoField.NANO_OF_DAY)
+//                                > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
+//                            deleteKey = key;
+//                        }
+//                        continue;
+//                    default:
+//                        assert (true);
+
+//                }
             }
 
             MemoryCache.instances.remove(deleteKey);
@@ -138,7 +144,7 @@ public class MemoryCache {
 
     final private boolean getDeleteKey(Entry tempValue, Entry value) {
         boolean result = false;
-        switch (MemoryCache.policy) {
+        switch (this.policy) {
             case FIRST_IN_FIRST_OUT:
                 result = tempValue.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) > value.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
                 break;
@@ -163,8 +169,8 @@ public class MemoryCache {
         MemoryCache.instancesSize = size;
     }
 
-    static final public void setEvictionPolicy(EvictionPolicy policy) {
-        MemoryCache.policy = policy;
+    final public void setEvictionPolicy(EvictionPolicy policy) {
+        this.policy = policy;
     }
 
     final public void addEntry(String key, String entry) {
