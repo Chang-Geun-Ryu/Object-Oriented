@@ -1,0 +1,191 @@
+package academy.pocu.comp2500.lab4;
+
+import java.time.OffsetDateTime;
+import java.time.temporal.ChronoField;
+import java.util.HashMap;
+
+public class MemoryCache {
+    static private HashMap<String, MemoryCache> instances = new HashMap<String, MemoryCache>();
+    static private int instancesSize = 10;
+    static private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
+
+    private OffsetDateTime createTime;
+    private OffsetDateTime usingTime;
+    private HashMap<String, Entry> memory;
+    private int memorySize;
+
+    private class Entry {
+        private OffsetDateTime createTime;
+        private OffsetDateTime usingTime ;
+        private String value;
+
+        public Entry(String value) {
+            this.createTime = OffsetDateTime.now();
+            this.usingTime = this.createTime;
+            this.value = value;
+        }
+
+        public OffsetDateTime getCreateTime() {
+            return createTime;
+        }
+
+        public OffsetDateTime getUsingTime() {
+            return usingTime;
+        }
+
+        public String getValue() {
+            this.usingTime = OffsetDateTime.now();
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+            this.usingTime = OffsetDateTime.now();
+        }
+    }
+
+    private MemoryCache() {
+        this.memory = new HashMap<String, Entry>();
+        this.createTime = OffsetDateTime.now();
+        this.usingTime = this.createTime;
+        this.memorySize = 10;
+    }
+
+    static final public MemoryCache getInstance(String name) {
+        MemoryCache instance = MemoryCache.instances.get(name);
+
+        if (instance == null) {
+            MemoryCache.deleteInstance();
+            MemoryCache newInstance = new MemoryCache();
+            MemoryCache.instances.put(name, newInstance);
+
+            return newInstance;
+        }
+
+        instance.usingTime = OffsetDateTime.now();
+        return instance;
+    }
+
+    static final private void deleteInstance() {
+        if (MemoryCache.instancesSize > MemoryCache.instances.size() + 1) {
+            return;
+        }
+
+        int repeatCount = MemoryCache.instances.size() + 1 - MemoryCache.instancesSize;
+
+        for(int i = 0; i < repeatCount; i++) {
+            String deleteKey = "";
+            for (String key: MemoryCache.instances.keySet()) {
+                if (deleteKey == "") {
+                    deleteKey = key;
+                    continue;
+                }
+
+                switch (MemoryCache.policy) {
+                    case FIRST_IN_FIRST_OUT:
+                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
+                                > MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
+                            deleteKey = key;
+                        }
+                        continue;
+                    case LAST_IN_FIRST_OUT:
+                        if (MemoryCache.instances.get(deleteKey).createTime.getLong(ChronoField.NANO_OF_DAY)
+                                < MemoryCache.instances.get(key).createTime.getLong(ChronoField.NANO_OF_DAY)) {
+                            deleteKey = key;
+                        }
+                        continue;
+                    case LEAST_RECENTLY_USED:
+                        if (MemoryCache.instances.get(deleteKey).usingTime.getLong(ChronoField.NANO_OF_DAY)
+                                > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
+                            deleteKey = key;
+                        }
+                        continue;
+                    default:
+                        assert (true);
+
+                }
+            }
+
+            MemoryCache.instances.remove(deleteKey);
+        }
+    }
+
+
+    final private void deleteEntry(int addSize) {
+        if (this.memorySize >= this.memory.size() + addSize) {
+            return;
+        }
+
+        int repeatCount = this.memory.size() + addSize - this.memorySize;
+
+        for(int i = 0; i < repeatCount; i++) {
+            String deleteKey = "";
+
+            for (String key : this.memory.keySet()) {
+                if (deleteKey == "") {
+                    deleteKey = key;
+                    continue;
+                }
+
+                if (getDeleteKey(this.memory.get(deleteKey), this.memory.get(key))) {
+                    deleteKey = key;
+                }
+            }
+
+            this.memory.remove(deleteKey);
+        }
+    }
+
+    final private boolean getDeleteKey(Entry tempValue, Entry value) {
+        boolean result = false;
+        switch (MemoryCache.policy) {
+            case FIRST_IN_FIRST_OUT:
+                result = tempValue.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) > value.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
+                break;
+            case LAST_IN_FIRST_OUT:
+                result = tempValue.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) < value.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
+                break;
+            case LEAST_RECENTLY_USED:
+                result = tempValue.getUsingTime().getLong(ChronoField.MICRO_OF_DAY) > value.getUsingTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
+                break;
+            default:
+                assert (true);
+        }
+
+        return result;
+    }
+
+    static final public void clear() {
+        MemoryCache.instances.clear();
+    }
+
+    static final public void setMaxInstanceCount(int size) {
+        MemoryCache.instancesSize = size;
+    }
+
+    static final public void setEvictionPolicy(EvictionPolicy policy) {
+        MemoryCache.policy = policy;
+    }
+
+    final public void addEntry(String key, String entry) {
+        if (this.memory.containsKey(key)) {
+            this.memory.get(key).setValue(entry);
+        } else {
+            deleteEntry(1);
+            this.memory.put(key, new Entry(entry));
+        }
+    }
+
+    final public String getEntryOrNull(String key) {
+        if (this.memory.get(key) != null) {
+            return this.memory.get(key).getValue();
+        } else {
+            return null;
+        }
+    }
+
+    final public void setMaxEntryCount(int size) {
+        this.memorySize = size;
+        deleteEntry(0);
+    }
+}
