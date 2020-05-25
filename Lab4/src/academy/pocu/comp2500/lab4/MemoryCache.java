@@ -114,12 +114,12 @@ public class MemoryCache {
     }
 
     final public void setEvictionPolicy(EvictionPolicy policy) {
-//        this.usingTime = OffsetDateTime.now();
+        this.usingTime = OffsetDateTime.now();
         this.policy = policy;
     }
 
     final public void addEntry(String key, String entry) {
-//        this.usingTime = OffsetDateTime.now();
+        this.usingTime = OffsetDateTime.now();
         if (this.memory.containsKey(key)) {
             this.memory.get(key).setValue(entry);
         } else {
@@ -129,7 +129,7 @@ public class MemoryCache {
     }
 
     final public String getEntryOrNull(String key) {
-//        this.usingTime = OffsetDateTime.now();
+        this.usingTime = OffsetDateTime.now();
         if (this.memory.get(key) != null) {
             return this.memory.get(key).getValue();
         } else {
@@ -138,7 +138,7 @@ public class MemoryCache {
     }
 
     final public void setMaxEntryCount(int size) {
-//        this.usingTime = OffsetDateTime.now();
+        this.usingTime = OffsetDateTime.now();
         this.memorySize = size;
         deleteEntry(0);
     }

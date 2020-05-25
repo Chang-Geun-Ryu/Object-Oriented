@@ -4,7 +4,7 @@ import java.time.OffsetDateTime;
 
 public class Entry {
     private OffsetDateTime createTime;
-    private OffsetDateTime usingTime ;
+    private OffsetDateTime usingTime;
     private String value;
 
     public Entry(String value) {
