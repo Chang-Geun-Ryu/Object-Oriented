@@ -4,6 +4,23 @@ public class Program {
 
     public static void main(String[] args) {
         {
+            MemoryCache.getInstance("1");
+            MemoryCache.getInstance("2");
+            MemoryCache.getInstance("3");
+            MemoryCache.getInstance("4");
+            MemoryCache.getInstance("5");
+
+            MemoryCache.getInstance("5");
+            MemoryCache.getInstance("4");
+            MemoryCache.getInstance("3");
+            MemoryCache.getInstance("2");
+            MemoryCache.getInstance("1");
+
+            MemoryCache.setMaxInstanceCount(3);
+            MemoryCache a = MemoryCache.getInstance("A");
+            MemoryCache b = MemoryCache.getInstance("B");
+        }
+        {
             MemoryCache memCacheA = MemoryCache.getInstance("A");
 
             MemoryCache memCacheB = MemoryCache.getInstance("B");
@@ -21,6 +38,8 @@ public class Program {
             assert memCacheC == MemoryCache.getInstance("C");
             assert memCacheB != MemoryCache.getInstance("B");
             assert memCacheD != MemoryCache.getInstance("D");
+
+
         }
 
         {
