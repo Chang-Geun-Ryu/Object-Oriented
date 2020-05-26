@@ -5,12 +5,14 @@ import java.time.OffsetDateTime;
 public class Entry {
     private OffsetDateTime createTime;
     private OffsetDateTime usingTime;
+    private int usingOrder;
     private String value;
 
     public Entry(String value) {
         this.createTime = OffsetDateTime.now();
         this.usingTime = this.createTime;
         this.value = value;
+        this.usingOrder = 0;
     }
 
     public OffsetDateTime getCreateTime() {
@@ -21,7 +23,16 @@ public class Entry {
         return usingTime;
     }
 
+    public int getUsingOrder() {
+        return this.usingOrder;
+    }
+
+    public void updateOrder() {
+        this.usingOrder++;
+    }
+
     public String getValue() {
+        this.usingOrder = 0;
         this.usingTime = OffsetDateTime.now();
         return this.value;
     }
@@ -29,5 +40,6 @@ public class Entry {
     public void setValue(String value) {
         this.value = value;
         this.usingTime = OffsetDateTime.now();
+        this.usingOrder = 0;
     }
 }

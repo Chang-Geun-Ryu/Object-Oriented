@@ -80,7 +80,7 @@ public class MemoryCache {
         MemoryCache.deleteInstance(0);
     }
 
-    static final public void updateUsingOrders() {
+    static final private void updateUsingOrders() {
         for (String key: MemoryCache.instances.keySet()) {
             MemoryCache.instances.get(key).usingOrder++;
         }
@@ -122,7 +122,7 @@ public class MemoryCache {
                 result = tempValue.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) < value.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
                 break;
             case LEAST_RECENTLY_USED:
-                result = tempValue.getUsingTime().getLong(ChronoField.MICRO_OF_DAY) > value.getUsingTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
+                result = tempValue.getUsingOrder() < value.getUsingOrder() ? true : false;
                 break;
             default:
                 assert (true);
@@ -141,8 +141,10 @@ public class MemoryCache {
         MemoryCache.updateUsingOrders();
         this.usingOrder = 0;
         if (this.memory.containsKey(key)) {
+            updateUsingOrder();
             this.memory.get(key).setValue(entry);
         } else {
+            updateUsingOrder();
             deleteEntry(1);
             this.memory.put(key, new Entry(entry));
         }
@@ -152,9 +154,16 @@ public class MemoryCache {
         MemoryCache.updateUsingOrders();
         this.usingOrder = 0;
         if (this.memory.get(key) != null) {
+            updateUsingOrder();
             return this.memory.get(key).getValue();
         } else {
             return null;
+        }
+    }
+
+    final private void updateUsingOrder() {
+        for (String key: this.memory.keySet()) {
+            this.memory.get(key).updateOrder();
         }
     }
 
