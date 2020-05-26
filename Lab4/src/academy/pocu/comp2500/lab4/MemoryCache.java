@@ -116,10 +116,10 @@ public class MemoryCache {
         boolean result = false;
         switch (this.policy) {
             case FIRST_IN_FIRST_OUT:
-                result = tempValue.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) > value.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
+                result = tempValue.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) > value.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) ? true : false;
                 break;
             case LAST_IN_FIRST_OUT:
-                result = tempValue.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) < value.getCreateTime().getLong(ChronoField.MICRO_OF_DAY) ? true : false;
+                result = tempValue.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) < value.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) ? true : false;
                 break;
             case LEAST_RECENTLY_USED:
                 result = tempValue.getUsingOrder() < value.getUsingOrder() ? true : false;

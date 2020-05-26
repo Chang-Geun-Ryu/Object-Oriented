@@ -6,6 +6,7 @@ public class Entry {
     private OffsetDateTime createTime;
     private OffsetDateTime usingTime;
     private int usingOrder;
+    private int createOrder;
     private String value;
 
     public Entry(String value) {
@@ -13,6 +14,7 @@ public class Entry {
         this.usingTime = this.createTime;
         this.value = value;
         this.usingOrder = 0;
+        this.createOrder = 0;
     }
 
     public OffsetDateTime getCreateTime() {
