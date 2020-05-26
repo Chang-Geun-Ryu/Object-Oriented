@@ -112,6 +112,13 @@ public class Program {
             assert memCache.getEntryOrNull("key10") != null;
             assert memCache.getEntryOrNull("key15") != null;
 
+            memCache.setMaxEntryCount(2);
+
+            memCache.addEntry("key111", "value11");
+            memCache.addEntry("key122", "value12");
+            memCache.addEntry("key133", "value13");
+            memCache.addEntry("key144", "value14");
+
             memCache.setEvictionPolicy(EvictionPolicy.LEAST_RECENTLY_USED);
 
             memCache.addEntry("key16", "value16");

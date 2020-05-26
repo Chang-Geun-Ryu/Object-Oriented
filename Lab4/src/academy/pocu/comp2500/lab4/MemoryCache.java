@@ -14,6 +14,7 @@ public class MemoryCache {
     private int memorySize;
     private EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
+
     private MemoryCache() {
         this.memory = new HashMap<String, Entry>();
         this.usingTime = OffsetDateTime.now();
@@ -171,13 +172,19 @@ public class MemoryCache {
                         deleteKey = key;
                     }
                 } else {
-                    if (this.memory.get(key).downShiftCreateOrder() < 0 + addSize) {
+                    if (this.memory.get(key).getCreateOrder() == 0) {
                         deleteKey = key;
                     }
                 }
             }
 
             this.memory.remove(deleteKey);
+
+            if (shift == false) {
+                for (String key: this.memory.keySet()) {
+                    this.memory.get(key).downShiftCreateOrder();
+                }
+            }
         } else {
             for (String key: this.memory.keySet()) {
                 if (shift) {

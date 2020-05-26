@@ -7,6 +7,7 @@ public class Entry {
     private int createOrder;
     private String value;
 
+
     public Entry(String value) {
         this.value = value;
         this.usingOrder = 0;
@@ -26,7 +27,7 @@ public class Entry {
     }
 
     public int downShiftCreateOrder() {
-        return this.createOrder--;
+        return --this.createOrder;
     }
 
     public int getUsingOrder() {
