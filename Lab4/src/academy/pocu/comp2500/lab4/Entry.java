@@ -27,6 +27,10 @@ public class Entry {
         return this.usingOrder;
     }
 
+    public void setZeroUsingOrder() {
+        this.usingOrder = 0;
+    }
+
     public void updateOrder() {
         this.usingOrder++;
     }

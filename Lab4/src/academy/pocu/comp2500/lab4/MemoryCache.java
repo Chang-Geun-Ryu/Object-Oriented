@@ -142,6 +142,7 @@ public class MemoryCache {
         this.usingOrder = 0;
         if (this.memory.containsKey(key)) {
             updateUsingOrder();
+            this.memory.get(key).setZeroUsingOrder();
             this.memory.get(key).setValue(entry);
         } else {
             updateUsingOrder();
@@ -155,6 +156,7 @@ public class MemoryCache {
         this.usingOrder = 0;
         if (this.memory.get(key) != null) {
             updateUsingOrder();
+            this.memory.get(key).setZeroUsingOrder();
             return this.memory.get(key).getValue();
         } else {
             return null;
