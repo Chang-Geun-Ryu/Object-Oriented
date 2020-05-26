@@ -8,6 +8,7 @@ public class MemoryCache {
     static private HashMap<String, MemoryCache> instances = new HashMap<String, MemoryCache>();
     static private int instancesSize = 0;
 
+    private int usingOrder;
     private OffsetDateTime usingTime;
     private HashMap<String, Entry> memory;
     private int memorySize;
@@ -16,16 +17,21 @@ public class MemoryCache {
     private MemoryCache() {
         this.memory = new HashMap<String, Entry>();
         this.usingTime = OffsetDateTime.now();
+        this.usingOrder = 0;
         this.memorySize = 0;
     }
 
     static final public MemoryCache getInstance(String name) {
         if (MemoryCache.instances.containsKey(name)) {
             MemoryCache instance = MemoryCache.instances.get(name);
-//            instance.usingTime = OffsetDateTime.now();
+
+            MemoryCache.updateUsingOrders();
+            instance.usingOrder = 0;
+            instance.usingTime = OffsetDateTime.now();
 
             return instance;
         } else {
+            MemoryCache.updateUsingOrders();
             MemoryCache.deleteInstance(1);
             MemoryCache newInstance = new MemoryCache();
             MemoryCache.instances.put(name, newInstance);
@@ -33,6 +39,8 @@ public class MemoryCache {
             return newInstance;
         }
     }
+
+
 
     static final private void deleteInstance(int addSize) {
         if (MemoryCache.instancesSize == 0 || MemoryCache.instancesSize > MemoryCache.instances.size() + addSize) {
@@ -49,10 +57,14 @@ public class MemoryCache {
                     continue;
                 }
 
-                if (MemoryCache.instances.get(deleteKey).usingTime.getLong(ChronoField.NANO_OF_DAY)
-                        > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
+                if (MemoryCache.instances.get(deleteKey).usingOrder < MemoryCache.instances.get(key).usingOrder) {
                     deleteKey = key;
                 }
+
+//                if (MemoryCache.instances.get(deleteKey).usingTime.getLong(ChronoField.NANO_OF_DAY)
+//                        > MemoryCache.instances.get(key).usingTime.getLong(ChronoField.NANO_OF_DAY)) {
+//                    deleteKey = key;
+//                }
             }
 
             MemoryCache.instances.remove(deleteKey);
@@ -66,6 +78,12 @@ public class MemoryCache {
     static final public void setMaxInstanceCount(int size) {
         MemoryCache.instancesSize = size;
         MemoryCache.deleteInstance(0);
+    }
+
+    static final public void updateUsingOrders() {
+        for (String key: MemoryCache.instances.keySet()) {
+            MemoryCache.instances.get(key).usingOrder++;
+        }
     }
 
 
@@ -114,12 +132,14 @@ public class MemoryCache {
     }
 
     final public void setEvictionPolicy(EvictionPolicy policy) {
-        this.usingTime = OffsetDateTime.now();
+        MemoryCache.updateUsingOrders();
+        this.usingOrder = 0;
         this.policy = policy;
     }
 
     final public void addEntry(String key, String entry) {
-        this.usingTime = OffsetDateTime.now();
+        MemoryCache.updateUsingOrders();
+        this.usingOrder = 0;
         if (this.memory.containsKey(key)) {
             this.memory.get(key).setValue(entry);
         } else {
@@ -129,7 +149,8 @@ public class MemoryCache {
     }
 
     final public String getEntryOrNull(String key) {
-        this.usingTime = OffsetDateTime.now();
+        MemoryCache.updateUsingOrders();
+        this.usingOrder = 0;
         if (this.memory.get(key) != null) {
             return this.memory.get(key).getValue();
         } else {
@@ -138,7 +159,8 @@ public class MemoryCache {
     }
 
     final public void setMaxEntryCount(int size) {
-        this.usingTime = OffsetDateTime.now();
+        MemoryCache.updateUsingOrders();
+        this.usingOrder = 0;
         this.memorySize = size;
         deleteEntry(0);
     }
