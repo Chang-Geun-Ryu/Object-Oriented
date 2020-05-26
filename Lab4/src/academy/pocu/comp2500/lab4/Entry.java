@@ -26,7 +26,7 @@ public class Entry {
     }
 
     public int downShiftCreateOrder() {
-        return --this.createOrder;
+        return this.createOrder--;
     }
 
     public int getUsingOrder() {

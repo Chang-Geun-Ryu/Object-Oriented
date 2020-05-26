@@ -171,7 +171,7 @@ public class MemoryCache {
                         deleteKey = key;
                     }
                 } else {
-                    if (this.memory.get(key).getCreateOrder() < 0 + addSize) {
+                    if (this.memory.get(key).downShiftCreateOrder() < 0 + addSize) {
                         deleteKey = key;
                     }
                 }
