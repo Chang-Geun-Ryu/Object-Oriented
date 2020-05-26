@@ -95,40 +95,28 @@ public class MemoryCache {
         int repeatCount = this.memory.size() + addSize - this.memorySize;
 
         for(int i = 0; i < repeatCount; i++) {
-            String deleteKey = "";
 
-            for (String key : this.memory.keySet()) {
-                if (deleteKey == "") {
-                    deleteKey = key;
-                    continue;
-                }
+            if (this.policy == EvictionPolicy.FIRST_IN_FIRST_OUT) {
+                shiftCreateOrder(true, true, addSize);
+            } else if (this.policy == EvictionPolicy.LAST_IN_FIRST_OUT) {
+                shiftCreateOrder(false, true, addSize);
+            } else {
+                String deleteKey = "";
+                for (String key : this.memory.keySet()) {
+                    if (deleteKey == "") {
+                        deleteKey = key;
+                        continue;
+                    }
 
-                if (getDeleteKey(this.memory.get(deleteKey), this.memory.get(key))) {
-                    deleteKey = key;
+                    if (this.memory.get(deleteKey).getUsingOrder() < this.memory.get(key).getUsingOrder()) {
+                        deleteKey = key;
+                    }
                 }
+                int deleteOrder = this.memory.get(deleteKey).getCreateOrder();
+                this.memory.remove(deleteKey);
+                shiftCreateOrderAt(deleteOrder);
             }
-
-            this.memory.remove(deleteKey);
         }
-    }
-
-    final private boolean getDeleteKey(Entry tempValue, Entry value) {
-        boolean result = false;
-        switch (this.policy) {
-            case FIRST_IN_FIRST_OUT:
-                result = tempValue.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) > value.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) ? true : false;
-                break;
-            case LAST_IN_FIRST_OUT:
-                result = tempValue.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) < value.getCreateTime().getLong(ChronoField.NANO_OF_SECOND) ? true : false;
-                break;
-            case LEAST_RECENTLY_USED:
-                result = tempValue.getUsingOrder() < value.getUsingOrder() ? true : false;
-                break;
-            default:
-                assert (true);
-        }
-
-        return result;
     }
 
     final public void setEvictionPolicy(EvictionPolicy policy) {
@@ -147,6 +135,10 @@ public class MemoryCache {
         } else {
             updateUsingOrder();
             deleteEntry(1);
+//            if (this.policy != EvictionPolicy.FIRST_IN_FIRST_OUT) {
+                shiftCreateOrder(true, false, 0);
+//            }
+
             this.memory.put(key, new Entry(entry));
         }
     }
@@ -166,6 +158,46 @@ public class MemoryCache {
     final private void updateUsingOrder() {
         for (String key: this.memory.keySet()) {
             this.memory.get(key).updateOrder();
+        }
+    }
+
+    final private void shiftCreateOrder(boolean shift, boolean delete, int addSize) {
+        String deleteKey = "";
+
+        if (delete) {
+            for (String key: this.memory.keySet()) {
+                if (shift) {
+                    if (this.memory.get(key).getCreateOrder() + 1 > this.memorySize - addSize) {
+                        deleteKey = key;
+                    }
+                } else {
+                    if (this.memory.get(key).getCreateOrder() < 0 + addSize) {
+                        deleteKey = key;
+                    }
+                }
+            }
+
+            this.memory.remove(deleteKey);
+        } else {
+            for (String key: this.memory.keySet()) {
+                if (shift) {
+                    if (this.memory.get(key).upShiftCreateOrder() > this.memorySize) {
+                        deleteKey = key;
+                    }
+                } else {
+                    if (this.memory.get(key).downShiftCreateOrder() < 0) {
+                        deleteKey = key;
+                    }
+                }
+            }
+        }
+    }
+
+    final private void shiftCreateOrderAt(int at) {
+        for (String key: this.memory.keySet()) {
+            if (this.memory.get(key).getCreateOrder() > at) {
+                this.memory.get(key).downShiftCreateOrder();
+            }
         }
     }
 

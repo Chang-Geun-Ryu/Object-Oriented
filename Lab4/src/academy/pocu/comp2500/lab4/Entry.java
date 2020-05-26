@@ -3,26 +3,30 @@ package academy.pocu.comp2500.lab4;
 import java.time.OffsetDateTime;
 
 public class Entry {
-    private OffsetDateTime createTime;
-    private OffsetDateTime usingTime;
     private int usingOrder;
     private int createOrder;
     private String value;
 
     public Entry(String value) {
-        this.createTime = OffsetDateTime.now();
-        this.usingTime = this.createTime;
         this.value = value;
         this.usingOrder = 0;
         this.createOrder = 0;
     }
 
-    public OffsetDateTime getCreateTime() {
-        return createTime;
+    public int getCreateOrder() {
+        return this.createOrder;
     }
 
-    public OffsetDateTime getUsingTime() {
-        return usingTime;
+    public void setCreateOrder(int order) {
+        this.createOrder = order;
+    }
+
+    public int upShiftCreateOrder() {
+        return ++this.createOrder;
+    }
+
+    public int downShiftCreateOrder() {
+        return --this.createOrder;
     }
 
     public int getUsingOrder() {
@@ -39,13 +43,11 @@ public class Entry {
 
     public String getValue() {
         this.usingOrder = 0;
-        this.usingTime = OffsetDateTime.now();
         return this.value;
     }
 
     public void setValue(String value) {
         this.value = value;
-        this.usingTime = OffsetDateTime.now();
         this.usingOrder = 0;
     }
 }
