@@ -5,7 +5,7 @@ public class Stamp extends Product {
     private String text;
 
     public Stamp(StempColorType stampColor, StempSizeType stampSize, String text) {
-        super("Stamp", stampSize.getSize(), stampColor.getColor(), stampSize.getPrice());
+        super(stampSize.getSize(), stampColor.getColor(), stampSize.getPrice());
         this.type = stampSize;
         this.text = text;
         setWidth(type.getWidth());

@@ -1,9 +1,9 @@
 package academy.pocu.comp2500.assignment2;
 
 public enum BusinessCardType {
-    Linen("Linen Business Card", 90, 50, 110),
-    Laid("Laid Business Card", 90, 50,  120),
-    Smooth("Smooth Business Card", 90, 50, 100);
+    LINEN("Linen Business Card", 90, 50, 110),
+    LAID("Laid Business Card", 90, 50,  120),
+    SMOOTH("Smooth Business Card", 90, 50, 100);
 
     final private String name;
     final private int width;

@@ -8,7 +8,7 @@ public class Banner extends Product {
     private ArrayList<String> imagePaths;
 
     public Banner(BannerType bannerType, BannerSize bannerSize, String bannerColor, OrientationType bannerOrientation) {
-        super(bannerType.getName(), bannerSize.getSize(), bannerColor, bannerSize.getPrice());
+        super(bannerSize.getSize(), bannerColor, bannerSize.getPrice());
         this.orientation = bannerOrientation;
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();

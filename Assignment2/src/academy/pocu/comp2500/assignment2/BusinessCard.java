@@ -9,7 +9,7 @@ public class BusinessCard extends Product {
     private ArrayList<String> imagePaths;
 
     public BusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor) {
-        super(businessCardType.getName(), "90 mm x 50 mm", businessCardColor.getColor(), businessCardType.getPrice() + businessCardSides.getAddPrice());
+        super("90 mm x 50 mm", businessCardColor.getColor(), businessCardType.getPrice() + businessCardSides.getAddPrice());
         this.side = businessCardSides;
         this.orientation = businessCardOrientation;
 
