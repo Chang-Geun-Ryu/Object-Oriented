@@ -5,13 +5,5 @@ public class LinenBusinessCard extends BusinessCard {
         super(BusinessCardType.LINEN, businessCardSides, businessCardOrientation, businessCardColor);
     }
 
-    @Override
-    public void addText(String text) {
-        super.addText(text);
-    }
 
-    @Override
-    public void addImagePath(String imagePath) {
-        super.addImagePath(imagePath);
-    }
 }
