@@ -13,7 +13,4 @@ public class Stamp extends Product {
         setColor(stampColor.getColor());
     }
 
-    public String getText() {
-        return this.text;
-    }
 }
