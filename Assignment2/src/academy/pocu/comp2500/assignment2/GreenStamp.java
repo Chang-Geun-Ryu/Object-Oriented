@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment2;
 
-final public class GreenStamp extends Stemp {
+final public class GreenStamp extends Stamp {
 
     public GreenStamp(StempSizeType type, String text) {
         super(StempColorType.GREEN, type, text);

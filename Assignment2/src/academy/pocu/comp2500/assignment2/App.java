@@ -8,7 +8,7 @@ public class App {
         /// 2개 가능
 
 
-        registry.registerRedStampCreator("RedStemp");
+        registry.registerRedStampCreator("RedStamp");
         registry.registerBlueStampCreator("BlueStamp");
         registry.registerGreenStampCreator("GreenStamp");
         registry.registerWallCalendarCreator("WallCalendar");

@@ -8,8 +8,8 @@ public class Product {
     private int width;
     private int height;
 
-    public Product(String name, String size, String color, int price) {
-        this.name = name;
+    public Product(String displayName, String size, String color, int price) {
+        this.name = displayName;
         this.size = size;
         this.color = color;
         this.price = price;
