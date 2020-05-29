@@ -1,5 +1,6 @@
 package academy.pocu.comp2500.assignment2;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Product {
@@ -54,12 +55,20 @@ public class Product {
         return this.texts;
     }
 
-    public void addText(String text, int x, int y, int width, int height) {
-        this.texts.add(new TextAperture(text, x, y, width, height));
+//    public void addText(String text, int x, int y, int width, int height) {
+//        this.texts.add(new TextAperture(text, x, y, width, height));
+//    }
+//
+//    public void addImage(String imagePath, int x, int y, int width, int height) {
+//        this.imagePaths.add(new ImageAperture(imagePath, x, y, width, height));
+//    }
+
+    public void addText(TextAperture textAperture) {
+        this.texts.add(textAperture);
     }
 
-    public void addImage(String imagePath, int x, int y, int width, int height) {
-        this.imagePaths.add(new ImageAperture(imagePath, x, y, width, height));
+    public void addImage(ImageAperture imageAperture) {
+        this.imagePaths.add(imageAperture);
     }
 
     protected void setSize(String size) {
