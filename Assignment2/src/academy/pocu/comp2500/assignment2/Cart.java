@@ -21,8 +21,7 @@ public class Cart {
         return this.list
                 .stream()
                 .map(e -> e.getPrice())
-                .reduce(0, (total, e) -> total + e)
-                .intValue();
+                .reduce(0, (total, e) -> total + e);
 
     }
 

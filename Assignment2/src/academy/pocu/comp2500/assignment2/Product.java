@@ -10,8 +10,8 @@ public class Product {
     private int width;
     private int height;
 
-    private ArrayList<Aperture> texts;
-    private ArrayList<Aperture> imagePaths;
+    private ArrayList<TextAperture> texts;
+    private ArrayList<ImageAperture> imagePaths;
 
     public Product(String size, String color, int price) {
         this.name = "";
@@ -46,20 +46,20 @@ public class Product {
         return this.height;
     }
 
-    public ArrayList<Aperture> getImagePaths() {
+    public ArrayList<ImageAperture> getImagePaths() {
         return this.imagePaths;
     }
 
-    public ArrayList<Aperture> getTexts() {
+    public ArrayList<TextAperture> getTexts() {
         return this.texts;
     }
 
     public void addText(String text, int x, int y, int width, int height) {
-        this.texts.add(new Aperture(text, x, y, width, height));
+        this.texts.add(new TextAperture(text, x, y, width, height));
     }
 
     public void addImage(String imagePath, int x, int y, int width, int height) {
-        this.imagePaths.add(new Aperture(imagePath, x, y, width, height));
+        this.imagePaths.add(new ImageAperture(imagePath, x, y, width, height));
     }
 
     protected void setSize(String size) {

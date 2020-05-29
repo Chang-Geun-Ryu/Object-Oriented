@@ -1,7 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import java.util.ArrayList;
-
 public class BusinessCard extends Product {
     private BusinessCardSide side;
     private OrientationType orientation;
