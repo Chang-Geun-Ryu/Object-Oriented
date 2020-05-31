@@ -3,14 +3,14 @@ package academy.pocu.comp2500.assignment2;
 public class Banner extends Product {
     private OrientationType orientation;
 
-    public Banner(BannerType bannerType, BannerSize bannerSize, String bannerColor, OrientationType bannerOrientation) {
-        super(bannerSize.getSize(), bannerColor, bannerSize.getPrice());
-        this.orientation = bannerOrientation;
-//        this.texts = new ArrayList<>();
-//        this.imagePaths = new ArrayList<>();
+    public Banner(BannerType type, BannerSize size, String color, OrientationType orientation) {
+        super(size.getSize(), color, size.getPrice());
+        this.orientation = orientation;
 
-        setWidth(bannerSize.getWidth());
-        setHeight(bannerSize.getHeight());
+        setWidth(size.getWidth());
+        setHeight(size.getHeight());
+        setName(type.getName());
+
     }
 
     public void setOrientation(OrientationType orientation) {

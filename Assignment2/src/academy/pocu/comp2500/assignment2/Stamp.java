@@ -9,6 +9,7 @@ public class Stamp extends Product {
         setWidth(type.getWidth());
         setHeight(type.getHeight());
         setColor(stampColor.getColor());
+        setName("Stamp");
     }
 
 }

@@ -7,5 +7,6 @@ public class Calendar extends Product {
 
         setWidth(calendarType.getWidth());
         setHeight(calendarType.getHeight());
+        setName(calendarType.getName());
     }
 }
