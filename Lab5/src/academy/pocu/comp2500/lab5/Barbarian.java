@@ -18,15 +18,11 @@ public class Barbarian {
     public int getHp() {
         return this.hp;
     }
-//
-//    public String getName() {
-//        return this.name;
-//    }
 
     public void attack(Barbarian enemy) {
-        if (enemy == this || enemy == null) {
-            return;
-        }
+//        if (enemy == this || enemy == null) {
+//            return;
+//        }
 
         int damage = (this.attack - enemy.getDefense()) / 2;
 

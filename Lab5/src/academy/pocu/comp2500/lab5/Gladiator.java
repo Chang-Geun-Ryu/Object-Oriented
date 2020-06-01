@@ -79,8 +79,6 @@ public class Gladiator extends Barbarian {
         enemy.setDamage(damage);
     }
 
-
-
     private Move getSkill(String skillName) {
         Optional<Move> remove = this.skills
                 .stream()
