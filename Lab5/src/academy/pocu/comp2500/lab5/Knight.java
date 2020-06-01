@@ -1,7 +1,5 @@
 package academy.pocu.comp2500.lab5;
 
-import javax.swing.*;
-
 public class Knight extends Gladiator {
     private Pet pet;
 
@@ -14,7 +12,7 @@ public class Knight extends Gladiator {
     }
 
     public void attackTogether(Barbarian enemy) {
-        if (enemy == null) {
+        if (enemy == this || enemy == null) {
             return;
         }
 

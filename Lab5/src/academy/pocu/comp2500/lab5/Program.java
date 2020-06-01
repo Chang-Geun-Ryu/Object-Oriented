@@ -24,7 +24,7 @@ public class Program {
         Move move3 = new Move("Surf", 90, 15);
 
         assert gladiator0.addMove(move0);
-        assert gladiator0.addMove(move1);
+        assert gladiator0.addMove(move0);
         assert gladiator0.addMove(move2);
         assert gladiator0.addMove(move3);
 

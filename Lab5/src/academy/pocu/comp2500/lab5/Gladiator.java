@@ -12,7 +12,7 @@ public class Gladiator extends Barbarian {
     }
 
     public void rest() {
-        this.hp += 10;
+        this.setHp(this.getHp() + 10);
         this.skills
                 .stream()
                 .forEach(e-> e.increaseSkillPoint());
@@ -26,6 +26,7 @@ public class Gladiator extends Barbarian {
         int isEqual = (int) this.skills
                 .stream()
                 .filter(e-> e.getSkillName() == move.getSkillName())
+                .filter(e-> e == move)
                 .count();
 
         if (isEqual > 0) {
@@ -55,7 +56,7 @@ public class Gladiator extends Barbarian {
     public void attack(String skillName, Barbarian enemy) {
 
         Move skill = getSkill(skillName);
-        if (skill == null) {
+        if (enemy == this || enemy == null) {
             return;
         }
 

@@ -4,7 +4,7 @@ public class Barbarian {
     private String name;
     private int attack;
     private int defense;
-    protected int hp;
+    private int hp;
     private int maxHp;
 
     public Barbarian(String name, int maxHp, int attack, int defense) {
@@ -15,8 +15,12 @@ public class Barbarian {
         this.maxHp = maxHp;
     }
 
-    public int getHp() {
+    protected int getHp() {
         return this.hp;
+    }
+
+    protected void setHp(int hp) {
+        this.hp = hp;
     }
 
     public String getName() {
@@ -24,6 +28,10 @@ public class Barbarian {
     }
 
     public void attack(Barbarian enemy) {
+        if (enemy == this || enemy == null) {
+            return;
+        }
+
         int damage = (this.attack - enemy.getDefense()) / 2;
 
         if (damage <= 0) {
@@ -37,16 +45,18 @@ public class Barbarian {
         return this.hp > 0;
     }
 
-    public int getDefense() {
+    protected int getDefense() {
         return this.defense;
     }
 
-    public int getAttack() {
+    protected int getAttack() {
         return this.attack;
     }
 
     public void setDamage(int value) {
         this.hp = this.hp - value > 0 ? this.hp - value : 0;
     }
+
+
 
 }
