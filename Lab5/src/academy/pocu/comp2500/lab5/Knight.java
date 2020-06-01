@@ -5,6 +5,7 @@ public class Knight extends Gladiator {
 
     public Knight(String name, int maxHp, int attack, int defense) {
         super(name, maxHp, attack, defense);
+
     }
 
     public void setPet(Pet pet) {

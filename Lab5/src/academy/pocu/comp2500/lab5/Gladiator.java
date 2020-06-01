@@ -12,7 +12,12 @@ public class Gladiator extends Barbarian {
     }
 
     public void rest() {
-        this.setHp(this.getHp() + 10);
+        if (this.maxHp >  this.hp + 10) {
+            this.hp += 10;
+        } else {
+            this.hp = this.maxHp;
+        }
+
         this.skills
                 .stream()
                 .forEach(e-> e.increaseSkillPoint());
