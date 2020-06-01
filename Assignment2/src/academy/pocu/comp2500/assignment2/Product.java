@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Product {
