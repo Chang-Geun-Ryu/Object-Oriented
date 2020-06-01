@@ -1,8 +1,14 @@
 package academy.pocu.comp2500.lab5;
 
+import java.util.HashSet;
+
 public class Program {
 
     public static void main(String[] args) {
+
+        HashSet<Move> temp = new HashSet<>();
+
+
         Barbarian barbarian0 = new Barbarian("Dragonborn Whiterun", 250, 210, 60);
         Barbarian barbarian1 = new Barbarian("Ulfric Stormcloak", 200, 70, 10);
 
@@ -22,6 +28,9 @@ public class Program {
         Move move1 = new Move("Thunderbolt", 90, 15);
         Move move2 = new Move("Ice Beam", 90, 10);
         Move move3 = new Move("Surf", 90, 15);
+
+        temp.add(move0);
+        temp.add(move0);
 
         assert gladiator0.addMove(move0);
         assert gladiator0.addMove(move0);

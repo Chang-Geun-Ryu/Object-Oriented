@@ -1,14 +1,17 @@
 package academy.pocu.comp2500.lab5;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Optional;
 
 public class Gladiator extends Barbarian {
-    private ArrayList<Move> skills;
+//    private ArrayList<Move> skills;
+    private HashSet<Move> skills;
 
     public Gladiator(String name, int maxHp, int attack, int defense) {
         super(name, maxHp, attack, defense);
-        this.skills = new ArrayList<>();
+//        this.skills = new ArrayList<>();
+        this.skills = new HashSet<>();
     }
 
     public void rest() {
@@ -28,15 +31,17 @@ public class Gladiator extends Barbarian {
             return false;
         }
 
-        int isEqual = (int) this.skills
-                .stream()
-                .filter(e-> e.getSkillName() == move.getSkillName())
-                .filter(e-> e == move)
-                .count();
+//        this.skills.add(move);
 
-        if (isEqual > 0) {
-            return false;
-        }
+//        int isEqual = (int) this.skills
+//                .stream()
+//                .filter(e-> e.getSkillName() == move.getSkillName())
+//                .filter(e-> e == move)
+//                .count();
+
+//        if (isEqual > 0) {
+//            return false;
+//        }
 
         this.skills.add(move);
 
@@ -61,7 +66,10 @@ public class Gladiator extends Barbarian {
     public void attack(String skillName, Barbarian enemy) {
 
         Move skill = getSkill(skillName);
-        if (enemy == this || enemy == null) {
+//        if (enemy == this || enemy == null) {
+//            return;
+//        }
+        if (enemy == this) {
             return;
         }
 

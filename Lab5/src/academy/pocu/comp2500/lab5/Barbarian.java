@@ -24,6 +24,10 @@ public class Barbarian {
 //            return;
 //        }
 
+        if (enemy == this) {
+            return;
+        }
+
         int damage = (this.attack - enemy.getDefense()) / 2;
 
         if (damage <= 0) {
