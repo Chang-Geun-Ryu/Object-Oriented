@@ -22,7 +22,7 @@ public class Knight extends Gladiator {
             petDeal = this.pet.getAttack();
         }
 
-        int damage = (int)(((double)this.attack + petDeal - (double)enemy.getDefense()) / 2.0);
+        int damage = (int)(((double)this.attack + petDeal - (double)enemy.defense) / 2.0);
 
         if (damage <= 1) {
             damage = 1;

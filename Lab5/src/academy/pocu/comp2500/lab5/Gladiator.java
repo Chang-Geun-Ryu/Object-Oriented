@@ -77,7 +77,7 @@ public class Gladiator extends Barbarian {
             return;
         }
 
-        int damage = (int)(((double)this.attack / (double)enemy.getDefense() * skill.getSkillPower()) / 2.0);
+        int damage = (int)(((double)this.attack / (double)enemy.defense * skill.getSkillPower()) / 2.0);
 
         if (damage <= 1) {
             damage = 1;

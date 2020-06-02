@@ -28,8 +28,7 @@ public class Barbarian {
             return;
         }
 
-        int damage = (this.attack - enemy.getDefense()) / 2;
-
+        int damage = (this.attack - enemy.defense) / 2;
         if (damage <= 0) {
             damage = 1;
         }
@@ -42,9 +41,9 @@ public class Barbarian {
         return this.hp > 0;
     }
 
-    public int getDefense() {
-        return this.defense;
-    }
+//    public int getDefense() {
+//        return this.defense;
+//    }
 
 //    public int getAttack() {
 //        return this.attack;
