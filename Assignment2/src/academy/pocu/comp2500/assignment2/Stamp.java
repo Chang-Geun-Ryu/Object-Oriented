@@ -11,5 +11,22 @@ public class Stamp extends Product {
         setColor(stampColor.getColor());
         setName("Stamp");
     }
+}
 
+final class BlueStamp extends Stamp {
+    public BlueStamp(StempSizeType stampSize) {
+        super(StempColorType.BLUE, stampSize);
+    }
+}
+
+final class RedStamp extends Stamp {
+    public RedStamp(StempSizeType type) {
+        super(StempColorType.RED, type);
+    }
+}
+
+final class GreenStamp extends Stamp {
+    public GreenStamp(StempSizeType type) {
+        super(StempColorType.GREEN, type);
+    }
 }
