@@ -9,8 +9,8 @@ public class BusinessCard extends Product {
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
 
-    public BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType delivery) {
-        super(type.getName(), "90 mm x 50 mm", color.getColor(), type.getPrice() + sides.getAddPrice(), delivery);
+    public BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color) {
+        super(type.getName(), "90 mm x 50 mm", color.getColor(), type.getPrice() + sides.getAddPrice(), ShippingOptionsType.SHIP);
         this.side = sides;
         this.orientation = orientation;
 
@@ -36,61 +36,61 @@ public class BusinessCard extends Product {
 }
 
 final class LandscapeBusinessCard extends BusinessCard {
-    public LandscapeBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, BusinessCardColor businessCardColor, ShippingOptionsType delivery) {
-        super(businessCardType, businessCardSides, OrientationType.LANDSCAPE, businessCardColor, delivery);
+    public LandscapeBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, BusinessCardColor businessCardColor ) {
+        super(businessCardType, businessCardSides, OrientationType.LANDSCAPE, businessCardColor);
     }
 }
 
 final class WhiteBusinessCard extends BusinessCard {
-    public WhiteBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation, ShippingOptionsType delivery) {
-        super(businessCardType, businessCardSides, businessCardOrientation, BusinessCardColor.WHITE, delivery);
+    public WhiteBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation) {
+        super(businessCardType, businessCardSides, businessCardOrientation, BusinessCardColor.WHITE);
     }
 }
 
 final class LaidBusinessCard extends BusinessCard {
-    public LaidBusinessCard(BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor, ShippingOptionsType delivery) {
-        super(BusinessCardType.LAID, businessCardSides, businessCardOrientation, businessCardColor, delivery);
+    public LaidBusinessCard(BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor) {
+        super(BusinessCardType.LAID, businessCardSides, businessCardOrientation, businessCardColor);
     }
 }
 
 final class DoubleSidedBusinessCard extends BusinessCard {
-    public DoubleSidedBusinessCard(BusinessCardType businessCardType, OrientationType businessCardOrientation, BusinessCardColor businessCardColor, ShippingOptionsType delivery) {
-        super(businessCardType, BusinessCardSide.DOUBLE, businessCardOrientation, businessCardColor, delivery);
+    public DoubleSidedBusinessCard(BusinessCardType businessCardType, OrientationType businessCardOrientation, BusinessCardColor businessCardColor) {
+        super(businessCardType, BusinessCardSide.DOUBLE, businessCardOrientation, businessCardColor);
     }
 }
 
 final class SmoothBusinessCard extends BusinessCard {
-    public SmoothBusinessCard(BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor, ShippingOptionsType delivery) {
-        super(BusinessCardType.SMOOTH, businessCardSides, businessCardOrientation, businessCardColor, delivery);
+    public SmoothBusinessCard(BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor) {
+        super(BusinessCardType.SMOOTH, businessCardSides, businessCardOrientation, businessCardColor);
     }
 }
 
 final class IvoryBusinessCard extends BusinessCard {
-    public IvoryBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation, ShippingOptionsType delivery) {
-        super(businessCardType, businessCardSides, businessCardOrientation, BusinessCardColor.IVORY, delivery);
+    public IvoryBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation) {
+        super(businessCardType, businessCardSides, businessCardOrientation, BusinessCardColor.IVORY);
     }
 }
 
 final class GrayBusinessCard extends BusinessCard {
-    public GrayBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation, ShippingOptionsType delivery) {
-        super(businessCardType, businessCardSides, businessCardOrientation, BusinessCardColor.GRAY, delivery);
+    public GrayBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation) {
+        super(businessCardType, businessCardSides, businessCardOrientation, BusinessCardColor.GRAY);
     }
 }
 
 final class PortraitBusinessCard extends BusinessCard {
-    public PortraitBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, BusinessCardColor businessCardColor, ShippingOptionsType delivery) {
-        super(businessCardType, businessCardSides, OrientationType.PORTRAIT, businessCardColor, delivery);
+    public PortraitBusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, BusinessCardColor businessCardColor) {
+        super(businessCardType, businessCardSides, OrientationType.PORTRAIT, businessCardColor);
     }
 }
 
 final class SingleSidedBusinessCard extends BusinessCard {
-    public SingleSidedBusinessCard(BusinessCardType businessCardType, OrientationType businessCardOrientation, BusinessCardColor businessCardColor, ShippingOptionsType delivery) {
-        super(businessCardType, BusinessCardSide.SINGLE, businessCardOrientation, businessCardColor, delivery);
+    public SingleSidedBusinessCard(BusinessCardType businessCardType, OrientationType businessCardOrientation, BusinessCardColor businessCardColor) {
+        super(businessCardType, BusinessCardSide.SINGLE, businessCardOrientation, businessCardColor);
     }
 }
 
 final class LinenBusinessCard extends BusinessCard {
-    public LinenBusinessCard(BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor, ShippingOptionsType delivery) {
-        super(BusinessCardType.LINEN, businessCardSides, businessCardOrientation, businessCardColor, delivery);
+    public LinenBusinessCard(BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor) {
+        super(BusinessCardType.LINEN, businessCardSides, businessCardOrientation, businessCardColor);
     }
 }
