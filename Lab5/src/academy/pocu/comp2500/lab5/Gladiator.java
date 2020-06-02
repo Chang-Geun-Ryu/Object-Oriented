@@ -1,17 +1,18 @@
 package academy.pocu.comp2500.lab5;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Optional;
 
 public class Gladiator extends Barbarian {
-//    private ArrayList<Move> skills;
-    private HashSet<Move> skills;
+//    private HashSet<Move> skills;
+    private HashMap<String, Move> skills;
 
     public Gladiator(String name, int maxHp, int attack, int defense) {
         super(name, maxHp, attack, defense);
-//        this.skills = new ArrayList<>();
-        this.skills = new HashSet<>();
+//        this.skills = new HashSet<>();
+        this.skills = new HashMap<>();
     }
 
     public void rest() {
@@ -22,53 +23,31 @@ public class Gladiator extends Barbarian {
         }
 
         this.skills
+                .entrySet()
                 .stream()
-                .forEach(e-> e.increaseSkillPoint());
+                .forEach(e-> e.getValue().increaseSkillPoint());
     }
 
     public boolean addMove(Move move) {
-        if (this.skills.size() >= 4) {
+        if (this.skills.size() > 4) {
             return false;
         }
 
+        this.skills.put(move.getSkillName(), move);
+
 //        this.skills.add(move);
-
-//        int isEqual = (int) this.skills
-//                .stream()
-//                .filter(e-> e.getSkillName() == move.getSkillName())
-//                .filter(e-> e == move)
-//                .count();
-
-//        if (isEqual > 0) {
-//            return false;
-//        }
-
-        this.skills.add(move);
-
         return true;
     }
 
     public boolean removeMove(String skillName) {
-        Optional<Move> remove = this.skills
-                .stream()
-                .filter(e-> e.getSkillName() == skillName)
-                .findFirst();
+        Move move = this.skills.remove(skillName);
 
-        if (remove.isEmpty()) {
-            return false;
-        }
-
-        this.skills.remove(remove.get());
-
-        return true;
+        return move != null;
     }
 
     public void attack(String skillName, Barbarian enemy) {
 
         Move skill = getSkill(skillName);
-//        if (enemy == this || enemy == null) {
-//            return;
-//        }
         if (enemy == this) {
             return;
         }
@@ -85,19 +64,21 @@ public class Gladiator extends Barbarian {
 
         skill.useSkillPoint();
         enemy.hp = enemy.hp - damage > 0 ? enemy.hp - damage : 0;
-//        enemy.setDamage(damage);
     }
 
     private Move getSkill(String skillName) {
-        Optional<Move> remove = this.skills
-                .stream()
-                .filter(e-> e.getSkillName() == skillName)
-                .findFirst();
-
-        if (remove.isEmpty()) {
-            return null;
-        } else {
-            return remove.get();
-        }
+        return this.skills.get(skillName);
+//        Optional<Move> remove = this.skills
+//                .entrySet()
+//                .stream()
+//                .filter(e-> e.getValue().getSkillName() == skillName)
+//                .map(e -> e.getValue())
+//                .findFirst();
+//
+//        if (remove.isEmpty()) {
+//            return null;
+//        } else {
+//            return remove.get();
+//        }
     }
 }

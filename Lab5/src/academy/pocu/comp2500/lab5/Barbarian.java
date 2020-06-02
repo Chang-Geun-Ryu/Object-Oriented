@@ -20,10 +20,6 @@ public class Barbarian {
     }
 
     public void attack(Barbarian enemy) {
-//        if (enemy == this || enemy == null) {
-//            return;
-//        }
-
         if (enemy == this) {
             return;
         }
@@ -34,32 +30,9 @@ public class Barbarian {
         }
 
         enemy.hp = enemy.hp - damage > 0 ? enemy.hp - damage : 0;
-//        enemy.setDamage(damage);
     }
 
     public boolean isAlive() {
         return this.hp > 0;
     }
-
-//    public int getDefense() {
-//        return this.defense;
-//    }
-
-//    public int getAttack() {
-//        return this.attack;
-//    }
-
-//    protected void setDamage(int value) {
-//        this.hp = this.hp - value > 0 ? this.hp - value : 0;
-//    }
-
-//    public int getMaxHp() {
-//        return this.maxHp;
-//    }
-
-//    private void setHp(int hp) {
-//        this.hp = hp;
-//    }
-
-
 }

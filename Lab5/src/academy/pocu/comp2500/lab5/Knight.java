@@ -28,7 +28,6 @@ public class Knight extends Gladiator {
             damage = 1;
         }
 
-//        enemy.setDamage(damage);
         enemy.hp = enemy.hp - damage > 0 ? enemy.hp - damage : 0;
     }
 }
