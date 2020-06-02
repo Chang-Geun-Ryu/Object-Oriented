@@ -28,7 +28,7 @@ public class Program {
         Move move1 = new Move("Thunderbolt", 90, 15);
         Move move2 = new Move("Ice Beam", 90, 10);
         Move move3 = new Move("Surf", 90, 15);
-
+        Move move4 = new Move("1111", 90, 15);
         temp.add(move0);
         temp.add(move0);
 
@@ -37,6 +37,7 @@ public class Program {
         assert gladiator0.addMove(move2);
         assert gladiator0.addMove(move3);
 
+        gladiator0.addMove(move4);
         assert gladiator0.removeMove("Surf");
 
         gladiator0.attack("Gomu Gomu no pistol", barbarian0);

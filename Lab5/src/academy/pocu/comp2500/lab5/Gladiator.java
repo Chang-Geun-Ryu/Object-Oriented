@@ -29,7 +29,7 @@ public class Gladiator extends Barbarian {
     }
 
     public boolean addMove(Move move) {
-        if (this.skills.size() > 4) {
+        if (this.skills.size() >= 4) {
             return false;
         }
 
