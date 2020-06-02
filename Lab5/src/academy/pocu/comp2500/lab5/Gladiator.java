@@ -16,7 +16,7 @@ public class Gladiator extends Barbarian {
     }
 
     public void rest() {
-        if (super.maxHp >  this.getHp() + 10) {
+        if (super.maxHp >=  this.getHp() + 10) {
             this.hp += 10;
         } else {
             this.hp = this.maxHp;

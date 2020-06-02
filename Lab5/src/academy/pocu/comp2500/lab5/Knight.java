@@ -13,16 +13,11 @@ public class Knight extends Gladiator {
     }
 
     public void attackTogether(Barbarian enemy) {
-        if (enemy == this || enemy == null) {
+        if (enemy == this || enemy == null || this.pet == null) {
             return;
         }
 
-        int petDeal = 0;
-        if (this.pet != null) {
-            petDeal = this.pet.getAttack();
-        }
-
-        int damage = (int)(((double)this.attack + petDeal - (double)enemy.defense) / 2.0);
+        int damage = (int)(((double)this.attack + this.pet.getAttack() - (double)enemy.defense) / 2.0);
 
         if (damage <= 1) {
             damage = 1;

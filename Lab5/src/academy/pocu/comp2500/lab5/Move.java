@@ -4,11 +4,13 @@ public class Move {
     private String skillName;
     private int skillPower;
     private int skillPoint;
+    private int maxSkillPoint;
 
     public Move(String name, int power, int point) {
         this.skillName = name;
         this.skillPower = power;
         this.skillPoint = point;
+        this.maxSkillPoint = point;
     }
 
     public String getSkillName() {
@@ -24,7 +26,9 @@ public class Move {
     }
 
     public void increaseSkillPoint() {
-        ++this.skillPoint;
+        if (this.maxSkillPoint < this.skillPoint) {
+            ++this.skillPoint;
+        }
     }
 
     public void useSkillPoint() {
