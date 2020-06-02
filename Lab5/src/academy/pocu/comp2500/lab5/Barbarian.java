@@ -2,8 +2,8 @@ package academy.pocu.comp2500.lab5;
 
 public class Barbarian {
     private String name;
-    private int attack;
-    private int defense;
+    protected int attack;
+    protected int defense;
     protected int hp;
     protected int maxHp;
 
@@ -34,25 +34,33 @@ public class Barbarian {
             damage = 1;
         }
 
-        enemy.setDamage(damage);
+        this.hp = this.hp - damage > 0 ? this.hp - damage : 0;
+//        enemy.setDamage(damage);
     }
 
     public boolean isAlive() {
         return this.hp > 0;
     }
 
-    protected int getDefense() {
+    public int getDefense() {
         return this.defense;
     }
 
-    protected int getAttack() {
-        return this.attack;
-    }
+//    public int getAttack() {
+//        return this.attack;
+//    }
 
-    public void setDamage(int value) {
-        this.hp = this.hp - value > 0 ? this.hp - value : 0;
-    }
+//    protected void setDamage(int value) {
+//        this.hp = this.hp - value > 0 ? this.hp - value : 0;
+//    }
 
+//    public int getMaxHp() {
+//        return this.maxHp;
+//    }
+
+//    private void setHp(int hp) {
+//        this.hp = hp;
+//    }
 
 
 }

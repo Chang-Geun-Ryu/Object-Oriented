@@ -15,7 +15,7 @@ public class Gladiator extends Barbarian {
     }
 
     public void rest() {
-        if (this.maxHp >  this.hp + 10) {
+        if (super.maxHp >  this.getHp() + 10) {
             this.hp += 10;
         } else {
             this.hp = this.maxHp;
@@ -77,14 +77,15 @@ public class Gladiator extends Barbarian {
             return;
         }
 
-        int damage = (int)(((double)this.getAttack() / (double)enemy.getDefense() * skill.getSkillPower()) / 2.0);
+        int damage = (int)(((double)this.attack / (double)enemy.getDefense() * skill.getSkillPower()) / 2.0);
 
         if (damage <= 1) {
             damage = 1;
         }
 
         skill.useSkillPoint();
-        enemy.setDamage(damage);
+        this.hp = this.hp - damage > 0 ? this.hp - damage : 0;
+//        enemy.setDamage(damage);
     }
 
     private Move getSkill(String skillName) {
