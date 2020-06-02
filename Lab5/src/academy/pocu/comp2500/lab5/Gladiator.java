@@ -31,12 +31,14 @@ public class Gladiator extends Barbarian {
     public boolean addMove(Move move) {
 
         if (this.skills.get(move.getSkillName()) != null) {
-            this.skills.put(move.getSkillName(), move);
+            return false;
+//            this.skills.put(move.getSkillName(), move);
         }
 
         if (this.skills.size() >= 4) {
             return false;
         }
+
 
         this.skills.put(move.getSkillName(), move);
 
