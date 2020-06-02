@@ -9,12 +9,15 @@ public class Product {
     private String color;
     private int width;
     private int height;
+    private ShippingOptionsType shippingOptions;
 
-    public Product(String size, String color, int price) {
+
+    public Product(String name, String size, String color, int price, ShippingOptionsType delivery) {
         this.name = "";
         this.size = size;
         this.color = color;
         this.price = price;
+        this.shippingOptions = delivery;
 //        this.texts = new ArrayList<>();
 //        this.imagePaths = new ArrayList<>();
     }
@@ -43,21 +46,9 @@ public class Product {
         return this.height;
     }
 
-//    public ArrayList<ImageAperture> getImagePaths() {
-//        return this.imagePaths;
-//    }
-
-//    public ArrayList<TextAperture> getTexts() {
-//        return this.texts;
-//    }
-
-//    public void addText(TextAperture textAperture) {
-//        this.texts.add(textAperture);
-//    }
-
-//    public void addImage(ImageAperture imageAperture) {
-//        this.imagePaths.add(imageAperture);
-//    }
+    public ShippingOptionsType getShippingOptions() {
+        return this.shippingOptions;
+    }
 
     protected void setSize(String size) {
         this.size = size;

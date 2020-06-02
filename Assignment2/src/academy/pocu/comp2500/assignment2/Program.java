@@ -7,7 +7,7 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
 
-        BlueStamp bStamp = new BlueStamp(StempSizeType.FIVE_BY_TWO);
+        BlueStamp bStamp = new BlueStamp(StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
 
         System.out.println("price: " + bStamp.getPrice());
         System.out.println("getColor: " + bStamp.getColor());

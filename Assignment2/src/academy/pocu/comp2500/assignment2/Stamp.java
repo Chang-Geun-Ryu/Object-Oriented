@@ -1,32 +1,28 @@
 package academy.pocu.comp2500.assignment2;
 
 public class Stamp extends Product {
-    private StempSizeType type;
 
-    public Stamp(StempColorType stampColor, StempSizeType stampSize) {
-        super(stampSize.getSize(), stampColor.getColor(), stampSize.getPrice());
-        this.type = stampSize;
-        setWidth(type.getWidth());
-        setHeight(type.getHeight());
-        setColor(stampColor.getColor());
-        setName("Stamp");
+    public Stamp(StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType delivery) {
+        super("Stamp", stampSize.getSize(), stampColor.getColor(), stampSize.getPrice(), delivery);
+        setWidth(stampSize.getWidth());
+        setHeight(stampSize.getHeight());
     }
 }
 
 final class BlueStamp extends Stamp {
-    public BlueStamp(StempSizeType stampSize) {
-        super(StempColorType.BLUE, stampSize);
+    public BlueStamp(StempSizeType stampSize, ShippingOptionsType delivery) {
+        super(StempColorType.BLUE, stampSize, delivery);
     }
 }
 
 final class RedStamp extends Stamp {
-    public RedStamp(StempSizeType type) {
-        super(StempColorType.RED, type);
+    public RedStamp(StempSizeType stampSize, ShippingOptionsType delivery) {
+        super(StempColorType.RED, stampSize, delivery);
     }
 }
 
 final class GreenStamp extends Stamp {
-    public GreenStamp(StempSizeType type) {
-        super(StempColorType.GREEN, type);
+    public GreenStamp(StempSizeType stampSize, ShippingOptionsType delivery) {
+        super(StempColorType.GREEN, stampSize, delivery);
     }
 }
