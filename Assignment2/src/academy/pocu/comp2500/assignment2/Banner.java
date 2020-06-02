@@ -1,7 +1,12 @@
 package academy.pocu.comp2500.assignment2;
 
+import java.util.ArrayList;
+
 public class Banner extends Product {
     private OrientationType orientation;
+
+    private ArrayList<TextAperture> texts;
+    private ArrayList<ImageAperture> imagePaths;
 
     public Banner(BannerType type, BannerSize size, String color, OrientationType orientation) {
         super(size.getSize(), color, size.getPrice());
@@ -9,6 +14,9 @@ public class Banner extends Product {
         setWidth(size.getWidth());
         setHeight(size.getHeight());
         setName(type.getName());
+
+        this.texts = new ArrayList<>();
+        this.imagePaths = new ArrayList<>();
     }
 
     public void setOrientation(OrientationType orientation) {
@@ -17,6 +25,22 @@ public class Banner extends Product {
 
     public OrientationType getOrientation() {
         return this.orientation;
+    }
+
+    public ArrayList<ImageAperture> getImagePaths() {
+        return this.imagePaths;
+    }
+
+    public ArrayList<TextAperture> getTexts() {
+        return this.texts;
+    }
+
+    public void addText(TextAperture textAperture) {
+        this.texts.add(textAperture);
+    }
+
+    public void addImage(ImageAperture imageAperture) {
+        this.imagePaths.add(imageAperture);
     }
 }
 

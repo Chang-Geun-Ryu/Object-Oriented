@@ -10,16 +10,13 @@ public class Product {
     private int width;
     private int height;
 
-    private ArrayList<TextAperture> texts;
-    private ArrayList<ImageAperture> imagePaths;
-
     public Product(String size, String color, int price) {
         this.name = "";
         this.size = size;
         this.color = color;
         this.price = price;
-        this.texts = new ArrayList<>();
-        this.imagePaths = new ArrayList<>();
+//        this.texts = new ArrayList<>();
+//        this.imagePaths = new ArrayList<>();
     }
 
     public String getName() {
@@ -35,7 +32,7 @@ public class Product {
     }
 
     public int getPrice() {
-        return this.price + (this.texts.size() + this.imagePaths.size()) * 5;
+        return this.price;// + (this.texts.size() + this.imagePaths.size()) * 5;
     }
 
     public int getWidth() {
@@ -46,29 +43,21 @@ public class Product {
         return this.height;
     }
 
-    public ArrayList<ImageAperture> getImagePaths() {
-        return this.imagePaths;
-    }
-
-    public ArrayList<TextAperture> getTexts() {
-        return this.texts;
-    }
-
-//    public void addText(String text, int x, int y, int width, int height) {
-//        this.texts.add(new TextAperture(text, x, y, width, height));
-//    }
-//
-//    public void addImage(String imagePath, int x, int y, int width, int height) {
-//        this.imagePaths.add(new ImageAperture(imagePath, x, y, width, height));
+//    public ArrayList<ImageAperture> getImagePaths() {
+//        return this.imagePaths;
 //    }
 
-    public void addText(TextAperture textAperture) {
-        this.texts.add(textAperture);
-    }
+//    public ArrayList<TextAperture> getTexts() {
+//        return this.texts;
+//    }
 
-    public void addImage(ImageAperture imageAperture) {
-        this.imagePaths.add(imageAperture);
-    }
+//    public void addText(TextAperture textAperture) {
+//        this.texts.add(textAperture);
+//    }
+
+//    public void addImage(ImageAperture imageAperture) {
+//        this.imagePaths.add(imageAperture);
+//    }
 
     protected void setSize(String size) {
         this.size = size;

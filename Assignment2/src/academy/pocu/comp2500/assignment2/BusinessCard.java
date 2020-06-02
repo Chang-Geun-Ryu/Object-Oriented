@@ -1,8 +1,13 @@
 package academy.pocu.comp2500.assignment2;
 
+import java.util.ArrayList;
+
 public class BusinessCard extends Product {
     private BusinessCardSide side;
     private OrientationType orientation;
+
+    private ArrayList<TextAperture> texts;
+    private ArrayList<ImageAperture> imagePaths;
 
     public BusinessCard(BusinessCardType businessCardType, BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor) {
         super("90 mm x 50 mm", businessCardColor.getColor(), businessCardType.getPrice() + businessCardSides.getAddPrice());
@@ -11,6 +16,22 @@ public class BusinessCard extends Product {
 
         setWidth(businessCardType.getWidth());
         setHeight(businessCardType.getHeight());
+    }
+
+    public ArrayList<ImageAperture> getImagePaths() {
+        return this.imagePaths;
+    }
+
+    public ArrayList<TextAperture> getTexts() {
+        return this.texts;
+    }
+
+    public void addText(TextAperture textAperture) {
+        this.texts.add(textAperture);
+    }
+
+    public void addImage(ImageAperture imageAperture) {
+        this.imagePaths.add(imageAperture);
     }
 }
 
