@@ -12,12 +12,12 @@ public class Product {
     private ShippingOptionsType shippingOptions;
 
 
-    public Product(String name, String size, String color, int price, ShippingOptionsType delivery) {
-        this.name = "";
+    public Product(String size, String color, int price, ShippingOptionsType deliveryMethod) {
+        this.name = "Product";
         this.size = size;
         this.color = color;
         this.price = price;
-        this.shippingOptions = delivery;
+        this.shippingOptions = deliveryMethod;
 //        this.texts = new ArrayList<>();
 //        this.imagePaths = new ArrayList<>();
     }
