@@ -29,6 +29,11 @@ public class Gladiator extends Barbarian {
     }
 
     public boolean addMove(Move move) {
+
+        if (this.skills.get(move.getSkillName()) != null) {
+            this.skills.put(move.getSkillName(), move);
+        }
+
         if (this.skills.size() >= 4) {
             return false;
         }
@@ -48,7 +53,7 @@ public class Gladiator extends Barbarian {
     public void attack(String skillName, Barbarian enemy) {
 
         Move skill = getSkill(skillName);
-        if (enemy == this) {
+        if (enemy == this || skill == null) {
             return;
         }
 
