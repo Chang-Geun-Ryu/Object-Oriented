@@ -10,3 +10,21 @@ public class Calendar extends Product {
         setName(calendarType.getName());
     }
 }
+
+final class DeskCalendar extends Calendar {
+    public DeskCalendar() {
+        super(CalendarType.DESK);
+    }
+}
+
+final class WallCalendar extends Calendar {
+    public WallCalendar() {
+        super(CalendarType.WALL);
+    }
+}
+
+final class MagnetCalendar extends Calendar {
+    public MagnetCalendar() {
+        super(CalendarType.MAGNET);
+    }
+}
