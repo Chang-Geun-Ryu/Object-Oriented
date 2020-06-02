@@ -13,7 +13,7 @@ public class Knight extends Gladiator {
     }
 
     public void attackTogether(Barbarian enemy) {
-        if (enemy == this || enemy == null || this.pet == null) {
+        if (this.pet == null) {
             return;
         }
 

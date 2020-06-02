@@ -26,7 +26,7 @@ public class Move {
     }
 
     public void increaseSkillPoint() {
-        if (this.maxSkillPoint < this.skillPoint) {
+        if (this.maxSkillPoint > this.skillPoint) {
             ++this.skillPoint;
         }
     }
