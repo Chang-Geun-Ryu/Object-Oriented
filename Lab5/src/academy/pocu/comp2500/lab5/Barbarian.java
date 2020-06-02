@@ -33,7 +33,7 @@ public class Barbarian {
             damage = 1;
         }
 
-        this.hp = this.hp - damage > 0 ? this.hp - damage : 0;
+        enemy.hp = enemy.hp - damage > 0 ? enemy.hp - damage : 0;
 //        enemy.setDamage(damage);
     }
 

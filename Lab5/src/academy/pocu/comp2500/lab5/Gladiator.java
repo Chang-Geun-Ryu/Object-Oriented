@@ -84,7 +84,7 @@ public class Gladiator extends Barbarian {
         }
 
         skill.useSkillPoint();
-        this.hp = this.hp - damage > 0 ? this.hp - damage : 0;
+        enemy.hp = enemy.hp - damage > 0 ? enemy.hp - damage : 0;
 //        enemy.setDamage(damage);
     }
 
