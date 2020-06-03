@@ -1,6 +1,8 @@
 package academy.pocu.comp2500.assignment2;
 
 import academy.pocu.comp2500.assignment2.registry.Registry;
+import java.lang.reflect.Method;
+import java.lang.reflect.Field;
 
 public class Program {
 
@@ -21,11 +23,18 @@ public class Program {
 
         System.out.println("getText: " + bStamp.getText());
 
-        bStamp.setColor(StempColorType.BLUE);
+//        bStamp.setColor(StempColorType.BLUE);
 
         Cart cart = new Cart();
         cart.addProduct(bStamp);
 
+        Method[] methods = bStamp.getClass().getMethods();
+
+        for (Method m : methods) {
+            System.out.printf(" - %s%s", m.getName(), System.lineSeparator());
+        }
+
+        System.out.printf("# methods: %d%s", methods.length, System.lineSeparator());
 
         Registry registry = new Registry();
         App app = new App(registry);

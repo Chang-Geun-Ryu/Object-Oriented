@@ -1,9 +1,9 @@
 package academy.pocu.comp2500.assignment2;
 
 public enum StempSizeType {
-    FOUR_BY_THREE(" (70 mm x 40 mm)", 40, 30, 2300),
+    FOUR_BY_THREE(" (40 mm x 30 mm)", 40, 30, 2300),
     FIVE_BY_TWO(" (50 mm x 20 mm)", 50, 20, 2300),
-    SEVEN_BY_FOUR(" (40 mm x 30 mm)", 70, 40, 2600);
+    SEVEN_BY_FOUR(" (70 mm x 40 mm)", 70, 40, 2600);
 
     private String size;
     private int width;
