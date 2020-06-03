@@ -5,8 +5,6 @@ public class Calendar extends Product {
     public Calendar(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
 //        super(calendarType.getSize(), 0xFFFFFF, calendarType.getPrice(), deliveryMethod);
         super(0xFFFFFF, calendarType.getPrice(), deliveryMethod);
-        setWidth(calendarType.getWidth());
-        setHeight(calendarType.getHeight());
         setName(calendarType.getName());
     }
 }

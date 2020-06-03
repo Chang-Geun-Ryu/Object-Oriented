@@ -15,8 +15,8 @@ public class BusinessCard extends Product {
         this.side = sides;
         this.orientation = orientation;
 
-        setWidth(type.getWidth());
-        setHeight(type.getHeight());
+//        setWidth(type.getWidth());
+//        setHeight(type.getHeight());
         setName(type.getName());
     }
 

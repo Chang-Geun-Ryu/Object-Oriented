@@ -7,8 +7,8 @@ public class Product {
 //    private String size;
     private int price;
     private int color;
-    private int width;
-    private int height;
+//    private int width;
+//    private int height;
     private ShippingOptionsType shippingOptions;
 
 
@@ -36,13 +36,13 @@ public class Product {
         return this.price;// + (this.texts.size() + this.imagePaths.size()) * 5;
     }
 
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
+//    public int getWidth() {
+//        return this.width;
+//    }
+//
+//    public int getHeight() {
+//        return this.height;
+//    }
 
     public ShippingOptionsType getShippingOptions() {
         return this.shippingOptions;
@@ -64,11 +64,11 @@ public class Product {
         this.name = name;
     }
 
-    protected void setWidth(int width) {
-        this.width = width;
-    }
-
-    protected void setHeight(int height) {
-        this.height = height;
-    }
+//    protected void setWidth(int width) {
+//        this.width = width;
+//    }
+//
+//    protected void setHeight(int height) {
+//        this.height = height;
+//    }
 }
