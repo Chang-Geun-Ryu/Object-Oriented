@@ -25,19 +25,19 @@ public class Stamp extends Product {
 }
 
 final class BlueStamp extends Stamp {
-    public BlueStamp(String textAperture, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(textAperture, StempColorType.BLUE, stampSize, deliveryMethod);
+    public BlueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        super(text, StempColorType.BLUE, stampSize, deliveryMethod);
     }
 }
 
 final class RedStamp extends Stamp {
-    public RedStamp(String textAperture, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(textAperture, StempColorType.RED, stampSize, deliveryMethod);
+    public RedStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        super(text, StempColorType.RED, stampSize, deliveryMethod);
     }
 }
 
 final class GreenStamp extends Stamp {
-    public GreenStamp(String textAperture, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(textAperture, StempColorType.GREEN, stampSize, deliveryMethod);
+    public GreenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        super(text, StempColorType.GREEN, stampSize, deliveryMethod);
     }
 }
