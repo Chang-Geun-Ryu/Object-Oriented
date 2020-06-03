@@ -16,7 +16,7 @@ public class Banner extends Product {
         this.size = size;
 //        setWidth(size.getWidth());
 //        setHeight(size.getHeight());
-        setName(type.getName());
+        setName(type.getName() + size.getSize());
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
     }

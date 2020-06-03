@@ -10,7 +10,7 @@ public class Stamp extends Product {
         super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
 //        setWidth(stampSize.getWidth());
 //        setHeight(stampSize.getHeight());
-        setName("Stamp");
+        setName("Stamp" + stampSize.getSize());
         this.text = text;
         this.colorType = stampColor;
         this.sizeType = stampSize;
