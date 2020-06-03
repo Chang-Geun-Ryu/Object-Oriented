@@ -14,12 +14,12 @@ public class Program {
         System.out.println(bStamp.getColor());
         System.out.println("getHeight: " + bStamp.getHeight());
         System.out.println("getName: " + bStamp.getName());
-        System.out.println("getSize: " + bStamp.getSize());
+//        System.out.println("getSize: " + bStamp.getSize());
         System.out.println("getWidth: " + bStamp.getWidth());
         System.out.print("delivery: ");
         System.out.println(bStamp.getShippingOptions());
 
-        System.out.println("getText: " + bStamp.getTextAperture());
+        System.out.println("getText: " + bStamp.getText());
 
         bStamp.setColor(StempColorType.BLUE);
 

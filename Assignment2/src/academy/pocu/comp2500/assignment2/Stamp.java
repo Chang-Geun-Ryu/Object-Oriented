@@ -1,26 +1,33 @@
 package academy.pocu.comp2500.assignment2;
 
 public class Stamp extends Product {
-    private String textAperture;
+    private String text;
+    private StempColorType colorType;
 
     public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(stampSize.getSize(), stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
+//        super(stampSize.getSize(), stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
+        super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
         setWidth(stampSize.getWidth());
         setHeight(stampSize.getHeight());
         setName("Stamp");
-        this.textAperture = text;
+        this.text = text;
+        this.colorType = stampColor;
     }
 
     public void setText(String text) {
-        this.textAperture = text;
+        this.text = text;
     }
 
     public void setColor(StempColorType stampColor) {
         setColor(stampColor.getColor());
     }
 
-    public String getTextAperture() {
-        return this.textAperture;
+    public String getText() {
+        return this.text;
+    }
+
+    public StempColorType getColorType() {
+        return this.colorType;
     }
 }
 

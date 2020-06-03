@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Product {
     private String name;
-    private String size;
+//    private String size;
     private int price;
     private int color;
     private int width;
@@ -12,9 +12,9 @@ public class Product {
     private ShippingOptionsType shippingOptions;
 
 
-    public Product(String size, int color, int price, ShippingOptionsType deliveryMethod) {
+    public Product(int color, int price, ShippingOptionsType deliveryMethod) {
         this.name = "Product";
-        this.size = size;
+//        this.size = size;
         this.color = color;
         this.price = price;
         this.shippingOptions = deliveryMethod;
@@ -24,9 +24,9 @@ public class Product {
         return this.name;
     }
 
-    public String getSize() {
-        return this.size;
-    }
+//    public String getSize() {
+//        return this.size;
+//    }
 
     public int getColor() {
         return this.color;
@@ -48,9 +48,9 @@ public class Product {
         return this.shippingOptions;
     }
 
-    protected void setSize(String size) {
-        this.size = size;
-    }
+//    protected void setSize(String size) {
+//        this.size = size;
+//    }
 
     protected void setColor(int color) {
         this.color = color;
