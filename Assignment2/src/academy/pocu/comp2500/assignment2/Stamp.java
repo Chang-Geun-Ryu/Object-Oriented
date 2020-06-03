@@ -2,13 +2,16 @@ package academy.pocu.comp2500.assignment2;
 
 public class Stamp extends Product {
     private String text;
-    private StempSizeType sizeType;
+    private int width;
+    private int height;
 
     public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
         setName("Stamp" + stampSize.getSize());
         this.text = text;
-        this.sizeType = stampSize;
+//        this.sizeType = stampSize;
+        this.width = stampSize.getWidth();
+        this.height = stampSize.getHeight();
     }
 
     public void setText(String text) {
@@ -23,8 +26,16 @@ public class Stamp extends Product {
         return this.text;
     }
 
-    public StempSizeType getSizeType() {
-        return this.sizeType;
+//    public StempSizeType getSizeType() {
+//        return this.sizeType;
+//    }
+
+    public int getWidth () {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 }
 

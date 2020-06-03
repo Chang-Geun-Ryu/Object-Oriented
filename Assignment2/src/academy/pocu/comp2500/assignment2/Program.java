@@ -9,7 +9,7 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
 
-        BlueStamp bStamp = new BlueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
+        BlueStamp bStamp = new BlueStamp("textStemp", null, ShippingOptionsType.PICKUP);
 
         System.out.println("price: " + bStamp.getPrice());
         System.out.print("getColor: ");
@@ -24,6 +24,8 @@ public class Program {
         System.out.println("getText: " + bStamp.getText());
 
 //        bStamp.setColor(StempColorType.BLUE);
+
+
 
         Cart cart = new Cart();
         cart.addProduct(bStamp);
