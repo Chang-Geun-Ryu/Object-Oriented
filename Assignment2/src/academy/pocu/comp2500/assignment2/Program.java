@@ -13,12 +13,11 @@ public class Program {
         System.out.print("getColor: ");
         System.out.println(bStamp.getColor());
         System.out.println("getHeight: " + bStamp.getHeight());
-//        System.out.println("getImagePaths: " + bStamp.getImagePaths());
         System.out.println("getName: " + bStamp.getName());
         System.out.println("getSize: " + bStamp.getSize());
-//        System.out.println("getTexts: " + bStamp.getTexts());
         System.out.println("getWidth: " + bStamp.getWidth());
-
+        System.out.print("delivery: ");
+        System.out.println(bStamp.getShippingOptions());
 
         Registry registry = new Registry();
         App app = new App(registry);

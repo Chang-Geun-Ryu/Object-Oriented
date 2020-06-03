@@ -18,8 +18,6 @@ public class Product {
         this.color = color;
         this.price = price;
         this.shippingOptions = deliveryMethod;
-//        this.texts = new ArrayList<>();
-//        this.imagePaths = new ArrayList<>();
     }
 
     public String getName() {
