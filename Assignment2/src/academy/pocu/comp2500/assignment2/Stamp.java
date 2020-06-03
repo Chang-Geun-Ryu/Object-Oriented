@@ -6,6 +6,7 @@ public class Stamp extends Product {
         super(stampSize.getSize(), stampColor.getColor(), stampSize.getPrice(), delivery);
         setWidth(stampSize.getWidth());
         setHeight(stampSize.getHeight());
+        setName("Stamp");
     }
 }
 

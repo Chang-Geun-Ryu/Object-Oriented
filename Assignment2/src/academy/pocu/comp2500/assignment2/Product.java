@@ -6,13 +6,13 @@ public class Product {
     private String name;
     private String size;
     private int price;
-    private String color;
+    private int color;
     private int width;
     private int height;
     private ShippingOptionsType shippingOptions;
 
 
-    public Product(String size, String color, int price, ShippingOptionsType deliveryMethod) {
+    public Product(String size, int color, int price, ShippingOptionsType deliveryMethod) {
         this.name = "Product";
         this.size = size;
         this.color = color;
@@ -30,7 +30,7 @@ public class Product {
         return this.size;
     }
 
-    public String getColor() {
+    public int getColor() {
         return this.color;
     }
 
@@ -54,7 +54,7 @@ public class Product {
         this.size = size;
     }
 
-    protected void setColor(String color) {
+    protected void setColor(int color) {
         this.color = color;
     }
 

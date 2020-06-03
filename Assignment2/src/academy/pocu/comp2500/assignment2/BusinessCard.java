@@ -16,6 +16,7 @@ public class BusinessCard extends Product {
 
         setWidth(type.getWidth());
         setHeight(type.getHeight());
+        setName(type.getName());
     }
 
     public ArrayList<ImageAperture> getImagePaths() {

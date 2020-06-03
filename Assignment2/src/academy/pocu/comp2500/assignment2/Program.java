@@ -10,7 +10,8 @@ public class Program {
         BlueStamp bStamp = new BlueStamp(StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
 
         System.out.println("price: " + bStamp.getPrice());
-        System.out.println("getColor: " + bStamp.getColor());
+        System.out.print("getColor: ");
+        System.out.println(bStamp.getColor());
         System.out.println("getHeight: " + bStamp.getHeight());
 //        System.out.println("getImagePaths: " + bStamp.getImagePaths());
         System.out.println("getName: " + bStamp.getName());

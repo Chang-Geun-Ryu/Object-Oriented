@@ -1,17 +1,17 @@
 package academy.pocu.comp2500.assignment2;
 
 public enum StempColorType {
-    RED("#FF0000"),
-    BLUE("#0000FF"),
-    GREEN("#008000");
+    RED(0xFF0000),
+    BLUE(0x0000FF),
+    GREEN(0x008000);
 
-    final private String color;
+    final private int color;
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
 
-    private StempColorType(String color){
+    private StempColorType(int color){
         this.color = color;
     }
 }

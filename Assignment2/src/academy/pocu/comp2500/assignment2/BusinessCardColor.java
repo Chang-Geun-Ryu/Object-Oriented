@@ -1,15 +1,15 @@
 package academy.pocu.comp2500.assignment2;
 
 public enum BusinessCardColor {
-    GRAY("#FF0000"),
-    IVORY("#0000FF"),
-    WHITE("#008000");
+    GRAY(0xFF0000),
+    IVORY(0x0000FF),
+    WHITE(0x008000);
 
-    final private String color;
-    public String getColor() {
+    final private int color;
+    public int getColor() {
         return color;
     }
-    private BusinessCardColor(String name){
+    private BusinessCardColor(int name){
         this.color = name;
     }
 }

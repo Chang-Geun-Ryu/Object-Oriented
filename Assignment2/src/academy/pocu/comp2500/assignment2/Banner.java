@@ -8,12 +8,12 @@ public class Banner extends Product {
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
 
-    public Banner(BannerType type, BannerSize size, String color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
+    public Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(size.getSize(), color, size.getPrice(), deliveryMethod);
         this.orientation = orientation;
         setWidth(size.getWidth());
         setHeight(size.getHeight());
-
+        setName(type.getName());
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
     }
@@ -44,7 +44,7 @@ public class Banner extends Product {
 }
 
 final class MeshBanner extends Banner {
-    public MeshBanner(BannerSize bannerSize, String bannerColor, OrientationType bannerOrientation, ShippingOptionsType deliveryMethod) {
+    public MeshBanner(BannerSize bannerSize, int bannerColor, OrientationType bannerOrientation, ShippingOptionsType deliveryMethod) {
         super(BannerType.MESH, bannerSize, bannerColor, bannerOrientation, deliveryMethod);
 
         setPrice(bannerSize.getPrice() + 100);
@@ -52,26 +52,26 @@ final class MeshBanner extends Banner {
 }
 
 final class GlossBanner extends Banner {
-    public GlossBanner(BannerSize bannerSize, String bannerColor, OrientationType bannerOrientation, ShippingOptionsType deliveryMethod) {
+    public GlossBanner(BannerSize bannerSize, int bannerColor, OrientationType bannerOrientation, ShippingOptionsType deliveryMethod) {
         super(BannerType.GLOSS, bannerSize, bannerColor, bannerOrientation, deliveryMethod);
     }
 }
 
 final class ScrimBanner extends Banner {
-    public ScrimBanner(BannerSize bannerSize, String bannerColor, OrientationType bannerOrientation, ShippingOptionsType deliveryMethod) {
+    public ScrimBanner(BannerSize bannerSize, int bannerColor, OrientationType bannerOrientation, ShippingOptionsType deliveryMethod) {
         super(BannerType.SCRIM, bannerSize, bannerColor, bannerOrientation, deliveryMethod);
         setPrice(bannerSize.getPrice() + 100);
     }
 }
 
 final class LandscapeBanner extends Banner {
-    public LandscapeBanner(BannerType bannerType, BannerSize bannerSize, String bannerColor, ShippingOptionsType deliveryMethod) {
+    public LandscapeBanner(BannerType bannerType, BannerSize bannerSize, int bannerColor, ShippingOptionsType deliveryMethod) {
         super(bannerType, bannerSize, bannerColor, OrientationType.LANDSCAPE, deliveryMethod);
     }
 }
 
 final class PortraitBanner extends Banner {
-    public PortraitBanner(BannerType bannerType, BannerSize bannerSize, String bannerColor, ShippingOptionsType deliveryMethod) {
+    public PortraitBanner(BannerType bannerType, BannerSize bannerSize, int bannerColor, ShippingOptionsType deliveryMethod) {
         super(bannerType, bannerSize, bannerColor, OrientationType.PORTRAIT, deliveryMethod);
     }
 }

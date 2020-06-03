@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 public class Calendar extends Product {
 
     public Calendar(CalendarType calendarType, ShippingOptionsType delivery) {
-        super(calendarType.getSize(), "#FFFFFF", calendarType.getPrice(), delivery);
+        super(calendarType.getSize(), 0xFFFFFF, calendarType.getPrice(), delivery);
 
         setWidth(calendarType.getWidth());
         setHeight(calendarType.getHeight());
