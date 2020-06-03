@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 public class Stamp extends Product {
 
     public Stamp(StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType delivery) {
-        super("Stamp", stampSize.getSize(), stampColor.getColor(), stampSize.getPrice(), delivery);
+        super(stampSize.getSize(), stampColor.getColor(), stampSize.getPrice(), delivery);
         setWidth(stampSize.getWidth());
         setHeight(stampSize.getHeight());
     }

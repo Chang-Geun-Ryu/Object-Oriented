@@ -9,7 +9,7 @@ public class Banner extends Product {
     private ArrayList<ImageAperture> imagePaths;
 
     public Banner(BannerType type, BannerSize size, String color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
-        super(type.getName(), size.getSize(), color, size.getPrice(), deliveryMethod);
+        super(size.getSize(), color, size.getPrice(), deliveryMethod);
         this.orientation = orientation;
         setWidth(size.getWidth());
         setHeight(size.getHeight());

@@ -10,7 +10,7 @@ public class BusinessCard extends Product {
     private ArrayList<ImageAperture> imagePaths;
 
     public BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color) {
-        super(type.getName(), "90 mm x 50 mm", color.getColor(), type.getPrice() + sides.getAddPrice(), ShippingOptionsType.SHIP);
+        super("90 mm x 50 mm", color.getColor(), type.getPrice() + sides.getAddPrice(), ShippingOptionsType.SHIP);
         this.side = sides;
         this.orientation = orientation;
 
