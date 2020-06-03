@@ -6,8 +6,6 @@ public class App {
     public App(Registry registry) {
         // register your classes or methods here
         /// 2개 가능
-
-
         registry.registerRedStampCreator("RedStamp");
         registry.registerBlueStampCreator("BlueStamp");
         registry.registerGreenStampCreator("GreenStamp");
@@ -63,36 +61,5 @@ public class App {
         registry.registerSingleSidedBusinnessCardImageApertureAdder("BusinessCard", "addImage");
         registry.registerDoubleSidedBusinnessCardTextApertureAdder("BusinessCard", "addText");
         registry.registerDoubleSidedBusinnessCardImageApertureAdder("BusinessCard", "addImage");
-
-//        registry.registerLandscapeBannerTextApertureAdder("LandscapeBanner", "addText");
-//        registry.registerLandscapeBannerImageApertureAdder("LandscapeBanner", "addImage");
-//        registry.registerPortraitBannerTextApertureAdder("PortraitBanner", "addText");
-//        registry.registerPortraitBannerImageApertureAdder("PortraitBanner", "addImage");
-//        registry.registerGlossBannerTextApertureAdder("GlossBanner", "addText");
-//        registry.registerGlossBannerImageApertureAdder("GlossBanner", "addImage");
-//        registry.registerScrimBannerTextApertureAdder("ScrimBanner", "addText");
-//        registry.registerScrimBannerImageApertureAdder("ScrimBanner", "addImage");
-//        registry.registerMeshBannerTextApertureAdder("MeshBanner", "addText");
-//        registry.registerMeshBannerImageApertureAdder("MeshBanner", "addImage");
-//        registry.registerLandscapeBusinnessCardTextApertureAdder("LandscapeBusinessCard", "addText");
-//        registry.registerLandscapeBusinnessCardImageApertureAdder("LandscapeBusinessCard", "addImagePath");
-//        registry.registerPortraitBusinnessCardTextApertureAdder("PortraitBusinessCard", "addText");
-//        registry.registerPortraitBusinnessCardImageApertureAdder("PortraitBusinessCard", "addImagePath");
-//        registry.registerIvoryBusinnessCardTextApertureAdder("IvoryBusinessCard", "addText");
-//        registry.registerIvoryBusinnessCardImageApertureAdder("IvoryBusinessCard", "addImagePath");
-//        registry.registerGrayBusinnessCardTextApertureAdder("GrayBusinessCard", "addText");
-//        registry.registerGrayBusinnessCardImageApertureAdder("GrayBusinessCard", "addImagePath");
-//        registry.registerWhiteBusinnessCardTextApertureAdder("WhiteBusinessCard", "addText");
-//        registry.registerWhiteBusinnessCardImageApertureAdder("WhiteBusinessCard", "addImagePath");
-//        registry.registerLaidBusinnessCardTextApertureAdder("LaidBusinessCard", "addText");
-//        registry.registerLaidBusinnessCardImageApertureAdder("LaidBusinessCard", "addImagePath");
-//        registry.registerLinenBusinnessCardTextApertureAdder("LinenBusinessCard", "addText");
-//        registry.registerLinenBusinnessCardImageApertureAdder("LinenBusinessCard", "addImagePath");
-//        registry.registerSmoothBusinnessCardTextApertureAdder("SmoothBusinnessCard", "addText");
-//        registry.registerSmoothBusinnessCardImageApertureAdder("SmoothBusinnessCard", "addImagePath");
-//        registry.registerSingleSidedBusinnessCardTextApertureAdder("SingleSidedBusinessCard", "addText");
-//        registry.registerSingleSidedBusinnessCardImageApertureAdder("SingleSidedBusinessCard", "addImagePath");
-//        registry.registerDoubleSidedBusinnessCardTextApertureAdder("DoubleSidedBusinessCard", "addText");
-//        registry.registerDoubleSidedBusinnessCardImageApertureAdder("DoubleSidedBusinessCard", "addImagePath");
     }
 }

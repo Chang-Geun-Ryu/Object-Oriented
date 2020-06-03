@@ -7,7 +7,7 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
 
-        BlueStamp bStamp = new BlueStamp(StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
+        BlueStamp bStamp = new BlueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
 
         System.out.println("price: " + bStamp.getPrice());
         System.out.print("getColor: ");
@@ -18,6 +18,10 @@ public class Program {
         System.out.println("getWidth: " + bStamp.getWidth());
         System.out.print("delivery: ");
         System.out.println(bStamp.getShippingOptions());
+
+        System.out.println("getText: " + bStamp.getTextAperture());
+
+        bStamp.setColor(StempColorType.BLUE);
 
         Registry registry = new Registry();
         App app = new App(registry);
