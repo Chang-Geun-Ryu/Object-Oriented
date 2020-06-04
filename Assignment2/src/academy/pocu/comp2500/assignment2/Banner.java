@@ -11,7 +11,8 @@ public class Banner extends Product {
 
     public Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
 //        super(size.getSize(), color, size.getPrice(), deliveryMethod);
-        super(color, size.getPrice(), deliveryMethod);
+//        super(color, size.getPrice(), deliveryMethod);
+        super();
         this.orientation = orientation;
         this.size = size;
 //        setWidth(size.getWidth());

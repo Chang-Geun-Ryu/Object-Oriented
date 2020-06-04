@@ -6,7 +6,12 @@ public class Stamp extends Product {
     private int height;
 
     public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
+//        super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
+        super();
+        assert stampColor != null : "stampColor must not be null";
+        assert stampSize != null : "stampSize must not be null";
+        assert deliveryMethod != null: "deliveryMethod must not be null";
+
         setName("Stamp" + stampSize.getSize());
         this.text = text;
 //        this.sizeType = stampSize;

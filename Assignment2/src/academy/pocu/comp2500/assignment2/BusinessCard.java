@@ -11,7 +11,8 @@ public class BusinessCard extends Product {
 
     public BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
 //        super("90 mm x 50 mm", color.getColor(), type.getPrice() + sides.getAddPrice(), deliveryMethod);
-        super(color.getColor(), type.getPrice() + sides.getAddPrice(), deliveryMethod);
+//        super(color.getColor(), type.getPrice() + sides.getAddPrice(), deliveryMethod);
+        super();
         this.side = sides;
         this.orientation = orientation;
 

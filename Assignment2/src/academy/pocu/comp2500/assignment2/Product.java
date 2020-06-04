@@ -8,12 +8,18 @@ public class Product {
     private int color;
     private ShippingOptionsType shippingOptions;
 
-    public Product(int color, int price, ShippingOptionsType deliveryMethod) {
-        this.name = "Product";
-        this.color = color;
-        this.price = price;
-        this.shippingOptions = deliveryMethod;
+    public Product() {
+        this.name = "";
+        this.price = 0;
+        this.color = 0;
+        this.shippingOptions = ShippingOptionsType.PICKUP;
     }
+//    public Product(int color, int price, ShippingOptionsType deliveryMethod) {
+//        this.name = "Product";
+//        this.color = color;
+//        this.price = price;
+//        this.shippingOptions = deliveryMethod;
+//    }
 
     public String getName() {
         return this.name;
