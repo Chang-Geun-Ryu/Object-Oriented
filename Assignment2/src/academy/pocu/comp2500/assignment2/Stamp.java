@@ -15,10 +15,12 @@ public class Stamp extends Product {
             setName("Stamp" + StempSizeType.FOUR_BY_THREE.getSize());
             this.width = StempSizeType.FOUR_BY_THREE.getWidth();
             this.height = StempSizeType.FOUR_BY_THREE.getHeight();
+            setPrice(StempSizeType.FOUR_BY_THREE.getPrice());
         } else {
             setName("Stamp" + stampSize.getSize());
             this.width = stampSize.getWidth();
             this.height = stampSize.getHeight();
+            setPrice(stampSize.getPrice());
         }
 
         if (deliveryMethod == null) {
