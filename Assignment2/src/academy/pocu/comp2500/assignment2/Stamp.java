@@ -29,9 +29,11 @@ public class Stamp extends Product {
             setShippingOptions(deliveryMethod);
         }
 
-        this.text = text;
-//        this.sizeType = stampSize;
-
+        if (text == null) {
+            this.text = "";
+        } else {
+            this.text = text;
+        }
     }
 
     public void setText(String text) {
