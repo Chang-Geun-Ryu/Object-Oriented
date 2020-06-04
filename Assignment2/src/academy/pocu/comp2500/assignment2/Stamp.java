@@ -8,15 +8,28 @@ public class Stamp extends Product {
     public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
 //        super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
         super();
-        assert stampColor != null : "stampColor must not be null";
-        assert stampSize != null : "stampSize must not be null";
-        assert deliveryMethod != null: "deliveryMethod must not be null";
 
-        setName("Stamp" + stampSize.getSize());
+        setColor(stampColor.getColor());
+
+        if (stampSize == null) {
+            setName("Stamp" + StempSizeType.FOUR_BY_THREE.getSize());
+            this.width = StempSizeType.FOUR_BY_THREE.getWidth();
+            this.height = StempSizeType.FOUR_BY_THREE.getHeight();
+        } else {
+            setName("Stamp" + stampSize.getSize());
+            this.width = stampSize.getWidth();
+            this.height = stampSize.getHeight();
+        }
+
+        if (deliveryMethod == null) {
+            setShippingOptions(ShippingOptionsType.PICKUP);
+        } else {
+            setShippingOptions(deliveryMethod);
+        }
+
         this.text = text;
 //        this.sizeType = stampSize;
-        this.width = stampSize.getWidth();
-        this.height = stampSize.getHeight();
+
     }
 
     public void setText(String text) {

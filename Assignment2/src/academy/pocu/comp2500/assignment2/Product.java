@@ -44,4 +44,12 @@ public class Product {
     protected void setName(String name) {
         this.name = name;
     }
+
+    protected void setColor(int color) {
+        this.color = color;
+    }
+
+    protected void setShippingOptions(ShippingOptionsType type) {
+        this.shippingOptions = type;
+    }
 }
