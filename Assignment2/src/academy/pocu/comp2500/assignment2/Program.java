@@ -30,7 +30,7 @@ public class Program {
         App app = new App(registry);
         registry.validate();
 
-        Banner banner = new GlossBanner(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE,ShippingOptionsType.PICKUP);
+        Banner banner = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.PICKUP);
         banner.getTexts();
     }
 }

@@ -34,6 +34,17 @@ public class Stamp extends Product {
         }
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setSize(StempSizeType size) {
+        if (size != null) {
+            this.size = size;
+            setPrice(size.getPrice());
+        }
+    }
+
     public String getText() {
         return this.text;
     }
