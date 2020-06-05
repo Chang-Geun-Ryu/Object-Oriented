@@ -3,10 +3,21 @@ package academy.pocu.comp2500.assignment2;
 public class Calendar extends Product {
     private CalendarType type;
 
-    public Calendar(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
+    public Calendar() {//(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
 //        super(calendarType.getSize(), 0xFFFFFF, calendarType.getPrice(), deliveryMethod);
 //        super(0xFFFFFF, calendarType.getPrice(), deliveryMethod);
         super();
+//        setName(calendarType.getName());
+//        setPrice(calendarType.getPrice());
+//
+//        if (deliveryMethod == null) {
+//
+//        } else {
+//            setShippingOptions(deliveryMethod);
+//        }
+    }
+
+    private void setup(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
         setName(calendarType.getName());
         setPrice(calendarType.getPrice());
 
@@ -25,16 +36,16 @@ public class Calendar extends Product {
         return this.type;
     }
 
-    public Calendar deskCalendar(ShippingOptionsType deliveryMethod) {
-        return new Calendar(CalendarType.DESK, deliveryMethod);
+    public void deskCalendar(ShippingOptionsType deliveryMethod) {
+        setup(CalendarType.DESK, deliveryMethod);
     }
 
-    public Calendar wallCalendar(ShippingOptionsType deliveryMethod) {
-        return new Calendar(CalendarType.WALL, deliveryMethod);
+    public void wallCalendar(ShippingOptionsType deliveryMethod) {
+        setup(CalendarType.WALL, deliveryMethod);
     }
 
-    public Calendar magnetCalendar(ShippingOptionsType deliveryMethod) {
-        return new Calendar(CalendarType.MAGNET, deliveryMethod);
+    public void magnetCalendar(ShippingOptionsType deliveryMethod) {
+        setup(CalendarType.MAGNET, deliveryMethod);
     }
 }
 

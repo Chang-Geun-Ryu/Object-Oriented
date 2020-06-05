@@ -5,10 +5,36 @@ public class Stamp extends Product {
     private StempSizeType size;
     private StempColorType color;
 
-    public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+    public Stamp() {//(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
 //        super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
         super();
 
+//        this.color = stampColor;
+//
+//        if (stampSize == null) {
+//            setName("Stamp" + StempSizeType.FOUR_BY_THREE.getSize());
+//            setPrice(StempSizeType.FOUR_BY_THREE.getPrice());
+//            this.size = StempSizeType.FOUR_BY_THREE;
+//        } else {
+//            setName("Stamp" + stampSize.getSize());
+//            setPrice(stampSize.getPrice());
+//            this.size = stampSize;
+//        }
+//
+//        if (deliveryMethod == null) {
+//            setShippingOptions(ShippingOptionsType.PICKUP);
+//        } else {
+//            setShippingOptions(deliveryMethod);
+//        }
+//
+//        if (text == null) {
+//            this.text = "";
+//        } else {
+//            this.text = text;
+//        }
+    }
+
+    private void setup(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         this.color = stampColor;
 
         if (stampSize == null) {
@@ -61,14 +87,15 @@ public class Stamp extends Product {
         this.color = color;
     }
 
-    public Stamp blueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        return new Stamp(text, StempColorType.BLUE, stampSize, deliveryMethod);
+    public void blueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+//        return new Stamp(text, StempColorType.BLUE, stampSize, deliveryMethod);
+        setup(text, StempColorType.BLUE, stampSize, deliveryMethod);
     }
-    public Stamp redStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        return new Stamp(text, StempColorType.RED, stampSize, deliveryMethod);
+    public void redStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        setup(text, StempColorType.RED, stampSize, deliveryMethod);
     }
-    public Stamp greenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        return new Stamp(text, StempColorType.GREEN, stampSize, deliveryMethod);
+    public void greenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        setup(text, StempColorType.GREEN, stampSize, deliveryMethod);
     }
 }
 

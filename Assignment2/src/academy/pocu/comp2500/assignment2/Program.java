@@ -7,7 +7,9 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
 
-        Stamp bStamp = Stamp.blueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
+//        Stamp bStamp =  new Stamp().blueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
+        Stamp bStamp = new Stamp();
+        bStamp.blueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
 
         System.out.println("price: " + bStamp.getPrice());
         System.out.print("getColor: ");
