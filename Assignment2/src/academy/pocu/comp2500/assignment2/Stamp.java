@@ -39,12 +39,20 @@ public class Stamp extends Product {
         return this.text;
     }
 
-    public StempSizeType getSize() {
-        return this.size;
-    }
+//    public StempSizeType getSize() {
+//        return this.size;
+//    }
 
     public StempColorType getColor() {
         return this.color;
+    }
+
+    public int getWidth() {
+        return this.size.getWidth();
+    }
+
+    public int getHeight() {
+        return this.size.getHeight();
     }
 
 //    public void setText(String text) {

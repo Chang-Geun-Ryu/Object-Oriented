@@ -15,10 +15,13 @@ public class Program {
         System.out.print("getColor: ");
         System.out.println(bStamp.getColor());
         System.out.println("getName: " + bStamp.getName());
-        System.out.println("getSize: " + bStamp.getSize());
+//        System.out.println("getSize: " + bStamp.getSize());
         System.out.print("delivery: ");
         System.out.println(bStamp.getShippingOptions());
         System.out.println("getText: " + bStamp.getText());
+
+        System.out.println(bStamp.getWidth());
+        System.out.println(bStamp.getHeight());
 
         Cart cart = new Cart();
         cart.addProduct(bStamp);
