@@ -6,18 +6,18 @@ public class App {
     public App(Registry registry) {
         // register your classes or methods here
         /// 2개 가능
-        registry.registerBlueStampCreator("Stamp", "blueStamp");
-        registry.registerRedStampCreator("Stamp", "redStamp");
-        registry.registerGreenStampCreator("Stamp", "greenStamp");
-//        registry.registerRedStampCreator("RedStamp");
-//        registry.registerBlueStampCreator("BlueStamp");
-//        registry.registerGreenStampCreator("GreenStamp");
-        registry.registerWallCalendarCreator("Calendar", "wallCalendar");
-        registry.registerMagnetCalendarCreator("Calendar", "magnetCalendar");
-        registry.registerDeskCalendarCreator("Calendar", "deskCalendar");
-//        registry.registerWallCalendarCreator("WallCalendar");
-//        registry.registerMagnetCalendarCreator("MagnetCalendar");
-//        registry.registerDeskCalendarCreator("DeskCalendar");
+//        registry.registerBlueStampCreator("Stamp", "blueStamp");
+//        registry.registerRedStampCreator("Stamp", "redStamp");
+//        registry.registerGreenStampCreator("Stamp", "greenStamp");
+        registry.registerRedStampCreator("RedStamp");
+        registry.registerBlueStampCreator("BlueStamp");
+        registry.registerGreenStampCreator("GreenStamp");
+//        registry.registerWallCalendarCreator("Calendar", "wallCalendar");
+//        registry.registerMagnetCalendarCreator("Calendar", "magnetCalendar");
+//        registry.registerDeskCalendarCreator("Calendar", "deskCalendar");
+        registry.registerWallCalendarCreator("WallCalendar");
+        registry.registerMagnetCalendarCreator("MagnetCalendar");
+        registry.registerDeskCalendarCreator("DeskCalendar");
         registry.registerLandscapeBannerCreator("LandscapeBanner");
         registry.registerPortraitBannerCreator("PortraitBanner");
         registry.registerGlossBannerCreator("GlossBanner");

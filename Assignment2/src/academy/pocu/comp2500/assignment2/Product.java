@@ -7,7 +7,7 @@ public class Product {
     private int price;
     private ShippingOptionsType shippingOptions;
 
-    public Product() {
+    protected Product() {
         this.name = "";
         this.price = 0;
         this.shippingOptions = ShippingOptionsType.PICKUP;

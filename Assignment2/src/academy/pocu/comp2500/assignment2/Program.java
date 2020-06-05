@@ -8,8 +8,8 @@ public class Program {
 	    // write your code here
 
 //        Stamp bStamp =  new Stamp().blueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
-        Stamp bStamp = new Stamp();
-        bStamp.blueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
+        Stamp bStamp = new BlueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
+//        bStamp.blueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
 
         System.out.println("price: " + bStamp.getPrice());
         System.out.print("getColor: ");
