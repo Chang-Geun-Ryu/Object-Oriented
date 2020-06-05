@@ -2,8 +2,6 @@ package academy.pocu.comp2500.assignment2;
 
 public class Stamp extends Product {
     private String text;
-//    private int width;
-//    private int height;
     private StempSizeType size;
     private StempColorType color;
 
@@ -47,22 +45,32 @@ public class Stamp extends Product {
     public StempColorType getColor() {
         return this.color;
     }
-}
 
-final class BlueStamp extends Stamp {
-    public BlueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(text, StempColorType.BLUE, stampSize, deliveryMethod);
+    static public Stamp blueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        return new Stamp(text, StempColorType.BLUE, stampSize, deliveryMethod);
+    }
+    static public Stamp redStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        return new Stamp(text, StempColorType.RED, stampSize, deliveryMethod);
+    }
+    static public Stamp greenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        return new Stamp(text, StempColorType.GREEN, stampSize, deliveryMethod);
     }
 }
 
-final class RedStamp extends Stamp {
-    public RedStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(text, StempColorType.RED, stampSize, deliveryMethod);
-    }
-}
-
-final class GreenStamp extends Stamp {
-    public GreenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-        super(text, StempColorType.GREEN, stampSize, deliveryMethod);
-    }
-}
+//final class BlueStamp extends Stamp {
+//    public BlueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+//        super(text, StempColorType.BLUE, stampSize, deliveryMethod);
+//    }
+//}
+//
+//final class RedStamp extends Stamp {
+//    public RedStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+//        super(text, StempColorType.RED, stampSize, deliveryMethod);
+//    }
+//}
+//
+//final class GreenStamp extends Stamp {
+//    public GreenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+//        super(text, StempColorType.GREEN, stampSize, deliveryMethod);
+//    }
+//}
