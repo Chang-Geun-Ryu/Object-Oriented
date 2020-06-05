@@ -36,6 +36,14 @@ public class Calendar extends Product {
         return this.type;
     }
 
+    public int getWidth() {
+        return this.type.getWidth();
+    }
+
+    public int getHeight() {
+        return this.type.getHeight();
+    }
+
 //    public Calendar deskCalendar(ShippingOptionsType deliveryMethod) {
 //        setup(CalendarType.DESK, deliveryMethod);
 //        return this;
