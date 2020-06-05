@@ -17,20 +17,9 @@ public class Calendar extends Product {
         }
     }
 
-    private void setup(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
-        setName(calendarType.getName());
-        setPrice(calendarType.getPrice());
-
-        if (deliveryMethod == null) {
-
-        } else {
-            setShippingOptions(deliveryMethod);
-        }
-    }
-
-    public void setType(CalendarType type) {
-        this.type = type;
-    }
+//    public void setType(CalendarType type) {
+//        this.type = type;
+//    }
 
     public CalendarType getType() {
         return this.type;

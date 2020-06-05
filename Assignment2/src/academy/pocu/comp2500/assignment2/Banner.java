@@ -9,13 +9,14 @@ public class Banner extends Product {
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
 
-    protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
+    protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod, ArrayList<TextAperture> textAperture, ArrayList<ImageAperture> imageAperture) {
         super();
         this.orientation = orientation;
         this.size = size;
         setName(type.getName() + size.getSize());
-        this.texts = new ArrayList<>();
-        this.imagePaths = new ArrayList<>();
+        setPrice(size.getPrice() + (textAperture.size() + imageAperture.size()) * 5);
+        this.texts = textAperture;
+        this.imagePaths = imageAperture;
     }
 
 //    public void setOrientation(OrientationType orientation) {

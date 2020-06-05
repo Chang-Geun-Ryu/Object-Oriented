@@ -15,11 +15,11 @@ public class BusinessCard extends Product {
         this.orientation = orientation;
 
         setName(type.getName());
-        setPrice(type.getPrice());
+        setPrice(type.getPrice() + (textAperture.size() + imageAperture.size()) * 5);
         setShippingOptions(deliveryMethod);
 
-        this.texts = new ArrayList<>();
-        this.imagePaths = new ArrayList<>();
+        this.texts = textAperture;
+        this.imagePaths = imageAperture;
     }
 
     public ArrayList<ImageAperture> getImagePaths() {
