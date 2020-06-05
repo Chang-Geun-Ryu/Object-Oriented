@@ -47,50 +47,36 @@ public class Stamp extends Product {
         return this.color;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setSize(StempSizeType size) {
-        if (size != null) {
-            this.size = size;
-            setPrice(size.getPrice());
-        }
-    }
-
-    public void setColor(StempColorType color) {
-        this.color = color;
-    }
-
-//    public Stamp blueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-////        return new Stamp(text, StempColorType.BLUE, stampSize, deliveryMethod);
-//        setup(text, StempColorType.BLUE, stampSize, deliveryMethod);
-//        return this;
+//    public void setText(String text) {
+//        this.text = text;
 //    }
-//    public Stamp redStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        setup(text, StempColorType.RED, stampSize, deliveryMethod);
-//        return this;
+//
+//    public void setSize(StempSizeType size) {
+//        if (size != null) {
+//            this.size = size;
+//            setPrice(size.getPrice());
+//        }
 //    }
-//    public Stamp greenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        setup(text, StempColorType.GREEN, stampSize, deliveryMethod);
-//        return this;
+//
+//    public void setColor(StempColorType color) {
+//        this.color = color;
 //    }
 }
 
-//final class BlueStamp extends Stamp {
-//    public BlueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        super(text, StempColorType.BLUE, stampSize, deliveryMethod);
-//    }
-//}
-//
-//final class RedStamp extends Stamp {
-//    public RedStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        super(text, StempColorType.RED, stampSize, deliveryMethod);
-//    }
-//}
-//
-//final class GreenStamp extends Stamp {
-//    public GreenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        super(text, StempColorType.GREEN, stampSize, deliveryMethod);
-//    }
-//}
+final class BlueStamp extends Stamp {
+    public BlueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        super(text, StempColorType.BLUE, stampSize, deliveryMethod);
+    }
+}
+
+final class RedStamp extends Stamp {
+    public RedStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        super(text, StempColorType.RED, stampSize, deliveryMethod);
+    }
+}
+
+final class GreenStamp extends Stamp {
+    public GreenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+        super(text, StempColorType.GREEN, stampSize, deliveryMethod);
+    }
+}

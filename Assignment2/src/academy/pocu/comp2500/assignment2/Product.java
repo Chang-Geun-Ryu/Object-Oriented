@@ -37,7 +37,7 @@ public class Product {
         this.name = name;
     }
 
-    protected void setShippingOptions(ShippingOptionsType type) {
+    public void setShippingOptions(ShippingOptionsType type) {
         this.shippingOptions = type;
     }
 }
