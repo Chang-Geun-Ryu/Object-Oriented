@@ -34,14 +34,9 @@ public class Stamp extends Product {
         }
     }
 
-
     public String getText() {
         return this.text;
     }
-
-//    public StempSizeType getSize() {
-//        return this.size;
-//    }
 
     public StempColorType getColor() {
         return this.color;
@@ -54,37 +49,5 @@ public class Stamp extends Product {
     public int getHeight() {
         return this.size.getHeight();
     }
-
-//    public void setText(String text) {
-//        this.text = text;
-//    }
-//
-//    public void setSize(StempSizeType size) {
-//        if (size != null) {
-//            this.size = size;
-//            setPrice(size.getPrice());
-//        }
-//    }
-//
-//    public void setColor(StempColorType color) {
-//        this.color = color;
-//    }
 }
 
-//public class BlueStamp extends Stamp {
-//    public BlueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        super(text, StempColorType.BLUE, stampSize, deliveryMethod);
-//    }
-//}
-//
-//final class RedStamp extends Stamp {
-//    public RedStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        super(text, StempColorType.RED, stampSize, deliveryMethod);
-//    }
-//}
-//
-//final class GreenStamp extends Stamp {
-//    public GreenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        super(text, StempColorType.GREEN, stampSize, deliveryMethod);
-//    }
-//}
