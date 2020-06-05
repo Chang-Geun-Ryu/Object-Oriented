@@ -9,17 +9,17 @@ public class BusinessCard extends Product {
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
 
-    protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod, ArrayList<TextAperture> textAperture, ArrayList<ImageAperture> imageAperture) {
+    protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
         super();//ArrayList<TextAperture> textAperture, ArrayList<ImageAperture> imageAperture,
         this.side = sides;
         this.orientation = orientation;
 
         setName(type.getName());
-        setPrice(type.getPrice() + (textAperture.size() + imageAperture.size()) * 5);
+        setPrice(type.getPrice());
         setShippingOptions(deliveryMethod);
 
-        this.texts = textAperture;
-        this.imagePaths = imageAperture;
+        this.texts = new ArrayList<>();
+        this.imagePaths = new ArrayList<>();
     }
 
     public ArrayList<ImageAperture> getImagePaths() {
@@ -32,9 +32,11 @@ public class BusinessCard extends Product {
 
     public void addText(TextAperture textAperture) {
         this.texts.add(textAperture);
+        setPrice(getPrice() + 5);
     }
 
     public void addImage(ImageAperture imageAperture) {
         this.imagePaths.add(imageAperture);
+        setPrice(getPrice() + 5);
     }
 }
