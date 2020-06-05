@@ -18,9 +18,9 @@ public class Banner extends Product {
         this.imagePaths = new ArrayList<>();
     }
 
-    public void setOrientation(OrientationType orientation) {
-        this.orientation = orientation;
-    }
+//    public void setOrientation(OrientationType orientation) {
+//        this.orientation = orientation;
+//    }
 
     public OrientationType getOrientation() {
         return this.orientation;
