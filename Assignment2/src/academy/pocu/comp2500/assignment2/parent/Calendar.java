@@ -1,4 +1,7 @@
-package academy.pocu.comp2500.assignment2;
+package academy.pocu.comp2500.assignment2.parent;
+
+import academy.pocu.comp2500.assignment2.CalendarType;
+import academy.pocu.comp2500.assignment2.ShippingOptionsType;
 
 public class Calendar extends Product {
     private CalendarType type;

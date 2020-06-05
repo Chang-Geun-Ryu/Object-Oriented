@@ -1,5 +1,6 @@
 package academy.pocu.comp2500.assignment2;
 
+import academy.pocu.comp2500.assignment2.parent.Stamp;
 import academy.pocu.comp2500.assignment2.registry.Registry;
 
 public class Program {

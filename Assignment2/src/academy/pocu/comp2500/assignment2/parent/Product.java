@@ -1,4 +1,6 @@
-package academy.pocu.comp2500.assignment2;
+package academy.pocu.comp2500.assignment2.parent;
+
+import academy.pocu.comp2500.assignment2.ShippingOptionsType;
 
 import java.util.ArrayList;
 
