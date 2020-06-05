@@ -6,7 +6,6 @@ public class Stamp extends Product {
     private StempColorType color;
 
     protected Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
-//        super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
         super();
 
         this.color = stampColor;

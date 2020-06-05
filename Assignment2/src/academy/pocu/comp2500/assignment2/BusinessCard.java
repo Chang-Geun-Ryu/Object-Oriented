@@ -9,16 +9,17 @@ public class BusinessCard extends Product {
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
 
-    public BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
-//        super("90 mm x 50 mm", color.getColor(), type.getPrice() + sides.getAddPrice(), deliveryMethod);
-//        super(color.getColor(), type.getPrice() + sides.getAddPrice(), deliveryMethod);
-        super();
+    protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
+        super();//ArrayList<TextAperture> textAperture, ArrayList<ImageAperture> imageAperture,
         this.side = sides;
         this.orientation = orientation;
 
-//        setWidth(type.getWidth());
-//        setHeight(type.getHeight());
         setName(type.getName());
+        setPrice(type.getPrice());
+        setShippingOptions(deliveryMethod);
+
+        this.texts = new ArrayList<>();
+        this.imagePaths = new ArrayList<>();
     }
 
     public ArrayList<ImageAperture> getImagePaths() {
@@ -37,15 +38,3 @@ public class BusinessCard extends Product {
         this.imagePaths.add(imageAperture);
     }
 }
-
-//final class LaidBusinessCard extends BusinessCard {
-//    public LaidBusinessCard(BusinessCardSide businessCardSides, OrientationType businessCardOrientation, BusinessCardColor businessCardColor, ShippingOptionsType deliveryMethod) {
-//        super(BusinessCardType.LAID, businessCardSides, businessCardOrientation, businessCardColor, deliveryMethod);
-//    }
-//}
-//
-//final class SingleSidedBusinessCard extends BusinessCard {
-//    public SingleSidedBusinessCard(BusinessCardType businessCardType, OrientationType businessCardOrientation, BusinessCardColor businessCardColor, ShippingOptionsType deliveryMethod) {
-//        super(businessCardType, BusinessCardSide.SINGLE, businessCardOrientation, businessCardColor, deliveryMethod);
-//    }
-//}
