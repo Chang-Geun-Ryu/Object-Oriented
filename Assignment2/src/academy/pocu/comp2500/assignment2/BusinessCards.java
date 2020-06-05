@@ -1,11 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import academy.pocu.comp2500.assignment2.type.BusinessCardColor;
-import academy.pocu.comp2500.assignment2.type.BusinessCardSide;
-import academy.pocu.comp2500.assignment2.type.BusinessCardType;
-import academy.pocu.comp2500.assignment2.type.OrientationType;
-import academy.pocu.comp2500.assignment2.type.ShippingOptionsType;
-
 import java.util.ArrayList;
 
 class BusinessCard extends Product {

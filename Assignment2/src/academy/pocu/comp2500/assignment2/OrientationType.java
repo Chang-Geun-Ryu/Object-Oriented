@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment2.type;
+package academy.pocu.comp2500.assignment2;
 
 public enum OrientationType {
     LANDSCAPE,

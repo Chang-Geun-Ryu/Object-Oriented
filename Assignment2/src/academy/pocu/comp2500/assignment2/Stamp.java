@@ -1,10 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import academy.pocu.comp2500.assignment2.Product;
-import academy.pocu.comp2500.assignment2.type.ShippingOptionsType;
-import academy.pocu.comp2500.assignment2.type.StempColorType;
-import academy.pocu.comp2500.assignment2.type.StempSizeType;
-
 public class Stamp extends Product {
     private String text;
     private StempSizeType size;

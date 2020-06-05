@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment2.type;
+package academy.pocu.comp2500.assignment2;
 
 public enum BannerSize {
     ONE_HALF(" (1000 mm x 500 mm)", 1000, 500, 5000),
