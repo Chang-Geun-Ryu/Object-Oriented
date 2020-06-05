@@ -2,25 +2,25 @@ package academy.pocu.comp2500.assignment2;
 
 public class Stamp extends Product {
     private String text;
-    private int width;
-    private int height;
+//    private int width;
+//    private int height;
+    private StempSizeType size;
+    private StempColorType color;
 
     public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
 //        super(stampColor.getColor(), stampSize.getPrice(), deliveryMethod);
         super();
 
-        setColor(stampColor.getColor());
+        this.color = stampColor;
 
         if (stampSize == null) {
             setName("Stamp" + StempSizeType.FOUR_BY_THREE.getSize());
-            this.width = StempSizeType.FOUR_BY_THREE.getWidth();
-            this.height = StempSizeType.FOUR_BY_THREE.getHeight();
             setPrice(StempSizeType.FOUR_BY_THREE.getPrice());
+            this.size = StempSizeType.FOUR_BY_THREE;
         } else {
             setName("Stamp" + stampSize.getSize());
-            this.width = stampSize.getWidth();
-            this.height = stampSize.getHeight();
             setPrice(stampSize.getPrice());
+            this.size = stampSize;
         }
 
         if (deliveryMethod == null) {
@@ -36,28 +36,16 @@ public class Stamp extends Product {
         }
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-//    public void setColor(StempColorType stampColor) {
-//        setColor(stampColor.getColor());
-//    }
-
     public String getText() {
         return this.text;
     }
 
-//    public StempSizeType getSizeType() {
-//        return this.sizeType;
-//    }
-
-    public int getWidth () {
-        return this.width;
+    public StempSizeType getSize() {
+        return this.size;
     }
 
-    public int getHeight() {
-        return this.height;
+    public StempColorType getColor() {
+        return this.color;
     }
 }
 

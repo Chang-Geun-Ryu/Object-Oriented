@@ -14,14 +14,13 @@ public class Program {
         System.out.println("price: " + bStamp.getPrice());
         System.out.print("getColor: ");
         System.out.println(bStamp.getColor());
-        System.out.println("getHeight: " + bStamp.getHeight());
         System.out.println("getName: " + bStamp.getName());
-//        System.out.println("getSize: " + bStamp.getSize());
-        System.out.println("getWidth: " + bStamp.getWidth());
+        System.out.println("getSize: " + bStamp.getSize());
         System.out.print("delivery: ");
         System.out.println(bStamp.getShippingOptions());
 
         System.out.println("getText: " + bStamp.getText());
+
 
         Cart cart = new Cart();
         cart.addProduct(bStamp);

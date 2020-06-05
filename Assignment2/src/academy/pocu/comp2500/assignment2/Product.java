@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class Product {
     private String name;
     private int price;
-    private int color;
     private ShippingOptionsType shippingOptions;
 
     public Product() {
         this.name = "";
         this.price = 0;
-        this.color = 0;
         this.shippingOptions = ShippingOptionsType.PICKUP;
     }
 //    public Product(int color, int price, ShippingOptionsType deliveryMethod) {
@@ -23,10 +21,6 @@ public class Product {
 
     public String getName() {
         return this.name;
-    }
-
-    public int getColor() {
-        return this.color;
     }
 
     public int getPrice() {
@@ -43,10 +37,6 @@ public class Product {
 
     protected void setName(String name) {
         this.name = name;
-    }
-
-    protected void setColor(int color) {
-        this.color = color;
     }
 
     protected void setShippingOptions(ShippingOptionsType type) {
