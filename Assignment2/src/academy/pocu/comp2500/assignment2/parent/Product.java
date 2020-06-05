@@ -1,8 +1,6 @@
 package academy.pocu.comp2500.assignment2.parent;
 
-import academy.pocu.comp2500.assignment2.ShippingOptionsType;
-
-import java.util.ArrayList;
+import academy.pocu.comp2500.assignment2.type.ShippingOptionsType;
 
 public class Product {
     private String name;

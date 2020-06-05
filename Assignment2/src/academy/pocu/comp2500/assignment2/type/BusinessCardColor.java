@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment2;
+package academy.pocu.comp2500.assignment2.type;
 
 public enum BusinessCardColor {
     GRAY(0xFF0000),

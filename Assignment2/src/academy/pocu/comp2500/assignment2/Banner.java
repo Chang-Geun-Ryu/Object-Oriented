@@ -1,6 +1,10 @@
 package academy.pocu.comp2500.assignment2;
 
 import academy.pocu.comp2500.assignment2.parent.Product;
+import academy.pocu.comp2500.assignment2.type.BannerSize;
+import academy.pocu.comp2500.assignment2.type.BannerType;
+import academy.pocu.comp2500.assignment2.type.OrientationType;
+import academy.pocu.comp2500.assignment2.type.ShippingOptionsType;
 
 import java.util.ArrayList;
 

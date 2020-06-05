@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment2;
+package academy.pocu.comp2500.assignment2.type;
 
 public enum StempSizeType {
     FOUR_BY_THREE(" (40 mm x 30 mm)", 40, 30, 2300),
