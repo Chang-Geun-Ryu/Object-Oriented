@@ -36,16 +36,19 @@ public class Calendar extends Product {
         return this.type;
     }
 
-    public void deskCalendar(ShippingOptionsType deliveryMethod) {
+    public Calendar deskCalendar(ShippingOptionsType deliveryMethod) {
         setup(CalendarType.DESK, deliveryMethod);
+        return this;
     }
 
-    public void wallCalendar(ShippingOptionsType deliveryMethod) {
+    public Calendar wallCalendar(ShippingOptionsType deliveryMethod) {
         setup(CalendarType.WALL, deliveryMethod);
+        return this;
     }
 
-    public void magnetCalendar(ShippingOptionsType deliveryMethod) {
+    public Calendar magnetCalendar(ShippingOptionsType deliveryMethod) {
         setup(CalendarType.MAGNET, deliveryMethod);
+        return this;
     }
 }
 

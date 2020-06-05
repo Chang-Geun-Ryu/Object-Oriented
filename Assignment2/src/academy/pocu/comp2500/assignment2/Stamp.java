@@ -87,15 +87,18 @@ public class Stamp extends Product {
         this.color = color;
     }
 
-    public void blueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+    public Stamp blueStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
 //        return new Stamp(text, StempColorType.BLUE, stampSize, deliveryMethod);
         setup(text, StempColorType.BLUE, stampSize, deliveryMethod);
+        return this;
     }
-    public void redStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+    public Stamp redStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         setup(text, StempColorType.RED, stampSize, deliveryMethod);
+        return this;
     }
-    public void greenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+    public Stamp greenStamp(String text, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         setup(text, StempColorType.GREEN, stampSize, deliveryMethod);
+        return this;
     }
 }
 
