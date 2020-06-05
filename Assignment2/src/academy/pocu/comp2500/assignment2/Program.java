@@ -1,7 +1,8 @@
 package academy.pocu.comp2500.assignment2;
 
-import academy.pocu.comp2500.assignment2.parent.Stamp;
 import academy.pocu.comp2500.assignment2.registry.Registry;
+import academy.pocu.comp2500.assignment2.type.BannerSize;
+import academy.pocu.comp2500.assignment2.type.OrientationType;
 import academy.pocu.comp2500.assignment2.type.ShippingOptionsType;
 import academy.pocu.comp2500.assignment2.type.StempSizeType;
 
@@ -29,5 +30,8 @@ public class Program {
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
+
+        Banner banner = new GlossBanner(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE,ShippingOptionsType.PICKUP);
+        banner.getTexts();
     }
 }

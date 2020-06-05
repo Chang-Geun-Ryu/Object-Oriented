@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.assignment2.parent;
+package academy.pocu.comp2500.assignment2;
 
 import academy.pocu.comp2500.assignment2.type.ShippingOptionsType;
 

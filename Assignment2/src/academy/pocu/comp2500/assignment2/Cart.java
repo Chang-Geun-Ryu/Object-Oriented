@@ -1,7 +1,5 @@
 package academy.pocu.comp2500.assignment2;
 
-import academy.pocu.comp2500.assignment2.parent.Product;
-
 import java.util.ArrayList;
 
 public class Cart {
