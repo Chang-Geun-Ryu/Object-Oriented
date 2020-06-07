@@ -76,15 +76,22 @@ public final class BlogHost {
     }
 
     public final void setTags(String tag) {
+        if (tag == "" || this.tags == null) {
+            this.tags.clear();
+        }
         if (this.tags.contains(tag)) {
             this.tags.remove(tag);
         } else {
             this.tags.add(tag);
         }
-        System.out.println(tags);
+//        System.out.println(tags);
     }
 
     public final void setAuthors(String authorId) {
+        if (authorId == "" || authorId == null) {
+            this.authors.clear();
+        }
+
         if (this.authors.contains(authorId)) {
             this.authors.remove(authorId);
         } else {
@@ -98,7 +105,6 @@ public final class BlogHost {
         } else {
             this.sortType = type;
         }
-
     }
 
     public final ArrayList<Content> getContents() {
