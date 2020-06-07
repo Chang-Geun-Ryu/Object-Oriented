@@ -10,12 +10,6 @@ public class Product {
         this.price = 0;
         this.shippingOptions = ShippingOptionsType.PICKUP;
     }
-//    public Product(int color, int price, ShippingOptionsType deliveryMethod) {
-//        this.name = "Product";
-//        this.color = color;
-//        this.price = price;
-//        this.shippingOptions = deliveryMethod;
-//    }
 
     public String getName() {
         return this.name;
@@ -37,7 +31,7 @@ public class Product {
         this.name = name;
     }
 
-    protected void setShippingOptions(ShippingOptionsType type) {
+    public void setShippingOptions(ShippingOptionsType type) {
         this.shippingOptions = type;
     }
 }

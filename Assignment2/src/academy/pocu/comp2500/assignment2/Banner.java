@@ -23,6 +23,10 @@ public class Banner extends Product {
         return this.orientation;
     }
 
+    public BannerSize getSize() {
+        return this.size;
+    }
+
     public ArrayList<ImageAperture> getImagePaths() {
         return this.imagePaths;
     }

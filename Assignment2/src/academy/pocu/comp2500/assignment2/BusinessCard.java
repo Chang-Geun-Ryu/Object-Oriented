@@ -10,7 +10,7 @@ public class BusinessCard extends Product {
     private ArrayList<ImageAperture> imagePaths;
 
     protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
-        super();//ArrayList<TextAperture> textAperture, ArrayList<ImageAperture> imageAperture,
+        super();
         this.side = sides;
         this.orientation = orientation;
 
@@ -28,6 +28,14 @@ public class BusinessCard extends Product {
 
     public ArrayList<TextAperture> getTexts() {
         return this.texts;
+    }
+
+    public BusinessCardSide getSide() {
+        return this.side;
+    }
+
+    public OrientationType getOrientation() {
+        return this.orientation;
     }
 
     public void addText(TextAperture textAperture) {
