@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class BusinessCard extends Product {
     private BusinessCardSide side;
     private OrientationType orientation;
+    private BusinessCardType type;
+    private BusinessCardColor color;
 
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
@@ -13,7 +15,8 @@ public class BusinessCard extends Product {
         super();
         this.side = sides;
         this.orientation = orientation;
-
+        this.type = type;
+        this.color = color;
         setName(type.getName());
         setPrice(type.getPrice());
         setShippingOptions(deliveryMethod);
@@ -34,8 +37,24 @@ public class BusinessCard extends Product {
         return this.side;
     }
 
+    public BusinessCardType getType() {
+        return this.type;
+    }
+
+    public BusinessCardColor getColor() {
+        return this.color;
+    }
+
     public OrientationType getOrientation() {
         return this.orientation;
+    }
+
+    public int getWidth() {
+        return 90;
+    }
+
+    public int getHeight() {
+        return 50;
     }
 
     public void addText(TextAperture textAperture) {
@@ -46,5 +65,21 @@ public class BusinessCard extends Product {
     public void addImage(ImageAperture imageAperture) {
         this.imagePaths.add(imageAperture);
         setPrice(getPrice() + 5);
+    }
+
+    protected void setType(BusinessCardType type) {
+        this.type = type;
+    }
+
+    protected void setSide(BusinessCardSide side) {
+        this.side = side;
+    }
+
+    protected void setColor(BusinessCardColor color) {
+        this.color = color;
+    }
+
+    protected void setOrientation(OrientationType orientation) {
+        this.orientation = orientation;
     }
 }

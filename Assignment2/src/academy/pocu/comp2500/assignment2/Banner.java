@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Banner extends Product {
     private OrientationType orientation;
     private BannerSize size;
+    private int color;
 
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
@@ -13,6 +14,7 @@ public class Banner extends Product {
         super();
         this.orientation = orientation;
         this.size = size;
+        this.color = color;
         setName(type.getName() + size.getSize());
         setPrice(size.getPrice());
         this.texts = new ArrayList<>();
@@ -25,6 +27,10 @@ public class Banner extends Product {
 
     public BannerSize getSize() {
         return this.size;
+    }
+
+    public int getColor() {
+        return this.color;
     }
 
     public ArrayList<ImageAperture> getImagePaths() {

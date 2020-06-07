@@ -44,6 +44,10 @@ public class Stamp extends Product {
         }
     }
 
+    public void setColor(StempColorType color) {
+        this.color = color;
+    }
+
     public String getText() {
         return this.text;
     }

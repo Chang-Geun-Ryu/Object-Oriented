@@ -19,6 +19,10 @@ public class Calendar extends Product {
         return this.type;
     }
 
+    public int getColor() {
+        return 0xFFFFFF;
+    }
+
     public int getWidth() {
         return this.type.getWidth();
     }
