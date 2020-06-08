@@ -6,6 +6,11 @@ public class Pizza {
     private int price;
     private ArrayList<Topping> toppings;
 
+    protected int veggieCount;
+    protected int meatCount;
+    protected boolean isCheeseAdded;
+    protected boolean isVeggieAdded;
+
     protected Pizza(int price) {
         this.price = price;
         this.toppings = new ArrayList<>();

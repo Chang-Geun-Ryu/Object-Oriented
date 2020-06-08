@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MeatLoverPizza extends Pizza {
     private static final int PRICE = 21;
-    private boolean isVeggieAdded;
+//    private boolean isVeggieAdded;
 
     public MeatLoverPizza() {
         super(PRICE);
