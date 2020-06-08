@@ -5,9 +5,9 @@ import java.util.Set;
 
 public class SetMenu extends Manu {
 
-    private ArrayList<Appetizer> appetizers = new ArrayList<>();
-    private ArrayList<Dessert> desserts = new ArrayList<>();
-    private ArrayList<MainCourse> mainCourses = new ArrayList<>();
+    protected ArrayList<Appetizer> appetizers = new ArrayList<>();
+    protected ArrayList<Dessert> desserts = new ArrayList<>();
+    protected ArrayList<MainCourse> mainCourses = new ArrayList<>();
 
     protected SetMenu(MenuPrice price) {
         super(price);
@@ -63,18 +63,18 @@ public class SetMenu extends Manu {
         this.mainCourses.clear();
     }
 
-    public ArrayList<Appetizer> getAppetizer() {
-        assert getCountAppetizer() > 0 : "call isValid() first!";
-        return this.appetizers;
-    }
+//    public ArrayList<Appetizer> getAppetizer() {
+//        assert getCountAppetizer() > 0 : "call isValid() first!";
+//        return this.appetizers;
+//    }
 
-    public ArrayList<MainCourse> getMainCourse() {
-        assert getCountMainCourse() > 0 : "call isValid() first!";
-        return this.mainCourses;
-    }
+//    public ArrayList<MainCourse> getMainCourse() {
+//        assert getCountMainCourse() > 0 : "call isValid() first!";
+//        return this.mainCourses;
+//    }
 
-    public ArrayList<Dessert> getDessert() {
-        assert getCountDessert() > 0 : "call isValid() first!";
-        return this.desserts;
-    }
+//    public ArrayList<Dessert> getDessert() {
+//        assert getCountDessert() > 0 : "call isValid() first!";
+//        return this.desserts;
+//    }
 }

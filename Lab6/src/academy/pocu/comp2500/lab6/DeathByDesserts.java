@@ -1,5 +1,7 @@
 package academy.pocu.comp2500.lab6;
 
+import java.util.ArrayList;
+
 public class DeathByDesserts extends SetMenu {
     private static final int PRICE = 20;
 
@@ -14,5 +16,10 @@ public class DeathByDesserts extends SetMenu {
         super.addDessert(dessert2);
         super.addDessert(dessert3);
         super.addDessert(dessert4);
+    }
+
+    public ArrayList<Dessert> getDessert() {
+        assert getCountDessert() > 0 : "call isValid() first!";
+        return super.desserts;
     }
 }

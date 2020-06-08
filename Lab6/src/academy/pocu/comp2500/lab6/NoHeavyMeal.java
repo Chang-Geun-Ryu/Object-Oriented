@@ -1,5 +1,7 @@
 package academy.pocu.comp2500.lab6;
 
+import java.util.ArrayList;
+
 public class NoHeavyMeal extends SetMenu{
 
     public NoHeavyMeal() {
@@ -16,5 +18,14 @@ public class NoHeavyMeal extends SetMenu{
     public void setDessert(Dessert desert) {
         super.clearDessert();
         super.addDessert(desert);
+    }
+
+    public ArrayList<Appetizer> getAppetizers() {
+        return this.appetizers;
+    }
+
+    public Dessert getDessert() {
+        assert (super.desserts.size() > 0) : "call isValid() first!";
+        return super.desserts.get(0);
     }
 }
