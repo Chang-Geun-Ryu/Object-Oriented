@@ -4,11 +4,11 @@ public class MeatLoverPizza extends Pizza {
 
     public MeatLoverPizza() {
         super(MenuPrice.MEAT_LOVER_PIZZA);
-        super.addToppings(Topping.BACON);
-        super.addToppings(Topping.PEPERONI);
-        super.addToppings(Topping.HAM);
-        super.addToppings(Topping.SAUSAGES);
-        super.addToppings(Topping.CHEDDAR_CHEESE);
+        super.addTopping(Topping.BACON);
+        super.addTopping(Topping.PEPERONI);
+        super.addTopping(Topping.HAM);
+        super.addTopping(Topping.SAUSAGES);
+        super.addTopping(Topping.CHEDDAR_CHEESE);
     }
 
     public boolean addBlackOlives() {
@@ -16,13 +16,13 @@ public class MeatLoverPizza extends Pizza {
             return false;
         }
 
-        super.addToppings(Topping.BLACK_OLIVES);
+        super.addTopping(Topping.BLACK_OLIVES);
         this.isVeggieAdded = true;
         return true;
     }
 
     public boolean removeBlackOlives() {
-        boolean isRemoved = super.removeToppings(Topping.BLACK_OLIVES);
+        boolean isRemoved = super.removeTopping(Topping.BLACK_OLIVES);
 
         if (isRemoved) {
             this.isVeggieAdded = false;
@@ -36,13 +36,13 @@ public class MeatLoverPizza extends Pizza {
             return false;
         }
 
-        super.addToppings(Topping.RED_ONIONS);
+        super.addTopping(Topping.RED_ONIONS);
         this.isVeggieAdded = true;
         return true;
     }
 
     public boolean removeRedOnions() {
-        boolean isRemoved = super.removeToppings(Topping.RED_ONIONS);
+        boolean isRemoved = super.removeTopping(Topping.RED_ONIONS);
 
         if (isRemoved) {
             this.isVeggieAdded = false;
@@ -56,13 +56,13 @@ public class MeatLoverPizza extends Pizza {
             return false;
         }
 
-        super.addToppings(Topping.GREEN_PEPPERS);
+        super.addTopping(Topping.GREEN_PEPPERS);
         this.isVeggieAdded = true;
         return true;
     }
 
     public boolean removeGreenPeppers() {
-        boolean isRemoved = super.removeToppings(Topping.GREEN_PEPPERS);
+        boolean isRemoved = super.removeTopping(Topping.GREEN_PEPPERS);
 
         if (isRemoved) {
             this.isVeggieAdded = false;

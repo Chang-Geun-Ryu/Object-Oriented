@@ -43,11 +43,104 @@ public class Pizza extends Manu {
         return this.toppings;
     }
 
-    protected boolean addToppings(Topping topping) {
-        return this.toppings.add(topping);
+    public boolean addTopping(Topping topping) {
+
+        switch (super.price) {
+            case HOUSE_PIZZA:
+            case VEGGIE_PIZZA:
+            case MEAT_LOVER_PIZZA:
+                return this.toppings.add(topping);
+            case FREE_SOUL_PIZZA:
+                return addMeatLover(topping);
+            default:
+                assert (true) : "IT IS NOT Pizza";
+                return false;
+        }
     }
 
-    protected boolean removeToppings(Topping topping) {
-        return this.toppings.remove(topping);
+    public boolean removeTopping(Topping topping) {
+        switch (super.price) {
+            case HOUSE_PIZZA:
+            case VEGGIE_PIZZA:
+            case MEAT_LOVER_PIZZA:
+                return this.toppings.remove(topping);
+            case FREE_SOUL_PIZZA:
+                return removeMeatLover(topping);
+            default:
+                assert (true) : "IT IS NOT Pizza";
+                return false;
+        }
+    }
+
+    private boolean addMeatLover(Topping topping) {
+        if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
+                || (isVeggie(topping) && this.veggieCount >= MAX_VEGGIE_COUNT)
+                || (isCheese(topping) && this.isCheeseAdded)) {
+            return false;
+        }
+
+        this.toppings.add(topping);
+
+        if (isMeat(topping)) {
+            ++this.meatCount;
+        }
+
+        if (isVeggie(topping)) {
+            ++this.veggieCount;
+        }
+
+        if (isCheese(topping)) {
+            this.isCheeseAdded = true;
+        }
+
+        return true;
+    }
+
+    private boolean removeMeatLover(Topping topping) {
+        boolean isRemoved = this.toppings.remove(topping);
+
+        if (isRemoved) {
+            if (isMeat(topping)) {
+                --this.meatCount;
+            }
+
+            if (isVeggie(topping)) {
+                --this.veggieCount;
+            }
+
+            if (isCheese(topping)) {
+                this.isCheeseAdded = false;
+            }
+        }
+
+        return isRemoved;
+    }
+
+//    protected boolean addTopping(Topping topping) {
+//        return this.toppings.add(topping);
+//    }
+
+//    protected boolean removeTopping(Topping topping) {
+//        return this.toppings.remove(topping);
+//    }
+
+    protected static boolean isMeat(Topping topping) {
+        return topping == Topping.BACON
+                || topping == Topping.CHICKEN
+                || topping == Topping.PEPERONI
+                || topping == Topping.SAUSAGES
+                || topping == Topping.HAM;
+    }
+
+    protected static boolean isVeggie(Topping topping) {
+        return topping == Topping.BLACK_OLIVES
+                || topping == Topping.RED_ONIONS
+                || topping == Topping.GREEN_PEPPERS;
+    }
+
+    protected static boolean isCheese(Topping topping) {
+        return topping == Topping.MOZZARELLA_CHEESE
+                || topping == Topping.CHEDDAR_CHEESE
+                || topping == Topping.FETA_CHEESE;
     }
 }

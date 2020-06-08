@@ -4,10 +4,10 @@ public class HousePizza extends Pizza {
 
     public HousePizza() {
         super(MenuPrice.HOUSE_PIZZA);
-        super.addToppings(Topping.BLACK_OLIVES);
-        super.addToppings(Topping.RED_ONIONS);
-        super.addToppings(Topping.GREEN_PEPPERS);
-        super.addToppings(Topping.MOZZARELLA_CHEESE);
+        super.addTopping(Topping.BLACK_OLIVES);
+        super.addTopping(Topping.RED_ONIONS);
+        super.addTopping(Topping.GREEN_PEPPERS);
+        super.addTopping(Topping.MOZZARELLA_CHEESE);
     }
 
     public boolean addBacon() {
@@ -15,13 +15,13 @@ public class HousePizza extends Pizza {
             return false;
         }
 
-        super.addToppings(Topping.BACON);
+        super.addTopping(Topping.BACON);
         ++this.meatCount;
         return true;
     }
 
     public boolean removeBacon() {
-        boolean isRemoved = super.removeToppings(Topping.BACON);
+        boolean isRemoved = super.removeTopping(Topping.BACON);
 
         if (isRemoved) {
             --this.meatCount;
@@ -35,13 +35,13 @@ public class HousePizza extends Pizza {
             return false;
         }
 
-        super.addToppings(Topping.PEPERONI);
+        super.addTopping(Topping.PEPERONI);
         ++this.meatCount;
         return true;
     }
 
     public boolean removePeperoni() {
-        boolean isRemoved = super.removeToppings(Topping.PEPERONI);
+        boolean isRemoved = super.removeTopping(Topping.PEPERONI);
 
         if (isRemoved) {
             --this.meatCount;
@@ -55,13 +55,13 @@ public class HousePizza extends Pizza {
             return false;
         }
 
-        super.addToppings(Topping.SAUSAGES);
+        super.addTopping(Topping.SAUSAGES);
         ++this.meatCount;
         return true;
     }
 
     public boolean removeSausages() {
-        boolean isRemoved = super.removeToppings(Topping.SAUSAGES);
+        boolean isRemoved = super.removeTopping(Topping.SAUSAGES);
 
         if (isRemoved) {
             --this.meatCount;
