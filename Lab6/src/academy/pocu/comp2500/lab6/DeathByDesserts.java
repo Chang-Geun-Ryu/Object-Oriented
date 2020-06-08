@@ -16,9 +16,4 @@ public class DeathByDesserts extends SetMenu {
         super.addDessert(dessert3);
         super.addDessert(dessert4);
     }
-
-    public ArrayList<Dessert> getDessert() {
-        assert getCountDessert() > 0 : "call isValid() first!";
-        return super.desserts;
-    }
 }

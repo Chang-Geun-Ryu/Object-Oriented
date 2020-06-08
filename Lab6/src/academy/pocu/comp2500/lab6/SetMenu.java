@@ -7,7 +7,8 @@ public class SetMenu extends Manu {
 
     protected ArrayList<Appetizer> appetizers = new ArrayList<>();
     protected ArrayList<Dessert> desserts = new ArrayList<>();
-    protected ArrayList<MainCourse> mainCourses = new ArrayList<>();
+//    protected ArrayList<MainCourse> mainCourses = new ArrayList<>();
+    protected MainCourse mainCourse;
 
     protected SetMenu(MenuPrice price) {
         super(price);
@@ -36,7 +37,7 @@ public class SetMenu extends Manu {
     }
 
     protected int getCountMainCourse() {
-        return this.mainCourses.size();
+        return this.mainCourse != null ? 1 : 0;
     }
 
     protected void addAppetizer(Appetizer appetizer) {
@@ -48,7 +49,7 @@ public class SetMenu extends Manu {
     }
 
     protected void addMainCourse(MainCourse mainCourse) {
-        this.mainCourses.add(mainCourse);
+        mainCourse = mainCourse;
     }
 
     protected void clearAppetizer() {
@@ -60,21 +61,21 @@ public class SetMenu extends Manu {
     }
 
     protected void clearMainCourse() {
-        this.mainCourses.clear();
+        mainCourse = null;
     }
 
-//    public ArrayList<Appetizer> getAppetizer() {
-//        assert getCountAppetizer() > 0 : "call isValid() first!";
-//        return this.appetizers;
-//    }
-
-//    public ArrayList<MainCourse> getMainCourse() {
-//        assert getCountMainCourse() > 0 : "call isValid() first!";
-//        return this.mainCourses;
-//    }
-
-//    public ArrayList<Dessert> getDessert() {
-//        assert getCountDessert() > 0 : "call isValid() first!";
-//        return this.desserts;
-//    }
+    public ArrayList<Appetizer> getAppetizers() {
+        assert getCountAppetizer() > 0 : "call isValid() first!";
+        return this.appetizers;
+    }
+//
+    public MainCourse getMainCourse() {
+        assert getCountMainCourse() > 0 : "call isValid() first!";
+        return this.mainCourse;
+    }
+//
+    public ArrayList<Dessert> getDesserts() {
+        assert getCountDessert() > 0 : "call isValid() first!";
+        return this.desserts;
+    }
 }

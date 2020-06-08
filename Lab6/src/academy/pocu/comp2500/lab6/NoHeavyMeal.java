@@ -19,13 +19,4 @@ public class NoHeavyMeal extends SetMenu{
         super.clearDessert();
         super.addDessert(desert);
     }
-
-    public ArrayList<Appetizer> getAppetizers() {
-        return this.appetizers;
-    }
-
-    public Dessert getDessert() {
-        assert (super.desserts.size() > 0) : "call isValid() first!";
-        return super.desserts.get(0);
-    }
 }
