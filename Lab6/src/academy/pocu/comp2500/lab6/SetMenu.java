@@ -49,7 +49,7 @@ public class SetMenu extends Manu {
     }
 
     protected void addMainCourse(MainCourse mainCourse) {
-        mainCourse = mainCourse;
+        this.mainCourse = mainCourse;
     }
 
     protected void clearAppetizer() {
