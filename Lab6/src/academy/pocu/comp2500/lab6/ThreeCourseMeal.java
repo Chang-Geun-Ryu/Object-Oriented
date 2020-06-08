@@ -1,15 +1,7 @@
 package academy.pocu.comp2500.lab6;
 
-import java.util.Set;
-
 public class ThreeCourseMeal extends SetMenu {
     private static final int PRICE = 25;
-
-//    private int price = PRICE;
-//
-//    private Appetizer appetizer;
-//    private MainCourse mainCourse;
-//    private Dessert dessert;
 
     public ThreeCourseMeal() {
         super(PRICE);

@@ -1,16 +1,8 @@
 package academy.pocu.comp2500.lab6;
 
-import java.util.ArrayList;
-import java.util.PrimitiveIterator;
-
 public class VeggiePizza extends Pizza {
     private static final int PRICE = 17;
     private static final int MAX_CHEESE_COUNT = 2;
-
-//    private int price = PRICE;
-//    private ArrayList<Topping> toppings = new ArrayList<>();;
-
-    private int cheeseCount;
 
     public VeggiePizza() {
         super(PRICE);

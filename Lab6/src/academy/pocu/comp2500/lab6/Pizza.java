@@ -3,13 +3,13 @@ package academy.pocu.comp2500.lab6;
 import java.util.ArrayList;
 
 public class Pizza extends Price {
-//    private int price;
     private ArrayList<Topping> toppings;
 
     protected int veggieCount;
     protected int meatCount;
     protected boolean isCheeseAdded;
     protected boolean isVeggieAdded;
+    protected int cheeseCount;
 
     protected Pizza(int price) {
         super(price);

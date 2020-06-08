@@ -7,10 +7,6 @@ public class FreeSoulPizza extends Pizza {
     private static final int MAX_MEAT_COUNT = 2;
     private static final int MAX_VEGGIE_COUNT = 2;
 
-//    private int veggieCount;
-//    private int meatCount;
-//    private boolean isCheeseAdded;
-
     public FreeSoulPizza() {
         super(PRICE);
 
