@@ -10,7 +10,6 @@ public enum MenuPrice {
     THREE_COURSE_MEAL(25);
 
     private int price;
-    private int max;
 
     public int getPrice() {
         return this.price;

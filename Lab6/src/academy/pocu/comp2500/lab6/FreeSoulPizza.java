@@ -15,12 +15,6 @@ public class FreeSoulPizza extends Pizza {
         this.isCheeseAdded = false;
     }
 
-//    public boolean isValid() {
-//        return this.meatCount == MAX_MEAT_COUNT
-//                && this.veggieCount == MAX_VEGGIE_COUNT
-//                && this.isCheeseAdded;
-//    }
-
     public boolean addTopping(Topping topping) {
         if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
                 || (isVeggie(topping) && this.veggieCount >= MAX_VEGGIE_COUNT)
