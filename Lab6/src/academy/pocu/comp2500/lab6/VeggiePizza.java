@@ -4,9 +4,9 @@ public class VeggiePizza extends Pizza {
 
     public VeggiePizza() {
         super(MenuPrice.VEGGIE_PIZZA);
-        super.addTopping(Topping.BLACK_OLIVES);
-        super.addTopping(Topping.RED_ONIONS);
-        super.addTopping(Topping.GREEN_PEPPERS);
+        super.toppings.add(Topping.BLACK_OLIVES);
+        super.toppings.add(Topping.RED_ONIONS);
+        super.toppings.add(Topping.GREEN_PEPPERS);
     }
 
     public boolean addMozzarellaCheese() {
@@ -14,13 +14,13 @@ public class VeggiePizza extends Pizza {
             return false;
         }
 
-        super.addTopping(Topping.MOZZARELLA_CHEESE);
+        super.toppings.add(Topping.MOZZARELLA_CHEESE);
         ++this.cheeseCount;
         return true;
     }
 
     public boolean removeMozzarellaCheese() {
-        boolean isRemoved = super.removeTopping(Topping.MOZZARELLA_CHEESE);
+        boolean isRemoved = super.toppings.remove(Topping.MOZZARELLA_CHEESE);
 
         if (isRemoved) {
             --this.cheeseCount;
@@ -34,13 +34,13 @@ public class VeggiePizza extends Pizza {
             return false;
         }
 
-        super.addTopping(Topping.CHEDDAR_CHEESE);
+        super.toppings.add(Topping.CHEDDAR_CHEESE);
         ++this.cheeseCount;
         return true;
     }
 
     public boolean removeCheddarCheese() {
-        boolean isRemoved = super.removeTopping(Topping.CHEDDAR_CHEESE);
+        boolean isRemoved = super.toppings.remove(Topping.CHEDDAR_CHEESE);
 
         if (isRemoved) {
             --this.cheeseCount;
@@ -54,13 +54,13 @@ public class VeggiePizza extends Pizza {
             return false;
         }
 
-        super.addTopping(Topping.FETA_CHEESE);
+        super.toppings.add(Topping.FETA_CHEESE);
         ++this.cheeseCount;
         return true;
     }
 
     public boolean removeFetaCheese() {
-        boolean isRemoved = super.removeTopping(Topping.FETA_CHEESE);
+        boolean isRemoved = super.toppings.remove(Topping.FETA_CHEESE);
 
         if (isRemoved) {
             --this.cheeseCount;

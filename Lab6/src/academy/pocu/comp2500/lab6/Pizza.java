@@ -8,7 +8,7 @@ public class Pizza extends Manu {
     protected static final int MAX_VEGGIE_COUNT = 2;
     protected static final int MAX_CHEESE_COUNT = 2;
 
-    private ArrayList<Topping> toppings;
+    protected ArrayList<Topping> toppings;
 
     protected int veggieCount;
     protected int meatCount;
@@ -42,84 +42,39 @@ public class Pizza extends Manu {
     public ArrayList<Topping> getToppings() {
         return this.toppings;
     }
-
-    public boolean addTopping(Topping topping) {
-
-        switch (super.price) {
-            case HOUSE_PIZZA:
-            case VEGGIE_PIZZA:
-            case MEAT_LOVER_PIZZA:
-                return this.toppings.add(topping);
-            case FREE_SOUL_PIZZA:
-                return addMeatLover(topping);
-            default:
-                assert (true) : "IT IS NOT Pizza";
-                return false;
-        }
-    }
-
-    public boolean removeTopping(Topping topping) {
-        switch (super.price) {
-            case HOUSE_PIZZA:
-            case VEGGIE_PIZZA:
-            case MEAT_LOVER_PIZZA:
-                return this.toppings.remove(topping);
-            case FREE_SOUL_PIZZA:
-                return removeMeatLover(topping);
-            default:
-                assert (true) : "IT IS NOT Pizza";
-                return false;
-        }
-    }
-
-    private boolean addMeatLover(Topping topping) {
-        if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
-                || (isVeggie(topping) && this.veggieCount >= MAX_VEGGIE_COUNT)
-                || (isCheese(topping) && this.isCheeseAdded)) {
-            return false;
-        }
-
-        this.toppings.add(topping);
-
-        if (isMeat(topping)) {
-            ++this.meatCount;
-        }
-
-        if (isVeggie(topping)) {
-            ++this.veggieCount;
-        }
-
-        if (isCheese(topping)) {
-            this.isCheeseAdded = true;
-        }
-
-        return true;
-    }
-
-    private boolean removeMeatLover(Topping topping) {
-        boolean isRemoved = this.toppings.remove(topping);
-
-        if (isRemoved) {
-            if (isMeat(topping)) {
-                --this.meatCount;
-            }
-
-            if (isVeggie(topping)) {
-                --this.veggieCount;
-            }
-
-            if (isCheese(topping)) {
-                this.isCheeseAdded = false;
-            }
-        }
-
-        return isRemoved;
-    }
+//    public boolean addTopping(Topping topping) {
+//
+//        switch (super.price) {
+//            case HOUSE_PIZZA:
+//            case VEGGIE_PIZZA:
+//            case MEAT_LOVER_PIZZA:
+//                return this.toppings.add(topping);
+//            case FREE_SOUL_PIZZA:
+//                return addMeatLover(topping);
+//            default:
+//                assert (true) : "IT IS NOT Pizza";
+//                return false;
+//        }
+//    }
+//
+//    public boolean removeTopping(Topping topping) {
+//        switch (super.price) {
+//            case HOUSE_PIZZA:
+//            case VEGGIE_PIZZA:
+//            case MEAT_LOVER_PIZZA:
+//                return this.toppings.remove(topping);
+//            case FREE_SOUL_PIZZA:
+//                return removeMeatLover(topping);
+//            default:
+//                assert (true) : "IT IS NOT Pizza";
+//                return false;
+//        }
+//    }
 
 //    protected boolean addTopping(Topping topping) {
 //        return this.toppings.add(topping);
 //    }
-
+//
 //    protected boolean removeTopping(Topping topping) {
 //        return this.toppings.remove(topping);
 //    }
