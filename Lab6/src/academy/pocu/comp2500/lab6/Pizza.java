@@ -19,6 +19,7 @@ public class Pizza extends Manu {
     protected Pizza(MenuPrice price) {
         super(price);
         this.toppings = new ArrayList<>();
+        setUpToppings();
     }
 
     public boolean isValid() {
@@ -36,6 +37,33 @@ public class Pizza extends Manu {
             default:
                 assert (true) : "IT IS NOT Pizza";
                 return false;
+        }
+    }
+
+    private void setUpToppings() {
+        switch (super.price) {
+            case HOUSE_PIZZA:
+                this.toppings.add(Topping.BLACK_OLIVES);
+                this.toppings.add(Topping.RED_ONIONS);
+                this.toppings.add(Topping.GREEN_PEPPERS);
+                this.toppings.add(Topping.MOZZARELLA_CHEESE);
+                break;
+            case VEGGIE_PIZZA:
+                this.toppings.add(Topping.BLACK_OLIVES);
+                this.toppings.add(Topping.RED_ONIONS);
+                this.toppings.add(Topping.GREEN_PEPPERS);
+                break;
+            case MEAT_LOVER_PIZZA:
+                this.toppings.add(Topping.BACON);
+                this.toppings.add(Topping.PEPERONI);
+                this.toppings.add(Topping.HAM);
+                this.toppings.add(Topping.SAUSAGES);
+                this.toppings.add(Topping.CHEDDAR_CHEESE);
+                break;
+            case FREE_SOUL_PIZZA:
+                break;
+            default:
+                assert (true) : "IT IS NOT Pizza";
         }
     }
 
@@ -88,11 +116,9 @@ public class Pizza extends Manu {
             if (isMeat(topping)) {
                 ++this.meatCount;
             }
-
             if (isVeggie(topping)) {
                 ++this.veggieCount;
             }
-
             if (isCheese(topping)) {
                 this.isCheeseAdded = true;
             }
@@ -115,11 +141,9 @@ public class Pizza extends Manu {
                 if (isMeat(topping)) {
                     --this.meatCount;
                 }
-
                 if (isVeggie(topping)) {
                     --this.veggieCount;
                 }
-
                 if (isCheese(topping)) {
                     this.isCheeseAdded = false;
                 }

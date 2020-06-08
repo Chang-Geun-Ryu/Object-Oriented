@@ -4,10 +4,6 @@ public class HousePizza extends Pizza {
 
     public HousePizza() {
         super(MenuPrice.HOUSE_PIZZA);
-        super.toppings.add(Topping.BLACK_OLIVES);
-        super.toppings.add(Topping.RED_ONIONS);
-        super.toppings.add(Topping.GREEN_PEPPERS);
-        super.toppings.add(Topping.MOZZARELLA_CHEESE);
     }
 
     public boolean addBacon() {

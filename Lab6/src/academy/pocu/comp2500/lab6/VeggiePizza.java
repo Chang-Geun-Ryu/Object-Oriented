@@ -4,9 +4,6 @@ public class VeggiePizza extends Pizza {
 
     public VeggiePizza() {
         super(MenuPrice.VEGGIE_PIZZA);
-        super.toppings.add(Topping.BLACK_OLIVES);
-        super.toppings.add(Topping.RED_ONIONS);
-        super.toppings.add(Topping.GREEN_PEPPERS);
     }
 
     public boolean addMozzarellaCheese() {
