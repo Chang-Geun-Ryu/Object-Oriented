@@ -18,13 +18,7 @@ import java.util.ArrayList;
 //    }
 //}
 public class DeathByDesserts extends SetMenu {
-
-    protected DeathByDesserts() {
+    public DeathByDesserts() {
         super(MenuPrice.DEATH_BY_DESSERTS);
     }
-
-    public ArrayList<Dessert> getDesserts() {
-        return this.desserts;
-    }
-
 }

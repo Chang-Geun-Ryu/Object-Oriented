@@ -24,23 +24,7 @@ import java.util.Set;
 //    }
 //}
 public class ThreeCourseMeal extends SetMenu {
-
-    protected ThreeCourseMeal() {
+    public ThreeCourseMeal() {
         super(MenuPrice.THREE_COURSE_MEAL);
-    }
-
-    public Appetizer getAppetizer() {
-        assert (this.appetizer != null) : "call isValid() first!";
-        return this.appetizer;
-    }
-
-    public MainCourse getMainCourse() {
-        assert (this.mainCourse != null) : "call isValid() first!";
-        return this.mainCourse;
-    }
-
-    public Dessert getDessert() {
-        assert (this.dessert != null) : "call isValid() first!";
-        return this.dessert;
     }
 }

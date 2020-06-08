@@ -23,25 +23,7 @@ import java.util.Set;
 //}
 
 public class NoHeavyMeal extends SetMenu {
-    private ArrayList<Appetizer> appetizers = new ArrayList<>();
-    private Dessert dessert;
-
-    protected NoHeavyMeal() {
+    public NoHeavyMeal() {
         super(MenuPrice.NO_HEAVY_MEAL);
     }
-
-//    public boolean isValid() {
-//        return this.appetizers.size() == 2 && this.dessert != null;
-//    }
-
-    public ArrayList<Appetizer> getAppetizers() {
-        return this.appetizers;
-    }
-
-    public Dessert getDessert() {
-        assert (this.dessert != null) : "call isValid() first!";
-        return this.dessert;
-    }
-
-
 }

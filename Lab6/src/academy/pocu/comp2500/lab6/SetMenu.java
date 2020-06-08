@@ -7,7 +7,6 @@ public class SetMenu extends Manu {
 
     protected ArrayList<Appetizer> appetizers = new ArrayList<>();
     protected ArrayList<Dessert> desserts = new ArrayList<>();
-//    protected ArrayList<MainCourse> mainCourses = new ArrayList<>();
     protected MainCourse mainCourse;
     protected Dessert dessert;
     protected Appetizer appetizer;
@@ -59,5 +58,28 @@ public class SetMenu extends Manu {
 
     public void setAppetizer(Appetizer appetizer) {
         this.appetizer = appetizer;
+    }
+
+    public Appetizer getAppetizer() {
+        assert (this.appetizer != null) : "call isValid() first!";
+        return this.appetizer;
+    }
+
+    public MainCourse getMainCourse() {
+        assert (this.mainCourse != null) : "call isValid() first!";
+        return this.mainCourse;
+    }
+
+    public Dessert getDessert() {
+        assert (this.dessert != null) : "call isValid() first!";
+        return this.dessert;
+    }
+
+    public ArrayList<Dessert> getDesserts() {
+        return this.desserts;
+    }
+
+    public ArrayList<Appetizer> getAppetizers() {
+        return this.appetizers;
     }
 }
