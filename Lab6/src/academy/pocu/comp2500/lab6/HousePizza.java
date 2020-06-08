@@ -6,11 +6,6 @@ public class HousePizza extends Pizza {
     private static final int PRICE = 20;
     private static final int MAX_MEAT_COUNT = 2;
 
-//    private int price = PRICE;
-//    private ArrayList<Topping> toppings = new ArrayList<>();
-
-    private int meatCount;
-
     public HousePizza() {
         super(PRICE);
         super.addTopping(Topping.BLACK_OLIVES);
