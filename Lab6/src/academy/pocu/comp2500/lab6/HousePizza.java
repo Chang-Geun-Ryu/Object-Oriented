@@ -10,63 +10,63 @@ public class HousePizza extends Pizza {
         super.toppings.add(Topping.MOZZARELLA_CHEESE);
     }
 
-    public boolean addBacon() {
-        if (isValid()) {
-            return false;
-        }
-
-        super.toppings.add(Topping.BACON);
-        ++this.meatCount;
-        return true;
-    }
-
-    public boolean removeBacon() {
-        boolean isRemoved = super.toppings.remove(Topping.BACON);
-
-        if (isRemoved) {
-            --this.meatCount;
-        }
-
-        return isRemoved;
-    }
-
-    public boolean addPeperoni() {
-        if (isValid()) {
-            return false;
-        }
-
-        super.toppings.add(Topping.PEPERONI);
-        ++this.meatCount;
-        return true;
-    }
-
-    public boolean removePeperoni() {
-        boolean isRemoved = super.toppings.remove(Topping.PEPERONI);
-
-        if (isRemoved) {
-            --this.meatCount;
-        }
-
-        return isRemoved;
-    }
-
-    public boolean addSausages() {
-        if (isValid()) {
-            return false;
-        }
-
-        super.toppings.add(Topping.SAUSAGES);
-        ++this.meatCount;
-        return true;
-    }
-
-    public boolean removeSausages() {
-        boolean isRemoved = super.toppings.remove(Topping.SAUSAGES);
-
-        if (isRemoved) {
-            --this.meatCount;
-        }
-
-        return isRemoved;
-    }
+//    public boolean addBacon() {
+//        if (isValid()) {
+//            return false;
+//        }
+//
+//        super.toppings.add(Topping.BACON);
+//        ++this.meatCount;
+//        return true;
+//    }
+//
+//    public boolean removeBacon() {
+//        boolean isRemoved = super.toppings.remove(Topping.BACON);
+//
+//        if (isRemoved) {
+//            --this.meatCount;
+//        }
+//
+//        return isRemoved;
+//    }
+//
+//    public boolean addPeperoni() {
+//        if (isValid()) {
+//            return false;
+//        }
+//
+//        super.toppings.add(Topping.PEPERONI);
+//        ++this.meatCount;
+//        return true;
+//    }
+//
+//    public boolean removePeperoni() {
+//        boolean isRemoved = super.toppings.remove(Topping.PEPERONI);
+//
+//        if (isRemoved) {
+//            --this.meatCount;
+//        }
+//
+//        return isRemoved;
+//    }
+//
+//    public boolean addSausages() {
+//        if (isValid()) {
+//            return false;
+//        }
+//
+//        super.toppings.add(Topping.SAUSAGES);
+//        ++this.meatCount;
+//        return true;
+//    }
+//
+//    public boolean removeSausages() {
+//        boolean isRemoved = super.toppings.remove(Topping.SAUSAGES);
+//
+//        if (isRemoved) {
+//            --this.meatCount;
+//        }
+//
+//        return isRemoved;
+//    }
 }

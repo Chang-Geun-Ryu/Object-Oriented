@@ -98,4 +98,232 @@ public class Pizza extends Manu {
                 || topping == Topping.CHEDDAR_CHEESE
                 || topping == Topping.FETA_CHEESE;
     }
+
+///////////////////////
+
+    public boolean addTopping(Topping topping) {
+        if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
+                || (isVeggie(topping) && this.veggieCount >= MAX_VEGGIE_COUNT)
+                || (isCheese(topping) && this.isCheeseAdded)) {
+            return false;
+        }
+
+        this.toppings.add(topping);
+
+        if (isMeat(topping)) {
+            ++this.meatCount;
+        }
+
+        if (isVeggie(topping)) {
+            ++this.veggieCount;
+        }
+
+        if (isCheese(topping)) {
+            this.isCheeseAdded = true;
+        }
+
+        return true;
+    }
+
+    public boolean removeTopping(Topping topping) {
+        boolean isRemoved = this.toppings.remove(topping);
+
+        if (isRemoved) {
+            if (isMeat(topping)) {
+                --this.meatCount;
+            }
+
+            if (isVeggie(topping)) {
+                --this.veggieCount;
+            }
+
+            if (isCheese(topping)) {
+                this.isCheeseAdded = false;
+            }
+        }
+
+        return isRemoved;
+    }
+
+/////////////////////////
+    public boolean addBlackOlives() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.BLACK_OLIVES);
+        this.isVeggieAdded = true;
+        return true;
+    }
+
+    public boolean removeBlackOlives() {
+        boolean isRemoved = this.toppings.remove(Topping.BLACK_OLIVES);
+
+        if (isRemoved) {
+            this.isVeggieAdded = false;
+        }
+
+        return isRemoved;
+    }
+
+    public boolean addRedOnions() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.RED_ONIONS);
+        this.isVeggieAdded = true;
+        return true;
+    }
+
+    public boolean removeRedOnions() {
+        boolean isRemoved = this.toppings.remove(Topping.RED_ONIONS);
+
+        if (isRemoved) {
+            this.isVeggieAdded = false;
+        }
+
+        return isRemoved;
+    }
+
+    public boolean addGreenPeppers() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.GREEN_PEPPERS);
+        this.isVeggieAdded = true;
+        return true;
+    }
+
+    public boolean removeGreenPeppers() {
+        boolean isRemoved = this.toppings.remove(Topping.GREEN_PEPPERS);
+
+        if (isRemoved) {
+            this.isVeggieAdded = false;
+        }
+
+        return isRemoved;
+    }
+
+    ////////////////////////
+    public boolean addBacon() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.BACON);
+        ++this.meatCount;
+        return true;
+    }
+
+    public boolean removeBacon() {
+        boolean isRemoved = this.toppings.remove(Topping.BACON);
+
+        if (isRemoved) {
+            --this.meatCount;
+        }
+
+        return isRemoved;
+    }
+
+    public boolean addPeperoni() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.PEPERONI);
+        ++this.meatCount;
+        return true;
+    }
+
+    public boolean removePeperoni() {
+        boolean isRemoved = this.toppings.remove(Topping.PEPERONI);
+
+        if (isRemoved) {
+            --this.meatCount;
+        }
+
+        return isRemoved;
+    }
+
+    public boolean addSausages() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.SAUSAGES);
+        ++this.meatCount;
+        return true;
+    }
+
+    public boolean removeSausages() {
+        boolean isRemoved = this.toppings.remove(Topping.SAUSAGES);
+
+        if (isRemoved) {
+            --this.meatCount;
+        }
+
+        return isRemoved;
+    }
+
+    public boolean addMozzarellaCheese() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.MOZZARELLA_CHEESE);
+        ++this.cheeseCount;
+        return true;
+    }
+
+    public boolean removeMozzarellaCheese() {
+        boolean isRemoved = this.toppings.remove(Topping.MOZZARELLA_CHEESE);
+
+        if (isRemoved) {
+            --this.cheeseCount;
+        }
+
+        return isRemoved;
+    }
+
+    public boolean addCheddarCheese() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.CHEDDAR_CHEESE);
+        ++this.cheeseCount;
+        return true;
+    }
+
+    public boolean removeCheddarCheese() {
+        boolean isRemoved = this.toppings.remove(Topping.CHEDDAR_CHEESE);
+
+        if (isRemoved) {
+            --this.cheeseCount;
+        }
+
+        return isRemoved;
+    }
+
+    public boolean addFetaCheese() {
+        if (isValid()) {
+            return false;
+        }
+
+        this.toppings.add(Topping.FETA_CHEESE);
+        ++this.cheeseCount;
+        return true;
+    }
+
+    public boolean removeFetaCheese() {
+        boolean isRemoved = this.toppings.remove(Topping.FETA_CHEESE);
+
+        if (isRemoved) {
+            --this.cheeseCount;
+        }
+
+        return isRemoved;
+    }
 }
