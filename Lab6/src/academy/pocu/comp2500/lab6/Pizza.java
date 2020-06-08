@@ -63,4 +63,69 @@ public class Pizza extends Manu {
                 || topping == Topping.FETA_CHEESE;
     }
 
+    protected boolean add(Topping topping) {
+        if (isValid()) {
+            return false;
+        }
+
+        if (super.price == MenuPrice.FREE_SOUL_PIZZA) {
+            if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
+                    || (isVeggie(topping) && this.veggieCount >= MAX_VEGGIE_COUNT)
+                    || (isCheese(topping) && this.isCheeseAdded)) {
+                return false;
+            }
+        }
+
+        this.toppings.add(topping);
+
+        if (super.price == MenuPrice.HOUSE_PIZZA) {
+            ++this.meatCount;
+        } else if (super.price == MenuPrice.VEGGIE_PIZZA) {
+            ++this.cheeseCount;
+        } else if (super.price == MenuPrice.MEAT_LOVER_PIZZA) {
+            this.isVeggieAdded = true;
+        } else if (super.price == MenuPrice.FREE_SOUL_PIZZA) {
+            if (isMeat(topping)) {
+                ++this.meatCount;
+            }
+
+            if (isVeggie(topping)) {
+                ++this.veggieCount;
+            }
+
+            if (isCheese(topping)) {
+                this.isCheeseAdded = true;
+            }
+        }
+
+       return true;
+    }
+
+    protected boolean remove(Topping topping) {
+        boolean isRemoved = this.toppings.remove(topping);
+
+        if (isRemoved) {
+            if (super.price == MenuPrice.HOUSE_PIZZA) {
+                --this.meatCount;
+            } else if (super.price == MenuPrice.VEGGIE_PIZZA) {
+                --this.cheeseCount;
+            }else if (super.price == MenuPrice.MEAT_LOVER_PIZZA) {
+                this.isVeggieAdded = false;
+            } else if (super.price == MenuPrice.FREE_SOUL_PIZZA) {
+                if (isMeat(topping)) {
+                    --this.meatCount;
+                }
+
+                if (isVeggie(topping)) {
+                    --this.veggieCount;
+                }
+
+                if (isCheese(topping)) {
+                    this.isCheeseAdded = false;
+                }
+            }
+        }
+
+        return isRemoved;
+    }
 }

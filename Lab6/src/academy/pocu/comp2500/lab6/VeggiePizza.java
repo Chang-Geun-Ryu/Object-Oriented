@@ -10,62 +10,26 @@ public class VeggiePizza extends Pizza {
     }
 
     public boolean addMozzarellaCheese() {
-        if (isValid()) {
-            return false;
-        }
-
-        super.toppings.add(Topping.MOZZARELLA_CHEESE);
-        ++this.cheeseCount;
-        return true;
+        return super.add(Topping.MOZZARELLA_CHEESE);
     }
 
     public boolean removeMozzarellaCheese() {
-        boolean isRemoved = super.toppings.remove(Topping.MOZZARELLA_CHEESE);
-
-        if (isRemoved) {
-            --this.cheeseCount;
-        }
-
-        return isRemoved;
+        return super.remove(Topping.MOZZARELLA_CHEESE);
     }
 
     public boolean addCheddarCheese() {
-        if (isValid()) {
-            return false;
-        }
-
-        super.toppings.add(Topping.CHEDDAR_CHEESE);
-        ++this.cheeseCount;
-        return true;
+        return super.add(Topping.CHEDDAR_CHEESE);
     }
 
     public boolean removeCheddarCheese() {
-        boolean isRemoved = super.toppings.remove(Topping.CHEDDAR_CHEESE);
-
-        if (isRemoved) {
-            --this.cheeseCount;
-        }
-
-        return isRemoved;
+        return super.remove(Topping.CHEDDAR_CHEESE);
     }
 
     public boolean addFetaCheese() {
-        if (isValid()) {
-            return false;
-        }
-
-        super.toppings.add(Topping.FETA_CHEESE);
-        ++this.cheeseCount;
-        return true;
+        return super.add(Topping.FETA_CHEESE);
     }
 
     public boolean removeFetaCheese() {
-        boolean isRemoved = super.toppings.remove(Topping.FETA_CHEESE);
-
-        if (isRemoved) {
-            --this.cheeseCount;
-        }
-
-        return isRemoved;
+        return super.remove(Topping.FETA_CHEESE);
     }
 }
