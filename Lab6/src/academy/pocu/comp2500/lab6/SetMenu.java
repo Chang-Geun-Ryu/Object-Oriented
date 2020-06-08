@@ -3,14 +3,28 @@ package academy.pocu.comp2500.lab6;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class SetMenu extends Price {
+public class SetMenu extends Manu {
 
     private ArrayList<Appetizer> appetizers = new ArrayList<>();
     private ArrayList<Dessert> desserts = new ArrayList<>();
     private ArrayList<MainCourse> mainCourses = new ArrayList<>();
 
-    protected SetMenu(int price) {
+    protected SetMenu(MenuPrice price) {
         super(price);
+    }
+
+    public boolean isValid() {
+        switch (super.price) {
+            case NO_HEAVY_MEAL:
+                return getCountAppetizer() == 2 && getCountDessert() > 0;
+            case DEATH_BY_DESSERTS:
+                return getCountDessert() == 4;
+            case THREE_COURSE_MEAL:
+                return getCountAppetizer() > 0 && getCountMainCourse() > 0 && getCountDessert() > 0;
+            default:
+                assert (true) : "IT IS NOT SetMenu";
+                return false;
+        }
     }
 
     protected int getCountAppetizer() {

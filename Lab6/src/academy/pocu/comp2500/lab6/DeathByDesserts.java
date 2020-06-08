@@ -4,7 +4,7 @@ public class DeathByDesserts extends SetMenu {
     private static final int PRICE = 20;
 
     public DeathByDesserts() {
-        super(PRICE);
+        super(MenuPrice.DEATH_BY_DESSERTS);
     }
 
     public boolean isValid() {

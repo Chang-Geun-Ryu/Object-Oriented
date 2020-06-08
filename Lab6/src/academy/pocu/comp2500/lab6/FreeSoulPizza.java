@@ -3,23 +3,23 @@ package academy.pocu.comp2500.lab6;
 import java.util.ArrayList;
 
 public class FreeSoulPizza extends Pizza {
-    private static final int PRICE = 25;
-    private static final int MAX_MEAT_COUNT = 2;
-    private static final int MAX_VEGGIE_COUNT = 2;
+//    private static final int PRICE = 25;
+//    private static final int MAX_MEAT_COUNT = 2;
+//    private static final int MAX_VEGGIE_COUNT = 2;
 
     public FreeSoulPizza() {
-        super(PRICE);
+        super(MenuPrice.FREE_SOUL_PIZZA);
 
         this.veggieCount = 0;
         this.meatCount = 0;
         this.isCheeseAdded = false;
     }
 
-    public boolean isValid() {
-        return this.meatCount == MAX_MEAT_COUNT
-                && this.veggieCount == MAX_VEGGIE_COUNT
-                && this.isCheeseAdded;
-    }
+//    public boolean isValid() {
+//        return this.meatCount == MAX_MEAT_COUNT
+//                && this.veggieCount == MAX_VEGGIE_COUNT
+//                && this.isCheeseAdded;
+//    }
 
     public boolean addTopping(Topping topping) {
         if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
@@ -28,7 +28,7 @@ public class FreeSoulPizza extends Pizza {
             return false;
         }
 
-        super.addTopping(topping);
+        super.addToppings(topping);
 
         if (isMeat(topping)) {
             ++this.meatCount;
@@ -46,7 +46,7 @@ public class FreeSoulPizza extends Pizza {
     }
 
     public boolean removeTopping(Topping topping) {
-        boolean isRemoved = super.removeTopping(topping);
+        boolean isRemoved = super.removeToppings(topping);
 
         if (isRemoved) {
             if (isMeat(topping)) {

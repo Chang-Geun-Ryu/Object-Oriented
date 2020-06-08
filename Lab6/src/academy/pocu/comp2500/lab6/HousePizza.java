@@ -1,19 +1,13 @@
 package academy.pocu.comp2500.lab6;
 
 public class HousePizza extends Pizza {
-    private static final int PRICE = 20;
-    private static final int MAX_MEAT_COUNT = 2;
 
     public HousePizza() {
-        super(PRICE);
-        super.addTopping(Topping.BLACK_OLIVES);
-        super.addTopping(Topping.RED_ONIONS);
-        super.addTopping(Topping.GREEN_PEPPERS);
-        super.addTopping(Topping.MOZZARELLA_CHEESE);
-    }
-
-    public boolean isValid() {
-        return this.meatCount == MAX_MEAT_COUNT;
+        super(MenuPrice.HOUSE_PIZZA);
+        super.addToppings(Topping.BLACK_OLIVES);
+        super.addToppings(Topping.RED_ONIONS);
+        super.addToppings(Topping.GREEN_PEPPERS);
+        super.addToppings(Topping.MOZZARELLA_CHEESE);
     }
 
     public boolean addBacon() {
@@ -21,13 +15,13 @@ public class HousePizza extends Pizza {
             return false;
         }
 
-        super.addTopping(Topping.BACON);
+        super.addToppings(Topping.BACON);
         ++this.meatCount;
         return true;
     }
 
     public boolean removeBacon() {
-        boolean isRemoved = super.removeTopping(Topping.BACON);
+        boolean isRemoved = super.removeToppings(Topping.BACON);
 
         if (isRemoved) {
             --this.meatCount;
@@ -41,13 +35,13 @@ public class HousePizza extends Pizza {
             return false;
         }
 
-        super.addTopping(Topping.PEPERONI);
+        super.addToppings(Topping.PEPERONI);
         ++this.meatCount;
         return true;
     }
 
     public boolean removePeperoni() {
-        boolean isRemoved = super.removeTopping(Topping.PEPERONI);
+        boolean isRemoved = super.removeToppings(Topping.PEPERONI);
 
         if (isRemoved) {
             --this.meatCount;
@@ -61,13 +55,13 @@ public class HousePizza extends Pizza {
             return false;
         }
 
-        super.addTopping(Topping.SAUSAGES);
+        super.addToppings(Topping.SAUSAGES);
         ++this.meatCount;
         return true;
     }
 
     public boolean removeSausages() {
-        boolean isRemoved = super.removeTopping(Topping.SAUSAGES);
+        boolean isRemoved = super.removeToppings(Topping.SAUSAGES);
 
         if (isRemoved) {
             --this.meatCount;

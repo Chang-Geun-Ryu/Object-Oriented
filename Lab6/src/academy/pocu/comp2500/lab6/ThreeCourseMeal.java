@@ -4,12 +4,9 @@ public class ThreeCourseMeal extends SetMenu {
     private static final int PRICE = 25;
 
     public ThreeCourseMeal() {
-        super(PRICE);
+        super(MenuPrice.THREE_COURSE_MEAL);
     }
 
-    public boolean isValid() {
-        return super.getCountAppetizer() > 0 && super.getCountMainCourse() > 0 && super.getCountDessert() > 0;
-    }
 
     public void setMainCourse(MainCourse mainCourse) {
         super.clearMainCourse();
