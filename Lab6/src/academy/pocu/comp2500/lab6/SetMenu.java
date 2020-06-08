@@ -3,19 +3,14 @@ package academy.pocu.comp2500.lab6;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class SetMenu {
-    private int price;
+public class SetMenu extends Price {
 
     private ArrayList<Appetizer> appetizers = new ArrayList<>();
     private ArrayList<Dessert> desserts = new ArrayList<>();
     private ArrayList<MainCourse> mainCourses = new ArrayList<>();
 
     protected SetMenu(int price) {
-        this.price = price;
-    }
-
-    public int getPrice() {
-        return this.price;
+        super(price);
     }
 
     protected int getCountAppetizer() {

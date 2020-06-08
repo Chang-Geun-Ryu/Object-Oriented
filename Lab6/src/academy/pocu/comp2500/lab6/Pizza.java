@@ -2,8 +2,8 @@ package academy.pocu.comp2500.lab6;
 
 import java.util.ArrayList;
 
-public class Pizza {
-    private int price;
+public class Pizza extends Price {
+//    private int price;
     private ArrayList<Topping> toppings;
 
     protected int veggieCount;
@@ -12,12 +12,8 @@ public class Pizza {
     protected boolean isVeggieAdded;
 
     protected Pizza(int price) {
-        this.price = price;
+        super(price);
         this.toppings = new ArrayList<>();
-    }
-
-    public int getPrice() {
-        return this.price;
     }
 
     public ArrayList<Topping> getToppings() {
