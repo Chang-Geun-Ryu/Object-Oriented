@@ -71,7 +71,7 @@ public class Banner extends Product {
         if (imageAperture.getX() >= 0 &&
                 imageAperture.getX() < size.getWidth() &&
                 imageAperture.getY() >= 0 &&
-                imageAperture.getY() < size.getHeight() &&) {
+                imageAperture.getY() < size.getHeight()) {
             setPrice(getPrice() + 5);
         }
     }
