@@ -2,36 +2,34 @@ package academy.pocu.comp2500.assignment2;
 
 import java.util.ArrayList;
 
-public class BusinessCard extends Product {
+public class BusinessCard extends Option {
     private BusinessCardSide side;
-    private OrientationType orientation;
     private BusinessCardType type;
     private BusinessCardColor color;
 
-    private ArrayList<TextAperture> texts;
-    private ArrayList<ImageAperture> imagePaths;
+//    private ArrayList<TextAperture> texts;
+//    private ArrayList<ImageAperture> imagePaths;
 
     protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
-        super();
+        super(orientation);
         this.side = sides;
-        this.orientation = orientation;
         this.type = type;
         this.color = color;
         setName(type.getName());
         setPrice(type.getPrice() + sides.getAddPrice());
         setShippingOptions(deliveryMethod);
 
-        this.texts = new ArrayList<>();
-        this.imagePaths = new ArrayList<>();
+//        this.texts = new ArrayList<>();
+//        this.imagePaths = new ArrayList<>();
     }
 
-    public ArrayList<ImageAperture> getImagePaths() {
-        return this.imagePaths;
-    }
-
-    public ArrayList<TextAperture> getTexts() {
-        return this.texts;
-    }
+//    public ArrayList<ImageAperture> getImagePaths() {
+//        return this.imagePaths;
+//    }
+//
+//    public ArrayList<TextAperture> getTexts() {
+//        return this.texts;
+//    }
 
     public BusinessCardSide getSide() {
         return this.side;
@@ -45,9 +43,9 @@ public class BusinessCard extends Product {
         return this.color;
     }
 
-    public OrientationType getOrientation() {
-        return this.orientation;
-    }
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 
     public int getWidth() {
         return 90;
@@ -57,15 +55,15 @@ public class BusinessCard extends Product {
         return 50;
     }
 
-    public void addText(TextAperture textAperture) {
-        this.texts.add(textAperture);
-        setPrice(getPrice() + 5);
-    }
-
-    public void addImage(ImageAperture imageAperture) {
-        this.imagePaths.add(imageAperture);
-        setPrice(getPrice() + 5);
-    }
+//    public void addText(TextAperture textAperture) {
+//        this.texts.add(textAperture);
+//        setPrice(getPrice() + 5);
+//    }
+//
+//    public void addImage(ImageAperture imageAperture) {
+//        this.imagePaths.add(imageAperture);
+//        setPrice(getPrice() + 5);
+//    }
 
     protected void setType(BusinessCardType type) {
         this.type = type;
@@ -79,7 +77,7 @@ public class BusinessCard extends Product {
         this.color = color;
     }
 
-    protected void setOrientation(OrientationType orientation) {
-        this.orientation = orientation;
-    }
+//    protected void setOrientation(OrientationType orientation) {
+//        this.orientation = orientation;
+//    }
 }
