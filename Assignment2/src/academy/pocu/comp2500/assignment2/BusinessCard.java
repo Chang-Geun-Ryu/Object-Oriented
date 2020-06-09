@@ -18,7 +18,7 @@ public class BusinessCard extends Product {
         this.type = type;
         this.color = color;
         setName(type.getName());
-        setPrice(type.getPrice());
+        setPrice(type.getPrice() + sides.getAddPrice());
         setShippingOptions(deliveryMethod);
 
         this.texts = new ArrayList<>();
