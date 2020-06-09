@@ -23,11 +23,11 @@ public class Product {
         return this.shippingOptions;
     }
 
-    protected void setPrice(int price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

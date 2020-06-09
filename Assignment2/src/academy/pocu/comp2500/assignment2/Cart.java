@@ -17,6 +17,14 @@ public class Cart {
         this.list.remove(product);
     }
 
+    public ArrayList<Product> getAllProducts() {
+        return this.list;
+    }
+
+    public Product getProduct(int index) {
+        return this.list.get(index);
+    }
+
     public int getTotalPrice() {
         return this.list
                 .stream()
