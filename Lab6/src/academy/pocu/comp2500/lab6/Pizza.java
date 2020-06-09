@@ -73,7 +73,7 @@ public class Pizza extends Manu {
                 || topping == Topping.FETA_CHEESE;
     }
 
-    public boolean addTopping(Topping topping) {
+    protected boolean addToppings(Topping topping) {
         if (super.price == MenuPrice.FREE_SOUL_PIZZA) {
             if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
                     || (isVeggie(topping) && this.veggieCount >= MAX_VEGGIE_COUNT)
@@ -109,7 +109,7 @@ public class Pizza extends Manu {
        return true;
     }
 
-    public boolean removeTopping(Topping topping) {
+    protected boolean removeToppings(Topping topping) {
         boolean isRemoved = this.toppings.remove(topping);
 
         if (isRemoved) {

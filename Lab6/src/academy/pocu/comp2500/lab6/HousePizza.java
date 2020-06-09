@@ -7,26 +7,26 @@ public class HousePizza extends Pizza {
     }
 
     public boolean addBacon() {
-        return super.addTopping(Topping.BACON);
+        return super.addToppings(Topping.BACON);
     }
 
     public boolean removeBacon() {
-        return super.removeTopping(Topping.BACON);
+        return super.removeToppings(Topping.BACON);
     }
 
     public boolean addPeperoni() {
-        return super.addTopping(Topping.PEPERONI);
+        return super.addToppings(Topping.PEPERONI);
     }
 
     public boolean removePeperoni() {
-        return super.removeTopping(Topping.PEPERONI);
+        return super.removeToppings(Topping.PEPERONI);
     }
 
     public boolean addSausages() {
-        return super.addTopping(Topping.SAUSAGES);
+        return super.addToppings(Topping.SAUSAGES);
     }
 
     public boolean removeSausages() {
-        return super.removeTopping(Topping.SAUSAGES);
+        return super.removeToppings(Topping.SAUSAGES);
     }
 }
