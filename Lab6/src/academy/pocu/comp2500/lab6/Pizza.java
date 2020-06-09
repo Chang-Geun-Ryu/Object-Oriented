@@ -3,25 +3,13 @@ package academy.pocu.comp2500.lab6;
 import java.util.ArrayList;
 
 public class Pizza extends Manu {
-
-
-
     protected ArrayList<Topping> toppings;
-
-//    protected int veggieCount;
-//    protected int meatCount;
-//    protected boolean isCheeseAdded;
-//    protected boolean isVeggieAdded;
-//    protected int cheeseCount;
 
     protected Pizza(MenuPrice price) {
         super(price);
         this.toppings = new ArrayList<>();
         setUpToppings();
     }
-
-
-
     public ArrayList<Topping> getToppings() {
         return this.toppings;
     }
