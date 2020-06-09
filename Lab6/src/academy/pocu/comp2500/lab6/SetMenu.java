@@ -2,42 +2,20 @@ package academy.pocu.comp2500.lab6;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Set;
 
 public class SetMenu extends Manu {
-
-//    protected ArrayList<Appetizer> appetizers = new ArrayList<>();
-//    protected ArrayList<Dessert> desserts = new ArrayList<>();
-//    protected MainCourse mainCourse;
-//    protected Dessert dessert;
-//    protected Appetizer appetizer;
-//
-//    protected boolean isValid = false;
-
     protected SetMenu(MenuPrice price) {
         super(price);
     }
 
-
-
-//    public Appetizer getAppetizer() {
-//        assert (this.appetizer != null) : "call isValid() first!";
-//        return this.appetizer;
-//    }
-
-    public ArrayList<MainCourse> getMainCourse() {
-        if (super.price == MenuPrice.THREE_COURSE_MEAL) {
+    public ArrayList<MainCourse> getMainCourses() {
+        if (super.price != MenuPrice.THREE_COURSE_MEAL) {
             return this.mainCourses;
         } else {
             assert (this.mainCourse != null) : "call isValid() first!";
             return new ArrayList<MainCourse>(Collections.singleton(this.mainCourse));
         }
     }
-
-//    public Dessert getDessert() {
-//        assert (this.dessert != null) : "call isValid() first!";
-//        return this.dessert;
-//    }
 
     public ArrayList<Dessert> getDesserts() {
         if (super.price == MenuPrice.DEATH_BY_DESSERTS) {
