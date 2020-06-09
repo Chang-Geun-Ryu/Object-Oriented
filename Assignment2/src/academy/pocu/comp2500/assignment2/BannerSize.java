@@ -31,5 +31,6 @@ public enum BannerSize {
         this.width = width;
         this.height = height;
         this.price = price;
+        this.size = size;
     }
 }
