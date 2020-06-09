@@ -74,14 +74,14 @@ public class Pizza extends Manu {
     }
 
     public boolean addTopping(Topping topping) {
-        if (isValid()) {
-            return false;
-        }
-
         if (super.price == MenuPrice.FREE_SOUL_PIZZA) {
             if ((isMeat(topping) && this.meatCount >= MAX_MEAT_COUNT)
                     || (isVeggie(topping) && this.veggieCount >= MAX_VEGGIE_COUNT)
                     || (isCheese(topping) && this.isCheeseAdded)) {
+                return false;
+            }
+        } else {
+            if (isValid()) {
                 return false;
             }
         }
