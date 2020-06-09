@@ -4,17 +4,27 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     private OrientationType orientation;
+    private BusinessCardSide side;
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
 
-    protected Option(OrientationType orientation) {
+    protected Option(OrientationType orientation, BusinessCardSide side) {
         this.orientation = orientation;
+        this.side = side;
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
     }
 
+    public BusinessCardSide getSide() {
+        return this.side;
+    }
+
     public OrientationType getOrientation() {
         return this.orientation;
+    }
+
+    protected void setSide(BusinessCardSide side) {
+        this.side = side;
     }
 
     public ArrayList<ImageAperture> getImagePaths() {
