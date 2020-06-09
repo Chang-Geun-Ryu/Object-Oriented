@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class BusinessCard extends Option {
     private BusinessCardType type;
     private BusinessCardColor color;
-
+    private BusinessCardSide side;
 //    private ArrayList<TextAperture> texts;
 //    private ArrayList<ImageAperture> imagePaths;
 
     protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
-        super(orientation, sides);
-//        this.side = sides;
+        super(orientation);
+        this.side = sides;
         this.type = type;
         this.color = color;
         setName(type.getName());
@@ -30,7 +30,13 @@ public class BusinessCard extends Option {
 //        return this.texts;
 //    }
 
+    protected void setSide(BusinessCardSide side) {
+        this.side = side;
+    }
 
+    public BusinessCardSide getSide() {
+        return this.side;
+    }
 
     public BusinessCardType getType() {
         return this.type;

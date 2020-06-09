@@ -12,7 +12,7 @@ public class Banner extends Option {
 //    private ArrayList<ImageAperture> imagePaths;
 
     protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
-        super(orientation, BusinessCardSide.SINGLE);
+        super(orientation);
 //        this.orientation = orientation;
         this.size = size;
         this.color = color;
