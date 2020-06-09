@@ -18,7 +18,7 @@ public class Banner extends Product {
         this.color = color;
         this.type = type;
         setName(type.getName() + size.getSize());
-        setPrice(size.getPrice());
+        setPrice(size.getPrice() + type.getAddPrice());
         setShippingOptions(deliveryMethod);
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
