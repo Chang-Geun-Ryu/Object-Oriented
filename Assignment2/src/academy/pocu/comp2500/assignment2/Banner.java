@@ -6,6 +6,7 @@ public class Banner extends Product {
     private OrientationType orientation;
     private BannerSize size;
     private int color;
+    private BannerType type;
 
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
@@ -15,10 +16,16 @@ public class Banner extends Product {
         this.orientation = orientation;
         this.size = size;
         this.color = color;
+        this.type = type;
         setName(type.getName() + size.getSize());
         setPrice(size.getPrice());
+        setShippingOptions(deliveryMethod);
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
+    }
+
+    public BannerType getType() {
+        return this.type;
     }
 
     public OrientationType getOrientation() {
@@ -31,6 +38,14 @@ public class Banner extends Product {
 
     public int getColor() {
         return this.color;
+    }
+
+    public int getWidth() {
+        return this.size.getWidth();
+    }
+
+    public int getHeight() {
+        return this.size.getHeight();
     }
 
     public ArrayList<ImageAperture> getImagePaths() {

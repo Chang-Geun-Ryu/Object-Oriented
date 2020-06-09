@@ -5,8 +5,10 @@ public class Calendar extends Product {
 
     protected Calendar(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
         super();
+        this.type = calendarType;
         setName(calendarType.getName());
         setPrice(calendarType.getPrice());
+
 
         if (deliveryMethod == null) {
 
