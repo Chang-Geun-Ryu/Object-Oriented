@@ -15,12 +15,16 @@ public class Program {
         GreenStamp greenStamp = new GreenStamp("Green", StempSizeType.SEVEN_BY_FOUR, ShippingOptionsType.PICKUP);
 
         BusinessCardGray gCard = new BusinessCardGray(BusinessCardType.LAID, BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BusinessCardIvory iCard = new BusinessCardIvory(BusinessCardType.LINEN, BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+//        BusinessCardLaid lCard = new BusinessCardLaid(BusinessCardSide.SINGLE)
 
         BannerGloss gBanner = new BannerGloss(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
         BannerLandscape lBanner = new BannerLandscape(BannerType.MESH, BannerSize.ONE_HALF, 0, ShippingOptionsType.SHIP);
         BannerScrim sBanner = new BannerScrim(BannerSize.ONE_HALF, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
         BannerMesh  mBanner = new BannerMesh(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
         BannerPortrait pBanner = new BannerPortrait(BannerType.SCRIM, BannerSize.THREE_ONE, 0, ShippingOptionsType.SHIP);
+
+
 
 
         Cart cart = new Cart();
