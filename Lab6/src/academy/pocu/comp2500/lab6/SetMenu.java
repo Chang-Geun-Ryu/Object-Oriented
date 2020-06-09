@@ -6,31 +6,19 @@ import java.util.Set;
 
 public class SetMenu extends Manu {
 
-    protected ArrayList<Appetizer> appetizers = new ArrayList<>();
-    protected ArrayList<Dessert> desserts = new ArrayList<>();
-    protected MainCourse mainCourse;
-    protected Dessert dessert;
-    protected Appetizer appetizer;
-
-    protected boolean isValid = false;
+//    protected ArrayList<Appetizer> appetizers = new ArrayList<>();
+//    protected ArrayList<Dessert> desserts = new ArrayList<>();
+//    protected MainCourse mainCourse;
+//    protected Dessert dessert;
+//    protected Appetizer appetizer;
+//
+//    protected boolean isValid = false;
 
     protected SetMenu(MenuPrice price) {
         super(price);
     }
 
-    public boolean isValid() {
-        switch (super.price) {
-            case NO_HEAVY_MEAL:
-                return this.appetizers.size() == 2 && this.dessert != null;
-            case DEATH_BY_DESSERTS:
-                return this.isValid;
-            case THREE_COURSE_MEAL:
-                return this.mainCourse != null && this.dessert != null && this.appetizer != null;
-            default:
-                assert (true) : "IT IS NOT SetMenu";
-                return false;
-        }
-    }
+
 
 //    public Appetizer getAppetizer() {
 //        assert (this.appetizer != null) : "call isValid() first!";
