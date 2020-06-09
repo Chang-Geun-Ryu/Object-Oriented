@@ -64,6 +64,9 @@ public class Program {
                 threeCourseMeal.setMainCourse(MainCourse.BOMBAY_BUTTER_CHICKEN);
 
                 assert (threeCourseMeal.isValid());
+
+                System.out.print("main");
+                System.out.println(threeCourseMeal.getMainCourses());
             }
 
             {
