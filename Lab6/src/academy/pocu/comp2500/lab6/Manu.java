@@ -16,7 +16,7 @@ public class Manu {
 
     protected ArrayList<Appetizer> appetizers = new ArrayList<>();
     protected ArrayList<Dessert> desserts = new ArrayList<>();
-//    protected ArrayList<MainCourse> mainCourses = new ArrayList<>();
+    protected ArrayList<MainCourse> mainCourses = new ArrayList<>();
     protected MainCourse mainCourse;
     protected Dessert dessert;
     protected Appetizer appetizer;
