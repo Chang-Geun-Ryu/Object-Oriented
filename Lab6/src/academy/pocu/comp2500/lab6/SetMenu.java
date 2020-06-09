@@ -27,10 +27,10 @@ public class SetMenu extends Manu {
 
     public ArrayList<MainCourse> getMainCourse() {
         if (super.price == MenuPrice.THREE_COURSE_MEAL) {
+            return this.mainCourses;
+        } else {
             assert (this.mainCourse != null) : "call isValid() first!";
             return new ArrayList<MainCourse>(Collections.singleton(this.mainCourse));
-        } else {
-            return this.mainCourses;
         }
     }
 
