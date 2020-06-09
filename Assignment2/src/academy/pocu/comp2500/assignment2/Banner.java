@@ -58,11 +58,21 @@ public class Banner extends Product {
 
     public void addText(TextAperture textAperture) {
         this.texts.add(textAperture);
-        setPrice(getPrice() + 5);
+        if (textAperture.getX() >= 0 &&
+        textAperture.getX() < size.getWidth() &&
+        textAperture.getY() >= 0 &&
+        textAperture.getY() < size.getHeight()) {
+            setPrice(getPrice() + 5);
+        }
     }
 
     public void addImage(ImageAperture imageAperture) {
         this.imagePaths.add(imageAperture);
-        setPrice(getPrice() + 5);
+        if (imageAperture.getX() >= 0 &&
+                imageAperture.getX() < size.getWidth() &&
+                imageAperture.getY() >= 0 &&
+                imageAperture.getY() < size.getHeight() &&) {
+            setPrice(getPrice() + 5);
+        }
     }
 }
