@@ -157,5 +157,19 @@ public class Program {
                 assert (!freeSoulPizza.addTopping(Topping.PEPERONI));
             }
 
+
+        {
+            NoHeavyMeal meal = new NoHeavyMeal();
+            meal.setAppetizers(Appetizer.CALAMARI, Appetizer.GYOZA);
+            meal.setDessert(Dessert.MANGO_PUDDING);
+            System.out.println(meal.getAppetizers());
+            System.out.println(meal.getDesserts());
+
+            meal.setAppetizers(Appetizer.SPINACH_DIP, Appetizer.NACHOS);
+            meal.setDessert(Dessert.GREEN_TEA_ICE_CREAM);
+            System.out.println(meal.getAppetizers());
+            System.out.println(meal.getDesserts());
+        }
+
     }
 }

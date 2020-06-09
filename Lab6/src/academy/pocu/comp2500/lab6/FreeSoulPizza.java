@@ -6,13 +6,13 @@ public class FreeSoulPizza extends Pizza {
         super(MenuPrice.FREE_SOUL_PIZZA);
     }
 
-    public boolean addTopping(Topping topping) {
-        return super.add(topping);
-    }
-
-    public boolean removeTopping(Topping topping) {
-        return super.remove(topping);
-    }
+//    public boolean addTopping(Topping topping) {
+//        return super.add(topping);
+//    }
+//
+//    public boolean removeTopping(Topping topping) {
+//        return super.remove(topping);
+//    }
 
 
 }

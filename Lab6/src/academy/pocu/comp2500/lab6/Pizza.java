@@ -40,6 +40,10 @@ public class Pizza extends Manu {
         }
     }
 
+    public ArrayList<Topping> getToppings() {
+        return this.toppings;
+    }
+
     private void setUpToppings() {
         switch (super.price) {
             case HOUSE_PIZZA:
@@ -67,11 +71,7 @@ public class Pizza extends Manu {
         }
     }
 
-    public ArrayList<Topping> getToppings() {
-        return this.toppings;
-    }
-
-    protected static boolean isMeat(Topping topping) {
+    private static boolean isMeat(Topping topping) {
         return topping == Topping.BACON
                 || topping == Topping.CHICKEN
                 || topping == Topping.PEPERONI
@@ -79,19 +79,19 @@ public class Pizza extends Manu {
                 || topping == Topping.HAM;
     }
 
-    protected static boolean isVeggie(Topping topping) {
+    private static boolean isVeggie(Topping topping) {
         return topping == Topping.BLACK_OLIVES
                 || topping == Topping.RED_ONIONS
                 || topping == Topping.GREEN_PEPPERS;
     }
 
-    protected static boolean isCheese(Topping topping) {
+    private static boolean isCheese(Topping topping) {
         return topping == Topping.MOZZARELLA_CHEESE
                 || topping == Topping.CHEDDAR_CHEESE
                 || topping == Topping.FETA_CHEESE;
     }
 
-    protected boolean add(Topping topping) {
+    public boolean addTopping(Topping topping) {
         if (isValid()) {
             return false;
         }
@@ -127,7 +127,7 @@ public class Pizza extends Manu {
        return true;
     }
 
-    protected boolean remove(Topping topping) {
+    public boolean removeTopping(Topping topping) {
         boolean isRemoved = this.toppings.remove(topping);
 
         if (isRemoved) {
