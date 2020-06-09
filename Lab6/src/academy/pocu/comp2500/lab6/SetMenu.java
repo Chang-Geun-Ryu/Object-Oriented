@@ -25,9 +25,11 @@ public class SetMenu extends Manu {
 //        return this.appetizer;
 //    }
 
-    public MainCourse getMainCourse() {
-        assert (this.mainCourse != null) : "call isValid() first!";
-        return this.mainCourse;
+    public ArrayList<MainCourse> getMainCourse() {
+//        if (super.price == MenuPrice.THREE_COURSE_MEAL)
+//        assert (this.mainCourse != null) : "call isValid() first!";
+//        return this.mainCourse;
+        return new ArrayList<MainCourse>(Collections.singleton(this.mainCourse));
     }
 
 //    public Dessert getDessert() {
