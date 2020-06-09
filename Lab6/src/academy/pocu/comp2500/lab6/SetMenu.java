@@ -1,6 +1,7 @@
 package academy.pocu.comp2500.lab6;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 
 public class SetMenu extends Manu {
@@ -31,26 +32,35 @@ public class SetMenu extends Manu {
         }
     }
 
-    public Appetizer getAppetizer() {
-        assert (this.appetizer != null) : "call isValid() first!";
-        return this.appetizer;
-    }
+//    public Appetizer getAppetizer() {
+//        assert (this.appetizer != null) : "call isValid() first!";
+//        return this.appetizer;
+//    }
 
     public MainCourse getMainCourse() {
         assert (this.mainCourse != null) : "call isValid() first!";
         return this.mainCourse;
     }
 
-    public Dessert getDessert() {
-        assert (this.dessert != null) : "call isValid() first!";
-        return this.dessert;
-    }
+//    public Dessert getDessert() {
+//        assert (this.dessert != null) : "call isValid() first!";
+//        return this.dessert;
+//    }
 
     public ArrayList<Dessert> getDesserts() {
-        return this.desserts;
+        if (super.price == MenuPrice.DEATH_BY_DESSERTS) {
+            return this.desserts;
+        } else {
+            assert (this.dessert != null) : "call isValid() first!";
+            return new ArrayList<Dessert>(Collections.singleton(this.dessert));
+        }
     }
 
     public ArrayList<Appetizer> getAppetizers() {
-        return this.appetizers;
+        if (super.price == MenuPrice.NO_HEAVY_MEAL) {
+            return this.appetizers;
+        } else {
+            return new ArrayList<Appetizer>(Collections.singleton(this.appetizer));
+        }
     }
 }
