@@ -53,8 +53,8 @@ public class Option extends Product {
         int w = this.orientation == OrientationType.LANDSCAPE ? this.width : this.height;
         int h = this.orientation == OrientationType.LANDSCAPE ? this.height : this.width;
 
-        if (aperture.getX() >= 0 || aperture.getY() >= 0 ||
-        aperture.getX() < w || aperture.getY() < h) {
+        if (aperture.getX() >= 0 && aperture.getY() >= 0 &&
+        aperture.getX() < w && aperture.getY() < h) {
             setPrice(getPrice() + 5);
         }
     }
