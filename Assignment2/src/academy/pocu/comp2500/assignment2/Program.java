@@ -62,7 +62,7 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
-        gBanner.addText(new TextAperture("asfd", 0,1,5,5));
+//        gBanner.addText(new TextAperture("asfd", 0,1,5,5));
 
         cart.getAllProducts()
                 .stream()
