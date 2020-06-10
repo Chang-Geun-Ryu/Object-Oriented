@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     protected OrientationType orientation;
-    private ArrayList<TextAperture> texts;
-    private ArrayList<ImageAperture> imagePaths;
+    private ArrayList<Aperture> texts;
+    private ArrayList<Aperture> imagePaths;
 //    protected int color;
 //    private int width;
 //    private int height;
