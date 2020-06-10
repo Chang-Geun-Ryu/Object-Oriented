@@ -6,13 +6,13 @@ public class Option extends Product {
     private OrientationType orientation;
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
-    protected Side doubleSide;
+//    protected Side doubleSide;
 
-    protected Option(OrientationType orientation, Side sides) {
+    protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
-        this.doubleSide = sides;
+//        this.doubleSide = sides;
     }
 
     public OrientationType getOrientation() {

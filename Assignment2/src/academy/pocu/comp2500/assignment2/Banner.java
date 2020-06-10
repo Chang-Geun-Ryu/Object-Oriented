@@ -8,7 +8,7 @@ public class Banner extends Option {
     private BannerType type;
 
     protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
-        super(orientation, Side.SINGLE);
+        super(orientation);//, Side.SINGLE);
         this.size = size;
         this.color = color;
         this.type = type;
@@ -19,8 +19,7 @@ public class Banner extends Option {
 
     public BannerType getType() {
         return this.type;
-    }
-
+    }git
     public BannerSize getSize() {
         return this.size;
     }

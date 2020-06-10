@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class BusinessCard extends Option {
     private BusinessCardType type;
     private BusinessCardColor color;
+    protected Side doubleSide;
 
     protected BusinessCard(BusinessCardType type, Side sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
-        super(orientation, sides);
-//        this.side = sides;
+        super(orientation);//, sides);
+        this.doubleSide = sides;
         this.type = type;
         this.color = color;
         setName(type.getName());
@@ -17,11 +18,11 @@ public class BusinessCard extends Option {
     }
 
     protected void setSide(Side side) {
-        super.doubleSide = side;
+        this.doubleSide = side;
     }
 
     public Side getSide() {
-        return super.doubleSide;
+        return this.doubleSide;
     }
 
     public BusinessCardType getType() {
@@ -40,16 +41,6 @@ public class BusinessCard extends Option {
         return 50;
     }
 
-//    public void addText(TextAperture textAperture) {
-//        this.texts.add(textAperture);
-//        setPrice(getPrice() + 5);
-//    }
-//
-//    public void addImage(ImageAperture imageAperture) {
-//        this.imagePaths.add(imageAperture);
-//        setPrice(getPrice() + 5);
-//    }
-
     protected void setType(BusinessCardType type) {
         this.type = type;
     }
@@ -57,8 +48,4 @@ public class BusinessCard extends Option {
     protected void setColor(BusinessCardColor color) {
         this.color = color;
     }
-
-//    protected void setOrientation(OrientationType orientation) {
-//        this.orientation = orientation;
-//    }
 }
