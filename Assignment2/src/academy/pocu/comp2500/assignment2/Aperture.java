@@ -1,24 +1,24 @@
 package academy.pocu.comp2500.assignment2;
 
 public class Aperture {
-    protected String aperture;
+    protected String text;
     private int x;
     private int y;
 //    private int width;
 //    private int height;
 //    private boolean sides;
 
-    public Aperture(String aperture, int x, int y) {
-        this.aperture = aperture;
+    public Aperture(String text, int x, int y) {
+        this.text = text;
         this.x = x;
         this.y = y;
 //        this.width = width;
 //        this.height = height;
     }
 
-    public String getAperture() {
-        return this.aperture;
-    }
+//    public String getAperture() {
+//        return this.text;
+//    }
 
     public int getX() {
         return this.x;
