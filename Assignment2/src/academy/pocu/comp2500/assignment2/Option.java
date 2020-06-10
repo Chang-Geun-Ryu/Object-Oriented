@@ -9,7 +9,7 @@ public class Option extends Product {
 //    protected Side doubleSide;
     private int width;
     private int height;
-    private int color;
+//    private int color;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
@@ -26,13 +26,13 @@ public class Option extends Product {
         this.height = height;
     }
 
-    protected void setColor(int color) {
-        this.color = color;
-    }
+//    protected void setColor(int color) {
+//        this.color = color;
+//    }
 
-    public int getColor() {
-        return this.color;
-    }
+//    public int getColor() {
+//        return this.color;
+//    }
 
     public int getWidth() {
         return this.width;
