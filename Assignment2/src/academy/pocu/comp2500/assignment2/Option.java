@@ -18,11 +18,11 @@ public class Option extends Product {
 //        this.doubleSide = sides;
     }
 
-    protected void setWidth(int width) {
+    public void setWidth(int width) {
         this.width = width;
     }
 
-    protected void setHeight(int height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
