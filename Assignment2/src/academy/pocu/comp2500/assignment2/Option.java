@@ -27,13 +27,13 @@ public class Option extends Product {
         return this.orientation;
     }
 
-    public ArrayList<ImageAperture> getImagePaths() {
-        return this.imagePaths;
-    }
-
-    public ArrayList<TextAperture> getTexts() {
-        return this.texts;
-    }
+//    public ArrayList<ImageAperture> getImagePaths() {
+//        return this.imagePaths;
+//    }
+//
+//    public ArrayList<TextAperture> getTexts() {
+//        return this.texts;
+//    }
 
     public void addText(TextAperture textAperture) {
         this.texts.add(textAperture);

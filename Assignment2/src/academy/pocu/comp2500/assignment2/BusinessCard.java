@@ -19,9 +19,9 @@ public class BusinessCard extends Option {
         setHeight(type.getHeight());
     }
 
-    protected void setSide(BusinessCardSide side) {
-        this.side = side;
-    }
+//    protected void setSide(BusinessCardSide side) {
+//        this.side = side;
+//    }
 
     public BusinessCardSide getSide() {
         return this.side;
@@ -43,12 +43,12 @@ public class BusinessCard extends Option {
 //        return 50;
 //    }
 
-    protected void setType(BusinessCardType type) {
-        this.type = type;
-    }
-
-    protected void setColor(BusinessCardColor color) {
-        this.color = color;
-    }
+//    protected void setType(BusinessCardType type) {
+//        this.type = type;
+//    }
+//
+//    protected void setColor(BusinessCardColor color) {
+//        this.color = color;
+//    }
 
 }
