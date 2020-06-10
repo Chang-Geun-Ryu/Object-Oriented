@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment2;
 
-public enum BusinessCardSide {
+public enum Side {
     SINGLE("단면", 0),
     DOUBLE("양면", 30);
 
@@ -15,7 +15,7 @@ public enum BusinessCardSide {
         return side;
     }
 
-    private BusinessCardSide(String side, int addPrice) {
+    private Side(String side, int addPrice) {
         this.addPrice = addPrice;
         this.side = side;
     }

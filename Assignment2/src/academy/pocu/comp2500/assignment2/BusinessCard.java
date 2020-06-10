@@ -5,37 +5,23 @@ import java.util.ArrayList;
 public class BusinessCard extends Option {
     private BusinessCardType type;
     private BusinessCardColor color;
-    private BusinessCardSide side;
-//    private ArrayList<TextAperture> texts;
-//    private ArrayList<ImageAperture> imagePaths;
 
-    protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
-        super(orientation);
-        this.side = sides;
+    protected BusinessCard(BusinessCardType type, Side sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
+        super(orientation, sides);
+//        this.side = sides;
         this.type = type;
         this.color = color;
         setName(type.getName());
         setPrice(type.getPrice() + sides.getAddPrice());
         setShippingOptions(deliveryMethod);
-
-//        this.texts = new ArrayList<>();
-//        this.imagePaths = new ArrayList<>();
     }
 
-//    public ArrayList<ImageAperture> getImagePaths() {
-//        return this.imagePaths;
-//    }
-//
-//    public ArrayList<TextAperture> getTexts() {
-//        return this.texts;
-//    }
-
-    protected void setSide(BusinessCardSide side) {
-        this.side = side;
+    protected void setSide(Side side) {
+        super.doubleSide = side;
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
+    public Side getSide() {
+        return super.doubleSide;
     }
 
     public BusinessCardType getType() {
@@ -45,10 +31,6 @@ public class BusinessCard extends Option {
     public BusinessCardColor getColor() {
         return this.color;
     }
-
-//    public OrientationType getOrientation() {
-//        return this.orientation;
-//    }
 
     public int getWidth() {
         return 90;
@@ -71,8 +53,6 @@ public class BusinessCard extends Option {
     protected void setType(BusinessCardType type) {
         this.type = type;
     }
-
-
 
     protected void setColor(BusinessCardColor color) {
         this.color = color;

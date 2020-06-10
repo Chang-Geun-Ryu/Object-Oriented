@@ -32,6 +32,4 @@ public class Cart {
                 .reduce(0, (total, e) -> total + e);
 
     }
-
-
 }

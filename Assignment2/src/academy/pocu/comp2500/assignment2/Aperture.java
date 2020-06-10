@@ -6,6 +6,7 @@ public class Aperture {
     private int y;
     private int width;
     private int height;
+    private boolean sides;
 
     protected Aperture(String text, int x, int y, int width, int height) {
         this.text = text;
