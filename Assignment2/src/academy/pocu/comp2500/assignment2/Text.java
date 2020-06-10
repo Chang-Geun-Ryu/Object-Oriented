@@ -6,6 +6,6 @@ public class Text extends Aperture {
     }
 
     public String getText() {
-        return super.aperture;
+        return super.text;
     }
 }

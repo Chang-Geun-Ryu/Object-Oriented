@@ -6,6 +6,6 @@ public class Imgae extends Aperture {
     }
 
     public String getImagePath() {
-        return super.aperture;
+        return super.text;
     }
 }

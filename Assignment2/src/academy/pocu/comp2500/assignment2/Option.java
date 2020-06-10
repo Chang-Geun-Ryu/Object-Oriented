@@ -15,21 +15,21 @@ public class Option extends Product {
         this.imagePaths = new ArrayList<>();
     }
 
-    public void setWidth(int width) {
+    protected void setWidth(int width) {
         this.width = width;
     }
 
-    public void setHeight(int height) {
+    protected void setHeight(int height) {
         this.height = height;
     }
 
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
+//    public int getWidth() {
+//        return this.width;
+//    }
+//
+//    public int getHeight() {
+//        return this.height;
+//    }
 
     public OrientationType getOrientation() {
         return this.orientation;
