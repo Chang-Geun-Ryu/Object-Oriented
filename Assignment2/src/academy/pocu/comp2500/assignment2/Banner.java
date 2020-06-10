@@ -19,7 +19,7 @@ public class Banner extends Option {
 
     public BannerType getType() {
         return this.type;
-    }git
+    }
     public BannerSize getSize() {
         return this.size;
     }
