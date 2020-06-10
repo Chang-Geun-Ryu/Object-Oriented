@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     private OrientationType orientation;
-    private ArrayList<Aperture> texts;
-    private ArrayList<Aperture> imagePaths;
+    private ArrayList<Text> texts;
+    private ArrayList<Image> imagePaths;
     private int width;
     private int height;
 
@@ -35,11 +35,11 @@ public class Option extends Product {
         return this.orientation;
     }
 
-    public ArrayList<Aperture> getImagePaths() {
+    public ArrayList<Image> getImagePaths() {
         return this.imagePaths;
     }
 
-    public ArrayList<Aperture> getTexts() {
+    public ArrayList<Text> getTexts() {
         return this.texts;
     }
 
