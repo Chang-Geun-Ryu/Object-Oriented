@@ -6,6 +6,7 @@ public class Option extends Product {
     private OrientationType orientation;
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
+    private int color;
 //    private int width;
 //    private int height;
 
@@ -22,6 +23,14 @@ public class Option extends Product {
 //    protected  void setHeight(int height) {
 //        this.height = height;
 //    }
+
+    protected void setColor(int color) {
+        this.color = color;
+    }
+
+    public int getColor() {
+        return this.color;
+    }
 
     public OrientationType getOrientation() {
         return this.orientation;

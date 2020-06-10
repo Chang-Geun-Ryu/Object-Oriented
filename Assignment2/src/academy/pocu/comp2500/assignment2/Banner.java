@@ -22,6 +22,8 @@ public class Banner extends Option {
         setShippingOptions(deliveryMethod);
         setWidth(size.getWidth());
         setHeight(size.getHeight());
+
+        setColor(color);
     }
 
     public BannerType getType() {
@@ -32,9 +34,9 @@ public class Banner extends Option {
 //        return this.size;
 //    }
 
-    public int getColor() {
-        return this.color;
-    }
+//    public int getColor() {
+//        return this.color;
+//    }
 
 //    public int getWidth() {
 //        return this.size.getWidth();
