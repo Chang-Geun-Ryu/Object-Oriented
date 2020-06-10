@@ -28,9 +28,9 @@ public class Banner extends Option {
         return this.type;
     }
 
-    public BannerSize getSize() {
-        return this.size;
-    }
+//    public BannerSize getSize() {
+//        return this.size;
+//    }
 
     public int getColor() {
         return this.color;
