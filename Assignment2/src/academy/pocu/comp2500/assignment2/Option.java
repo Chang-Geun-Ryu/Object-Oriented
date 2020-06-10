@@ -4,10 +4,8 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     private OrientationType orientation;
-    private ArrayList<Text> texts;
-    private ArrayList<Image> imagePaths;
-    private int width;
-    private int height;
+    private ArrayList<TextAperture> texts;
+    private ArrayList<ImageAperture> imagePaths;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
@@ -15,51 +13,25 @@ public class Option extends Product {
         this.imagePaths = new ArrayList<>();
     }
 
-    protected void setWidth(int width) {
-        this.width = width;
-    }
-
-    protected void setHeight(int height) {
-        this.height = height;
-    }
-
-//    public int getWidth() {
-//        return this.width;
-//    }
-//
-//    public int getHeight() {
-//        return this.height;
-//    }
-
     public OrientationType getOrientation() {
         return this.orientation;
     }
 
-    public ArrayList<Image> getImagePaths() {
+    public ArrayList<ImageAperture> getImagePaths() {
         return this.imagePaths;
     }
 
-    public ArrayList<Text> getTexts() {
+    public ArrayList<TextAperture> getTexts() {
         return this.texts;
     }
 
-    public void addText(Text textAperture) {
+    public void addText(TextAperture textAperture) {
         this.texts.add(textAperture);
-        addPrice(textAperture);
+        setPrice(getPrice() + 5);
     }
 
-    public void addImage(Image imageAperture) {
+    public void addImage(ImageAperture imageAperture) {
         this.imagePaths.add(imageAperture);
-        addPrice(imageAperture);
-    }
-
-    private void addPrice(Aperture aperture) {
-        int w = this.orientation == OrientationType.LANDSCAPE ? this.width : this.height;
-        int h = this.orientation == OrientationType.LANDSCAPE ? this.height : this.width;
-
-        if (aperture.getX() >= 0 && aperture.getY() >= 0 &&
-        aperture.getX() < w && aperture.getY() < h) {
-            setPrice(getPrice() + 5);
-        }
+        setPrice(getPrice() + 5);
     }
 }

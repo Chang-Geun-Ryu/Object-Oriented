@@ -9,6 +9,7 @@ public class Calendar extends Product {
         setName(calendarType.getName());
         setPrice(calendarType.getPrice());
 
+
         if (deliveryMethod == null) {
 
         } else {

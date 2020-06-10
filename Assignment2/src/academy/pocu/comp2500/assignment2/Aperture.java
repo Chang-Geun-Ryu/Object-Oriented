@@ -4,21 +4,16 @@ public class Aperture {
     protected String text;
     private int x;
     private int y;
-//    private int width;
-//    private int height;
-//    private boolean sides;
+    private int width;
+    private int height;
 
-    public Aperture(String text, int x, int y) {
+    protected Aperture(String text, int x, int y, int width, int height) {
         this.text = text;
         this.x = x;
         this.y = y;
-//        this.width = width;
-//        this.height = height;
+        this.width = width;
+        this.height = height;
     }
-
-//    public String getAperture() {
-//        return this.text;
-//    }
 
     public int getX() {
         return this.x;
@@ -28,11 +23,11 @@ public class Aperture {
         return this.y;
     }
 
-//    public int getWidth() {
-//        return this.width;
-//    }
-//
-//    public int getHeight() {
-//        return this.height;
-//    }
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
 }

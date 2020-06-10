@@ -11,12 +11,12 @@ public class Program {
         RedStamp rStamp = new RedStamp("red", StempSizeType.FOUR_BY_THREE, ShippingOptionsType.PICKUP);
         GreenStamp greenStamp = new GreenStamp("Green", StempSizeType.SEVEN_BY_FOUR, ShippingOptionsType.PICKUP);
 
-        BusinessCardLinen linen1 = new BusinessCardLinen(Side.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardLinen linen2 = new BusinessCardLinen(Side.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardLaid laid1 = new BusinessCardLaid(Side.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardLaid laid2 = new BusinessCardLaid(Side.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardSmooth smooth1 = new BusinessCardSmooth(Side.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardSmooth smooth2 = new BusinessCardSmooth(Side.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLinen linen1 = new BusinessCardLinen(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLinen linen2 = new BusinessCardLinen(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLaid laid1 = new BusinessCardLaid(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLaid laid2 = new BusinessCardLaid(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardSmooth smooth1 = new BusinessCardSmooth(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardSmooth smooth2 = new BusinessCardSmooth(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
 
         BannerGloss gBanner = new BannerGloss(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
         BannerGloss gBanner1 = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
@@ -61,9 +61,6 @@ public class Program {
         cart.addProduct(desk);
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
-
-        gBanner.addText(new Text("asfd", 0,1));
-        gBanner.addImage(new Image("d", 0,1, 100, 200));
 
         cart.getAllProducts()
                 .stream()
