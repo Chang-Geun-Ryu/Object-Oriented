@@ -8,7 +8,7 @@ public class Aperture {
 //    private int height;
 //    private boolean sides;
 
-    protected Aperture(String text, int x, int y) {
+    public Aperture(String text, int x, int y) {
         this.text = text;
         this.x = x;
         this.y = y;

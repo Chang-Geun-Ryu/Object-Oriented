@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     private OrientationType orientation;
-    private ArrayList<TextAperture> texts;
-    private ArrayList<ImageAperture> imagePaths;
+    private ArrayList<Aperture> texts;
+    private ArrayList<Aperture> imagePaths;
 //    protected Side doubleSide;
     private int width;
     private int height;
@@ -46,21 +46,21 @@ public class Option extends Product {
         return this.orientation;
     }
 
-    public ArrayList<ImageAperture> getImagePaths() {
+    public ArrayList<Aperture> getImagePaths() {
         return this.imagePaths;
     }
 
-    public ArrayList<TextAperture> getTexts() {
+    public ArrayList<Aperture> getTexts() {
         return this.texts;
     }
 
-    public void addText(TextAperture textAperture) {
+    public void addText(Aperture textAperture) {
         this.texts.add(textAperture);
         addPrice(textAperture);
 //        setPrice(getPrice() + 5);
     }
 
-    public void addImage(ImageAperture imageAperture) {
+    public void addImage(Aperture imageAperture) {
         this.imagePaths.add(imageAperture);
         addPrice(imageAperture);
 //        setPrice(getPrice() + 5);
