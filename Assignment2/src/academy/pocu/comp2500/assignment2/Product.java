@@ -4,11 +4,17 @@ public class Product {
     private String name;
     private int price;
     private ShippingOptionsType shippingOptions;
+    private int color;
 
     protected Product() {
         this.name = "";
         this.price = 0;
         this.shippingOptions = ShippingOptionsType.PICKUP;
+        this.color = 0;
+    }
+
+    public int getColor() {
+        return this.color;
     }
 
     public String getName() {
@@ -33,5 +39,9 @@ public class Product {
 
     public void setShippingOptions(ShippingOptionsType type) {
         this.shippingOptions = type;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }
