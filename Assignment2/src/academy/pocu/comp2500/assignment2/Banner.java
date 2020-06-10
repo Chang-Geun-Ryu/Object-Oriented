@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 import java.util.ArrayList;
 
 public class Banner extends Option {
-//    private OrientationType orientation;
+//    protected OrientationType orientation;
 //    private BannerSize size;
 //    private int color;
 //    private BannerType type;

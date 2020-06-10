@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 import java.util.ArrayList;
 
 public class Option extends Product {
-    private OrientationType orientation;
+    protected OrientationType orientation;
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
     private int color;
@@ -32,16 +32,8 @@ public class Option extends Product {
         return this.color;
     }
 
-    public OrientationType getOrientation() {
-        return this.orientation;
-    }
-
-//    public ArrayList<ImageAperture> getImagePaths() {
-//        return this.imagePaths;
-//    }
-//
-//    public ArrayList<TextAperture> getTexts() {
-//        return this.texts;
+//    public OrientationType getOrientation() {
+//        return this.orientation;
 //    }
 
     public void addText(TextAperture textAperture) {
