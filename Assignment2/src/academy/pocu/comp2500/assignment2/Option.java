@@ -28,9 +28,9 @@ public class Option extends Product {
         this.color = color;
     }
 
-    public int getColor() {
-        return this.color;
-    }
+//    public int getColor() {
+//        return this.color;
+//    }
 
 //    public OrientationType getOrientation() {
 //        return this.orientation;

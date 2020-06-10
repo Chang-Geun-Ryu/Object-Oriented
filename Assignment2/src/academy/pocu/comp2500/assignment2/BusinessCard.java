@@ -3,9 +3,9 @@ package academy.pocu.comp2500.assignment2;
 import java.util.ArrayList;
 
 public class BusinessCard extends Option {
-    private BusinessCardType type;
-    private BusinessCardColor color;
-    private BusinessCardSide side;
+    protected BusinessCardType type;
+    protected BusinessCardColor color;
+    protected BusinessCardSide side;
 
     protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
         super(orientation);
@@ -25,7 +25,7 @@ public class BusinessCard extends Option {
 //        this.side = side;
 //    }
 
-    public BusinessCardSide getSide() {
+    /*public BusinessCardSide getSide() {
         return this.side;
     }
 
@@ -33,9 +33,9 @@ public class BusinessCard extends Option {
         return this.type;
     }
 
-//    public BusinessCardColor getColor() {
-//        return this.color;
-//    }
+    public BusinessCardColor getColor() {
+        return this.color;
+    }*/
 
 //    public int getWidth() {
 //        return 90;
