@@ -15,6 +15,8 @@ public class BusinessCard extends Option {
         setName(type.getName());
         setPrice(type.getPrice() + sides.getAddPrice());
         setShippingOptions(deliveryMethod);
+        setWidth(type.getWidth());
+        setHeight(type.getHeight());
     }
 
     protected void setSide(Side side) {

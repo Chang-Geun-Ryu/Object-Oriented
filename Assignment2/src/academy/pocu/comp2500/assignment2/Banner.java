@@ -15,6 +15,8 @@ public class Banner extends Option {
         setName(type.getName() + size.getSize());
         setPrice(size.getPrice() + type.getAddPrice());
         setShippingOptions(deliveryMethod);
+        setWidth(size.getWidth());
+        setHeight(size.getHeight());
     }
 
     public BannerType getType() {
