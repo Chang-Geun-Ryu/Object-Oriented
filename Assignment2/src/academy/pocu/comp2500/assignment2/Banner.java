@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Banner extends Option {
 //    private OrientationType orientation;
-    private BannerSize size;
-    private int color;
-    private BannerType type;
+//    private BannerSize size;
+//    private int color;
+//    private BannerType type;
 
 //    private ArrayList<TextAperture> texts;
 //    private ArrayList<ImageAperture> imagePaths;
@@ -14,9 +14,9 @@ public class Banner extends Option {
     protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
 //        this.orientation = orientation;
-        this.size = size;
-        this.color = color;
-        this.type = type;
+//        this.size = size;
+//        this.color = color;
+//        this.type = type;
         setName(type.getName() + size.getSize());
         setPrice(size.getPrice() + type.getAddPrice());
         setShippingOptions(deliveryMethod);
@@ -26,9 +26,9 @@ public class Banner extends Option {
         setColor(color);
     }
 
-    public BannerType getType() {
-        return this.type;
-    }
+//    public BannerType getType() {
+//        return this.type;
+//    }
 
 //    public BannerSize getSize() {
 //        return this.size;
