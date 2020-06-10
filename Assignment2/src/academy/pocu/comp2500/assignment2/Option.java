@@ -6,11 +6,21 @@ public class Option extends Product {
     private OrientationType orientation;
     private ArrayList<TextAperture> texts;
     private ArrayList<ImageAperture> imagePaths;
+    private int width;
+    private int height;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
+    }
+
+    protected void setWidth(int width) {
+        this.width = width;
+    }
+
+    protected  void setHeight(int height) {
+        this.height = height;
     }
 
     public OrientationType getOrientation() {
@@ -27,11 +37,21 @@ public class Option extends Product {
 
     public void addText(TextAperture textAperture) {
         this.texts.add(textAperture);
-        setPrice(getPrice() + 5);
+        addPrice(textAperture);
     }
 
     public void addImage(ImageAperture imageAperture) {
         this.imagePaths.add(imageAperture);
-        setPrice(getPrice() + 5);
+        addPrice(imageAperture);
+    }
+
+    private void addPrice(Aperture aperture) {
+        int w = this.orientation == OrientationType.LANDSCAPE ? this.width : this.height;
+        int h = this.orientation == OrientationType.LANDSCAPE ? this.height : this.width;
+
+        if (aperture.getX() >= 0 && aperture.getY() >= 0 &&
+                aperture.getX() < w && aperture.getY() < h) {
+            setPrice(getPrice() + 5);
+        }
     }
 }
