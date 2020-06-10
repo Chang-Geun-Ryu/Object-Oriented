@@ -18,7 +18,7 @@ public class BusinessCard extends Option {
         setWidth(type.getWidth());
         setHeight(type.getHeight());
 
-        setColor(color.getColor());
+//        setColor(color.getColor());
     }
 
 //    protected void setSide(BusinessCardSide side) {

@@ -6,7 +6,7 @@ public class BannerLandscape extends Banner {
         super(type, size, color, OrientationType.LANDSCAPE, deliveryMethod);
         this.type = type;
     }
-    public BannerType getType() {
-        return this.type;
-    }
+//    public BannerType getType() {
+//        return this.type;
+//    }
 }

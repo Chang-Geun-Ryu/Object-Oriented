@@ -8,4 +8,8 @@ public class ImageAperture extends Aperture {
     public String getImagePath() {
         return super.text;
     }
+
+    public void setImagePath(String imagePath) {
+        this.text = imagePath;
+    }
 }

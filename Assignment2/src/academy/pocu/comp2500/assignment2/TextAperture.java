@@ -8,4 +8,8 @@ public class TextAperture extends Aperture {
     public String getText() {
         return super.text;
     }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

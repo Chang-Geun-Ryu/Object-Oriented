@@ -7,7 +7,7 @@ public class BannerPortrait extends Banner {
         this.type = type;
     }
 
-    public BannerType getType() {
-        return this.type;
-    }
+//    public BannerType getType() {
+//        return this.type;
+//    }
 }
