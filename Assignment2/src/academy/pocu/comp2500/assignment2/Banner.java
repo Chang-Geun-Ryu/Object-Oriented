@@ -17,12 +17,11 @@ public class Banner extends Option {
         setShippingOptions(deliveryMethod);
         setWidth(size.getWidth());
         setHeight(size.getHeight());
-//        setColor(color);
     }
 
-//    public BannerType getType() {
-//        return this.type;
-//    }
+    public BannerType getType() {
+        return this.type;
+    }
     public BannerSize getSize() {
         return this.size;
     }

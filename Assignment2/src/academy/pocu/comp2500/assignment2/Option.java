@@ -6,16 +6,13 @@ public class Option extends Product {
     private OrientationType orientation;
     private ArrayList<Aperture> texts;
     private ArrayList<Aperture> imagePaths;
-//    protected Side doubleSide;
     private int width;
     private int height;
-//    private int color;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.texts = new ArrayList<>();
         this.imagePaths = new ArrayList<>();
-//        this.doubleSide = sides;
     }
 
     public void setWidth(int width) {
@@ -25,14 +22,6 @@ public class Option extends Product {
     public void setHeight(int height) {
         this.height = height;
     }
-
-//    protected void setColor(int color) {
-//        this.color = color;
-//    }
-
-//    public int getColor() {
-//        return this.color;
-//    }
 
     public int getWidth() {
         return this.width;
@@ -57,13 +46,11 @@ public class Option extends Product {
     public void addText(Aperture textAperture) {
         this.texts.add(textAperture);
         addPrice(textAperture);
-//        setPrice(getPrice() + 5);
     }
 
     public void addImage(Aperture imageAperture) {
         this.imagePaths.add(imageAperture);
         addPrice(imageAperture);
-//        setPrice(getPrice() + 5);
     }
 
     private void addPrice(Aperture aperture) {
