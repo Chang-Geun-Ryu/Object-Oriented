@@ -20,9 +20,9 @@ public class BusinessCard extends Option {
 //        setColor(color.getColor());
     }
 
-    protected void setSide(Side side) {
-        this.doubleSide = side;
-    }
+//    protected void setSide(Side side) {
+//        this.doubleSide = side;
+//    }
 
     public Side getSide() {
         return this.doubleSide;
@@ -44,9 +44,9 @@ public class BusinessCard extends Option {
 //        return 50;
 //    }
 
-    protected void setType(BusinessCardType type) {
-        this.type = type;
-    }
+//    protected void setType(BusinessCardType type) {
+//        this.type = type;
+//    }
 
 //    protected void setColor(BusinessCardColor color) {
 //        this.color = color;
