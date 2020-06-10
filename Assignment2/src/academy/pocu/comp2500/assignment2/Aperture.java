@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.assignment2;
 
 public class Aperture {
-    private String aperture;
+    protected String aperture;
     private int x;
     private int y;
 //    private int width;
