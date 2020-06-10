@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     private OrientationType orientation;
-    private ArrayList<Aperture> apertures;
-//    private ArrayList<Aperture> imagePaths;
+    private ArrayList<Aperture> texts;
+    private ArrayList<Aperture> imagePaths;
     private int width;
     private int height;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
-        this.apertures = new ArrayList<>();
-//        this.imagePaths = new ArrayList<>();
+        this.texts = new ArrayList<>();
+        this.imagePaths = new ArrayList<>();
     }
 
     public void setWidth(int width) {
@@ -35,28 +35,23 @@ public class Option extends Product {
         return this.orientation;
     }
 
-//    public ArrayList<Aperture> getImagePaths() {
-//        return this.imagePaths;
-//    }
-
-//    public ArrayList<Aperture> getTexts() {
-//        return this.texts;
-//    }
-
-    public ArrayList<Aperture> getApertures() {
-        return this.apertures;
+    public ArrayList<Aperture> getImagePaths() {
+        return this.imagePaths;
     }
 
-    public void addAperture(Aperture aperture) {
-//        this.texts.add(textAperture);
-        this.apertures.add(aperture);
-        addPrice(aperture);
+    public ArrayList<Aperture> getTexts() {
+        return this.texts;
     }
 
-//    public void addImage(Aperture imageAperture) {
-//        this.imagePaths.add(imageAperture);
-//        addPrice(imageAperture);
-//    }
+    public void addText(Aperture textAperture) {
+        this.texts.add(textAperture);
+        addPrice(textAperture);
+    }
+
+    public void addImage(Aperture imageAperture) {
+        this.imagePaths.add(imageAperture);
+        addPrice(imageAperture);
+    }
 
     private void addPrice(Aperture aperture) {
         int w = this.orientation == OrientationType.LANDSCAPE ? this.width : this.height;
