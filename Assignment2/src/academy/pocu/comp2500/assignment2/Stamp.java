@@ -31,6 +31,9 @@ public class Stamp extends Product {
         } else {
             this.text = text;
         }
+
+        setWidth(stampSize.getWidth());
+        setHeight(stampSize.getHeight());
     }
 
     public void setText(String text) {
@@ -49,12 +52,12 @@ public class Stamp extends Product {
         return this.text;
     }
 
-    public int getWidth() {
-        return this.size.getWidth();
-    }
-
-    public int getHeight() {
-        return this.size.getHeight();
-    }
+//    public int getWidth() {
+//        return this.size.getWidth();
+//    }
+//
+//    public int getHeight() {
+//        return this.size.getHeight();
+//    }
 }
 

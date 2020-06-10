@@ -35,13 +35,13 @@ public class BusinessCard extends Option {
         return this.color;
     }
 
-    public int getWidth() {
-        return 90;
-    }
-
-    public int getHeight() {
-        return 50;
-    }
+//    public int getWidth() {
+//        return 90;
+//    }
+//
+//    public int getHeight() {
+//        return 50;
+//    }
 
     protected void setType(BusinessCardType type) {
         this.type = type;

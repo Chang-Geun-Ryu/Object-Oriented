@@ -8,7 +8,8 @@ public class Calendar extends Product {
         this.type = calendarType;
         setName(calendarType.getName());
         setPrice(calendarType.getPrice());
-
+        setWidth(type.getWidth());
+        setHeight(type.getHeight());
 
         if (deliveryMethod == null) {
 
@@ -25,11 +26,11 @@ public class Calendar extends Product {
         return 0xFFFFFF;
     }
 
-    public int getWidth() {
-        return this.type.getWidth();
-    }
-
-    public int getHeight() {
-        return this.type.getHeight();
-    }
+//    public int getWidth() {
+//        return this.type.getWidth();
+//    }
+//
+//    public int getHeight() {
+//        return this.type.getHeight();
+//    }
 }

@@ -4,11 +4,31 @@ public class Product {
     private String name;
     private int price;
     private ShippingOptionsType shippingOptions;
+    protected int width;
+    protected int height;
 
     protected Product() {
         this.name = "";
         this.price = 0;
         this.shippingOptions = ShippingOptionsType.PICKUP;
+        this.width = 0;
+        this.height = 0;
+    }
+
+    protected void setWidth(int width) {
+        this.width = width;
+    }
+
+    protected  void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 
     public String getName() {
