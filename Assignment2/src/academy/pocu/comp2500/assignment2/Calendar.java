@@ -8,7 +8,6 @@ public class Calendar extends Product {
         this.type = calendarType;
         setName(calendarType.getName());
         setPrice(calendarType.getPrice());
-//        setColor(0xFFFFFF);
 
         if (deliveryMethod == null) {
 

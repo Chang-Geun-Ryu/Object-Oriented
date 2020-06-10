@@ -17,12 +17,7 @@ public class BusinessCard extends Option {
         setShippingOptions(deliveryMethod);
         setWidth(type.getWidth());
         setHeight(type.getHeight());
-//        setColor(color.getColor());
     }
-
-//    protected void setSide(Side side) {
-//        this.doubleSide = side;
-//    }
 
     public Side getSide() {
         return this.doubleSide;
@@ -35,20 +30,4 @@ public class BusinessCard extends Option {
     public BusinessCardColor getColor() {
         return this.color;
     }
-
-//    public int getWidth() {
-//        return 90;
-//    }
-//
-//    public int getHeight() {
-//        return 50;
-//    }
-
-//    protected void setType(BusinessCardType type) {
-//        this.type = type;
-//    }
-
-//    protected void setColor(BusinessCardColor color) {
-//        this.color = color;
-//    }
 }
