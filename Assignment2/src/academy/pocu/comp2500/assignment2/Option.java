@@ -43,12 +43,12 @@ public class Option extends Product {
         return this.texts;
     }
 
-    public void addText(Aperture textAperture) {
+    public void addText(Text textAperture) {
         this.texts.add(textAperture);
         addPrice(textAperture);
     }
 
-    public void addImage(Aperture imageAperture) {
+    public void addImage(Image imageAperture) {
         this.imagePaths.add(imageAperture);
         addPrice(imageAperture);
     }
