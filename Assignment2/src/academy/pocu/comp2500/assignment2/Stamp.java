@@ -2,22 +2,23 @@ package academy.pocu.comp2500.assignment2;
 
 public class Stamp extends Product {
     private String text;
-    private StempSizeType size;
-    private StempColorType color;
+//    private StempSizeType size;
+//    private StempColorType color;
 
     protected Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         super();
 
-        this.color = stampColor;
+//        this.color = stampColor;
+        setColor(stampColor.getColor());
 
         if (stampSize == null) {
             setName("Stamp" + StempSizeType.FOUR_BY_THREE.getSize());
             setPrice(StempSizeType.FOUR_BY_THREE.getPrice());
-            this.size = StempSizeType.FOUR_BY_THREE;
+//            this.size = StempSizeType.FOUR_BY_THREE;
         } else {
             setName("Stamp" + stampSize.getSize());
             setPrice(stampSize.getPrice());
-            this.size = stampSize;
+//            this.size = stampSize;
         }
 
         if (deliveryMethod == null) {

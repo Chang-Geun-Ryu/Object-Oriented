@@ -10,7 +10,7 @@ public class Calendar extends Product {
         setPrice(calendarType.getPrice());
         setWidth(type.getWidth());
         setHeight(type.getHeight());
-
+        setColor(0xFFFFFF);
         if (deliveryMethod == null) {
 
         } else {
@@ -22,9 +22,9 @@ public class Calendar extends Product {
         return this.type;
     }
 
-    public int getColor() {
-        return 0xFFFFFF;
-    }
+//    public int getColor() {
+//        return 0xFFFFFF;
+//    }
 
 //    public int getWidth() {
 //        return this.type.getWidth();

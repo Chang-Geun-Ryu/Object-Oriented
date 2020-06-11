@@ -15,23 +15,25 @@ public class Option extends Product {
 //        this.side = BusinessCardSide.SINGLE;
     }
 
-    protected void setColor(int color) {
-        this.color = color;
-    }
+//    protected void setColor(int color) {
+//        this.color = color;
+//    }
 
     protected void setSide(BusinessCardSide side) {
         this.side = side;
     }
 
-
+    public BusinessCardSide getSide() {
+        return this.side;
+    }
 
     public Type getType() {
         return type;
     }
 
-    public int getColor() {
-        return this.color;
-    }
+//    public int getColor() {
+//        return this.color;
+//    }
 
     public OrientationType getOrientation() {
         return this.orientation;

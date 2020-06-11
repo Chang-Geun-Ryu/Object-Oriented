@@ -6,6 +6,7 @@ public class Product {
     private ShippingOptionsType shippingOptions;
     protected int width;
     protected int height;
+    private int color;
 
     protected Product() {
         this.name = "";
@@ -15,12 +16,20 @@ public class Product {
         this.height = 0;
     }
 
+    protected void setColor(int color) {
+        this.color = color;
+    }
+
     protected void setWidth(int width) {
         this.width = width;
     }
 
     protected  void setHeight(int height) {
         this.height = height;
+    }
+
+    public int getColor() {
+        return this.color;
     }
 
     public int getWidth() {

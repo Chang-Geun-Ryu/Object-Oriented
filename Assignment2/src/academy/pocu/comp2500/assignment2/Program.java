@@ -62,6 +62,11 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
+        BannerLandscape landscape = new BannerLandscape(Type.LAID, BannerSize.ONE_ONE, 0x000000, ShippingOptionsType.SHIP);
+
+        System.out.print(landscape.getPrice());
+
+
 //        linen1.addAperture(new ImageAperture("d", ,1, 100, 200));
 //        linen1.addAperture(new TextAperture("asfd", -100,30,150,200));
         System.out.print("total: ");
