@@ -10,7 +10,7 @@ public class Banner extends Option {
         super(orientation);
 //        this.color = color;
         super.side = BusinessCardSide.SINGLE;
-//        this.type = type;
+        this.type = type;
         setName(type.getName() + size.getSize());
         setPrice(size.getPrice() + type.getAddPrice());
         setShippingOptions(deliveryMethod);
