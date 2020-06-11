@@ -23,9 +23,9 @@ public class Option extends Product {
         this.side = side;
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
-    }
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
 
 //    public Type getType() {
 //        return type;

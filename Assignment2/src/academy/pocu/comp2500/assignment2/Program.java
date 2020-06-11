@@ -62,7 +62,7 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
-        BannerLandscape landscape = new BannerLandscape(Type.LAID, BannerSize.ONE_ONE, 0x000000, ShippingOptionsType.SHIP);
+        BannerLandscape landscape = new BannerLandscape(BannerType.GLOSS, BannerSize.ONE_ONE, 0x000000, ShippingOptionsType.SHIP);
 
         System.out.print(landscape.getPrice());
 
