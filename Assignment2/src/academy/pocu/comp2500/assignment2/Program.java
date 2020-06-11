@@ -62,10 +62,9 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
-        System.out.println(linen1.getWidth());
-        System.out.println(linen1.getHeight());
-        linen1.addAperture(new TextAperture("asfd", 80,-10,20,20));
+
 //        linen1.addAperture(new ImageAperture("d", ,1, 100, 200));
+        linen1.addAperture(new TextAperture("asfd", -100,30,150,200));
 
         cart.getAllProducts()
                 .stream()
@@ -76,6 +75,10 @@ public class Program {
 
         System.out.print("total: ");
         System.out.println(cart.getTotalPrice());
+
+        System.out.println(linen1.getWidth());
+        System.out.println(linen1.getHeight());
+
 
         Registry registry = new Registry();
         App app = new App(registry);

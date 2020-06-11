@@ -62,35 +62,5 @@ public class App {
         registry.registerSingleSidedBusinnessCardImageApertureAdder("Option", "addAperture");
         registry.registerDoubleSidedBusinnessCardTextApertureAdder("Option", "addAperture");
         registry.registerDoubleSidedBusinnessCardImageApertureAdder("Option", "addAperture");
-//        registry.registerLandscapeBannerTextApertureAdder("Option", "addText");
-//        registry.registerLandscapeBannerImageApertureAdder("Option", "addImage");
-//        registry.registerPortraitBannerTextApertureAdder("Option", "addText");
-//        registry.registerPortraitBannerImageApertureAdder("Option", "addImage");
-//        registry.registerGlossBannerTextApertureAdder("Option", "addText");
-//        registry.registerGlossBannerImageApertureAdder("Option", "addImage");
-//        registry.registerScrimBannerTextApertureAdder("Option", "addText");
-//        registry.registerScrimBannerImageApertureAdder("Option", "addImage");
-//        registry.registerMeshBannerTextApertureAdder("Option", "addText");
-//        registry.registerMeshBannerImageApertureAdder("Option", "addImage");
-//        registry.registerLandscapeBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerLandscapeBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerPortraitBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerPortraitBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerIvoryBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerIvoryBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerGrayBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerGrayBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerWhiteBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerWhiteBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerLaidBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerLaidBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerLinenBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerLinenBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerSmoothBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerSmoothBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerSingleSidedBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerSingleSidedBusinnessCardImageApertureAdder("Option", "addImage");
-//        registry.registerDoubleSidedBusinnessCardTextApertureAdder("Option", "addText");
-//        registry.registerDoubleSidedBusinnessCardImageApertureAdder("Option", "addImage");
     }
 }

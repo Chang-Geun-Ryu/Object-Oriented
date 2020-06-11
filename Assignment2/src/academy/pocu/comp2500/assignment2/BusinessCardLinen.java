@@ -9,10 +9,6 @@ public class BusinessCardLinen extends BusinessCard {
         return this.side;
     }
 
-//    public BusinessCardType getType() {
-//        return this.type;
-//    }
-
     public BusinessCardColor getColor() {
         return this.color;
     }

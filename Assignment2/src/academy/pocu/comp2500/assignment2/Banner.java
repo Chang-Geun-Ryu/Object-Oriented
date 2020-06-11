@@ -3,18 +3,11 @@ package academy.pocu.comp2500.assignment2;
 import java.util.ArrayList;
 
 public class Banner extends Option {
-//    protected OrientationType orientation;
-//    private BannerSize size;
     private int color;
     protected BannerType type;
 
-//    private ArrayList<TextAperture> texts;
-//    private ArrayList<ImageAperture> imagePaths;
-
     protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
-//        this.orientation = orientation;
-//        this.size = size;
         this.color = color;
         this.type = type;
         setName(type.getName() + size.getSize());
@@ -23,26 +16,9 @@ public class Banner extends Option {
         setWidth(size.getWidth());
         setHeight(size.getHeight());
 
-//        setColor(color);
     }
-
-//    public BannerType getType() {
-//        return this.type;
-//    }
-
-//    public BannerSize getSize() {
-//        return this.size;
-//    }
 
     public int getColor() {
         return this.color;
     }
-
-//    public int getWidth() {
-//        return this.size.getWidth();
-//    }
-//
-//    public int getHeight() {
-//        return this.size.getHeight();
-//    }
 }
