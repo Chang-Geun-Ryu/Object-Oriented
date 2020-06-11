@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Banner extends Option {
 //    private int color;
-    protected BannerType type;
+//    protected Type type;
 
-    protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
+    protected Banner(Type type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
 //        this.color = color;
         super.side = BusinessCardSide.SINGLE;
-        this.type = type;
-        setName(type.getName() + size.getSize());
+//        this.type = type;
+        setName(type.getNameBanner() + size.getSize());
         setPrice(size.getPrice() + type.getAddPrice());
         setShippingOptions(deliveryMethod);
         setWidth(size.getWidth());
@@ -27,7 +27,7 @@ public class Banner extends Option {
 //        return super.orientation;
 //    }
 
-    public BannerType getType() {
-        return this.type;
-    }
+//    public BannerType getType() {
+//        return this.type;
+//    }
 }
