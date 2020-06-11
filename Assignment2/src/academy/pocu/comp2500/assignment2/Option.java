@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     protected OrientationType orientation;
-    private ArrayList<Aperture> texts;
-    private ArrayList<Aperture> imagePaths;
+    private ArrayList<TextAperture> texts;
+    private ArrayList<ImageAperture> imagePaths;
 //    protected int color;
 //    private int width;
 //    private int height;
@@ -46,13 +46,38 @@ public class Option extends Product {
         addPrice(imageAperture);
     }
 
+//    public void addAperture(Aperture aperture) {
+//        if ()
+//    }
+
+//    public void addAperture(Aperture aperture) {
+//        this.texts.add(aperture);
+//        addPrice(aperture);
+//    }
+
     private void addPrice(Aperture aperture) {
         int w = this.orientation == OrientationType.LANDSCAPE ? this.width : this.height;
         int h = this.orientation == OrientationType.LANDSCAPE ? this.height : this.width;
 
-        if (aperture.getX() >= 0 && aperture.getY() >= 0 &&
-                aperture.getX() < w && aperture.getY() < h) {
+        ArrayList<Integer> elements = aperture.getElements();
+        int x = elements.get(0);
+        int y = elements.get(1);
+        int width = elements.get(2);
+        int height = elements.get(3);
+
+//        if (x < 0) {
+//            x = width + x;
+//        }
+//        if (y < 0) {
+//            y = height + y;
+//        }
+
+        if (x >= 0 && y >= 0 && x < w && y < h) {
             setPrice(getPrice() + 5);
+        } else if (x < 0 || y < 0){
+            if (width + x >= 0 || height + y <= 0) {
+                setPrice(getPrice() + 5);
+            }
         }
     }
 }
