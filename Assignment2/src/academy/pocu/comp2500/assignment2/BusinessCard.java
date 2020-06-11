@@ -23,9 +23,9 @@ public class BusinessCard extends Option {
         return this.side;
     }
 
-    public BusinessCardColor gegCardColor() {
-        return this.color;
-    }
+//    public BusinessCardColor gegCardColor() {
+//        return this.color;
+//    }
 //    protected void setSide(BusinessCardSide side) {
 //        this.side = side;
 //    }

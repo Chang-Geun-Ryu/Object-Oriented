@@ -53,8 +53,8 @@ public class Option extends Product {
         ArrayList<Integer> elements = aperture.getElements();
         int left = elements.get(0);
         int top = elements.get(1);
-        int right = elements.get(2);//this.orientation == OrientationType.LANDSCAPE ? elements.get(2) : elements.get(3);
-        int bottom = elements.get(3);//this.orientation == OrientationType.LANDSCAPE ? elements.get(3) : elements.get(2);
+        int right = this.orientation == OrientationType.LANDSCAPE ? elements.get(2) : elements.get(3);
+        int bottom = this.orientation == OrientationType.LANDSCAPE ? elements.get(3) : elements.get(2);
 
         if (aperture.getText().length() > 0) {
 
