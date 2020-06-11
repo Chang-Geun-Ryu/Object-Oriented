@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Option extends Product {
     protected OrientationType orientation;
-    private ArrayList<TextAperture> texts;
-    private ArrayList<ImageAperture> imagePaths;
+    private ArrayList<Aperture> apertures;
+//    private ArrayList<ImageAperture> imagePaths;
 //    protected int color;
 //    private int width;
 //    private int height;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
-        this.texts = new ArrayList<>();
-        this.imagePaths = new ArrayList<>();
+        this.apertures = new ArrayList<>();
+//        this.imagePaths = new ArrayList<>();
     }
 
 //    protected void setWidth(int width) {
@@ -36,19 +36,24 @@ public class Option extends Product {
 //        return this.orientation;
 //    }
 
-    public void addText(TextAperture textAperture) {
-        this.texts.add(textAperture);
-        addPrice(textAperture);
-    }
-
-    public void addImage(ImageAperture imageAperture) {
-        this.imagePaths.add(imageAperture);
-        addPrice(imageAperture);
-    }
-
-//    public void addAperture(Aperture aperture) {
-//        if ()
+//    public void addText(TextAperture textAperture) {
+//        this.texts.add(textAperture);
+//        addPrice(textAperture);
 //    }
+//
+//    public void addImage(ImageAperture imageAperture) {
+//        this.imagePaths.add(imageAperture);
+//        addPrice(imageAperture);
+//    }
+
+    public void addAperture(Aperture aperture) {
+        this.apertures.add(aperture);
+        addPrice(aperture);
+    }
+
+    public ArrayList<Aperture> getApertures() {
+        return this.apertures;
+    }
 
 //    public void addAperture(Aperture aperture) {
 //        this.texts.add(aperture);
@@ -65,17 +70,10 @@ public class Option extends Product {
         int width = elements.get(2);
         int height = elements.get(3);
 
-//        if (x < 0) {
-//            x = width + x;
-//        }
-//        if (y < 0) {
-//            y = height + y;
-//        }
-
         if (x >= 0 && y >= 0 && x < w && y < h) {
             setPrice(getPrice() + 5);
-        } else if (x < 0 || y < 0){
-            if (width + x >= 0 || height + y <= 0) {
+        } else if (x < 0 || y < 0) {
+            if (width + x > 0 || height + y > 0) {
                 setPrice(getPrice() + 5);
             }
         }
