@@ -64,8 +64,9 @@ public class Program {
 
 
 //        linen1.addAperture(new ImageAperture("d", ,1, 100, 200));
-        linen1.addAperture(new TextAperture("asfd", -100,30,150,200));
+//        linen1.addAperture(new TextAperture("asfd", -100,30,150,200));
 
+        gBanner2.addAperture(new);
         cart.getAllProducts()
                 .stream()
                 .forEach(e->{

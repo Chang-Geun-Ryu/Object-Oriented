@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class BusinessCard extends Option {
     protected BusinessCardType type;
-//    protected BusinessCardColor color;
+    protected BusinessCardColor color;
     protected BusinessCardSide side;
 
     protected BusinessCard(BusinessCardType type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
         super(orientation);
         this.side = sides;
         this.type = type;
-//        this.color = color;
+        this.color = color;
         setName(type.getName());
         setPrice(type.getPrice() + sides.getAddPrice());
         setShippingOptions(deliveryMethod);
@@ -19,7 +19,7 @@ public class BusinessCard extends Option {
         setHeight(type.getHeight());
 
 //        setColor(color.getColor());
-        setColor(color.getColor());
+//        setColor(color.getColor());
     }
 
 //    protected void setSide(BusinessCardSide side) {
@@ -33,10 +33,10 @@ public class BusinessCard extends Option {
     public BusinessCardType getType() {
         return this.type;
     }
-
+*/
     public BusinessCardColor getColor() {
         return this.color;
-    }*/
+    }
 
 //    public int getWidth() {
 //        return 90;
