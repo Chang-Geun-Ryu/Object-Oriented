@@ -18,25 +18,24 @@ public class BusinessCard extends Option {
         setWidth(type.getWidth());
         setHeight(type.getHeight());
 
-//        setColor(color.getColor());
+        setColor(color.getColor());
 //        setColor(color.getColor());
     }
 
 //    protected void setSide(BusinessCardSide side) {
 //        this.side = side;
 //    }
-
-    /*public BusinessCardSide getSide() {
+    public BusinessCardSide getSide() {
         return this.side;
     }
 
     public BusinessCardType getType() {
         return this.type;
     }
-*/
-    public BusinessCardColor getColor() {
-        return this.color;
-    }
+
+//    public BusinessCardColor getColor() {
+//        return this.color;
+//    }
 
 //    public int getWidth() {
 //        return 90;

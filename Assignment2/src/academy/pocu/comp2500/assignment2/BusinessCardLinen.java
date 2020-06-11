@@ -5,15 +5,15 @@ public class BusinessCardLinen extends BusinessCard {
         super(BusinessCardType.LINEN, sides, orientation, color, deliveryMethod);
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
-    }
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
 
 //    public BusinessCardColor getColor() {
 //        return this.color;
 //    }
 
-    public OrientationType getOrientation() {
-        return this.orientation;
-    }
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 }

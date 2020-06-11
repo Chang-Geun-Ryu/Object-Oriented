@@ -5,13 +5,13 @@ public class BusinessCardLandscape extends BusinessCard {
         super(type, sides, OrientationType.LANDSCAPE, color, deliveryMethod);
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
-    }
-
-    public BusinessCardType getType() {
-        return this.type;
-    }
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
+//
+//    public BusinessCardType getType() {
+//        return this.type;
+//    }
 
 //    public BusinessCardColor getColor() {
 //        return this.color;

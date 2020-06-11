@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Option extends Product {
     protected OrientationType orientation;
     private ArrayList<Aperture> apertures;
+    private int color;
 //    protected BusinessCardSide side;
 
     protected Option(OrientationType orientation) {
@@ -13,13 +14,17 @@ public class Option extends Product {
 //        this.side = BusinessCardSide.SINGLE;
     }
 
-//    public int getColor() {
-//        return this.color;
-//    }
+    public int getColor() {
+        return this.color;
+    }
 //
-//    protected void setColor(int color) {
-//        this.color = color;
-//    }
+    protected void setColor(int color) {
+        this.color = color;
+    }
+
+    public OrientationType getOrientation() {
+        return this.orientation;
+    }
 
     public void addAperture(Aperture aperture) {
         this.apertures.add(aperture);
@@ -35,13 +40,13 @@ public class Option extends Product {
         int h = this.orientation == OrientationType.LANDSCAPE ? this.height : this.width;
 
         ArrayList<Integer> elements = aperture.getElements();
-        int x = elements.get(0);
-        int y = elements.get(1);
-        int width = elements.get(2);//this.orientation == OrientationType.LANDSCAPE ? elements.get(2) : elements.get(3);
-        int height = elements.get(3);//this.orientation == OrientationType.LANDSCAPE ? elements.get(3) : elements.get(2);
+        int left = elements.get(0);
+        int top = elements.get(1);
+        int right = elements.get(2);//this.orientation == OrientationType.LANDSCAPE ? elements.get(2) : elements.get(3);
+        int bottom = elements.get(3);//this.orientation == OrientationType.LANDSCAPE ? elements.get(3) : elements.get(2);
 
 
-        if (x >= 0 && y >= 0 && x + width <= w && y + height <= h && width > 0 && height > 0) {
+        if (left >= 0 && top >= 0 && left + right <= w && top + bottom <= h && right > 0 && bottom > 0) {
             super.setPrice(super.getPrice() + 5);
         }
 //        } else if (x < 0 || y < 0) {

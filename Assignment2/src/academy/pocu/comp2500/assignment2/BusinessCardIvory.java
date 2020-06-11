@@ -5,19 +5,19 @@ public class BusinessCardIvory extends BusinessCard {
         super(type, sides, orientation, BusinessCardColor.IVORY, deliveryMethod);
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
-    }
-
-    public BusinessCardType getType() {
-        return this.type;
-    }
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
+//
+//    public BusinessCardType getType() {
+//        return this.type;
+//    }
 
 //    public BusinessCardColor getColor() {
 //        return this.color;
 //    }
 
-    public OrientationType getOrientation() {
-        return this.orientation;
-    }
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 }

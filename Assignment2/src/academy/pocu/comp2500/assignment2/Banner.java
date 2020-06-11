@@ -18,13 +18,13 @@ public class Banner extends Option {
 //        setColor(color);
     }
 
-    public int getColor() {
-        return this.color;
-    }
-
-    public OrientationType getOrientation() {
-        return super.orientation;
-    }
+//    public int getColor() {
+//        return this.color;
+//    }
+//
+//    public OrientationType getOrientation() {
+//        return super.orientation;
+//    }
 
     public BannerType getType() {
         return this.type;

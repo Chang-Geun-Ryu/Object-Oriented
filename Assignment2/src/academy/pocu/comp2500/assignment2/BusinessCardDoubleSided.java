@@ -9,15 +9,15 @@ public class BusinessCardDoubleSided extends BusinessCard {
 //        return this.side;
 //    }
 
-    public BusinessCardType getType() {
-        return this.type;
-    }
+//    public BusinessCardType getType() {
+//        return this.type;
+//    }
 
 //    public BusinessCardColor getColor() {
 //        return this.color;
 //    }
 
-    public OrientationType getOrientation() {
-        return this.orientation;
-    }
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 }

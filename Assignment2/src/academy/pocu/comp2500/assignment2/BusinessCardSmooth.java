@@ -5,9 +5,9 @@ public class BusinessCardSmooth extends BusinessCard {
         super(BusinessCardType.SMOOTH, sides, orientation, color, deliveryMethod);
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
-    }
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
 
 //    public BusinessCardType getType() {
 //        return this.type;
@@ -17,7 +17,7 @@ public class BusinessCardSmooth extends BusinessCard {
 //        return this.color;
 //    }
 
-    public OrientationType getOrientation() {
-        return this.orientation;
-    }
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 }

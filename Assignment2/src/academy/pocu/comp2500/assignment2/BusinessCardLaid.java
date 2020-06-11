@@ -5,9 +5,9 @@ public class BusinessCardLaid extends BusinessCard {
         super(BusinessCardType.LAID, sides, orientation, color, deliveryMethod);
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
-    }
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
 
 //    public BusinessCardType getType() {
 //        return this.type;
@@ -17,7 +17,7 @@ public class BusinessCardLaid extends BusinessCard {
 //        return this.color;
 //    }
 
-    public OrientationType getOrientation() {
-        return this.orientation;
-    }
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 }
