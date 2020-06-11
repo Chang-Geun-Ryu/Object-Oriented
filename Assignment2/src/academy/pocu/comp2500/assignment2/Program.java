@@ -62,17 +62,18 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
-
 //        linen1.addAperture(new ImageAperture("d", ,1, 100, 200));
 //        linen1.addAperture(new TextAperture("asfd", -100,30,150,200));
+        System.out.print("total: ");
+        System.out.println(cart.getTotalPrice());
 
-        gBanner2.addAperture(new);
-        cart.getAllProducts()
-                .stream()
-                .forEach(e->{
-                    System.out.print("name:" + e.getName() + " price: ");
-                    System.out.println(e.getPrice());
-                });
+        gBanner2.addAperture(new TextAperture("1", -100, -100, 200, 200));
+        gBanner2.addAperture(new TextAperture("2", 900, -100, 200, 200));
+        gBanner2.addAperture(new TextAperture("3", -100, 900, 200, 200));
+        gBanner2.addAperture(new TextAperture("4", 900, 900, 200, 200));
+
+        gBanner2.addAperture(new TextAperture("5", -100, -100, 1, 1));
+        gBanner2.addAperture(new );
 
         System.out.print("total: ");
         System.out.println(cart.getTotalPrice());
