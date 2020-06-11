@@ -40,7 +40,7 @@ public class Option extends Product {
         int width = elements.get(2);//this.orientation == OrientationType.LANDSCAPE ? elements.get(2) : elements.get(3);
         int height = elements.get(3);//this.orientation == OrientationType.LANDSCAPE ? elements.get(3) : elements.get(2);
 
-        if (x >= 0 && y >= 0 && x + width< w && y + height < h) {
+        if (x >= 0 && y >= 0 && x + width<= w && y + height <= h) {
             super.setPrice(super.getPrice() + 5);
         }
 //        } else if (x < 0 || y < 0) {
