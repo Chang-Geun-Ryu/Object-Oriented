@@ -9,9 +9,9 @@ public class BusinessCardLinen extends BusinessCard {
         return this.side;
     }
 
-    public BusinessCardColor getColor() {
-        return this.color;
-    }
+//    public BusinessCardColor getColor() {
+//        return this.color;
+//    }
 
     public OrientationType getOrientation() {
         return this.orientation;

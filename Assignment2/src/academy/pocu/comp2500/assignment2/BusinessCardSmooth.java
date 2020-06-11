@@ -13,9 +13,9 @@ public class BusinessCardSmooth extends BusinessCard {
 //        return this.type;
 //    }
 
-    public BusinessCardColor getColor() {
-        return this.color;
-    }
+//    public BusinessCardColor getColor() {
+//        return this.color;
+//    }
 
     public OrientationType getOrientation() {
         return this.orientation;
