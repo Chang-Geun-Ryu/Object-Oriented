@@ -7,7 +7,7 @@ public class BannerGloss extends Banner {
         super(BannerType.GLOSS, size, color, orientation, deliveryMethod);
     }
 
-    public OrientationType getOrientation() {
-        return super.orientation;
-    }
+//    public OrientationType getOrientation() {
+//        return super.orientation;
+//    }
 }
