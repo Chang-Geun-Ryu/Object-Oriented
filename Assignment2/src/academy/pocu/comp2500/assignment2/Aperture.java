@@ -31,24 +31,4 @@ public class Aperture {
     public ArrayList<Integer> getElements() {
         return this.elements;
     }
-
-//    public ArrayList<Integer> getElement() {
-//        return this.element;
-//    }
-
-//    public int getX() {
-//        return this.x;
-//    }
-//
-//    public int getY() {
-//        return this.y;
-//    }
-
-//    public int getWidth() {
-//        return this.width;
-//    }
-//
-//    public int getHeight() {
-//        return this.height;
-//    }
 }
