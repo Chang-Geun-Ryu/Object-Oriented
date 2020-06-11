@@ -18,7 +18,9 @@ public class BusinessCard extends Option {
 
         setColor(color.getColor());
     }
-
+    public BusinessCardSide getSide() {
+        return this.side;
+    }
 //    protected void setSide(BusinessCardSide side) {
 //        this.side = side;
 //    }

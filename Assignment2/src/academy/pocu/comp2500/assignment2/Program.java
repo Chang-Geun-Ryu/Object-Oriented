@@ -81,7 +81,6 @@ public class Program {
         System.out.println(linen1.getWidth());
         System.out.println(linen1.getHeight());
 
-
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
