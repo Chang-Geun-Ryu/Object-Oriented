@@ -58,9 +58,11 @@ public class Option extends Product {
         int right = elements.get(2);//this.orientation == OrientationType.LANDSCAPE ? elements.get(2) : elements.get(3);
         int bottom = elements.get(3);//this.orientation == OrientationType.LANDSCAPE ? elements.get(3) : elements.get(2);
 
+        if (aperture.getText().length() > 0) {
 
-        if (left >= 0 && top >= 0 && left + right <= w && top + bottom <= h && right > 0 && bottom > 0) {
-            super.setPrice(super.getPrice() + 5);
+            if (left >= 0 && top >= 0 && left + right <= w && top + bottom <= h && right > 0 && bottom > 0) {
+                super.setPrice(super.getPrice() + 5);
+            }
         }
 //        } else if (x < 0 || y < 0) {
 //            if (width + x > 0 || height + y > 0) {

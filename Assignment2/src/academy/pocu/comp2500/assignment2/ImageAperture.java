@@ -16,9 +16,9 @@ public class ImageAperture extends Aperture {
         setElement(elements);
     }
 
-    public String getText() {
-        return super.text;
-    }
+//    public String getText() {
+//        return super.text;
+//    }
 
 //    public int getX() {
 //        return super.elements.get(0);
@@ -36,9 +36,9 @@ public class ImageAperture extends Aperture {
 //        return super.elements.get(3);
 //    }
 
-    public String getImagePath() {
-        return super.text;
-    }
+//    public String getImagePath() {
+//        return super.text;
+//    }
 
 //    public void setImagePath(String imagePath) {
 //        this.text = imagePath;

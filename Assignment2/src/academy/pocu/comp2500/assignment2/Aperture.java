@@ -20,6 +20,10 @@ public class Aperture {
 //        this.elements = new ArrayList<Integer>();
     }
 
+    public String getText() {
+        return text;
+    }
+
     protected void setText(String text) {
         this.text = text;
     }

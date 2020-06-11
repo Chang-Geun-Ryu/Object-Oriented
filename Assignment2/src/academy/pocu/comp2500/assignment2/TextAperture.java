@@ -16,9 +16,9 @@ public class TextAperture extends Aperture {
     setElement(elements);
 }
 
-    public String getText() {
-        return super.text;
-    }
+//    public String getText() {
+//        return super.text;
+//    }
 
 //    public int getX() {
 //        return super.elements.get(0);
