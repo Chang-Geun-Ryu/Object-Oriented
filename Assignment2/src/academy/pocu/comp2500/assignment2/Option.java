@@ -6,12 +6,20 @@ public class Option extends Product {
     protected OrientationType orientation;
     private ArrayList<Aperture> apertures;
     private int color;
-//    protected BusinessCardSide side;
+    protected BusinessCardSide side;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.apertures = new ArrayList<>();
 //        this.side = BusinessCardSide.SINGLE;
+    }
+
+    protected void setSide(BusinessCardSide side) {
+        this.side = side;
+    }
+
+    public BusinessCardSide getSide() {
+        return this.side;
     }
 
     public int getColor() {
