@@ -23,6 +23,10 @@ public class Option extends Product {
         return this.side;
     }
 
+    public Type getType() {
+        return type;
+    }
+
     public int getColor() {
         return this.color;
     }
