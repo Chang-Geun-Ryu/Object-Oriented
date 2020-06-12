@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 public class Calendar extends Product {
     private CalendarType type;
 
-    protected Calendar(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
+    protected Calendar(CalendarType calendarType, ShippingOptionType deliveryMethod) {
         super();
         this.type = calendarType;
         setName(calendarType.getName());

@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 public class Stamp extends Product {
     private String text;
 
-    protected Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+    protected Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionType deliveryMethod) {
         super();
         setColor(stampColor.getColor());
 
@@ -16,7 +16,7 @@ public class Stamp extends Product {
         }
 
         if (deliveryMethod == null) {
-            setShippingOption(ShippingOptionsType.PICKUP);
+            setShippingOption(ShippingOptionType.PICKUP);
         } else {
             setShippingOption(deliveryMethod);
         }

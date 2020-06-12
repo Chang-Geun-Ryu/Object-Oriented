@@ -7,33 +7,33 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
 
-        BlueStamp bStamp = new BlueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
-        RedStamp rStamp = new RedStamp("red", StempSizeType.FOUR_BY_THREE, ShippingOptionsType.PICKUP);
-        GreenStamp greenStamp = new GreenStamp("Green", StempSizeType.SEVEN_BY_FOUR, ShippingOptionsType.PICKUP);
+        BlueStamp bStamp = new BlueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionType.PICKUP);
+        RedStamp rStamp = new RedStamp("red", StempSizeType.FOUR_BY_THREE, ShippingOptionType.PICKUP);
+        GreenStamp greenStamp = new GreenStamp("Green", StempSizeType.SEVEN_BY_FOUR, ShippingOptionType.PICKUP);
 
-        BusinessCardLinen linen1 = new BusinessCardLinen(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardLinen linen2 = new BusinessCardLinen(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardLaid laid1 = new BusinessCardLaid(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardLaid laid2 = new BusinessCardLaid(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardSmooth smooth1 = new BusinessCardSmooth(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
-        BusinessCardSmooth smooth2 = new BusinessCardSmooth(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLinen linen1 = new BusinessCardLinen(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardLinen linen2 = new BusinessCardLinen(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardLaid laid1 = new BusinessCardLaid(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardLaid laid2 = new BusinessCardLaid(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardSmooth smooth1 = new BusinessCardSmooth(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardSmooth smooth2 = new BusinessCardSmooth(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
 
-        BannerGloss gBanner = new BannerGloss(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
-        BannerGloss gBanner1 = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
-        BannerGloss gBanner2 = new BannerGloss(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
-        BannerGloss gBanner3 = new BannerGloss(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
-        BannerScrim sBanner = new BannerScrim(BannerSize.TWO_HALF, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
-        BannerScrim sBanner1 = new BannerScrim(BannerSize.ONE_HALF, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
-        BannerScrim sBanner2 = new BannerScrim(BannerSize.ONE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
-        BannerScrim sBanner3 = new BannerScrim(BannerSize.THREE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
-        BannerMesh  mBanner = new BannerMesh(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
-        BannerMesh  mBanner1 = new BannerMesh(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
-        BannerMesh  mBanner2 = new BannerMesh(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
-        BannerMesh  mBanner3 = new BannerMesh(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerGloss gBanner = new BannerGloss(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
+        BannerGloss gBanner1 = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
+        BannerGloss gBanner2 = new BannerGloss(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
+        BannerGloss gBanner3 = new BannerGloss(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
+        BannerScrim sBanner = new BannerScrim(BannerSize.TWO_HALF, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+        BannerScrim sBanner1 = new BannerScrim(BannerSize.ONE_HALF, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+        BannerScrim sBanner2 = new BannerScrim(BannerSize.ONE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+        BannerScrim sBanner3 = new BannerScrim(BannerSize.THREE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+        BannerMesh  mBanner = new BannerMesh(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
+        BannerMesh  mBanner1 = new BannerMesh(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
+        BannerMesh  mBanner2 = new BannerMesh(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
+        BannerMesh  mBanner3 = new BannerMesh(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
 
-        DeskCalendar desk = new DeskCalendar(ShippingOptionsType.SHIP);
-        MagnetCalendar magnetCalendar = new MagnetCalendar(ShippingOptionsType.SHIP);
-        WallCalendar wall = new WallCalendar(ShippingOptionsType.SHIP);
+        DeskCalendar desk = new DeskCalendar(ShippingOptionType.SHIP);
+        MagnetCalendar magnetCalendar = new MagnetCalendar(ShippingOptionType.SHIP);
+        WallCalendar wall = new WallCalendar(ShippingOptionType.SHIP);
 
         Cart cart = new Cart();
         cart.addProduct(bStamp);
@@ -62,7 +62,7 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
-        BannerLandscape landscape = new BannerLandscape(BannerType.GLOSS, BannerSize.ONE_ONE, 0x000000, ShippingOptionsType.SHIP);
+        BannerLandscape landscape = new BannerLandscape(BannerType.GLOSS, BannerSize.ONE_ONE, 0x000000, ShippingOptionType.SHIP);
 
         System.out.print(landscape.getPrice());
 
