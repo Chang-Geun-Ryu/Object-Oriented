@@ -2,8 +2,8 @@ package academy.pocu.comp2500.assignment2;
 
 public class BusinessCard extends Option {
     protected Type type;
-//    protected BusinessCardColor color;
     protected BusinessCardSide side;
+
     protected BusinessCard(Type type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionType deliveryMethod) {
         super(orientation);
         this.side = sides;
