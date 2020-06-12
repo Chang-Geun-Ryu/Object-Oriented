@@ -5,14 +5,12 @@ import java.util.ArrayList;
 public class Option extends Product {
     protected OrientationType orientation;
     private ArrayList<Aperture> apertures;
-//    private int color;
     protected BusinessCardSide side;
     protected Type type;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.apertures = new ArrayList<>();
-//        this.side = BusinessCardSide.SINGLE;
     }
 
     public BusinessCardSide getSide() {
@@ -52,28 +50,12 @@ public class Option extends Product {
         if (aperture.getText().length() > 0) {
             // A: 0,0,w,h
             // B: left, top, right, bottom
-
             if (0 < right && w > left &&
                     0 < bottom && h > top) {
                 super.setPrice(super.getPrice() + 5);
             } else {
                 System.out.println("No Overlap");
             }
-
-//            if (left >= 0 && top >= 0 && left + right <= w && top + bottom <= h && right > 0 && bottom > 0) {
-//                super.setPrice(super.getPrice() + 5);
-//            }
-
-
         }
-//        } else if (x < 0 || y < 0) {
-//            if (width + x > 0 || height + y > 0) {
-//                super.setPrice(super.getPrice() + 5);
-//            }
-//        }
-
-//        if (this.side == BusinessCardSide.DOUBLE) {
-//
-//        }
     }
 }
