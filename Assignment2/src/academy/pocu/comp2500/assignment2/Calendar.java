@@ -14,23 +14,11 @@ public class Calendar extends Product {
         if (deliveryMethod == null) {
 
         } else {
-            setShippingOptions(deliveryMethod);
+            setShippingOption(deliveryMethod);
         }
     }
 
     public CalendarType getType() {
         return this.type;
     }
-
-//    public int getColor() {
-//        return 0xFFFFFF;
-//    }
-
-//    public int getWidth() {
-//        return this.type.getWidth();
-//    }
-//
-//    public int getHeight() {
-//        return this.type.getHeight();
-//    }
 }

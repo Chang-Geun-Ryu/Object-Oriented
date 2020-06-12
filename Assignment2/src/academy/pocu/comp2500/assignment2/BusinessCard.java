@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.assignment2;
 
 public class BusinessCard extends Option {
-
+    protected Type type;
 //    protected BusinessCardColor color;
     protected BusinessCardSide side;
     protected BusinessCard(Type type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
@@ -10,7 +10,7 @@ public class BusinessCard extends Option {
         this.type = type;
         setName(type.getNameCard());
         setPrice(type.getPrice() + sides.getAddPrice());
-        setShippingOptions(deliveryMethod);
+        setShippingOption(deliveryMethod);
         setWidth(type.getWidth());
         setHeight(type.getHeight());
 
@@ -21,8 +21,8 @@ public class BusinessCard extends Option {
         return this.side;
     }
 
-//    public Type getBusinessType() {
-//        return type;
-//    }
+    public Type getBusinessType() {
+        return type;
+    }
 
 }

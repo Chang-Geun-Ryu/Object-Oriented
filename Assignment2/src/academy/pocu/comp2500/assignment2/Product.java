@@ -48,7 +48,7 @@ public class Product {
         return this.price;// + (this.texts.size() + this.imagePaths.size()) * 5;
     }
 
-    public ShippingOptionsType getShippingOptions() {
+    public ShippingOptionsType getShippingOption() {
         return this.shippingOptions;
     }
 
@@ -60,7 +60,7 @@ public class Product {
         this.name = name;
     }
 
-    public void setShippingOptions(ShippingOptionsType type) {
+    public void setShippingOption(ShippingOptionsType type) {
         this.shippingOptions = type;
     }
 }

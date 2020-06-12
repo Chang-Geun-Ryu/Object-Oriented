@@ -5,21 +5,21 @@ import java.util.ArrayList;
 public class Option extends Product {
     protected OrientationType orientation;
     private ArrayList<Aperture> apertures;
-    protected Type type;
-    protected BannerType bannerType;
+//    protected Type type;
+//    protected BannerType bannerType;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.apertures = new ArrayList<>();
     }
 
-    public Type getBusinessType() {
-        return type;
-    }
+//    public Type getBusinessType() {
+//        return type;
+//    }
 
-    public BannerType getBannerType() {
-        return bannerType;
-    }
+//    public BannerType getBannerType() {
+//        return bannerType;
+//    }
 
 //    public BusinessCardSide getSide() {
 //        return this.side;
