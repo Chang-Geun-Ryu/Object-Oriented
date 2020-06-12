@@ -78,6 +78,7 @@ public class Program {
         gBanner2.addAperture(new TextAperture("4", 900, 900, 200, 200));
 
         gBanner2.addAperture(new TextAperture("5", -100, -100, 1, 1));
+        gBanner2.addAperture(new TextAperture("511", -1000, -1000, 1, 1));
 //        gBanner2.addAperture(new TextAperture("6,", ));
 
         System.out.print("total: ");
