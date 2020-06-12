@@ -66,22 +66,44 @@ public class Program {
 
         System.out.print(landscape.getPrice());
 
+        System.out.print("getWidth: ");
+        System.out.println(linen1.getWidth());
+        System.out.print("getHeight: ");
+        System.out.println(linen1.getHeight());
+        System.out.print("getBusinessType: ");
+        System.out.println(linen1.getBusinessType());
+        System.out.print("getSide: ");
+        System.out.println(linen1.getSide());
+        System.out.print("getPrice: ");
+        System.out.println(linen1.getPrice());
+        System.out.print("getColor: ");
+        System.out.println(linen1.getColor());
+        System.out.print("getOrientation: ");
+        System.out.println(linen1.getOrientation());
+        System.out.print("getName: ");
+        System.out.println(linen1.getName());
+        System.out.print("getShippingOption: ");
+        System.out.println(linen1.getShippingOption());
+        System.out.print("getApertures: ");
+        System.out.println(linen1.getApertures());
+
+
 
 //        linen1.addAperture(new ImageAperture("d", ,1, 100, 200));
 //        linen1.addAperture(new TextAperture("asfd", -100,30,150,200));
-        System.out.print("total: ");
-        System.out.println(cart.getTotalPrice());
-
-        gBanner2.addAperture(new TextAperture("1", -100, -100, 200, 200));
-        gBanner2.addAperture(new TextAperture("2", 900, -100, 200, 200));
-        gBanner2.addAperture(new TextAperture("3", -100, 900, 200, 200));
-        gBanner2.addAperture(new TextAperture("4", 900, 900, 200, 200));
-
-        gBanner2.addAperture(new TextAperture("5", -100, -100, 1, 1));
-        gBanner2.addAperture(new TextAperture("511", -1000, -1000, 1, 1));
-
-        gBanner2.addAperture(new TextAperture("10000", -1000, -1000, 10000, 10000));
-//        gBanner2.addAperture(new TextAperture("6,", ));
+//        System.out.print("total: ");
+//        System.out.println(cart.getTotalPrice());
+//
+//        gBanner2.addAperture(new TextAperture("1", -100, -100, 200, 200));
+//        gBanner2.addAperture(new TextAperture("2", 900, -100, 200, 200));
+//        gBanner2.addAperture(new TextAperture("3", -100, 900, 200, 200));
+//        gBanner2.addAperture(new TextAperture("4", 900, 900, 200, 200));
+//
+//        gBanner2.addAperture(new TextAperture("5", -100, -100, 1, 1));
+//        gBanner2.addAperture(new TextAperture("511", -1000, -1000, 1, 1));
+//
+//        gBanner2.addAperture(new TextAperture("10000", -1000, -1000, 10000, 10000));
+////        gBanner2.addAperture(new TextAperture("6,", ));
 
         System.out.print("total: ");
         System.out.println(cart.getTotalPrice());

@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.assignment2;
 
 public class BusinessCardLandscape extends BusinessCard {
-    public BusinessCardLandscape(Type type, BusinessCardSide sides, BusinessCardColor color, ShippingOptionType deliveryMethod) {
-        super(type, sides, OrientationType.LANDSCAPE, color, deliveryMethod);
+    public BusinessCardLandscape(Type businessCardType, BusinessCardSide sides, BusinessCardColor businessCardColor, ShippingOptionType deliveryMethod) {
+        super(businessCardType, sides, OrientationType.LANDSCAPE, businessCardColor, deliveryMethod);
     }
 }
