@@ -11,12 +11,22 @@ public class Program {
         RedStamp rStamp = new RedStamp("red", StempSizeType.FOUR_BY_THREE, ShippingOptionType.PICKUP);
         GreenStamp greenStamp = new GreenStamp("Green", StempSizeType.SEVEN_BY_FOUR, ShippingOptionType.PICKUP);
 
-        BusinessCardLinen linen1 = new BusinessCardLinen(BusinessCardSide.DOUBLE, OrientationType.PORTRAIT, BusinessCardColor.WHITE, ShippingOptionType.SHIP);
+        BusinessCard linen1 = new BusinessCardLinen(BusinessCardSide.DOUBLE, OrientationType.PORTRAIT, BusinessCardColor.WHITE, ShippingOptionType.SHIP);
         BusinessCardLinen linen2 = new BusinessCardLinen(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
-        BusinessCardLaid laid1 = new BusinessCardLaid(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
-        BusinessCardLaid laid2 = new BusinessCardLaid(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardLaid laid1 = new BusinessCardLaid(BusinessCardSide.SINGLE, OrientationType.PORTRAIT, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardLaid laid2 = new BusinessCardLaid(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.IVORY, ShippingOptionType.SHIP);
         BusinessCardSmooth smooth1 = new BusinessCardSmooth(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
-        BusinessCardSmooth smooth2 = new BusinessCardSmooth(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
+        BusinessCardSmooth smooth2 = new BusinessCardSmooth(BusinessCardSide.DOUBLE, OrientationType.PORTRAIT, BusinessCardColor.WHITE, ShippingOptionType.PICKUP);
+
+        BusinessCardGray glay = new BusinessCardGray(Type.LAID, BusinessCardSide.DOUBLE, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+        BusinessCardIvory ivory = new BusinessCardIvory(Type.LINEN, BusinessCardSide.SINGLE, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+        BusinessCardWhite white = new BusinessCardWhite(Type.SMOOTH, BusinessCardSide.DOUBLE, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+
+        BusinessCardPortrait portrait = new BusinessCardPortrait(Type.LAID, BusinessCardSide.DOUBLE, BusinessCardColor.WHITE, ShippingOptionType.SHIP);
+        BusinessCardLandscape landscape = new BusinessCardLandscape(Type.SMOOTH, BusinessCardSide.DOUBLE, BusinessCardColor.WHITE, ShippingOptionType.SHIP);
+
+        BusinessCardSingleSided single = new BusinessCardSingleSided(Type.LAID, OrientationType.PORTRAIT, BusinessCardColor.WHITE, ShippingOptionType.PICKUP);
+        BusinessCardDoubleSided doubleSided = new BusinessCardDoubleSided(Type.SMOOTH, OrientationType.LANDSCAPE, BusinessCardColor.IVORY, ShippingOptionType.PICKUP);
 
         BannerGloss gBanner = new BannerGloss(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
         BannerGloss gBanner1 = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
@@ -62,16 +72,17 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
-        BannerLandscape landscape = new BannerLandscape(BannerType.GLOSS, BannerSize.ONE_ONE, 0x000000, ShippingOptionType.SHIP);
+//        BannerLandscape landscape = new BannerLandscape(BannerType.GLOSS, BannerSize.ONE_ONE, 0x000000, ShippingOptionType.SHIP);
 
-        System.out.print(landscape.getPrice());
+        linen1 = doubleSided;
+        System.out.println(landscape.getPrice());
 
         System.out.print("getWidth: ");
         System.out.println(linen1.getWidth());
         System.out.print("getHeight: ");
         System.out.println(linen1.getHeight());
         System.out.print("getBusinessType: ");
-        System.out.println(linen1.getBusinessType());
+        System.out.println(linen1.getType());
         System.out.print("getSide: ");
         System.out.println(linen1.getSide());
         System.out.print("getPrice: ");
