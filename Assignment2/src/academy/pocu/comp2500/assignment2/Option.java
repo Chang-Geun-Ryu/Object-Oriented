@@ -7,23 +7,15 @@ public class Option extends Product {
     private ArrayList<Aperture> apertures;
 //    protected Type type;
 //    protected BannerType bannerType;
-
+    protected BusinessCardSide side;
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.apertures = new ArrayList<>();
     }
 
-//    public Type getBusinessType() {
-//        return type;
-//    }
-
-//    public BannerType getBannerType() {
-//        return bannerType;
-//    }
-
-//    public BusinessCardSide getSide() {
-//        return this.side;
-//    }
+    public BusinessCardSide getSide() {
+        return this.side;
+    }
 
     public OrientationType getOrientation() {
         return this.orientation;
