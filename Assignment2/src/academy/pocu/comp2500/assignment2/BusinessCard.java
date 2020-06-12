@@ -4,17 +4,16 @@ public class BusinessCard extends Option {
     protected Type type;
     protected BusinessCardSide side;
 
-    protected BusinessCard(Type type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionType deliveryMethod) {
+    protected BusinessCard(Type businessCardType, BusinessCardSide businessCardSides, OrientationType orientation, BusinessCardColor businessCardColor, ShippingOptionType deliveryMethod) {
         super(orientation);
-        this.side = sides;
-        this.type = type;
+        this.side = businessCardSides;
+        this.type = businessCardType;
         setName(type.getNameCard());
-        setPrice(type.getPrice() + sides.getAddPrice());
+        setPrice(type.getPrice() + businessCardSides.getAddPrice());
         setShippingOption(deliveryMethod);
         setWidth(type.getWidth());
         setHeight(type.getHeight());
-
-        setColor(color.getColor());
+        setColor(businessCardColor.getColor());
     }
 
     public BusinessCardSide getSide() {
