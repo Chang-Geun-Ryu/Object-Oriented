@@ -20,7 +20,7 @@ public class BusinessCard extends Option {
         return this.side;
     }
 
-    public Type getBusinessType() {
+    public Type getType() {
         return type;
     }
 
