@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Option extends Product {
     protected OrientationType orientation;
     private ArrayList<Aperture> apertures;
-    private int color;
+//    private int color;
     protected BusinessCardSide side;
     protected Type type;
 
@@ -15,28 +15,16 @@ public class Option extends Product {
 //        this.side = BusinessCardSide.SINGLE;
     }
 
-//    protected void setColor(int color) {
-//        this.color = color;
-//    }
-
-    protected void setSide(BusinessCardSide side) {
-        this.side = side;
+    public BusinessCardSide getSide() {
+        return this.side;
     }
-
-//    public BusinessCardSide getSide() {
-//        return this.side;
-//    }
-
-//    public Type getType() {
-//        return type;
-//    }
-
-//    public int getColor() {
-//        return this.color;
-//    }
 
     public OrientationType getOrientation() {
         return this.orientation;
+    }
+
+    protected void setSide(BusinessCardSide side) {
+        this.side = side;
     }
 
     public void addAperture(Aperture aperture) {
