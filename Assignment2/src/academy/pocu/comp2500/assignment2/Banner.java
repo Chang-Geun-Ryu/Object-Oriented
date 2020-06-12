@@ -6,7 +6,7 @@ public class Banner extends Option {
     protected Banner(BannerType bannerType, BannerSize bannerSize, int bannerColor, OrientationType orientation, ShippingOptionType deliveryMethod) {
         super(orientation);
         this.bannerType = bannerType;
-        super.side = BusinessCardSide.SINGLE;
+        super.sides = Sides.SINGLE;
         setName(bannerType.getName() + bannerSize.getSize());
         setPrice(bannerSize.getPrice() + bannerType.getAddPrice());
         setShippingOption(deliveryMethod);
