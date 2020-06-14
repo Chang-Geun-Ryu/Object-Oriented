@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 public class Product {
     private String name;
     private int price;
-    private ShippingOptionsType shippingOptions;
+    private ShippingOptionsType deliveryMethod;
     protected int width;
     protected int height;
 //    private int color;
@@ -11,7 +11,7 @@ public class Product {
     protected Product() {
         this.name = "";
         this.price = 0;
-        this.shippingOptions = ShippingOptionsType.PICKUP;
+        this.deliveryMethod = ShippingOptionsType.PICKUP;
         this.width = 0;
         this.height = 0;
     }
@@ -48,8 +48,8 @@ public class Product {
         return this.price;// + (this.texts.size() + this.imagePaths.size()) * 5;
     }
 
-    public ShippingOptionsType getShippingOptions() {
-        return this.shippingOptions;
+    public ShippingOptionsType getDeliveryMethod() {
+        return this.deliveryMethod;
     }
 
     protected void setPrice(int price) {
@@ -60,7 +60,7 @@ public class Product {
         this.name = name;
     }
 
-    public void setShippingOptions(ShippingOptionsType type) {
-        this.shippingOptions = type;
+    public void setDeliveryMethod(ShippingOptionsType deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
     }
 }
