@@ -5,25 +5,27 @@ import java.util.ArrayList;
 public class Option extends Product {
     protected OrientationType orientation;
     private ArrayList<Aperture> apertures;
-//    protected Type type;
-//    protected BannerType bannerType;
-    protected Sides sides;
+//    private int color;
+    protected BusinessCardSide side;
+    protected Type type;
+
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
         this.apertures = new ArrayList<>();
+//        this.side = BusinessCardSide.SINGLE;
     }
 
-    public Sides getSides() {
-        return this.sides;
+    public BusinessCardSide getSide() {
+        return this.side;
     }
 
     public OrientationType getOrientation() {
         return this.orientation;
     }
 
-//    protected void setSide(BusinessCardSide side) {
-//        this.side = side;
-//    }
+    protected void setSide(BusinessCardSide side) {
+        this.side = side;
+    }
 
     public void addAperture(Aperture aperture) {
         this.apertures.add(aperture);
@@ -59,3 +61,4 @@ public class Option extends Product {
         }
     }
 }
+

@@ -7,43 +7,33 @@ public class Program {
     public static void main(String[] args) {
 	    // write your code here
 
-        BlueStamp bStamp = new BlueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionType.PICKUP);
-        RedStamp rStamp = new RedStamp("red", StempSizeType.FOUR_BY_THREE, ShippingOptionType.PICKUP);
-        GreenStamp greenStamp = new GreenStamp("Green", StempSizeType.SEVEN_BY_FOUR, ShippingOptionType.PICKUP);
+        BlueStamp bStamp = new BlueStamp("textStemp", StempSizeType.FIVE_BY_TWO, ShippingOptionsType.PICKUP);
+        RedStamp rStamp = new RedStamp("red", StempSizeType.FOUR_BY_THREE, ShippingOptionsType.PICKUP);
+        GreenStamp greenStamp = new GreenStamp("Green", StempSizeType.SEVEN_BY_FOUR, ShippingOptionsType.PICKUP);
 
-        BusinessCard linen1 = new BusinessCardLinen(Sides.DOUBLE, OrientationType.PORTRAIT, BusinessCardColor.WHITE, ShippingOptionType.SHIP);
-        BusinessCardLinen linen2 = new BusinessCardLinen(Sides.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
-        BusinessCardLaid laid1 = new BusinessCardLaid(Sides.SINGLE, OrientationType.PORTRAIT, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
-        BusinessCardLaid laid2 = new BusinessCardLaid(Sides.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.IVORY, ShippingOptionType.SHIP);
-        BusinessCardSmooth smooth1 = new BusinessCardSmooth(Sides.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionType.SHIP);
-        BusinessCardSmooth smooth2 = new BusinessCardSmooth(Sides.DOUBLE, OrientationType.PORTRAIT, BusinessCardColor.WHITE, ShippingOptionType.PICKUP);
+        BusinessCardLinen linen1 = new BusinessCardLinen(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLinen linen2 = new BusinessCardLinen(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLaid laid1 = new BusinessCardLaid(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardLaid laid2 = new BusinessCardLaid(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardSmooth smooth1 = new BusinessCardSmooth(BusinessCardSide.SINGLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
+        BusinessCardSmooth smooth2 = new BusinessCardSmooth(BusinessCardSide.DOUBLE, OrientationType.LANDSCAPE, BusinessCardColor.GRAY, ShippingOptionsType.SHIP);
 
-        BusinessCardGray glay = new BusinessCardGray(BusinessCardType.LAID, Sides.DOUBLE, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
-        BusinessCardIvory ivory = new BusinessCardIvory(BusinessCardType.LINEN, Sides.SINGLE, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
-        BusinessCardWhite white = new BusinessCardWhite(BusinessCardType.SMOOTH, Sides.DOUBLE, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
+        BannerGloss gBanner = new BannerGloss(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerGloss gBanner1 = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerGloss gBanner2 = new BannerGloss(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerGloss gBanner3 = new BannerGloss(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerScrim sBanner = new BannerScrim(BannerSize.TWO_HALF, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
+        BannerScrim sBanner1 = new BannerScrim(BannerSize.ONE_HALF, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
+        BannerScrim sBanner2 = new BannerScrim(BannerSize.ONE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
+        BannerScrim sBanner3 = new BannerScrim(BannerSize.THREE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionsType.SHIP);
+        BannerMesh  mBanner = new BannerMesh(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerMesh  mBanner1 = new BannerMesh(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerMesh  mBanner2 = new BannerMesh(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
+        BannerMesh  mBanner3 = new BannerMesh(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionsType.SHIP);
 
-        BusinessCardPortrait portrait = new BusinessCardPortrait(BusinessCardType.LAID, Sides.DOUBLE, BusinessCardColor.WHITE, ShippingOptionType.SHIP);
-        BusinessCardLandscape landscape = new BusinessCardLandscape(BusinessCardType.SMOOTH, Sides.DOUBLE, BusinessCardColor.WHITE, ShippingOptionType.SHIP);
-
-        BusinessCardSingleSided single = new BusinessCardSingleSided(BusinessCardType.LAID, OrientationType.PORTRAIT, BusinessCardColor.WHITE, ShippingOptionType.PICKUP);
-        BusinessCardDoubleSided doubleSided = new BusinessCardDoubleSided(BusinessCardType.SMOOTH, OrientationType.LANDSCAPE, BusinessCardColor.IVORY, ShippingOptionType.PICKUP);
-
-        BannerGloss gBanner = new BannerGloss(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-        BannerGloss gBanner1 = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-        BannerGloss gBanner2 = new BannerGloss(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-        BannerGloss gBanner3 = new BannerGloss(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-        BannerScrim sBanner = new BannerScrim(BannerSize.TWO_HALF, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
-        BannerScrim sBanner1 = new BannerScrim(BannerSize.ONE_HALF, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
-        BannerScrim sBanner2 = new BannerScrim(BannerSize.ONE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
-        BannerScrim sBanner3 = new BannerScrim(BannerSize.THREE_ONE, 0, OrientationType.PORTRAIT, ShippingOptionType.SHIP);
-        BannerMesh  mBanner = new BannerMesh(BannerSize.TWO_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-        BannerMesh  mBanner1 = new BannerMesh(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-        BannerMesh  mBanner2 = new BannerMesh(BannerSize.ONE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-        BannerMesh  mBanner3 = new BannerMesh(BannerSize.THREE_ONE, 0, OrientationType.LANDSCAPE, ShippingOptionType.SHIP);
-
-        DeskCalendar desk = new DeskCalendar(ShippingOptionType.SHIP);
-        MagnetCalendar magnetCalendar = new MagnetCalendar(ShippingOptionType.SHIP);
-        WallCalendar wall = new WallCalendar(ShippingOptionType.SHIP);
+        DeskCalendar desk = new DeskCalendar(ShippingOptionsType.SHIP);
+        MagnetCalendar magnetCalendar = new MagnetCalendar(ShippingOptionsType.SHIP);
+        WallCalendar wall = new WallCalendar(ShippingOptionsType.SHIP);
 
         Cart cart = new Cart();
         cart.addProduct(bStamp);
@@ -72,49 +62,24 @@ public class Program {
         cart.addProduct(magnetCalendar);
         cart.addProduct(wall);
 
-//        BannerLandscape landscape = new BannerLandscape(BannerType.GLOSS, BannerSize.ONE_ONE, 0x000000, ShippingOptionType.SHIP);
+        BannerLandscape landscape = new BannerLandscape(BannerType.GLOSS, BannerSize.ONE_ONE, 0x000000, ShippingOptionsType.SHIP);
 
-        linen1 = doubleSided;
-        System.out.println(landscape.getPrice());
-
-        System.out.print("getWidth: ");
-        System.out.println(linen1.getWidth());
-        System.out.print("getHeight: ");
-        System.out.println(linen1.getHeight());
-        System.out.print("getBusinessType: ");
-        System.out.println(linen1.getType());
-        System.out.print("getSide: ");
-        System.out.println(linen1.getSides());
-        System.out.print("getPrice: ");
-        System.out.println(linen1.getPrice());
-        System.out.print("getColor: ");
-        System.out.println(linen1.getColor());
-        System.out.print("getOrientation: ");
-        System.out.println(linen1.getOrientation());
-        System.out.print("getName: ");
-        System.out.println(linen1.getName());
-        System.out.print("getShippingOption: ");
-        System.out.println(linen1.getShippingOption());
-        System.out.print("getApertures: ");
-        System.out.println(linen1.getApertures());
-
+        System.out.print(landscape.getPrice());
 
 
 //        linen1.addAperture(new ImageAperture("d", ,1, 100, 200));
 //        linen1.addAperture(new TextAperture("asfd", -100,30,150,200));
-//        System.out.print("total: ");
-//        System.out.println(cart.getTotalPrice());
-//
-//        gBanner2.addAperture(new TextAperture("1", -100, -100, 200, 200));
-//        gBanner2.addAperture(new TextAperture("2", 900, -100, 200, 200));
-//        gBanner2.addAperture(new TextAperture("3", -100, 900, 200, 200));
-//        gBanner2.addAperture(new TextAperture("4", 900, 900, 200, 200));
-//
-//        gBanner2.addAperture(new TextAperture("5", -100, -100, 1, 1));
-//        gBanner2.addAperture(new TextAperture("511", -1000, -1000, 1, 1));
-//
-//        gBanner2.addAperture(new TextAperture("10000", -1000, -1000, 10000, 10000));
-////        gBanner2.addAperture(new TextAperture("6,", ));
+        System.out.print("total: ");
+        System.out.println(cart.getTotalPrice());
+
+        gBanner2.addAperture(new TextAperture("1", -100, -100, 200, 200));
+        gBanner2.addAperture(new TextAperture("2", 900, -100, 200, 200));
+        gBanner2.addAperture(new TextAperture("3", -100, 900, 200, 200));
+        gBanner2.addAperture(new TextAperture("4", 900, 900, 200, 200));
+
+        gBanner2.addAperture(new TextAperture("5", -100, -100, 1, 1));
+        gBanner2.addAperture(new TextAperture("511", -1000, -1000, 1, 1));
+//        gBanner2.addAperture(new TextAperture("6,", ));
 
         System.out.print("total: ");
         System.out.println(cart.getTotalPrice());

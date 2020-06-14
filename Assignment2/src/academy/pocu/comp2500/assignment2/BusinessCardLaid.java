@@ -1,7 +1,23 @@
 package academy.pocu.comp2500.assignment2;
 
 public class BusinessCardLaid extends BusinessCard {
-    public BusinessCardLaid(Sides businessCardSides, OrientationType orientation, BusinessCardColor businessCardColor, ShippingOptionType deliveryMethod) {
-        super(BusinessCardType.LAID, businessCardSides, orientation, businessCardColor, deliveryMethod);
+    public BusinessCardLaid(BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
+        super(Type.LAID, sides, orientation, color, deliveryMethod);
     }
+
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
+
+//    public BusinessCardType getType() {
+//        return this.type;
+//    }
+
+//    public BusinessCardColor getColor() {
+//        return this.color;
+//    }
+
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 }

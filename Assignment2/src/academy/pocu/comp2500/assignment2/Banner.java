@@ -1,21 +1,25 @@
 package academy.pocu.comp2500.assignment2;
 
-public class Banner extends Option {
-    protected BannerType bannerType;
+import java.util.ArrayList;
 
-    protected Banner(BannerType bannerType, BannerSize bannerSize, int bannerColor, OrientationType orientation, ShippingOptionType deliveryMethod) {
+public class Banner extends Option {
+//    private int color;
+    protected BannerType type;
+
+    protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
-        this.bannerType = bannerType;
-        super.sides = Sides.SINGLE;
-        setName(bannerType.getName() + bannerSize.getSize());
-        setPrice(bannerSize.getPrice() + bannerType.getAddPrice());
-        setShippingOption(deliveryMethod);
-        setWidth(bannerSize.getWidth());
-        setHeight(bannerSize.getHeight());
-        setColor(bannerColor);
+//        this.color = color;
+        super.side = BusinessCardSide.SINGLE;
+        this.type = type;
+        setName(type.getName() + size.getSize());
+        setPrice(size.getPrice() + type.getAddPrice());
+        setShippingOptions(deliveryMethod);
+        setWidth(size.getWidth());
+        setHeight(size.getHeight());
+        setColor(color);
     }
 
     public BannerType getType() {
-        return this.bannerType;
+        return this.type;
     }
 }

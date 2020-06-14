@@ -1,7 +1,23 @@
 package academy.pocu.comp2500.assignment2;
 
 public class BusinessCardDoubleSided extends BusinessCard {
-    public BusinessCardDoubleSided(BusinessCardType businessCardType, OrientationType orientation, BusinessCardColor businessCardColor, ShippingOptionType deliveryMethod) {
-        super(businessCardType, Sides.DOUBLE, orientation, businessCardColor, deliveryMethod);
+    public BusinessCardDoubleSided(Type type, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
+        super(type, BusinessCardSide.DOUBLE, orientation, color, deliveryMethod);
     }
+
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
+
+//    public BusinessCardType getType() {
+//        return this.type;
+//    }
+
+//    public BusinessCardColor getColor() {
+//        return this.color;
+//    }
+
+//    public OrientationType getOrientation() {
+//        return this.orientation;
+//    }
 }

@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment2;
 public class Calendar extends Product {
     private CalendarType type;
 
-    protected Calendar(CalendarType calendarType, ShippingOptionType deliveryMethod) {
+    protected Calendar(CalendarType calendarType, ShippingOptionsType deliveryMethod) {
         super();
         this.type = calendarType;
         setName(calendarType.getName());
@@ -14,11 +14,23 @@ public class Calendar extends Product {
         if (deliveryMethod == null) {
 
         } else {
-            setShippingOption(deliveryMethod);
+            setShippingOptions(deliveryMethod);
         }
     }
 
     public CalendarType getType() {
         return this.type;
     }
+
+//    public int getColor() {
+//        return 0xFFFFFF;
+//    }
+
+//    public int getWidth() {
+//        return this.type.getWidth();
+//    }
+//
+//    public int getHeight() {
+//        return this.type.getHeight();
+//    }
 }
