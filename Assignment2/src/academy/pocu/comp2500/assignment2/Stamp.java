@@ -5,7 +5,7 @@ public class Stamp extends Product {
 //    private StempSizeType size;
 //    private StempColorType color;
 
-    protected Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
+    public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         super();
 
 //        this.color = stampColor;
@@ -35,6 +35,18 @@ public class Stamp extends Product {
 
         setWidth(stampSize.getWidth());
         setHeight(stampSize.getHeight());
+    }
+
+    public Stamp createBlue(String text, StempSizeType stampSize) {
+        return new Stamp(text, StempColorType.BLUE, stampSize, ShippingOptionsType.PICKUP);
+    }
+
+    public Stamp createRed(String text, StempSizeType stampSize) {
+        return new Stamp(text, StempColorType.RED, stampSize, ShippingOptionsType.PICKUP);
+    }
+
+    public Stamp createGreen(String text, StempSizeType stampSize) {
+        return new Stamp(text, StempColorType.GREEN, stampSize, ShippingOptionsType.PICKUP);
     }
 
     public void setText(String text) {

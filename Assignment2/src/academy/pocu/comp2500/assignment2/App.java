@@ -9,9 +9,9 @@ public class App {
 //        registry.registerRedStampCreator("RedStamp");
 //        registry.registerBlueStampCreator("BlueStamp");
 //        registry.registerGreenStampCreator("GreenStamp");
-        registry.registerRedStampCreator("Stamp");
-        registry.registerBlueStampCreator("Stamp");
-        registry.registerGreenStampCreator("Stamp");
+        registry.registerRedStampCreator("Stamp");//, "createRed");
+        registry.registerBlueStampCreator("Stamp");//, "createBlue");
+        registry.registerGreenStampCreator("Stamp");//, "createGreen");
         registry.registerWallCalendarCreator("WallCalendar");
         registry.registerMagnetCalendarCreator("MagnetCalendar");
         registry.registerDeskCalendarCreator("DeskCalendar");
