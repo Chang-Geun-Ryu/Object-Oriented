@@ -52,9 +52,9 @@ public class Stamp extends Product {
 //        return this.text;
 //    }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+//    public void setText(String text) {
+//        this.text = text;
+//    }
 
     public String getText() {
         return this.text;
