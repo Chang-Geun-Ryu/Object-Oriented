@@ -37,10 +37,10 @@ public class Stamp extends Product {
         setHeight(stampSize.getHeight());
     }
 
-    public void setStampSize(StempSizeType stampSize) {
-        setWidth(stampSize.getWidth());
-        setHeight(stampSize.getHeight());
-    }
+//    public void setStampSize(StempSizeType stampSize) {
+//        setWidth(stampSize.getWidth());
+//        setHeight(stampSize.getHeight());
+//    }
 //    public void setText(String text) {
 //        this.text = text;
 //    }

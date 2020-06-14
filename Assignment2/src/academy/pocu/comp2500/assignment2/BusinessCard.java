@@ -5,7 +5,7 @@ public class BusinessCard extends Option {
     protected BusinessCardColor color;
     protected BusinessCardSide side;
 
-    protected BusinessCard(Type type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
+    public BusinessCard(Type type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
         super(orientation);
         this.side = sides;
         this.type = type;
