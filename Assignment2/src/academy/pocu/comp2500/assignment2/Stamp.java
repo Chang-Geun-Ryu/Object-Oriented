@@ -8,7 +8,6 @@ public class Stamp extends Product {
         super();
 
         this.color = color;
-//        setColor(stampColor.getColor());
 
         if (stampSize == null) {
             setName("Stamp" + StempSizeType.FOUR_BY_THREE.getSize());
@@ -26,11 +25,11 @@ public class Stamp extends Product {
             setShippingOptions(deliveryMethod);
         }
 
-        if (text == null) {
-            this.text = "";
-        } else {
+//        if (text == null) {
+//            this.text = "";
+//        } else {
             this.text = text;
-        }
+//        }
 
         setWidth(stampSize.getWidth());
         setHeight(stampSize.getHeight());
@@ -52,9 +51,9 @@ public class Stamp extends Product {
 //        return this.text;
 //    }
 
-//    public void setText(String text) {
-//        this.text = text;
-//    }
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public String getText() {
         return this.text;
