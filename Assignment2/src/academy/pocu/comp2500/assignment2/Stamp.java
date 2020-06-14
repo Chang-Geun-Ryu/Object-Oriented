@@ -3,12 +3,12 @@ package academy.pocu.comp2500.assignment2;
 public class Stamp extends Product {
     private String text;
 //    private StempSizeType size;
-    private StempColorType color;
+    private StempColorType stampColor;
 
     public Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         super();
 
-        this.color = stampColor;
+        this.stampColor = stampColor;
 //        setColor(stampColor.getColor());
 
         if (stampSize == null) {
@@ -46,7 +46,7 @@ public class Stamp extends Product {
 //    }
 
     public StempColorType getStampColor() {
-         return this.color;
+         return this.stampColor;
     }
 
     public String getText() {
