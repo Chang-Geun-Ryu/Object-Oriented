@@ -6,7 +6,7 @@ public class Banner extends Option {
     private int color;
     private BannerType type;
 
-    protected Banner(BannerType type, BannerSize size, int bannerColor, OrientationType orientation, ShippingOptionsType deliveryMethod) {
+    public Banner(BannerType type, BannerSize size, int bannerColor, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
         this.color = bannerColor;
 //        super.side = BusinessCardSide.SINGLE;

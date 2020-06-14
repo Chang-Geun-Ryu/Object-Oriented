@@ -18,11 +18,11 @@ public class App {
         registry.registerWallCalendarCreator("Calendar");
         registry.registerMagnetCalendarCreator("Calendar");
         registry.registerDeskCalendarCreator("Calendar");
-        registry.registerLandscapeBannerCreator("BannerLandscape");
-        registry.registerPortraitBannerCreator("BannerPortrait");
-        registry.registerGlossBannerCreator("BannerGloss");
-        registry.registerScrimBannerCreator("BannerScrim");
-        registry.registerMeshBannerCreator("BannerMesh");
+        registry.registerLandscapeBannerCreator("Banner");
+        registry.registerPortraitBannerCreator("Banner");
+        registry.registerGlossBannerCreator("Banner");
+        registry.registerScrimBannerCreator("Banner");
+        registry.registerMeshBannerCreator("Banner");
         registry.registerLandscapeBusinessCardCreator("BusinessCardLandscape");
         registry.registerPortraitBusinessCardCreator("BusinessCardPortrait");
         registry.registerIvoryBusinessCardCreator("BusinessCardIvory");
