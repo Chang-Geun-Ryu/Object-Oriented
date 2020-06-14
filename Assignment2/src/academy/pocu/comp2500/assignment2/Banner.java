@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Banner extends Option {
     private int color;
-    protected BannerType type;
+    private BannerType type;
 
     protected Banner(BannerType type, BannerSize size, int bannerColor, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
-//        this.color = color;
+        this.color = bannerColor;
 //        super.side = BusinessCardSide.SINGLE;
         this.type = type;
         setName(type.getName() + size.getSize());

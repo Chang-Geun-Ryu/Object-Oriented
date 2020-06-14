@@ -12,9 +12,12 @@ public class App {
         registry.registerRedStampCreator("Stamp");//, "createRed");
         registry.registerBlueStampCreator("Stamp");//, "createBlue");
         registry.registerGreenStampCreator("Stamp");//, "createGreen");
-        registry.registerWallCalendarCreator("WallCalendar");
-        registry.registerMagnetCalendarCreator("MagnetCalendar");
-        registry.registerDeskCalendarCreator("DeskCalendar");
+//        registry.registerWallCalendarCreator("WallCalendar");
+//        registry.registerMagnetCalendarCreator("MagnetCalendar");
+//        registry.registerDeskCalendarCreator("DeskCalendar");
+        registry.registerWallCalendarCreator("Calendar");
+        registry.registerMagnetCalendarCreator("Calendar");
+        registry.registerDeskCalendarCreator("Calendar");
         registry.registerLandscapeBannerCreator("BannerLandscape");
         registry.registerPortraitBannerCreator("BannerPortrait");
         registry.registerGlossBannerCreator("BannerGloss");
