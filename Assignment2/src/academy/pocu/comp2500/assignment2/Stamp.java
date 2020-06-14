@@ -64,7 +64,7 @@ public class Stamp extends Product {
     protected Stamp(String text, StempColorType stampColor, StempSizeType stampSize, ShippingOptionsType deliveryMethod) {
         super();
 //        setColor(stampColor.getColor());
-
+        this.stampColor = stampColor;
         if (stampSize == null) {
             setName("Stamp" + StempSizeType.FOUR_BY_THREE.getSize());
             setPrice(StempSizeType.FOUR_BY_THREE.getPrice());
