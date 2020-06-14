@@ -12,7 +12,7 @@ public class BusinessCard extends Option {
         this.color = color;
         setName(type.getNameCard());
         setPrice(type.getPrice() + sides.getAddPrice());
-        setShippingOptions(deliveryMethod);
+        setDeliveryMethod(deliveryMethod);
         setWidth(type.getWidth());
         setHeight(type.getHeight());
 

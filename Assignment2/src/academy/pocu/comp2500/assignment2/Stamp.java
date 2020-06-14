@@ -12,7 +12,7 @@ public class Stamp extends Product {
         setName("Stamp" + stampSize.getSize());
         setPrice(stampSize.getPrice());
 
-        setShippingOptions(deliveryMethod);
+        setDeliveryMethod(deliveryMethod);
 
         this.text = text;
 

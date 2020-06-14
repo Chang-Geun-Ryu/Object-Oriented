@@ -95,7 +95,7 @@ public class Program {
         bStamp.setPrice(0);
         bStamp.setWidth(0);
         bStamp.setHeight(0);
-        bStamp.setShippingOptions(ShippingOptionsType.SHIP);
+        bStamp.setDeliveryMethod(ShippingOptionsType.SHIP);
 
 
 //        Banner banner = new BannerGloss(BannerSize.ONE_HALF, 0, OrientationType.LANDSCAPE, ShippingOptionsType.PICKUP);

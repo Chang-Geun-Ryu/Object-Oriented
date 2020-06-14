@@ -14,7 +14,7 @@ public class Calendar extends Product {
         if (deliveryMethod == null) {
 
         } else {
-            setShippingOptions(deliveryMethod);
+            setDeliveryMethod(deliveryMethod);
         }
     }
 
