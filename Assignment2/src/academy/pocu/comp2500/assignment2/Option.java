@@ -6,7 +6,7 @@ public class Option extends Product {
     protected OrientationType orientation;
     private ArrayList<Aperture> apertures;
 //    private int color;
-    protected BusinessCardSide side;
+
 //    protected Type type;
 
     protected Option(OrientationType orientation) {
@@ -15,17 +15,17 @@ public class Option extends Product {
 //        this.side = BusinessCardSide.SINGLE;
     }
 
-    public BusinessCardSide getSide() {
-        return this.side;
-    }
+//    public BusinessCardSide getSide() {
+//        return this.side;
+//    }
 
     public OrientationType getOrientation() {
         return this.orientation;
     }
 
-    protected void setSide(BusinessCardSide side) {
-        this.side = side;
-    }
+//    protected void setSide(BusinessCardSide side) {
+//        this.side = side;
+//    }
 
     public void addAperture(Aperture aperture) {
         this.apertures.add(aperture);

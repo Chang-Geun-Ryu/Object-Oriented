@@ -3,11 +3,11 @@ package academy.pocu.comp2500.assignment2;
 public class BusinessCard extends Option {
     protected Type type;
 //    protected BusinessCardColor color;
-//    protected BusinessCardSide side;
+    protected BusinessCardSide side;
 
     protected BusinessCard(Type type, BusinessCardSide sides, OrientationType orientation, BusinessCardColor color, ShippingOptionsType deliveryMethod) {
         super(orientation);
-        this.side = sides;
+//        this.side = sides;
         this.type = type;
 //        this.color = color;
         setName(type.getNameCard());
@@ -27,16 +27,16 @@ public class BusinessCard extends Option {
         return type;
     }
 
-//    public BusinessCardSide getSide() {
-//        return this.side;
-//    }
+    public BusinessCardSide getSide() {
+        return this.side;
+    }
 
 //    public BusinessCardColor gegCardColor() {
 //        return this.color;
 //    }
-//    protected void setSide(BusinessCardSide side) {
-//        this.side = side;
-//    }
+    protected void setSide(BusinessCardSide side) {
+        this.side = side;
+    }
 //    public BusinessCardSide getSide() {
 //        return this.side;
 //    }

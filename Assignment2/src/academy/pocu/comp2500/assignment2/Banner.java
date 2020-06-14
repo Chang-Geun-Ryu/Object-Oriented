@@ -9,7 +9,7 @@ public class Banner extends Option {
     protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
 //        this.color = color;
-        super.side = BusinessCardSide.SINGLE;
+//        super.side = BusinessCardSide.SINGLE;
         this.type = type;
         setName(type.getName() + size.getSize());
         setPrice(size.getPrice() + type.getAddPrice());
