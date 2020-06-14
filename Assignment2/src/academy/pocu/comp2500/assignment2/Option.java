@@ -7,7 +7,7 @@ public class Option extends Product {
     private ArrayList<Aperture> apertures;
 //    private int color;
     protected BusinessCardSide side;
-    protected Type type;
+//    protected Type type;
 
     protected Option(OrientationType orientation) {
         this.orientation = orientation;
