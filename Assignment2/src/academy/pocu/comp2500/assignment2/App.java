@@ -6,9 +6,12 @@ public class App {
     public App(Registry registry) {
         // register your classes or methods here
         /// 2개 가능
-        registry.registerRedStampCreator("RedStamp");
-        registry.registerBlueStampCreator("BlueStamp");
-        registry.registerGreenStampCreator("GreenStamp");
+//        registry.registerRedStampCreator("RedStamp");
+//        registry.registerBlueStampCreator("BlueStamp");
+//        registry.registerGreenStampCreator("GreenStamp");
+        registry.registerRedStampCreator("Stamp");
+        registry.registerBlueStampCreator("Stamp");
+        registry.registerGreenStampCreator("Stamp");
         registry.registerWallCalendarCreator("WallCalendar");
         registry.registerMagnetCalendarCreator("MagnetCalendar");
         registry.registerDeskCalendarCreator("DeskCalendar");
