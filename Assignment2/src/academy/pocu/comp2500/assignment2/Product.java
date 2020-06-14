@@ -6,7 +6,7 @@ public class Product {
     private ShippingOptionsType shippingOptions;
     protected int width;
     protected int height;
-    private int color;
+//    private int color;
 
     protected Product() {
         this.name = "";
@@ -16,9 +16,9 @@ public class Product {
         this.height = 0;
     }
 
-    protected void setColor(int color) {
-        this.color = color;
-    }
+//    protected void setColor(int color) {
+//        this.color = color;
+//    }
 
     protected void setWidth(int width) {
         this.width = width;
@@ -28,9 +28,9 @@ public class Product {
         this.height = height;
     }
 
-    public int getColor() {
-        return this.color;
-    }
+//    public int getColor() {
+//        return this.color;
+//    }
 
     public int getWidth() {
         return this.width;

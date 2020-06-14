@@ -3,10 +3,10 @@ package academy.pocu.comp2500.assignment2;
 import java.util.ArrayList;
 
 public class Banner extends Option {
-//    private int color;
+    private int color;
     protected BannerType type;
 
-    protected Banner(BannerType type, BannerSize size, int color, OrientationType orientation, ShippingOptionsType deliveryMethod) {
+    protected Banner(BannerType type, BannerSize size, int bannerColor, OrientationType orientation, ShippingOptionsType deliveryMethod) {
         super(orientation);
 //        this.color = color;
 //        super.side = BusinessCardSide.SINGLE;
@@ -16,7 +16,11 @@ public class Banner extends Option {
         setShippingOptions(deliveryMethod);
         setWidth(size.getWidth());
         setHeight(size.getHeight());
-        setColor(color);
+//        setColor(color);
+    }
+
+    public int getBannerColor() {
+        return this.color;
     }
 
     public BannerType getType() {
