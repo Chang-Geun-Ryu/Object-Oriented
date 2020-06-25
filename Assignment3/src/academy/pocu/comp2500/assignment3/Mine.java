@@ -4,6 +4,7 @@ public class Mine extends Unit {
     protected int pushCount;
     private int detectUnitCount;
 
+
     public Mine(IntVector2D vector2D, int pushCount) {
         super(vector2D, 1, 'N', UnitKind.Land, 0, 0, 10, Target.LAND);
         this.pushCount = pushCount;
