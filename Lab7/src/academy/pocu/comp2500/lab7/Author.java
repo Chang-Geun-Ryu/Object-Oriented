@@ -22,15 +22,21 @@ public class Author {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || !(o instanceof Author)) {
+            return false;
+        }
+
         Author author = (Author) o;
-        return Objects.equals(firstName, author.firstName) &&
-                Objects.equals(lastName, author.lastName);
+        return this.firstName.equals(author.firstName) &&
+                this.lastName.equals(author.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return this.firstName.hashCode() ^ (this.lastName.hashCode() << 16);
     }
 }

@@ -1,12 +1,9 @@
 package academy.pocu.comp2500.lab7;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Objects;
 
 public class Bookshelf {
     private int maxCount;
-//    private HashSet<Book> shelf;
     private ArrayList<Book> shelf;
 
     public Bookshelf(int maxCount) {
@@ -33,15 +30,28 @@ public class Bookshelf {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !(o instanceof Bookshelf)) {
+            return false;
+        }
         Bookshelf bookshelf = (Bookshelf) o;
         return maxCount == bookshelf.maxCount &&
-                Objects.equals(shelf, bookshelf.shelf);
+                this.shelf.equals(bookshelf.shelf);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maxCount, shelf);
+        int hash = 7;
+        hash *= maxCount;
+        for (Book book: this.shelf) {
+            hash = hash * 31 + book.hashCode();
+        }
+        return hash;
+    }
+
+    public int getMaxCount() {
+        return this.maxCount;
     }
 }

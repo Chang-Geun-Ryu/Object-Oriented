@@ -22,15 +22,24 @@ public class Bundle {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !(o instanceof Bundle)) {
+            return false;
+        }
         Bundle bundle = (Bundle) o;
-        return Objects.equals(name, bundle.name) &&
-                Objects.equals(books, bundle.books);
+        return this.name.equals(bundle.name) &&
+                this.books.equals(bundle.books);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, books);
+        int hash = 7;
+        hash = hash * 31 + (this.name == null ? 0 : this.name.hashCode());
+        for (Book book: this.books) {
+            hash = hash * 31 + this.hashCode();
+        }
+        return hash;
     }
 }

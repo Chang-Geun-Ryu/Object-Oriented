@@ -22,18 +22,43 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !(o instanceof Book)) {
+            return false;
+        }
         Book book = (Book) o;
-        return since == book.since &&
-                Objects.equals(title, book.title) &&
-                Objects.equals(author, book.author) &&
+        return this.since == book.since &&
+                this.title.equals(book.title) &&
+                this.author.equals(book.author) &&
                 genre == book.genre;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, author, since, genre);
+        int hash = 7;
+        hash = hash * 31 + (this.title == null ? 0 : this.title.hashCode());
+        hash = hash * 31 + (this.author == null ? 0 : this.author.hashCode());
+        hash = hash * 31 + this.since;
+        hash = hash * 31 + (this.genre == null ? 0 : genre.hashCode());
+        return hash;
     }
+
+//    public String getTitle() {
+//        return this.title;
+//    }
+//
+//    public Author getAuthor() {
+//        return this.author;
+//    }
+//
+//    public int getSince() {
+//        return this.since;
+//    }
+//
+//    public Genre getGenre() {
+//        return this.genre;
+//    }
 }
 
