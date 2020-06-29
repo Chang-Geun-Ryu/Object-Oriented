@@ -28,6 +28,16 @@ public class Bookshelf {
         return this.shelf.remove(book);
     }
 
+//    private boolean equalBooks(Bookshelf bookshelf) {
+//        if (this.shelf.size() != bookshelf.shelf.size()) {
+//            return false;
+//        }
+//
+//        for (Book book : this.shelf) {
+//            bookshelf.shelf.contains()
+//        }
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -38,7 +48,8 @@ public class Bookshelf {
         }
         Bookshelf bookshelf = (Bookshelf) o;
         return maxCount == bookshelf.maxCount &&
-                this.shelf.equals(bookshelf.shelf);
+                this.shelf.equals(bookshelf.shelf) &&
+                this.shelf.hashCode() == bookshelf.shelf.hashCode();
     }
 
     @Override
@@ -49,9 +60,5 @@ public class Bookshelf {
             hash = hash * 31 + book.hashCode();
         }
         return hash;
-    }
-
-    public int getMaxCount() {
-        return this.maxCount;
     }
 }

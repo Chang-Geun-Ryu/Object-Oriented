@@ -42,7 +42,8 @@ public class ReadingList {
         if (o == null || !(o instanceof ReadingList)) return false;
         ReadingList that = (ReadingList) o;
         return this.name.equals(that.name) &&
-                this.books.equals(that.books);
+                this.books.equals(that.books) &&
+                this.books.hashCode() == that.books.hashCode();
     }
 
     @Override
