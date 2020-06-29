@@ -43,7 +43,7 @@ public class Bookshelf {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 17;
         hash *= maxCount;
         for (Book book: this.shelf) {
             hash = hash * 31 + book.hashCode();
