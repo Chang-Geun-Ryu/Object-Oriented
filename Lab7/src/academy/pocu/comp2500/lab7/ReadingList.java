@@ -23,6 +23,21 @@ public class ReadingList {
         return books.remove(book);
     }
 
+    private boolean equalBooks(ReadingList list) {
+        if (this.books.size() != list.books.size()) {
+            return false;
+        }
+
+        int index = -1;
+        for (Book book : this.books) {
+            if (list.books.get(++index).hashCode() != book.hashCode()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -43,11 +58,17 @@ public class ReadingList {
         ReadingList that = (ReadingList) o;
         return this.name.equals(that.name) &&
                 this.books.equals(that.books) &&
-                this.books.hashCode() == that.books.hashCode();
+                this.books.hashCode() == that.books.hashCode() &&
+                equalBooks(that);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, books);
+        int hash = 17;
+        hash = hash * 31 + name.hashCode();
+        for (Book book: this.books) {
+            hash = hash * 31 + book.hashCode();
+        }
+        return hash;
     }
 }
