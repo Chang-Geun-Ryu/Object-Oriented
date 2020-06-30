@@ -50,11 +50,12 @@ public class Bookshelf {
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = hash * 37 + (maxCount << 16);
+
         hash = hash * 37 + (this.toString().hashCode());
         for (Book book: this.shelf) {
             hash = hash * 37 + book.hashCode();
         }
+        hash = hash * 37 + (maxCount << 16);
         return hash;
     }
 }

@@ -37,7 +37,7 @@ public class Book {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 17;
         int prime = 37;
         hash = hash * prime + (this.title == null ? 0 : this.title.hashCode());
         hash = hash * prime + (this.author == null ? 0 : this.author.hashCode());
