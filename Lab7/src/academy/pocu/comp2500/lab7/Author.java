@@ -37,6 +37,10 @@ public class Author {
 
     @Override
     public int hashCode() {
-        return this.firstName.hashCode() ^ (this.lastName.hashCode() << 16);
+        int hash = 17;
+        int prime = 37;
+        hash = hash * prime + this.firstName.hashCode();// ^ (this.lastName.hashCode() << 16);
+        hash = hash * prime ^ (this.lastName.hashCode() << 16);
+        return hash;
     }
 }
