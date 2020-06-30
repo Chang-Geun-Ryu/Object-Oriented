@@ -57,8 +57,6 @@ public class ReadingList {
         if (o == null || !(o instanceof ReadingList)) return false;
         ReadingList that = (ReadingList) o;
         return this.name.equals(that.name) &&
-                this.books.equals(that.books) &&
-                this.books.hashCode() == that.books.hashCode() &&
                 equalBooks(that);
     }
 
@@ -67,7 +65,7 @@ public class ReadingList {
         int hash = 17;
         hash = hash * 31 + name.hashCode();
         for (Book book: this.books) {
-            hash = hash * 31 + book.hashCode();
+            hash = hash * 31 + (book == null ? 0 : book.hashCode());
         }
         return hash;
     }

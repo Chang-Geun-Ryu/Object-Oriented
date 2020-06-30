@@ -65,7 +65,7 @@ public class Bookshelf {
         int hash = 17;
         hash *= maxCount;
         for (Book book: this.shelf) {
-            hash = hash * 31 + book.hashCode();
+            hash = hash * 31 + (book == null ? 0 : book.hashCode());
         }
         return hash;
     }

@@ -44,21 +44,5 @@ public class Book {
         hash = hash * 31 + (this.genre == null ? 0 : genre.hashCode());
         return hash;
     }
-
-//    public String getTitle() {
-//        return this.title;
-//    }
-//
-//    public Author getAuthor() {
-//        return this.author;
-//    }
-//
-//    public int getSince() {
-//        return this.since;
-//    }
-//
-//    public Genre getGenre() {
-//        return this.genre;
-//    }
 }
 
