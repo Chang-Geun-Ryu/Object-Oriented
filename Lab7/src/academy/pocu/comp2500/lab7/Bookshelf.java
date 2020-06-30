@@ -57,14 +57,15 @@ public class Bookshelf {
             return false;
         }
         Bookshelf bookshelf = (Bookshelf) o;
-        return equalBooks(bookshelf);//this.shelf.equals(bookshelf.shelf);
+        return this == bookshelf;
 //                equalBooks(bookshelf);
     }
 
     @Override
     public int hashCode() {
-//        hash = hash * 31 + maxCount;
-//        hash = hash * 31 + this.shelf.hashCode();
-        return this.hashCode();
+        int hash = 17;
+        hash = hash * 31 + maxCount;
+        hash = hash * 31 + this.shelf.hashCode();
+        return hash;
     }
 }
