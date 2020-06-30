@@ -64,9 +64,7 @@ public class ReadingList {
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + name.hashCode();
-        for (Book book: this.books) {
-            hash = hash * 31 + (book == null ? 0 : book.hashCode());
-        }
+        hash += this.books.hashCode();
         return hash;
     }
 }
