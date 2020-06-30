@@ -31,6 +31,14 @@ public class Bookshelf {
     }
 
     @Override
+    public String toString() {
+        return "Bookshelf{" +
+                "maxCount=" + maxCount +
+                ", shelf=" + shelf +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -46,7 +54,7 @@ public class Bookshelf {
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + (maxCount << 16);
-        hash = hash * 31 + (this.shelf.size() << 16);
+        hash = hash * 31 + this.toString().hashCode();
         hash = hash * 31 + (this.shelf == null ? 0 : this.shelf.hashCode());
         return hash;
     }
