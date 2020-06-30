@@ -1,9 +1,6 @@
 package academy.pocu.comp2500.lab7;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
 
 public class ReadingList {
     private String name;
@@ -64,7 +61,7 @@ public class ReadingList {
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + name.hashCode();
-        hash += this.books.hashCode();
+        hash = hash * 31 + this.books.hashCode();
         return hash;
     }
 }
