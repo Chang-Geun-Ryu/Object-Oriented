@@ -28,11 +28,19 @@ public class Program {
         assert (!bundle.remove(book0));
 
         ReadingList readingList = new ReadingList("Summer Break Homework");
+        ReadingList readingList1 = new ReadingList("Summer Break Homework");
 
         assert (readingList.add(book0));
         assert (readingList.add(book1));
         assert (readingList.add(book2));
         assert (readingList.add(book3));
+        readingList1.add(book0);
+        readingList1.add(book1);
+        readingList1.add(book3);
+        readingList1.add(book2);
+
+        boolean b = readingList.hashCode() == readingList1.hashCode();
+
 
         assert (readingList.remove(book3));
         assert (readingList.remove(book0));

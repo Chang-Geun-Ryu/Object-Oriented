@@ -55,7 +55,7 @@ public class Bookshelf {
             return false;
         }
         Bookshelf bookshelf = (Bookshelf) o;
-        return this.shelf.equals(bookshelf.shelf) &&
+        return //this.shelf.equals(bookshelf.shelf) &&
                 hashCode() == bookshelf.hashCode() &&
                 equalBooks(bookshelf);
     }
@@ -63,7 +63,7 @@ public class Bookshelf {
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = hash * 31 + maxCount;
+        //hash = hash * 31 + maxCount;
         hash += this.shelf.hashCode();
         return hash;
     }
