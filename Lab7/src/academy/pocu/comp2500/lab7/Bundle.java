@@ -1,7 +1,6 @@
 package academy.pocu.comp2500.lab7;
 
 import java.util.HashSet;
-import java.util.Objects;
 
 public class Bundle {
     private String name;

@@ -42,6 +42,7 @@ public class Book {
         hash = hash * 31 + (this.author == null ? 0 : this.author.hashCode());
         hash = hash * 31 + this.since;
         hash = hash * 31 + (this.genre == null ? 0 : genre.hashCode());
+        hash = hash * 31 + toString().hashCode();
         return hash;
     }
 }
