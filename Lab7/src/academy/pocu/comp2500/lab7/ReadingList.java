@@ -57,6 +57,7 @@ public class ReadingList {
         if (o == null || !(o instanceof ReadingList)) return false;
         ReadingList that = (ReadingList) o;
         return this.name.equals(that.name) &&
+                hashCode() == that.hashCode() &&
                 equalBooks(that);
     }
 

@@ -56,7 +56,7 @@ public class Bookshelf {
         }
         Bookshelf bookshelf = (Bookshelf) o;
         return this.shelf.equals(bookshelf.shelf) &&
-                this.shelf.hashCode() == bookshelf.shelf.hashCode() &&
+                hashCode() == bookshelf.hashCode() &&
                 equalBooks(bookshelf);
     }
 
