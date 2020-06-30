@@ -38,11 +38,12 @@ public class Book {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = hash * 31 + (this.title == null ? 0 : this.title.hashCode());
-        hash = hash * 31 + (this.author == null ? 0 : this.author.hashCode());
-        hash = hash * 31 + this.since;
-        hash = hash * 31 + (this.genre == null ? 0 : genre.hashCode());
-        hash = hash * 31 + toString().hashCode();
+        int prime = 37;
+        hash = hash * prime + (this.title == null ? 0 : this.title.hashCode());
+        hash = hash * prime + (this.author == null ? 0 : this.author.hashCode());
+        hash = hash * prime + this.since;
+        hash = hash * prime + (this.genre == null ? 0 : genre.hashCode());
+        hash = hash * prime + toString().hashCode();
         return hash;
     }
 }
