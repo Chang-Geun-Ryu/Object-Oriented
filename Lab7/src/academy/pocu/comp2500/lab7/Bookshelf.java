@@ -45,11 +45,8 @@ public class Bookshelf {
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = hash * 31 + maxCount;
-//        for (Book book: this.shelf) {
-//            hash = hash * 31 + book.hashCode();
-//        }
-        hash = hash * 31 + this.shelf.hashCode();
+        hash = hash * 37 + maxCount;
+        hash = hash * 37 + (this.shelf == null ? 0 : this.shelf.hashCode());
         return hash;
     }
 }
