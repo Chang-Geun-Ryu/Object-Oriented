@@ -30,24 +30,6 @@ public class Bookshelf {
         return this.shelf.remove(book);
     }
 
-    private boolean equalBooks(Bookshelf bookshelf) {
-        if (this.shelf.size() != bookshelf.shelf.size()) {
-            return false;
-        }
-
-        ArrayList<Book> shelf = new ArrayList<Book>(bookshelf.shelf);
-
-        for (int i = 0; i < this.shelf.size(); ++i) {
-            if (shelf.contains(this.shelf.get(i)) == false) {
-                return false;
-            }
-
-            shelf.remove(this.shelf.get(i));
-        }
-
-        return true;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -58,14 +40,15 @@ public class Bookshelf {
         }
         Bookshelf bookshelf = (Bookshelf) o;
         return this == bookshelf;
-//                equalBooks(bookshelf);
     }
 
     @Override
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + maxCount;
-        hash = hash * 31 + this.shelf.hashCode();
+        for (Book book: this.shelf) {
+            hash = hash * 31 + book.hashCode();
+        }
         return hash;
     }
 }

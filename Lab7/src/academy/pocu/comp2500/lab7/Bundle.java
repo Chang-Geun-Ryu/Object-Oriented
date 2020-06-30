@@ -38,7 +38,7 @@ public class Bundle {
         int hash = 7;
         hash = hash * 31 + (this.name == null ? 0 : this.name.hashCode());
         for (Book book: this.books) {
-            hash = hash * 31 + this.hashCode();
+            hash = hash * 31 + book.hashCode();
         }
         return hash;
     }
