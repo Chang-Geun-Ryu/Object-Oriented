@@ -35,11 +35,12 @@ public class Program {
         assert (readingList.add(book2));
         assert (readingList.add(book3));
         readingList1.add(book0);
+        readingList1.add(book2);
         readingList1.add(book1);
         readingList1.add(book3);
-        readingList1.add(book2);
 
         boolean b = readingList.hashCode() == readingList1.hashCode();
+        boolean a = readingList.equals(readingList1);
 
 
         assert (readingList.remove(book3));
