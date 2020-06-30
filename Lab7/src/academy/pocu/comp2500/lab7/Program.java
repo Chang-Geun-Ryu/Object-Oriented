@@ -9,10 +9,11 @@ public class Program {
         Bookshelf bookshelf = new Bookshelf(10);
 
         assert (bookshelf.add(book0));
+        bookshelf.toString();
         assert (bookshelf.remove(book0));
         assert (!bookshelf.remove(book0));
 
-        bookshelf.toString();
+
 
         Book book1 = new Book("C# for dummies", new Author("Jason", "Bourne"), 2005, Genre.ROMANCE);
         Book book2 = new Book("C# for dummies", new Author("Jason", "Bourne"), 2005, Genre.ROMANCE);

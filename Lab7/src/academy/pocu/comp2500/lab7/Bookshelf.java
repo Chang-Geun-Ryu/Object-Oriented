@@ -8,7 +8,6 @@ public class Bookshelf {
 
     public Bookshelf(int maxCount) {
         this.maxCount = maxCount;
-//        this.shelf = new HashSet<>();
         this.shelf = new ArrayList<>();
     }
 
@@ -32,7 +31,7 @@ public class Bookshelf {
     public String toString() {
         return "Bookshelf{" +
                 "maxCount=" + maxCount +
-                ", shelf=" + shelf +
+                ", shelf=" + shelf.toString() +
                 '}';
     }
 
@@ -52,9 +51,7 @@ public class Bookshelf {
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + (maxCount << 16);
-        hash = hash * 31 + (this.shelf.size());
-        hash = hash * 31 + (this.toString().hashCode() << 8);
-//        hash = hash * 31 + (this.shelf == null ? 0 : this.shelf.hashCode());
+        hash = hash * 31 + (this.toString().hashCode());
         for (Book book: this.shelf) {
             hash = hash * 31 + book.hashCode();
         }
