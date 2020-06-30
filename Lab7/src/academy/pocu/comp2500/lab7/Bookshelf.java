@@ -1,8 +1,6 @@
 package academy.pocu.comp2500.lab7;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 
 public class Bookshelf {
     private int maxCount;
@@ -56,7 +54,10 @@ public class Bookshelf {
         hash = hash * 31 + (maxCount << 16);
         hash = hash * 31 + (this.shelf.size());
         hash = hash * 31 + (this.toString().hashCode() << 8);
-        hash = hash * 31 + (this.shelf == null ? 0 : this.shelf.hashCode());
+//        hash = hash * 31 + (this.shelf == null ? 0 : this.shelf.hashCode());
+        for (Book book: this.shelf) {
+            hash = hash * 31 + book.hashCode();
+        }
         return hash;
     }
 }
