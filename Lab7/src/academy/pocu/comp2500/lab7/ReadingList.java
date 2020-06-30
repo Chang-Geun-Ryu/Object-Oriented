@@ -60,11 +60,12 @@ public class ReadingList {
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = hash * 37 + name == null ? 0 : name.hashCode();
+        hash = hash * 37 + (name == null ? 0 : name.hashCode());
 //        for (int i = 0; i < this.books.size(); ++i) {
 //            hash = hash * 31 + this.books.get(i).hashCode();
 //        }
         hash = hash * 37 + (this.books == null ? 0 : this.books.hashCode());
+        hash = hash * 31 + toString().hashCode();
         return hash;
     }
 }
