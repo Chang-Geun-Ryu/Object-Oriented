@@ -1,6 +1,7 @@
 package academy.pocu.comp2500.lab7;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Bookshelf {
     private int maxCount;
@@ -51,20 +52,23 @@ public class Bookshelf {
         if (this == o) {
             return true;
         }
-        if (o == null || !(o instanceof Bookshelf)) {
+        if (o == null || !(o instanceof Bookshelf) || hashCode() != o.hashCode()) {
             return false;
         }
         Bookshelf bookshelf = (Bookshelf) o;
         return //this.shelf.equals(bookshelf.shelf) &&
-                hashCode() == bookshelf.hashCode() &&
                 equalBooks(bookshelf);
     }
 
     @Override
     public int hashCode() {
-        int hash = 17;
-        //hash = hash * 31 + maxCount;
-        hash += this.shelf.hashCode();
-        return hash;
+        return Arrays.hashCode(new Object[] {
+                17,    //auto-boxed
+                this.shelf.hashCode()
+        });
+//        int hash = 17;
+//        //hash = hash * 31 + maxCount;
+//        hash += this.shelf.hashCode();
+//        return hash;
     }
 }

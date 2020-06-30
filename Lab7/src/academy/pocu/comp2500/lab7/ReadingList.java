@@ -54,10 +54,9 @@ public class ReadingList {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof ReadingList)) return false;
+        if (o == null || !(o instanceof ReadingList) || hashCode() != o.hashCode()) return false;
         ReadingList that = (ReadingList) o;
         return this.name.equals(that.name) &&
-                hashCode() == that.hashCode() &&
                 equalBooks(that);
     }
 
