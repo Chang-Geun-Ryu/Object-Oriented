@@ -46,9 +46,10 @@ public class Bookshelf {
     public int hashCode() {
         int hash = 17;
         hash = hash * 31 + maxCount;
-        for (Book book: this.shelf) {
-            hash = hash * 31 + book.hashCode();
-        }
+//        for (Book book: this.shelf) {
+//            hash = hash * 31 + book.hashCode();
+//        }
+        hash = hash * 31 + this.shelf.hashCode();
         return hash;
     }
 }
