@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public final class SimulationManager {
     static private SimulationManager instance;
+    private ArrayList<Unit> units;
 
     private SimulationManager() {
+        this.units = new ArrayList<>();
     }
 
     public static SimulationManager getInstance() {
@@ -17,11 +19,11 @@ public final class SimulationManager {
     }
 
     public ArrayList<Unit> getUnits() {
-        return null;
+        return this.units;
     }
 
     public void spawn(Unit unit) {
-
+        this.units.add(unit);
     }
 
     public void registerThinkable(Unit thinkable) {

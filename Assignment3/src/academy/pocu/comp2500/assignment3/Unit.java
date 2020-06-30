@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment3;
 
-import java.util.HashSet;
 
 public class Unit {
     protected final char sign;
