@@ -4,4 +4,10 @@ public class Marine extends Unit {
     public Marine(IntVector2D vector2D) {
         super(vector2D, 35, 'M', UnitKind.Land, 2, 0, 6, Target.BOTH);
     }
+
+    @Override
+    protected void think() {
+
+        super.think();
+    }
 }

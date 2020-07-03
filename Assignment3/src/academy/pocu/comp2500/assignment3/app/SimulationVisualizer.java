@@ -53,7 +53,7 @@ public class SimulationVisualizer {
         sb.append(System.lineSeparator());
 
         for (int i = 0; i < this.units.size(); ++i) {
-            sb.append(String.format("%d(%c)", i, this.units.get(i).getSymbol()));
+            sb.append(String.format("%s(%c)", Integer.toHexString(i).toUpperCase(), this.units.get(i).getSymbol()));
 
             if (this.aliveStatus.get(i)) {
                 sb.append(String.format("%02d", this.units.get(i).getHp()));

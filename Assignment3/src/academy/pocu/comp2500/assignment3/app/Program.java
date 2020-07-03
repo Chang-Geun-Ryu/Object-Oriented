@@ -19,6 +19,11 @@ import java.util.ArrayList;
 public class Program {
 
     public static void main(String[] args) {
+
+        Registry registry = new Registry();
+        App app = new App(registry);
+        registry.validate();
+
         SimulationManager simulationManager = SimulationManager.getInstance();
 
         Unit u0 = new Mine(new IntVector2D(12, 1), 2);
@@ -36,6 +41,7 @@ public class Program {
         units.add(u3);
         units.add(u4);
         units.add(u5);
+
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);

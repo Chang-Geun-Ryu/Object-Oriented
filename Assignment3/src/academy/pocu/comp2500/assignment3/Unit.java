@@ -1,16 +1,19 @@
 package academy.pocu.comp2500.assignment3;
 
 
-public class Unit {
-    protected final char sign;
-    protected final UnitKind unitKind;
-    protected int vision;
-    protected int aoe;
-    protected int ap;
+public abstract class Unit {
+    private final char sign;
+    private final UnitKind unitKind;
+    private int vision;
+    private int aoe;
+    private int ap;
     protected final Target target;
 
-    protected int hp;
+    private int hp;
     protected IntVector2D vector2D;
+    protected AttackIntent attackIntent;
+
+    private boolean isSpawn;
 
     protected Unit(IntVector2D vector2D, int hp, char sign, UnitKind unitKind, int vision, int aoe, int ap, Target target) {
         this.vector2D = vector2D;
@@ -21,29 +24,62 @@ public class Unit {
         this.ap = ap;
         this.target = target;
         this.hp = hp;
+        this.attackIntent = new AttackIntent(vector2D, ap, this);
+
+        this.isSpawn = false;
     }
 
-    public IntVector2D getPosition() {
+    public final IntVector2D getPosition() {
         return this.vector2D;
     }
 
-    public int getHp() {
+    public final int getHp() {
         return this.hp;
     }
 
-    public AttackIntent attack() {
-        return null;
-    };
+    public final AttackIntent attack() {
+        return this.attackIntent;
+    }
 
-    public void onAttacked(int damage) {
+    public final void onAttacked(int damage) {
+        if (this.hp - damage < 0) {
+            this.hp = 0;
+        } else {
+            this.hp -= damage;
+        }
+    }
 
-    };
+    public final void onSpawn() {
+        this.isSpawn = true;
+    }
 
-    public void onSpawn() {
-
-    };
-
-    public char getSymbol() {
+    public final char getSymbol() {
         return this.sign;
-    };
+    }
+
+    protected void think() {
+
+    }
+
+    protected void move() {
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !(o instanceof Unit)) {
+            return false;
+        }
+        Unit uint = (Unit) o;
+        return this == uint;
+    }
+
+    @Override
+    public int hashCode() {
+        return System.identityHashCode(this);
+    }
+
 }
