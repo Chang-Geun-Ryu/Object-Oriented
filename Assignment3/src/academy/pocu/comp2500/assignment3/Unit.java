@@ -1,6 +1,8 @@
 package academy.pocu.comp2500.assignment3;
 
 
+import java.util.ArrayList;
+
 public abstract class Unit {
     private final char sign;
     private final UnitKind unitKind;
@@ -57,12 +59,58 @@ public abstract class Unit {
         return this.sign;
     }
 
-    protected void think() {
+    public void think() {
 
     }
 
     protected void move() {
 
+    }
+
+    protected ArrayList<Unit> weekUnits(ArrayList<Unit> units) {
+        int hp = Integer.MAX_VALUE;
+        for (Unit unit : units) {
+            if (unit.hp < hp) {
+                hp = unit.hp;
+            }
+        }
+
+
+
+        return units;
+    }
+
+    protected Unit choiceAttackUnit(ArrayList<Unit> units) {
+        return null;
+    }
+
+    protected ArrayList<Unit> getFindUnits() {
+        SimulationManager manager = SimulationManager.getInstance();
+
+        ArrayList<Unit> findUnit = new ArrayList<>();
+        for (Unit unit : manager.getUnits()) {
+            if (calcDistance(unit.vector2D) <= this.vision && canFindUnit(unit.unitKind) && this.equals(unit) == false) {
+                findUnit.add(unit);
+            }
+        }
+
+        return findUnit;
+    }
+
+    private int calcDistance(IntVector2D vector2D) {
+        return Math.abs(this.vector2D.getX() - vector2D.getX()) + Math.abs(this.vector2D.getY() - vector2D.getY());
+    }
+
+    private boolean canFindUnit(UnitKind kind) {
+        boolean find = true;
+
+        if (this.target == Target.LAND) {
+            find = kind == UnitKind.Land;
+        } else if (this.target == Target.AIR) {
+            find = kind == UnitKind.AIR;
+        }
+
+        return find;
     }
 
     @Override

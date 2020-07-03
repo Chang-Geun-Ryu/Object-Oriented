@@ -7,11 +7,13 @@ public final class SimulationManager {
     private ArrayList<Unit> spawnUnits;
     private ArrayList<Unit> thinkableUnits;
     private ArrayList<Unit> movableUnits;
+    private ArrayList<Unit> collisionUnits;
 
     private SimulationManager() {
         this.spawnUnits = new ArrayList<>();
         this.thinkableUnits = new ArrayList<>();
         this.movableUnits = new ArrayList<>();
+        this.collisionUnits = new ArrayList<>();
     }
 
     public static SimulationManager getInstance() {
@@ -32,15 +34,15 @@ public final class SimulationManager {
     }
 
     public void registerThinkable(Unit thinkable) {
-
+        this.thinkableUnits.add(thinkable);
     }
 
     public void registerMovable(Unit movable) {
-
+        this.movableUnits.add(movable);
     }
 
     public void registerCollisionEventListener(Unit listener) {
-
+        this.collisionUnits.add(listener);
     }
 
     public void update() {
