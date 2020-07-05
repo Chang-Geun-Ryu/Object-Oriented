@@ -32,11 +32,16 @@ public class Unit {
     }
 
     public AttackIntent attack() {
+        AttackIntent ai = new AttackIntent();
         return null;
     };
 
     public void onAttacked(int damage) {
-
+        if (this.hp - damage < 0) {
+            this.hp = 0;
+        } else {
+            this.hp -= damage;
+        }
     };
 
     public void onSpawn() {
