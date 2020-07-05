@@ -46,6 +46,16 @@ public final class SimulationManager {
     }
 
     public void update() {
+        for (Unit unit: this.thinkableUnits) {
+            unit.think();
+        }
 
+        for (Unit unit: this.movableUnits) {
+            unit.move();
+        }
+
+        for (Unit unit: this.collisionUnits) {
+
+        }
     }
 }

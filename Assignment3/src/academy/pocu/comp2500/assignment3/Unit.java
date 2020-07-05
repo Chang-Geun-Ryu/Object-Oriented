@@ -8,12 +8,13 @@ public abstract class Unit {
     private final UnitKind unitKind;
     private int vision;
     private int aoe;
-    private int ap;
+    protected int ap;
     protected final Target target;
 
     private int hp;
     protected IntVector2D vector2D;
     protected AttackIntent attackIntent;
+    protected IntVector2D movePos;
 
     private boolean isSpawn;
 
@@ -28,6 +29,7 @@ public abstract class Unit {
         this.hp = hp;
         this.attackIntent = new AttackIntent(vector2D, ap, this);
 
+        this.movePos = null;
         this.isSpawn = false;
     }
 
@@ -75,13 +77,7 @@ public abstract class Unit {
             }
         }
 
-
-
         return units;
-    }
-
-    protected Unit choiceAttackUnit(ArrayList<Unit> units) {
-        return null;
     }
 
     protected ArrayList<Unit> getFindUnits() {
@@ -97,7 +93,7 @@ public abstract class Unit {
         return findUnit;
     }
 
-    private int calcDistance(IntVector2D vector2D) {
+    protected int calcDistance(IntVector2D vector2D) {
         return Math.abs(this.vector2D.getX() - vector2D.getX()) + Math.abs(this.vector2D.getY() - vector2D.getY());
     }
 
@@ -111,6 +107,10 @@ public abstract class Unit {
         }
 
         return find;
+    }
+
+    protected IntVector2D toMove(IntVector2D vector2D) {
+        return null;
     }
 
     @Override
