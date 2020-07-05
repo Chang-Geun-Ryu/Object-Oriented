@@ -4,7 +4,7 @@ public class Tank extends Unit {
     private boolean siege;
 
     public Tank(IntVector2D vector2D) {
-        super(vector2D, 85, 'T', UnitKind.Land, 3, 1, 8, Target.LAND);
+        super(vector2D, 85, 'T', UnitKind.LAND, 3, 1, 8, Target.LAND);
         this.siege = false;
     }
 

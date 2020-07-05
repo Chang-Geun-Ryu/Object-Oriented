@@ -83,7 +83,7 @@ public abstract class Unit {
 
         ArrayList<Unit> findUnit = new ArrayList<>();
         for (Unit unit : manager.getUnits()) {
-            if (calcDistance(unit.vector2D) <= this.vision && canFindUnit(unit.unitKind) && this.equals(unit) == false) {
+            if (calcDistance(unit.vector2D) <= this.vision && canFindUnit(unit.unitKind) && this.hashCode() != unit.hashCode()) {
                 findUnit.add(unit);
             }
         }
@@ -99,7 +99,7 @@ public abstract class Unit {
         boolean find = true;
 
         if (this.target == Target.LAND) {
-            find = kind == UnitKind.Land;
+            find = kind == UnitKind.LAND;
         } else if (this.target == Target.AIR) {
             find = kind == UnitKind.AIR;
         }
@@ -109,18 +109,6 @@ public abstract class Unit {
 
     protected IntVector2D toMove(IntVector2D vector2D) {
         return null;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || !(o instanceof Unit)) {
-            return false;
-        }
-        Unit uint = (Unit) o;
-        return this == uint;
     }
 
     @Override

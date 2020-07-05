@@ -6,7 +6,7 @@ public class Marine extends Unit {
     ArrayList<IntVector2D> pos;
 
     public Marine(IntVector2D vector2D) {
-        super(vector2D, 35, 'M', UnitKind.Land, 2, 0, 6, Target.BOTH);
+        super(vector2D, 35, 'M', UnitKind.LAND, 2, 0, 6, Target.BOTH);
         this.pos = new ArrayList<>();
         this.pos.add(new IntVector2D(0, 0));
         this.pos.add(new IntVector2D(0, -1));
@@ -89,7 +89,7 @@ public class Marine extends Unit {
             int y = this.vector2D.getY() + vector2D.getY();
             IntVector2D attackPos = new IntVector2D(x, y);
             for (int i = 0; i < units.size(); ++i) {
-                if (attackPos.equals(units.get(i).vector2D)) {
+                if (attackPos.hashCode() == units.get(i).vector2D.hashCode()) {
                     attackableUnit.add(units.get(i));
                 }
             }
