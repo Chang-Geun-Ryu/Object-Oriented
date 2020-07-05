@@ -64,7 +64,10 @@ public abstract class Unit {
     public abstract void think();
 
     protected void move() {
-
+        if (this.movePos != null) {
+            this.vector2D = this.movePos;
+            this.movePos = null;
+        }
     }
 
     protected ArrayList<Unit> weekUnits(ArrayList<Unit> units) {

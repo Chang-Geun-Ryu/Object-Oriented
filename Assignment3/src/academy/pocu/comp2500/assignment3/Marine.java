@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Marine extends Unit {
     ArrayList<IntVector2D> pos;
+    ArrayList<IntVector2D> move;
 
     public Marine(IntVector2D vector2D) {
         super(vector2D, 35, 'M', UnitKind.LAND, 2, 0, 6, Target.BOTH);
@@ -13,6 +14,30 @@ public class Marine extends Unit {
         this.pos.add(new IntVector2D(1, 0));
         this.pos.add(new IntVector2D(0, 1));
         this.pos.add(new IntVector2D(-1, 0));
+
+        this.move = new ArrayList<>();
+        this.move.add(new IntVector2D(0, -2));
+        this.move.add(new IntVector2D(1, -1));
+        this.move.add(new IntVector2D(2, 0));
+        this.move.add(new IntVector2D(1, 1));
+        this.move.add(new IntVector2D(0, 2));
+        this.move.add(new IntVector2D(-1, 1));
+        this.move.add(new IntVector2D(-2, 0));
+        this.move.add(new IntVector2D(-1, -1));
+
+        this.move.add(new IntVector2D(1, -2));
+        this.move.add(new IntVector2D(2, -1));
+        this.move.add(new IntVector2D(2, 1));
+        this.move.add(new IntVector2D(1, 2));
+        this.move.add(new IntVector2D(-1, 2));
+        this.move.add(new IntVector2D(-2, -1));
+        this.move.add(new IntVector2D(-2, -1));
+        this.move.add(new IntVector2D(-1, -2));
+
+        this.move.add(new IntVector2D(2, -2));
+        this.move.add(new IntVector2D(2, 2));
+        this.move.add(new IntVector2D(-2, 2));
+        this.move.add(new IntVector2D(-2, -2));
     }
 
     private void addAttack(IntVector2D vector2D) {
@@ -67,14 +92,13 @@ public class Marine extends Unit {
     }
 
     private IntVector2D getPriority(ArrayList<Unit> units) {
-        int distance = calcDistance(units.get(0).vector2D);
 
-        for (Unit unit: units) {
-            int y = unit.vector2D.getY() - this.vector2D.getY();
-            int x = unit.vector2D.getX() - this.vector2D.getX();
-            if (y < 0 && x >= 0) {
-
-            } //else if (y >= 0 && x > 0)
+        for (IntVector2D pos: this.move) {
+            for (Unit unit: units) {
+                if (unit.vector2D.hashCode() == pos.hashCode()) {
+                    return pos;
+                }
+            }
         }
 
         return null;
@@ -118,14 +142,4 @@ public class Marine extends Unit {
         return null;
     }
 
-    @Override
-    protected IntVector2D toMove(IntVector2D vector2D) {
-        if (vector2D.getY() == this.vector2D.getY()) {
-            int x = this.vector2D.getX() < vector2D.getX() ? 1 : -1;
-            return new IntVector2D(x, this.vector2D.getY());
-        } else {
-            int y = this.vector2D.getY() < vector2D.getY() ? 1 : -1;
-            return new IntVector2D(this.vector2D.getX(), y);
-        }
-    }
 }

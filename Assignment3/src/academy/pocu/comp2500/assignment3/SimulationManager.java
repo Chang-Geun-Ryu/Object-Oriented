@@ -1,9 +1,10 @@
 package academy.pocu.comp2500.assignment3;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public final class SimulationManager {
-    private static final SimulationManager instance = new SimulationManager();
+    private static SimulationManager instance = new SimulationManager();
     private ArrayList<Unit> spawnUnits;
     private ArrayList<Unit> thinkableUnits;
     private ArrayList<Unit> movableUnits;
@@ -60,4 +61,10 @@ public final class SimulationManager {
 
         this.collisionUnits.removeAll(this.collisionUnits);
     }
+
+    @Override
+    public int hashCode() {
+        return System.identityHashCode(this);
+    }
+
 }
