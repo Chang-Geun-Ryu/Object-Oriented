@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.assignment3;
 
 public class Mine extends Unit {
-    protected int pushCount;
+    private int pushCount;
     private int detectUnitCount;
 
 
@@ -10,9 +10,9 @@ public class Mine extends Unit {
         this.pushCount = pushCount;
     }
 
-    public Mine(IntVector2D vector2D, int pushCount, int detectUnitCount) {
+    protected Mine(IntVector2D vector2D, int pushCount, int detectUnitCount) {
         super(vector2D, 1, 'A', UnitKind.Land, 1, 1, 15, Target.LAND);
         this.detectUnitCount = detectUnitCount;
+        this.pushCount = pushCount;
     }
-
 }

@@ -4,10 +4,16 @@ import java.util.ArrayList;
 
 public final class SimulationManager {
     static private SimulationManager instance;
-    private ArrayList<Unit> units;
+    private ArrayList<Unit> spawnUnits;
+    private ArrayList<Unit> thinkableUnits;
+    private ArrayList<Unit> movableUnits;
+    private ArrayList<Unit> collisionUnits;
 
     private SimulationManager() {
-        this.units = new ArrayList<>();
+        this.spawnUnits = new ArrayList<>();
+        this.thinkableUnits = new ArrayList<>();
+        this.movableUnits = new ArrayList<>();
+        this.collisionUnits = new ArrayList<>();
     }
 
     public static SimulationManager getInstance() {
@@ -19,23 +25,24 @@ public final class SimulationManager {
     }
 
     public ArrayList<Unit> getUnits() {
-        return this.units;
+        return this.spawnUnits;
     }
 
     public void spawn(Unit unit) {
-        this.units.add(unit);
+        unit.onSpawn();
+        this.spawnUnits.add(unit);
     }
 
     public void registerThinkable(Unit thinkable) {
-
+        this.thinkableUnits.add(thinkable);
     }
 
     public void registerMovable(Unit movable) {
-
+        this.movableUnits.add(movable);
     }
 
     public void registerCollisionEventListener(Unit listener) {
-
+        this.collisionUnits.add(listener);
     }
 
     public void update() {
