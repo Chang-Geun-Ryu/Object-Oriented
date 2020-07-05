@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment3;
 
 import java.util.ArrayList;
 
-public abstract class Unit {
+public abstract class Unit implements IThinkable, ICollisionEventable {
     private final char sign;
     private final UnitKind unitKind;
     private int vision;
@@ -61,15 +61,6 @@ public abstract class Unit {
         return this.sign;
     }
 
-    public abstract void think();
-
-    protected void move() {
-        if (this.movePos != null) {
-            this.vector2D = this.movePos;
-            this.movePos = null;
-        }
-    }
-
     protected ArrayList<Unit> weekUnits(ArrayList<Unit> units) {
         int hp = Integer.MAX_VALUE;
         for (Unit unit : units) {
@@ -110,8 +101,14 @@ public abstract class Unit {
         return find;
     }
 
-    protected IntVector2D toMove(IntVector2D vector2D) {
-        return null;
+    @Override
+    public void think() {
+
+    }
+
+    @Override
+    public void event() {
+
     }
 
     @Override

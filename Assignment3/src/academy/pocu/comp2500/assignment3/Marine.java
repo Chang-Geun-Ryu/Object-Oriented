@@ -1,8 +1,9 @@
 package academy.pocu.comp2500.assignment3;
 
 import java.util.ArrayList;
+import java.util.PrimitiveIterator;
 
-public class Marine extends Unit {
+public class Marine extends Unit implements IMovable {
     ArrayList<IntVector2D> pos;
     ArrayList<IntVector2D> move;
 
@@ -74,6 +75,7 @@ public class Marine extends Unit {
 
                 if (findedUnits.size() > 1) {
                     IntVector2D move = getPriority(findedUnits);
+                    move = toMove(move);
                     addMove(move);
                 } else if (findedUnits.size() == 1) { // move
                     IntVector2D move = toMove(findedUnits.get(0).vector2D);
@@ -142,4 +144,21 @@ public class Marine extends Unit {
         return null;
     }
 
+    @Override
+    public void move() {
+        if (this.movePos != null) {
+            this.vector2D = this.movePos;
+            this.movePos = null;
+        }
+    }
+
+    private IntVector2D toMove(IntVector2D vector2D) {
+        if (vector2D.getY() == this.vector2D.getY()) {
+            int x = this.vector2D.getX() < vector2D.getX() ? 1 : -1;
+            return new IntVector2D(x, this.vector2D.getY());
+        } else {
+            int y = this.vector2D.getY() < vector2D.getY() ? 1 : -1;
+            return new IntVector2D(this.vector2D.getX(), y);
+        }
+    }
 }
