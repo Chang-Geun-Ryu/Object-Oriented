@@ -15,4 +15,9 @@ public class Mine extends Unit {
         this.detectUnitCount = detectUnitCount;
         this.pushCount = pushCount;
     }
+
+    @Override
+    public void think() {
+
+    }
 }

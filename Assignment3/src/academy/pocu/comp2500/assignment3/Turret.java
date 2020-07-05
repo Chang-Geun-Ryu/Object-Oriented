@@ -5,4 +5,8 @@ public class Turret extends Unit {
         super(vector2D, 99, 'U', UnitKind.Land, 2, 0, 7, Target.AIR);
     }
 
+    @Override
+    public void think() {
+
+    }
 }

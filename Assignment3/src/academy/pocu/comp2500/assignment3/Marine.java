@@ -48,8 +48,8 @@ public class Marine extends Unit {
                 }
 
                 if (findedUnits.size() > 1) {
-
-
+                    IntVector2D move = getPriority(findedUnits);
+                    addMove(move);
                 } else if (findedUnits.size() == 1) { // move
                     IntVector2D move = toMove(findedUnits.get(0).vector2D);
                     addMove(move);
@@ -66,8 +66,16 @@ public class Marine extends Unit {
         }
     }
 
-    private IntVector2D getPriority(ArrayList units) {
+    private IntVector2D getPriority(ArrayList<Unit> units) {
+        int distance = calcDistance(units.get(0).vector2D);
 
+        for (Unit unit: units) {
+            int y = unit.vector2D.getY() - this.vector2D.getY();
+            int x = unit.vector2D.getX() - this.vector2D.getX();
+            if (y < 0 && x >= 0) {
+
+            } //else if (y >= 0 && x > 0)
+        }
 
         return null;
     }

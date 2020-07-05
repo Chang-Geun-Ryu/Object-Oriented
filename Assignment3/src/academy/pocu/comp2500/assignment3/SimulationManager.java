@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment3;
 import java.util.ArrayList;
 
 public final class SimulationManager {
-    static private SimulationManager instance;
+    private static final SimulationManager instance = new SimulationManager();
     private ArrayList<Unit> spawnUnits;
     private ArrayList<Unit> thinkableUnits;
     private ArrayList<Unit> movableUnits;
@@ -17,11 +17,7 @@ public final class SimulationManager {
     }
 
     public static SimulationManager getInstance() {
-        if (instance != null) {
-            return instance;
-        } else {
-            return new SimulationManager();
-        }
+        return instance;
     }
 
     public ArrayList<Unit> getUnits() {
@@ -50,12 +46,18 @@ public final class SimulationManager {
             unit.think();
         }
 
+        this.thinkableUnits.removeAll(this.thinkableUnits);
+
         for (Unit unit: this.movableUnits) {
             unit.move();
         }
 
+        this.movableUnits.removeAll(this.movableUnits);
+
         for (Unit unit: this.collisionUnits) {
 
         }
+
+        this.collisionUnits.removeAll(this.collisionUnits);
     }
 }

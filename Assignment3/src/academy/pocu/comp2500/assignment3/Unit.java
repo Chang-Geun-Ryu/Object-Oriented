@@ -61,9 +61,7 @@ public abstract class Unit {
         return this.sign;
     }
 
-    public void think() {
-
-    }
+    public abstract void think();
 
     protected void move() {
 

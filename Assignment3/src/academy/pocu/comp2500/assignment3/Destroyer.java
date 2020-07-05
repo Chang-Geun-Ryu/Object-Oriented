@@ -5,4 +5,8 @@ public class Destroyer extends Unit {
         super(vector2D, -1, 'D', null, -1, -1, -1, null);
     }
 
+    @Override
+    public void think() {
+
+    }
 }

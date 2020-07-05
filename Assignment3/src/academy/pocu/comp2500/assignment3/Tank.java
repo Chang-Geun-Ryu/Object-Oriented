@@ -8,8 +8,9 @@ public class Tank extends Unit {
         this.siege = false;
     }
 
-    public void instro() {
-        System.out.println("instro");
-    }
 
+    @Override
+    public void think() {
+
+    }
 }

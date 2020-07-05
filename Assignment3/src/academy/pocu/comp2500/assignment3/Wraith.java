@@ -6,4 +6,8 @@ public class Wraith extends Unit {
         super(vector2D, 80, 'W', UnitKind.AIR, 4, 0, 6, Target.BOTH);
     }
 
+    @Override
+    public void think() {
+
+    }
 }
