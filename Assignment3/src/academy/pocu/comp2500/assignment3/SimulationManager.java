@@ -59,32 +59,61 @@ public final class SimulationManager {
             this.thinkableUnits.addAll(this.spawnUnits);
         }
 
-        for (IThinkable unit: this.thinkableUnits) {
-//            Unit u = (Unit) unit;
-//            if (u.isSpawn()) {
-                unit.think();
-//            }
+        for (IThinkable unit : this.thinkableUnits) {
+            unit.think();
+
         }
 
         this.thinkableUnits.clear();
 
-        for (IMovable unit: this.movableUnits) {
-//            Unit u = (Unit) unit;
-//            if (u.isSpawn()) {
-                unit.move();
-//            }
+        for (IMovable unit : this.movableUnits) {
+            unit.move();
         }
 
         this.movableUnits.clear();
 
-        for (ICollisionEventable unit: this.collisionUnits) {
+        for (ICollisionEventable unit : this.collisionUnits) {
             AttackIntent intent = unit.attack();
             int aoe = intent.getAttacker().getAoe();
-            intent.getDamage();
+            intent.getVector2D();
+            if (aoe == 0) {
+                for (Unit u : this.spawnUnits) {
+                    if (u.getPosition().hashCode() == intent.getVector2D().hashCode()) {
+                        u.onAttacked(intent.getDamage());
+                    }
+                }
+            } else {
+                for (int i = 0; i < aoe; ++i) {
+                    for (int x = -i; x <= i; ++x) {
+                        for (int y = -i; y <= i; ++y) {
+//                        new IntVector2D(intent.getVector2D().getX() + x, intent.getVector2D().getY() + y);
+                            for (Unit u : this.spawnUnits) {
+                                if (u.getPosition().getX() == intent.getVector2D().getX() + x &&
+                                        u.getPosition().getY() == intent.getVector2D().getY() + y) {
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
             unit.event();
         }
 
+        for (int i = this.spawnUnits.size() -1; i >= 0; --i) {
+            if (this.spawnUnits.get(i).getHp() <= 0) {
+                this.spawnUnits.remove(i);
+            }
+        }
+
         this.collisionUnits.clear();
+    }
+
+    private int aoeDamage(IntVector2D attackPos, IntVector2D aoePos, int damage) {
+//        int aoeDamage = 10.d * (1.0d - )
+        return 0;
     }
 
     @Override

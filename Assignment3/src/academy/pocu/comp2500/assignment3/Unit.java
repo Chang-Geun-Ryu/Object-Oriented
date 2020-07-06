@@ -17,6 +17,8 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     protected IntVector2D movePos;
 
     private boolean isSpawn;
+    protected ArrayList<IntVector2D> pos;
+    protected ArrayList<IntVector2D> move;
 
     protected Unit(IntVector2D vector2D, int hp, char sign, UnitKind unitKind, int vision, int aoe, int ap, Target target) {
         this.vector2D = vector2D;
@@ -45,9 +47,10 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
         return this.attackIntent;
     }
 
-    public final void onAttacked(int damage) {
+    public void onAttacked(int damage) {
         if (this.hp - damage < 0) {
             this.hp = 0;
+            this.isSpawn = false;
         } else {
             this.hp -= damage;
         }
@@ -119,6 +122,49 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
         }
 
         return find;
+    }
+
+    protected Unit canAttack(ArrayList<Unit> units) {
+
+        ArrayList<Unit> attackableUnit = new ArrayList<>();
+        // 00, 북, 동, 남, 서
+        for (IntVector2D vector2D : this.pos) {
+            int x = this.vector2D.getX() + vector2D.getX();
+            int y = this.vector2D.getY() + vector2D.getY();
+            IntVector2D attackPos = new IntVector2D(x, y);
+            for (int i = 0; i < units.size(); ++i) {
+                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() && this.hashCode() != units.get(i).hashCode()) {
+                    attackableUnit.add(units.get(i));
+                }
+            }
+        }
+
+        if (attackableUnit.size() == 1) {
+            return attackableUnit.get(0);
+        } else if (attackableUnit.size() > 1) {
+            int min = Integer.MAX_VALUE;
+            for (Unit unit : attackableUnit) {
+                if (min > unit.getHp()) {
+                    min = unit.getHp();
+                }
+            }
+
+            for (int i = units.size() - 1; i >= 0; --i) {
+                if (units.get(i).getHp() != min) {
+                    units.remove(i);
+                }
+            }
+            // index가 0에 가까울수록 우선순위가 높다,
+            // hp가 낮은 유닛만 골라 놨다
+            return units.get(0);
+        }
+
+        return null;
+    }
+
+    protected void addAttack(Unit unit) {
+        this.attackIntent = new AttackIntent(unit.vector2D, this.ap, this);
+        SimulationManager.getInstance().registerCollisionEventListener(this);
     }
 
     @Override
