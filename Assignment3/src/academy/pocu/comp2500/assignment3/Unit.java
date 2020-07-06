@@ -81,7 +81,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
 
         ArrayList<Unit> findUnit = new ArrayList<>();
         for (Unit unit : manager.getUnits()) {
-            if (calcDistance(unit.vector2D) <= this.vision && canFindUnit(unit.unitKind) && this.hashCode() != unit.hashCode()) {
+            if (canSeeUnit(unit.vector2D) && canFindUnit(unit.unitKind) && this.hashCode() != unit.hashCode()) {
                 findUnit.add(unit);
             }
         }
@@ -91,6 +91,18 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
 
     protected int calcDistance(IntVector2D vector2D) {
         return Math.abs(this.vector2D.getX() - vector2D.getX()) + Math.abs(this.vector2D.getY() - vector2D.getY());
+    }
+
+    protected boolean canSeeUnit(IntVector2D vector2D) {
+
+        int x = Math.abs(this.vector2D.getX() - vector2D.getX());
+        int y = Math.abs(this.vector2D.getY() - vector2D.getY());
+
+        if (x <= this.vision && y <= this.vision) {
+            return true;
+        }
+
+        return false;
     }
 
     private boolean canFindUnit(UnitKind kind) {

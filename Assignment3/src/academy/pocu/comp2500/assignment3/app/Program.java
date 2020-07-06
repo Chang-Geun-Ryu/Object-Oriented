@@ -44,7 +44,7 @@ public class Program {
 
 
         for (Unit unit : units) {
-//            simulationManager.spawn(unit);
+            simulationManager.spawn(unit);
         }
 
         SimulationVisualizer visualizer = new SimulationVisualizer(units);

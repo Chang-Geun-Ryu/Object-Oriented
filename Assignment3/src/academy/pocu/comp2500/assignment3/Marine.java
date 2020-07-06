@@ -47,12 +47,15 @@ public class Marine extends Unit implements IMovable {
     }
 
     private void addMove(IntVector2D vector2D) {
-        this.movePos = vector2D;
+        this.movePos = vector2D;//new IntVector2D(vector2D.getX() + this.vector2D.getX(), vector2D.getY() + this.vector2D.getY());
         SimulationManager.getInstance().registerMovable(this);
     }
 
     @Override
     public void think() {
+        if (this.getHp() == 0) {
+            return;
+        }
         ArrayList<Unit> findedUnits = getFindUnits();
         IntVector2D attackPos = canAttack(findedUnits);
 
@@ -68,7 +71,7 @@ public class Marine extends Unit implements IMovable {
                 }
 
                 for (int i = findedUnits.size() - 1; i >= 0; --i) {
-                    if (findedUnits.get(i).getHp() != min) {
+                    if (calcDistance(findedUnits.get(i).vector2D) != min) {
                         findedUnits.remove(i);
                     }
                 }
@@ -96,9 +99,21 @@ public class Marine extends Unit implements IMovable {
     private IntVector2D getPriority(ArrayList<Unit> units) {
 
         for (IntVector2D pos: this.move) {
+            int x = this.vector2D.getX() + pos.getX();
+            int y = this.vector2D.getY() + pos.getY();
+            IntVector2D targetPos = new IntVector2D(x, y);
             for (Unit unit: units) {
-                if (unit.vector2D.hashCode() == pos.hashCode()) {
-                    return pos;
+                if (unit.vector2D.hashCode() == targetPos.hashCode()) {
+                    int diffY = this.vector2D.getY() - pos.getY();
+                    int diffX = this.vector2D.getX() - pos.getX();
+                    return unit.vector2D;
+//                    if (diffY != 0) {
+//                        return diffY > 0 ? new IntVector2D(this.vector2D.getX(), this.vector2D.getY() - 1) :
+//                                new IntVector2D(this.vector2D.getX(), this.vector2D.getY() + 1);
+//                    } else {
+//                        return diffX > 0 ? new IntVector2D(this.vector2D.getX() - 1, this.vector2D.getY()) :
+//                                new IntVector2D(this.vector2D.getX() + 1, this.vector2D.getY());
+//                    }
                 }
             }
         }
@@ -115,7 +130,7 @@ public class Marine extends Unit implements IMovable {
             int y = this.vector2D.getY() + vector2D.getY();
             IntVector2D attackPos = new IntVector2D(x, y);
             for (int i = 0; i < units.size(); ++i) {
-                if (attackPos.hashCode() == units.get(i).vector2D.hashCode()) {
+                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() && this.hashCode() != units.get(i).hashCode()) {
                     attackableUnit.add(units.get(i));
                 }
             }
@@ -155,10 +170,10 @@ public class Marine extends Unit implements IMovable {
     private IntVector2D toMove(IntVector2D vector2D) {
         if (vector2D.getY() == this.vector2D.getY()) {
             int x = this.vector2D.getX() < vector2D.getX() ? 1 : -1;
-            return new IntVector2D(x, this.vector2D.getY());
+            return new IntVector2D(this.vector2D.getX() + x, this.vector2D.getY());
         } else {
             int y = this.vector2D.getY() < vector2D.getY() ? 1 : -1;
-            return new IntVector2D(this.vector2D.getX(), y);
+            return new IntVector2D(this.vector2D.getX(), this.vector2D.getY() + y);
         }
     }
 }
