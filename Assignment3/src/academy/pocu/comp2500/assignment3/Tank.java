@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment3;
 
-public class Tank extends Unit {
+public class Tank extends Unit implements IMovable {
     private boolean siege;
 
     public Tank(IntVector2D vector2D) {
@@ -11,6 +11,11 @@ public class Tank extends Unit {
 
     @Override
     public void think() {
+
+    }
+
+    @Override
+    public void move() {
 
     }
 }

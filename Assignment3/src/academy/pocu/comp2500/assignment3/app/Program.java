@@ -44,7 +44,7 @@ public class Program {
 
 
         for (Unit unit : units) {
-            simulationManager.spawn(unit);
+//            simulationManager.spawn(unit);
         }
 
         SimulationVisualizer visualizer = new SimulationVisualizer(units);
@@ -69,7 +69,8 @@ public class Program {
 
     public static void clearConsole() {
         try {
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+//            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            new ProcessBuilder("clear").inheritIO().start().waitFor();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (IOException e) {

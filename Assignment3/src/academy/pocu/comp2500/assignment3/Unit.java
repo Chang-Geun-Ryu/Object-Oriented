@@ -61,6 +61,10 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
         return this.sign;
     }
 
+    public final boolean isSpawn() {
+        return this.isSpawn;
+    }
+
     protected ArrayList<Unit> weekUnits(ArrayList<Unit> units) {
         int hp = Integer.MAX_VALUE;
         for (Unit unit : units) {

@@ -43,14 +43,38 @@ public final class SimulationManager {
     }
 
     public void update() {
+        for (Unit unit: this.spawnUnits) {
+            for (int i = this.thinkableUnits.size() -1; i >= 0; --i) {
+                if (unit.hashCode() != this.thinkableUnits.get(i).hashCode()) {
+                    this.thinkableUnits.remove(i);
+                }
+            }
+            for (int i = this.movableUnits.size() -1; i >= 0; --i) {
+                if (unit.hashCode() != this.movableUnits.get(i).hashCode()) {
+                    this.movableUnits.remove(i);
+                }
+            }
+            for (int i = this.collisionUnits.size() -1; i >= 0; --i) {
+                if (unit.hashCode() != this.collisionUnits.get(i).hashCode()) {
+                    this.collisionUnits.remove(i);
+                }
+            }
+        }
+
         for (IThinkable unit: this.thinkableUnits) {
-            unit.think();
+//            Unit u = (Unit) unit;
+//            if (u.isSpawn()) {
+                unit.think();
+//            }
         }
 
         this.thinkableUnits.clear();
 
         for (IMovable unit: this.movableUnits) {
-            unit.move();
+//            Unit u = (Unit) unit;
+//            if (u.isSpawn()) {
+                unit.move();
+//            }
         }
 
         this.movableUnits.clear();
