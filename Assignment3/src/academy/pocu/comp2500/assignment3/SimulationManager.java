@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public final class SimulationManager {
-    private static SimulationManager instance = new SimulationManager();
+    private static SimulationManager instance;// = new SimulationManager();
     private ArrayList<Unit> spawnUnits;
     private ArrayList<IThinkable> thinkableUnits;
     private ArrayList<IMovable> movableUnits;
@@ -17,7 +17,11 @@ public final class SimulationManager {
         this.collisionUnits = new ArrayList<>();
     }
 
-    public static SimulationManager getInstance() {
+
+    public static synchronized SimulationManager getInstance() {
+        if (instance == null) {
+            instance = new SimulationManager();
+        }
         return instance;
     }
 
@@ -43,6 +47,10 @@ public final class SimulationManager {
     }
 
     public void update() {
+        if (this.spawnUnits == null && this.spawnUnits.size() <= 0) {
+            return;
+        }
+
         this.thinkableUnits.clear();
         this.movableUnits.clear();
         this.collisionUnits.clear();
@@ -70,6 +78,9 @@ public final class SimulationManager {
         this.movableUnits.clear();
 
         for (ICollisionEventable unit: this.collisionUnits) {
+            AttackIntent intent = unit.attack();
+            int aoe = intent.getAttacker().getAoe();
+            intent.getDamage();
             unit.event();
         }
 

@@ -41,8 +41,8 @@ public class Marine extends Unit implements IMovable {
         this.move.add(new IntVector2D(-2, -2));
     }
 
-    private void addAttack(IntVector2D vector2D) {
-        this.attackIntent = new AttackIntent(vector2D, this.ap, this);
+    private void addAttack(Unit unit) {
+        this.attackIntent = new AttackIntent(unit.vector2D, this.ap, unit, this);
         SimulationManager.getInstance().registerCollisionEventListener(this);
     }
 
@@ -57,10 +57,10 @@ public class Marine extends Unit implements IMovable {
             return;
         }
         ArrayList<Unit> findedUnits = getFindUnits();
-        IntVector2D attackPos = canAttack(findedUnits);
+        Unit attack = canAttack(findedUnits);
 
-        if (attackPos != null) {    // attack
-            addAttack(attackPos);
+        if (attack != null) {    // attack
+            addAttack(attack);
         } else if (findedUnits.size() > 0) { // move
             if (findedUnits.size() > 1) {
                 int min = Integer.MAX_VALUE;
@@ -121,7 +121,7 @@ public class Marine extends Unit implements IMovable {
         return null;
     }
 
-    private IntVector2D canAttack(ArrayList<Unit> units) {
+    private Unit canAttack(ArrayList<Unit> units) {
 
         ArrayList<Unit> attackableUnit = new ArrayList<>();
         // 00, 북, 동, 남, 서
@@ -137,7 +137,7 @@ public class Marine extends Unit implements IMovable {
         }
 
         if (attackableUnit.size() == 1) {
-            return attackableUnit.get(0).vector2D;
+            return attackableUnit.get(0);
         } else if (attackableUnit.size() > 1) {
             int min = Integer.MAX_VALUE;
             for (Unit unit: attackableUnit) {
@@ -153,7 +153,7 @@ public class Marine extends Unit implements IMovable {
             }
             // index가 0에 가까울수록 우선순위가 높다,
             // hp가 낮은 유닛만 골라 놨다
-            return attackableUnit.get(0).vector2D;
+            return attackableUnit.get(0);
         }
 
         return null;
@@ -164,6 +164,13 @@ public class Marine extends Unit implements IMovable {
         if (this.movePos != null) {
             this.vector2D = this.movePos;
             this.movePos = null;
+        }
+    }
+
+    @Override
+    public void event() {
+        if (attack() != null) {
+
         }
     }
 

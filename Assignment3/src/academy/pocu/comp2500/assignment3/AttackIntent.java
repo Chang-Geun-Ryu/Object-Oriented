@@ -3,12 +3,14 @@ package academy.pocu.comp2500.assignment3;
 public class AttackIntent {
     private IntVector2D vector2D;
     private int damage;
+    private Unit target;
     private Unit attacker;
 
-    public AttackIntent(IntVector2D vector2D, int damage, Unit attacker) {
+    public AttackIntent(IntVector2D vector2D, int damage, Unit target, Unit attacker) {
         this.vector2D = vector2D;
         this.damage = damage;
         this.attacker = attacker;
+        this.target = target;
     }
 
     public IntVector2D getVector2D() {
@@ -21,5 +23,9 @@ public class AttackIntent {
 
     public Unit getAttacker() {
         return this.attacker;
+    }
+
+    public Unit getTarget() {
+        return this.target;
     }
 }

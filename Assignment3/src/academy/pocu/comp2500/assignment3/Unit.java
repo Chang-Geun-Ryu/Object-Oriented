@@ -27,7 +27,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
         this.ap = ap;
         this.target = target;
         this.hp = hp;
-        this.attackIntent = new AttackIntent(vector2D, ap, this);
+//        this.attackIntent;// = new AttackIntent(vector2D, ap, this);
 
         this.movePos = null;
         this.isSpawn = false;
@@ -59,6 +59,10 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
 
     public final char getSymbol() {
         return this.sign;
+    }
+
+    public final int getAoe() {
+        return this.aoe;
     }
 
     public final boolean isSpawn() {
