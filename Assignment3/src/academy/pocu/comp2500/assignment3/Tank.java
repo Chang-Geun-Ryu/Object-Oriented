@@ -30,6 +30,11 @@ public class Tank extends Unit implements IMovable {
 
     }
 
+    private void addEvent() {
+        this.movePos = null;
+        SimulationManager.getInstance().registerMovable(this);
+    }
+
     @Override
     public void onAttacked(int damage) {
         super.onAttacked(damage * (this.siege ? 2 : 1));
@@ -47,13 +52,20 @@ public class Tank extends Unit implements IMovable {
             if (this.siege) {
                 addAttack(attack);
             } else {
-                this.siege = true;
+                addEvent();
+//                this.siege = true;
             }
         } else if (findedUnits.size() > 0) { // siege
-            this.siege = true;
+            if (this.siege) {
+
+            } else {
+                addEvent();
+            }
+//            this.siege = true;
         } else {    // move
             if (this.siege) {
-                this.siege = false;
+                addEvent();
+//                this.siege = false;
             } else { // move
                 if (this.vector2D.getX() == 0 || this.vector2D.getX() == 15) {
                     this.direction = !this.direction;
@@ -75,6 +87,13 @@ public class Tank extends Unit implements IMovable {
         if (this.movePos != null) {
             this.vector2D = this.movePos;
             this.movePos = null;
+        } else {
+            this.siege = !this.siege;
         }
+    }
+
+    @Override
+    public void event() {
+//        this.siege = !this.siege;
     }
 }

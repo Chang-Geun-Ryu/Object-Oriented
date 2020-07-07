@@ -1,14 +1,6 @@
 package academy.pocu.comp2500.assignment3.app;
 
-import academy.pocu.comp2500.assignment3.App;
-import academy.pocu.comp2500.assignment3.SimulationManager;
-import academy.pocu.comp2500.assignment3.IntVector2D;
-import academy.pocu.comp2500.assignment3.Marine;
-import academy.pocu.comp2500.assignment3.Mine;
-import academy.pocu.comp2500.assignment3.Tank;
-import academy.pocu.comp2500.assignment3.Turret;
-import academy.pocu.comp2500.assignment3.Unit;
-import academy.pocu.comp2500.assignment3.Wraith;
+import academy.pocu.comp2500.assignment3.*;
 import academy.pocu.comp2500.assignment3.registry.Registry;
 
 import java.io.BufferedReader;
@@ -20,13 +12,23 @@ public class Program {
 
     public static void main(String[] args) {
 
-
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
 
         SimulationManager simulationManager = SimulationManager.getInstance();
 
+//        Unit u0 = new Marine(new IntVector2D(1, 1));
+//        Unit u1 = new Turret(new IntVector2D(1, 1));
+//        Unit u2 = new Turret(new IntVector2D(1, 0));
+//        Unit u3 = new Turret(new IntVector2D(2, 1));
+//        Unit u4 = new Turret(new IntVector2D(1, 2));
+//        Unit u5 = new Turret(new IntVector2D(0, 1));
+//        ((Turret)u1).setHp(5);
+//        ((Turret)u2).setHp(4);
+//        ((Turret)u3).setHp(3);
+//        ((Turret)u4).setHp(2);
+//        ((Turret)u5).setHp(1);
         Unit u0 = new Mine(new IntVector2D(12, 1), 2);
         Unit u1 = new Marine(new IntVector2D(0, 5));
         Unit u2 = new Turret(new IntVector2D(5, 6));
@@ -34,15 +36,12 @@ public class Program {
         Unit u4 = new Marine(new IntVector2D(2, 4));
         Unit u5 = new Wraith(new IntVector2D(2, 7));
 
-//        Unit u0 = new Marine(new IntVector2D(1, 5));
-//        Unit u1 = new Marine(new IntVector2D(1, 5));
-//        Unit u2 = new Marine(new IntVector2D(1, 5));
-//        Unit u3 = new Marine(new IntVector2D(1, 5));
-//        Unit u = new Marine(new IntVector2D(1, 5));
-
         ArrayList<Unit> units = new ArrayList<>();
 
         units.add(u0);
+//        units.add(new Turret(new IntVector2D(1, 1)));
+//        units.add(new Turret(new IntVector2D(1, 1)));
+//        units.add(new Turret(new IntVector2D(1, 1)));
         units.add(u1);
         units.add(u2);
         units.add(u3);

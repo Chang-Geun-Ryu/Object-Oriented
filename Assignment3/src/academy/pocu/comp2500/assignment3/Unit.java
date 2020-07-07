@@ -11,7 +11,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     protected int ap;
     protected final Target target;
 
-    private int hp;
+    protected int hp;
     protected IntVector2D vector2D;
     protected AttackIntent attackIntent;
     protected IntVector2D movePos;
@@ -88,7 +88,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
 
         ArrayList<Unit> findUnit = new ArrayList<>();
         for (Unit unit : manager.getUnits()) {
-            if (canSeeUnit(unit.vector2D) && canFindUnit(unit.unitKind) && this.hashCode() != unit.hashCode()) {
+            if (canSeeUnit(unit.vector2D, unit.unitKind, this.vision) && canFindUnit(unit.unitKind) && this.hashCode() != unit.hashCode()) {
                 findUnit.add(unit);
             }
         }
@@ -100,12 +100,20 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
         return Math.abs(this.vector2D.getX() - vector2D.getX()) + Math.abs(this.vector2D.getY() - vector2D.getY());
     }
 
-    protected boolean canSeeUnit(IntVector2D vector2D) {
+    protected boolean canSeeUnit(IntVector2D vector2D, UnitKind kind, int thisVision) {
+
+        if (kind == UnitKind.UNDER) {
+            return false;
+        } else if (this.target == Target.LAND && kind != UnitKind.LAND) {
+            return false;
+        } else if (this.target == Target.AIR && kind != UnitKind.AIR) {
+            return false;
+        }
 
         int x = Math.abs(this.vector2D.getX() - vector2D.getX());
         int y = Math.abs(this.vector2D.getY() - vector2D.getY());
 
-        if (x <= this.vision && y <= this.vision) {
+        if (x <= thisVision && y <= thisVision) {
             return true;
         }
 
@@ -133,8 +141,11 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
             int y = this.vector2D.getY() + vector2D.getY();
             IntVector2D attackPos = new IntVector2D(x, y);
             for (int i = 0; i < units.size(); ++i) {
-                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() && this.hashCode() != units.get(i).hashCode()) {
-                    attackableUnit.add(units.get(i));
+                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() &&
+                        this.hashCode() != units.get(i).hashCode()) {
+//                    if (this.target == Target.BOTH) {
+                        attackableUnit.add(units.get(i));
+//                    }
                 }
             }
         }

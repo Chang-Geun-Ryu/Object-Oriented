@@ -73,6 +73,8 @@ public final class SimulationManager {
         this.movableUnits.clear();
 
         for (ICollisionEventable unit : this.collisionUnits) {
+            unit.event();
+
             AttackIntent intent = unit.attack();
             int aoe = intent.getAttacker().getAoe();
 
@@ -93,12 +95,9 @@ public final class SimulationManager {
             } else {
                 // negative
             }
-
-
-            unit.event();
         }
 
-        for (int i = this.spawnUnits.size() -1; i >= 0; --i) {
+        for (int i = this.spawnUnits.size() - 1; i >= 0; --i) {
             if (this.spawnUnits.get(i).getHp() <= 0) {
                 this.spawnUnits.remove(i);
             }
@@ -118,7 +117,7 @@ public final class SimulationManager {
     }
 
     private int aoeDamage(int aoe, int damage) {
-        int aoeDamage = (int) ((double)damage * (1.d - (1.d / (double)(aoe + 1))));
+        int aoeDamage = (int)((double)damage * (1.d - (1.d / (double)(aoe + 1))));
         return aoeDamage;
     }
 

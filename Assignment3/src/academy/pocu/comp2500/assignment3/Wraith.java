@@ -14,30 +14,6 @@ public class Wraith extends Unit implements IMovable {
         this.pos.add(new IntVector2D(1, 0));
         this.pos.add(new IntVector2D(0, 1));
         this.pos.add(new IntVector2D(-1, 0));
-
-        this.move = new ArrayList<>();
-        this.move.add(new IntVector2D(0, -2));
-        this.move.add(new IntVector2D(1, -1));
-        this.move.add(new IntVector2D(2, 0));
-        this.move.add(new IntVector2D(1, 1));
-        this.move.add(new IntVector2D(0, 2));
-        this.move.add(new IntVector2D(-1, 1));
-        this.move.add(new IntVector2D(-2, 0));
-        this.move.add(new IntVector2D(-1, -1));
-
-        this.move.add(new IntVector2D(1, -2));
-        this.move.add(new IntVector2D(2, -1));
-        this.move.add(new IntVector2D(2, 1));
-        this.move.add(new IntVector2D(1, 2));
-        this.move.add(new IntVector2D(-1, 2));
-        this.move.add(new IntVector2D(-2, -1));
-        this.move.add(new IntVector2D(-2, -1));
-        this.move.add(new IntVector2D(-1, -2));
-
-        this.move.add(new IntVector2D(2, -2));
-        this.move.add(new IntVector2D(2, 2));
-        this.move.add(new IntVector2D(-2, 2));
-        this.move.add(new IntVector2D(-2, -2));
     }
 
     protected void addMove(IntVector2D vector2D) {

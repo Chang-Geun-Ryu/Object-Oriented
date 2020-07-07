@@ -92,19 +92,29 @@ public class Marine extends Unit implements IMovable {
 
     private IntVector2D getPriority(ArrayList<Unit> units) {
 
-        for (IntVector2D pos : this.move) {
-            int x = this.vector2D.getX() + pos.getX();
-            int y = this.vector2D.getY() + pos.getY();
-            IntVector2D targetPos = new IntVector2D(x, y);
-            for (Unit unit : units) {
-                if (unit.vector2D.hashCode() == targetPos.hashCode()) {
-                    int diffY = this.vector2D.getY() - pos.getY();
-                    int diffX = this.vector2D.getX() - pos.getX();
-                    return unit.vector2D;
-                }
+//        for (IntVector2D pos : this.move) {
+//            int x = this.vector2D.getX() + pos.getX();
+//            int y = this.vector2D.getY() + pos.getY();
+//            IntVector2D targetPos = new IntVector2D(x, y);
+//            for (Unit unit : units) {
+//                if (unit.vector2D.hashCode() == targetPos.hashCode()) {
+//                    int diffY = this.vector2D.getY() - pos.getY();
+//                    int diffX = this.vector2D.getX() - pos.getX();
+//                    return unit.vector2D;
+//                }
+//            }
+//        }
+//        return null;
+        Unit target = units.get(0);
+        double max = Math.toDegrees(Math.atan2(units.get(0).vector2D.getX(), units.get(0).vector2D.getY()));
+        for (Unit unit : units) {
+            if (max < Math.toDegrees(Math.atan2(unit.vector2D.getX(), unit.vector2D.getY()))) {
+                max = Math.toDegrees(Math.atan2(unit.vector2D.getX(), unit.vector2D.getY()));
+                target = unit;
             }
         }
-        return null;
+
+        return target.vector2D;
     }
 
     @Override
