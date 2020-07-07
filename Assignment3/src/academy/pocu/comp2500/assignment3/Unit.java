@@ -43,6 +43,14 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
         return this.hp;
     }
 
+    public final Target getTarget() {
+        return this.target;
+    }
+
+    public final UnitKind getUnitKind() {
+        return this.unitKind;
+    }
+
     public final AttackIntent attack() {
         return this.attackIntent;
     }

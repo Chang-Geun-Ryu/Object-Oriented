@@ -110,10 +110,23 @@ public final class SimulationManager {
         for (Unit u : this.spawnUnits) {
             if (u.getPosition().hashCode() == vector2D.hashCode()) {
                 if (u.hashCode() != attacker.hashCode()) {
-                    u.onAttacked(damage);
+                    if (isAttack(attacker, u)) {
+                        u.onAttacked(damage);
+                    }
                 }
             }
         }
+    }
+
+    private boolean isAttack(Unit attacker, Unit unit) {
+        if (attacker.getTarget() == Target.LAND) {
+            return unit.getUnitKind() == UnitKind.LAND;
+        } else if (attacker.getTarget() == Target.AIR) {
+            return unit.getUnitKind() == UnitKind.AIR;
+        } else {
+            return unit.getUnitKind() != UnitKind.UNDER;
+        }
+
     }
 
     private int aoeDamage(int aoe, int damage) {
