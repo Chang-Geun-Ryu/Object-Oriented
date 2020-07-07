@@ -73,7 +73,7 @@ public final class SimulationManager {
         this.movableUnits.clear();
 
         for (ICollisionEventable unit : this.collisionUnits) {
-            unit.event();
+
 
             AttackIntent intent = unit.attack();
             int aoe = intent.getAttacker().getAoe();
@@ -95,6 +95,8 @@ public final class SimulationManager {
             } else {
                 // negative
             }
+
+            unit.event();
         }
 
         for (int i = this.spawnUnits.size() - 1; i >= 0; --i) {
