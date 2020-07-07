@@ -75,27 +75,23 @@ public final class SimulationManager {
         for (ICollisionEventable unit : this.collisionUnits) {
             AttackIntent intent = unit.attack();
             int aoe = intent.getAttacker().getAoe();
-            intent.getVector2D();
+
             if (aoe == 0) {
-                for (Unit u : this.spawnUnits) {
-                    if (u.getPosition().hashCode() == intent.getVector2D().hashCode()) {
-                        u.onAttacked(intent.getDamage());
+                attackPos(intent.getAttacker(), intent.getVector2D(), intent.getDamage());
+            } else if (aoe > 0) {
+
+                for (int i = -aoe; i <= aoe; ++i) {
+                    for (int j = -aoe; j <= aoe; ++j) {
+                        int x = intent.getVector2D().getX() + i;
+                        int y = intent.getVector2D().getY() + j;
+
+                        int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+                        int damage = aoeDamage(aoeValue, intent.getDamage());
+                        attackPos(intent.getAttacker(), new IntVector2D(x, y), damage);
                     }
                 }
             } else {
-                for (int i = 0; i < aoe; ++i) {
-                    for (int x = -i; x <= i; ++x) {
-                        for (int y = -i; y <= i; ++y) {
-//                        new IntVector2D(intent.getVector2D().getX() + x, intent.getVector2D().getY() + y);
-                            for (Unit u : this.spawnUnits) {
-                                if (u.getPosition().getX() == intent.getVector2D().getX() + x &&
-                                        u.getPosition().getY() == intent.getVector2D().getY() + y) {
-
-                                }
-                            }
-                        }
-                    }
-                }
+                // negative
             }
 
 
@@ -111,9 +107,19 @@ public final class SimulationManager {
         this.collisionUnits.clear();
     }
 
-    private int aoeDamage(IntVector2D attackPos, IntVector2D aoePos, int damage) {
-//        int aoeDamage = 10.d * (1.0d - )
-        return 0;
+    private void attackPos(Unit attacker, IntVector2D vector2D, int damage) {
+        for (Unit u : this.spawnUnits) {
+            if (u.getPosition().hashCode() == vector2D.hashCode()) {
+                if (u.hashCode() != attacker.hashCode()) {
+                    u.onAttacked(damage);
+                }
+            }
+        }
+    }
+
+    private int aoeDamage(int aoe, int damage) {
+        int aoeDamage = (int) ((double)damage * (1.d - (1.d / (double)(aoe + 1))));
+        return aoeDamage;
     }
 
     @Override

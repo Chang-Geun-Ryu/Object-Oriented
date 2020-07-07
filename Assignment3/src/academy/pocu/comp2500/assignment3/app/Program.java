@@ -20,6 +20,7 @@ public class Program {
 
     public static void main(String[] args) {
 
+
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
@@ -32,6 +33,12 @@ public class Program {
         Unit u3 = new Tank(new IntVector2D(2, 4));
         Unit u4 = new Marine(new IntVector2D(2, 4));
         Unit u5 = new Wraith(new IntVector2D(2, 7));
+
+//        Unit u0 = new Marine(new IntVector2D(1, 5));
+//        Unit u1 = new Marine(new IntVector2D(1, 5));
+//        Unit u2 = new Marine(new IntVector2D(1, 5));
+//        Unit u3 = new Marine(new IntVector2D(1, 5));
+//        Unit u = new Marine(new IntVector2D(1, 5));
 
         ArrayList<Unit> units = new ArrayList<>();
 

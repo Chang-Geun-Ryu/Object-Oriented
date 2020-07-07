@@ -107,8 +107,6 @@ public class Marine extends Unit implements IMovable {
         return null;
     }
 
-
-
     @Override
     public void move() {
         if (this.movePos != null) {

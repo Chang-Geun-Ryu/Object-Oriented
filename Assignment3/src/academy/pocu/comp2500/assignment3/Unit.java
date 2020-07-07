@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public abstract class Unit implements IThinkable, ICollisionEventable {
     private final char sign;
-    private final UnitKind unitKind;
+    protected final UnitKind unitKind;
     private int vision;
     private int aoe;
     protected int ap;
