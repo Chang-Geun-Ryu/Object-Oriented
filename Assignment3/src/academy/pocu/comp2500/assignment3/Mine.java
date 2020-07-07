@@ -4,17 +4,18 @@ import java.util.ArrayList;
 
 public class Mine extends Unit {
     protected int pushCount;
-
+    protected int detectUnitCount;
 
     public Mine(IntVector2D vector2D, int pushCount) {
         super(vector2D, 1, 'N', UnitKind.UNDER, 0, 0, 10, Target.LAND);
         this.pushCount = pushCount;
     }
 
-//    protected Mine(IntVector2D vector2D, int pushCount) {
-//        super(vector2D, 1, 'A', UnitKind.UNDER, 1, 1, 15, Target.LAND);
-//        this.pushCount = pushCount;
-//    }
+    protected Mine(IntVector2D vector2D, int pushCount, int detectUnitCount) {
+        super(vector2D, 1, 'A', UnitKind.UNDER, 1, 1, 15, Target.LAND);
+        this.pushCount = pushCount;
+        this.detectUnitCount = detectUnitCount;
+    }
 
     @Override
     public void event() {

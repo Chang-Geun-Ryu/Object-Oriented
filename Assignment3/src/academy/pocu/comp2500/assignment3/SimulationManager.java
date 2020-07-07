@@ -133,7 +133,7 @@ public final class SimulationManager {
 
     private int aoeDamage(int aoe, int damage) {
         int aoeDamage = (int)((double)damage * (1.d - (1.d / (double)(aoe + 1))));
-        return aoeDamage;
+        return aoeDamage > 0 ? aoeDamage : damage;
     }
 
     @Override

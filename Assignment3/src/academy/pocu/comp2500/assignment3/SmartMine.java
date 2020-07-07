@@ -3,10 +3,9 @@ package academy.pocu.comp2500.assignment3;
 import java.util.ArrayList;
 
 public class SmartMine extends Mine {
-    private int detectUnitCount;
+
     public SmartMine(IntVector2D vector2D, int pushCount, int detectUnitCount) {
-        super(vector2D, pushCount);
-        this.detectUnitCount = detectUnitCount;
+        super(vector2D, pushCount, detectUnitCount);
     }
 
     @Override
@@ -17,7 +16,11 @@ public class SmartMine extends Mine {
 
         ArrayList<Unit> findedUnits = getFindUnits();
 
-        detectUnitCount = detectUnitCount - findedUnits.size() >= 0 ? detectUnitCount - findedUnits.size() : 0;
+//        detectUnitCount = detectUnitCount - findedUnits.size() >= 0 ? detectUnitCount - findedUnits.size() : 0;
+
+        if (detectUnitCount <= findedUnits.size()) {
+            detectUnitCount = 0;
+        }
 
         for (Unit unit : findedUnits) {
             if (calcDistance(unit.vector2D) == 0) {
