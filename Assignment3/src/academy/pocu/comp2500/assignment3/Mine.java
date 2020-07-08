@@ -42,9 +42,6 @@ public class Mine extends Unit {
 
         if (pushCount == 0) {
             addAttack(this);
-//            for (Unit u : findedUnits) {
-//                u.onAttacked(this.ap);
-//            }
         }
     }
 }
