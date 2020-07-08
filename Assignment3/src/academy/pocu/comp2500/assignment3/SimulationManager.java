@@ -72,10 +72,10 @@ public final class SimulationManager {
 
         this.movableUnits.clear();
 
-        for (ICollisionEventable unit : this.collisionUnits) {
+        for (int u = 0; u < this.collisionUnits.size(); ++u) {
 
 
-            AttackIntent intent = unit.attack();
+            AttackIntent intent = this.collisionUnits.get(u).attack();
             int aoe = intent.getAttacker().getAoe();
 
             if (aoe == 0) {
@@ -96,7 +96,7 @@ public final class SimulationManager {
                 // negative
             }
 
-            unit.event();
+            this.collisionUnits.get(u).event();
         }
 
         for (int i = this.spawnUnits.size() - 1; i >= 0; --i) {
@@ -122,11 +122,12 @@ public final class SimulationManager {
 
     private boolean isAttack(Unit attacker, Unit unit) {
         if (attacker.getTarget() == Target.LAND) {
-            return unit.getUnitKind() == UnitKind.LAND;
+            return unit.getUnitKind() != UnitKind.AIR;
         } else if (attacker.getTarget() == Target.AIR) {
             return unit.getUnitKind() == UnitKind.AIR;
         } else {
-            return unit.getUnitKind() != UnitKind.UNDER;
+            return true;
+//            return unit.getUnitKind() != UnitKind.UNDER;
         }
 
     }

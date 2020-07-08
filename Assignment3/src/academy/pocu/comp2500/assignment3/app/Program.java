@@ -17,29 +17,56 @@ public class Program {
         registry.validate();
 
         ArrayList<IntVector2D> pos = new ArrayList<>();
-        pos.add(new IntVector2D(0, -2));
-        pos.add(new IntVector2D(1, -2));
-        pos.add(new IntVector2D(2, -1));
+//        pos.add(new IntVector2D(0, -2));
+//        pos.add(new IntVector2D(1, -2));
+//        pos.add(new IntVector2D(2, -1));
+//
+//        pos.add(new IntVector2D(2, 0));
+//        pos.add(new IntVector2D(2, 1));
+//        pos.add(new IntVector2D(1, 2));
+//
+//        pos.add(new IntVector2D(0, 2));
+//        pos.add(new IntVector2D(-1, 2));
+//        pos.add(new IntVector2D(-2, 1));
+//
+//        pos.add(new IntVector2D(-2, 0));
+//        pos.add(new IntVector2D(-2, -1));
+//        pos.add(new IntVector2D(-1, -2));
+        // W : Wraith
+        // M : Marine
+        // U : Turret
+        // N : Mine
+        // A : SmartMine
 
-        pos.add(new IntVector2D(2, 0));
-        pos.add(new IntVector2D(2, 1));
-        pos.add(new IntVector2D(1, 2));
-
-        pos.add(new IntVector2D(0, 2));
-        pos.add(new IntVector2D(-1, 2));
-        pos.add(new IntVector2D(-2, 1));
-
-        pos.add(new IntVector2D(-2, 0));
-        pos.add(new IntVector2D(-2, -1));
-        pos.add(new IntVector2D(-1, -2));
 
         SimulationManager simulationManager = SimulationManager.getInstance();
 
         Unit u0 = new Tank(new IntVector2D(3, 3));
 
         ArrayList<Unit> units = new ArrayList<>();
-        units.add(new Turret(new IntVector2D(-2 + 3, -2 + 3)));
-        units.add(new Wraith(new IntVector2D(-1 + 3, -2 + 3)));
+        units.add(new Wraith(new IntVector2D(15, 0)));
+//        units.add(new Marine(new IntVector2D(4, 3)));
+//        units.add(new Marine(new IntVector2D(10, 5)));
+//        units.add(new Turret(new IntVector2D(3, 4)));
+//        units.add(new Wraith(new IntVector2D(14, 7)));
+//        units.add(new Mine(new IntVector2D(14, 6), 3));
+//        units.add(new Mine(new IntVector2D(5, 0), 3));
+//        units.add(new SmartMine(new IntVector2D(8, 0), 2, 2));
+//        units.add(new Mine(new IntVector2D(4, 2), 3));
+//        units.add(new Tank(new IntVector2D(9, 6)));
+//        units.add(new Turret(new IntVector2D(3, 7)));
+//        units.add(new SmartMine(new IntVector2D(14, 3), 3, 1));
+        units.add(new Tank(new IntVector2D(8, 0)));
+//        units.add(new SmartMine(new IntVector2D(2, 4), 4, 1));
+        units.add(new Wraith(new IntVector2D(10, 0)));
+//        units.add(new Wraith(new IntVector2D(4, 5)));
+
+//        units.add(new Wraith(new IntVector2D( 3, -2 + 3)));
+//        units.add(new Wraith(new IntVector2D( 3, -2 + 3)));
+//
+//        units.add(new Marine(new IntVector2D( 13, 6)));
+//        units.add(new Mine(new IntVector2D( 13, 6), 1));
+//        units.add(new Mine(new IntVector2D( 13, 6), 2));
 //        for (IntVector2D v : pos) {
 //            units.add(new Turret(new IntVector2D(v.getX() + 3, v.getY() + 3)));
 //        }
@@ -63,7 +90,7 @@ public class Program {
 
 
 
-        units.add(u0);
+//        units.add(u0);
 //        units.add(u00);
 //        units.add(new Turret(new IntVector2D(1, 1)));
 //        units.add(new Turret(new IntVector2D(1, 1)));
