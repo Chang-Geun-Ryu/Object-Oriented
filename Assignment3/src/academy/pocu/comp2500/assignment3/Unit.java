@@ -7,7 +7,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     private final char sign;
     protected final UnitKind unitKind;
     private int vision;
-    private int aoe;
+    protected int aoe;
     protected int ap;
     protected final Target target;
 
@@ -96,7 +96,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
 
         ArrayList<Unit> findUnit = new ArrayList<>();
         for (Unit unit : manager.getUnits()) {
-            if (canSeeUnit(unit.vector2D, unit.unitKind, this.vision) && canFindUnit(unit.unitKind) && this.hashCode() != unit.hashCode()) {
+            if (canSeeUnit(unit.vector2D, unit.unitKind, this.vision) /*&& canFindUnit(unit.unitKind)*/ && this.hashCode() != unit.hashCode()) {
                 findUnit.add(unit);
             }
         }
@@ -111,7 +111,10 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     protected boolean canSeeUnit(IntVector2D vector2D, UnitKind kind, int thisVision) {
 
         if (kind == UnitKind.UNDER) {
-            return false;
+//            return this.unitKind == kind;
+            if (this.unitKind != kind) {
+                return false;
+            }
         } else if (this.target == Target.LAND && kind != UnitKind.LAND) {
             return false;
         } else if (this.target == Target.AIR && kind != UnitKind.AIR) {
@@ -197,5 +200,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     public int hashCode() {
         return System.identityHashCode(this);
     }
+
+
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Wraith extends Unit implements IMovable {
     private int useShield;
+    private IntVector2D originVector2D;
 
     public Wraith(IntVector2D vector2D) {
         super(vector2D, 80, 'W', UnitKind.AIR, 4, 0, 6, Target.BOTH);
@@ -14,6 +15,8 @@ public class Wraith extends Unit implements IMovable {
         this.pos.add(new IntVector2D(1, 0));
         this.pos.add(new IntVector2D(0, 1));
         this.pos.add(new IntVector2D(-1, 0));
+
+        this.originVector2D = new IntVector2D(vector2D.getX(), vector2D.getY());
     }
 
     protected void addMove(IntVector2D vector2D) {
@@ -42,13 +45,13 @@ public class Wraith extends Unit implements IMovable {
         }
 
         ArrayList<Unit> findedUnits = getFindUnits();
+
         ArrayList<Unit> airUnits = getAirUnits(findedUnits);
         Unit attack;
 
-        if (airUnits.size() > 0) {
-            attack = canAttack(airUnits);
-            findedUnits = airUnits;
-        } else {
+        attack = canAttack(airUnits);
+
+        if (attack == null) { // can't attack air
             attack = canAttack(findedUnits);
         }
 
@@ -84,8 +87,12 @@ public class Wraith extends Unit implements IMovable {
                 IntVector2D move = toMove(findedUnits.get(0).vector2D);
                 addMove(move);
             } else {    // stay
-
+                IntVector2D move = toMove(originVector2D);
+                addMove(move);
             }
+        } else {
+            IntVector2D move = toMove(originVector2D);
+            addMove(move);
         }
     }
 

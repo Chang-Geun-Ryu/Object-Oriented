@@ -18,6 +18,14 @@ public class Mine extends Unit {
     }
 
     @Override
+    public void onAttacked(int damage) {
+        if (this.hp == 1) {
+            this.hp = 0;
+            addAttack(this);
+        }
+    }
+
+    @Override
     public void event() {
         this.hp = 0;
     }
@@ -34,6 +42,9 @@ public class Mine extends Unit {
 
         if (pushCount == 0) {
             addAttack(this);
+//            for (Unit u : findedUnits) {
+//                u.onAttacked(this.ap);
+//            }
         }
     }
 }
