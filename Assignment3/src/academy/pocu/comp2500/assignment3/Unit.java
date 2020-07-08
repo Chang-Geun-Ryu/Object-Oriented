@@ -149,11 +149,8 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
             int y = this.vector2D.getY() + vector2D.getY();
             IntVector2D attackPos = new IntVector2D(x, y);
             for (int i = 0; i < units.size(); ++i) {
-                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() &&
-                        this.hashCode() != units.get(i).hashCode()) {
-//                    if (this.target == Target.BOTH) {
-                        attackableUnit.add(units.get(i));
-//                    }
+                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() && this.hashCode() != units.get(i).hashCode()) {
+                    attackableUnit.add(units.get(i));
                 }
             }
         }
