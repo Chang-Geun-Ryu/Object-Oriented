@@ -122,10 +122,6 @@ public class Marine extends Unit implements IMovable {
         if (this.movePos != null) {
             this.vector2D = this.movePos;
             this.movePos = null;
-
-            for (Unit u : SimulationManager.getInstance().getUnits()) {
-
-            }
         }
     }
 

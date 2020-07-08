@@ -8,12 +8,7 @@ public class SmartMine extends Mine {
         super(vector2D, pushCount, detectUnitCount);
     }
 
-    @Override
-    public void think() {
-        if (this.getHp() == 0) {
-            return;
-        }
-
+    protected void detect() {
         ArrayList<Unit> findedUnits = getFindUnits();
 
 //        detectUnitCount = detectUnitCount - findedUnits.size() >= 0 ? detectUnitCount - findedUnits.size() : 0;
@@ -41,8 +36,19 @@ public class SmartMine extends Mine {
                     attackPos(this, new IntVector2D(x, y), damage);
                 }
             }
-            event();
+            this.hp = 0;
+
+
         }
+    }
+
+    @Override
+    public void think() {
+        if (this.getHp() == 0) {
+            return;
+        }
+
+
     }
 
     private void attackPos(Unit attacker, IntVector2D vector2D, int damage) {

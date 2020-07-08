@@ -31,8 +31,8 @@ public class Mine extends Unit {
             return;
         }
 
-        this.hp = 0;
-//        detect();
+//        this.hp = 0;
+        detect();
     }
 
     @Override
@@ -41,10 +41,10 @@ public class Mine extends Unit {
             return;
         }
 
-        detect();
+//        detect();
     }
 
-    private void detect() {
+    protected void detect() {
         ArrayList<Unit> findedUnits = getFindUnits();
 
         pushCount = pushCount - findedUnits.size() >= 0 ? pushCount - findedUnits.size() : 0;

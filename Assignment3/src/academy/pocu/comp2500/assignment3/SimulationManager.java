@@ -94,15 +94,14 @@ public final class SimulationManager {
                     // negative
                 }
             }
-
         }
 
-//        ArrayList<IntVector2D> overlabMine = new ArrayList<>();
-//        for (Unit u : this.spawnUnits) {
-//            if (u.getUnitKind() == UnitKind.UNDER) {
-//                overlabMine.add(u.getPosition());
-//            }
-//        }
+        ArrayList<IntVector2D> overlabMine = new ArrayList<>();
+        for (Unit u : this.spawnUnits) {
+            if (u.getUnitKind() == UnitKind.UNDER) {
+                this.collisionUnits.add(u);
+            }
+        }
 //
 //        for (Unit u : this.spawnUnits) {
 //
