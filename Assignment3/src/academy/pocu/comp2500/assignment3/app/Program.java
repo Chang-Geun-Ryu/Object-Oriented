@@ -82,6 +82,9 @@ public class Program {
         units.add(new Mine(new IntVector2D(12, 2), 2));
         units.add(new SmartMine(new IntVector2D(12, 6), 4, 1));
 
+//        units.add(new Tank(new IntVector2D(13, 2)));
+//        units.add(new Mine(new IntVector2D(14, 2), 2));
+
         for (Unit unit : units) {
             simulationManager.spawn(unit);
         }
