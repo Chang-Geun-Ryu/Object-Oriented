@@ -67,7 +67,7 @@ public class Tank extends Unit implements IMovable {
                 addEvent();
 //                this.siege = false;
             } else { // move
-                if (this.vector2D.getX() == 0){
+                if (this.vector2D.getX() == 0) {
                     this.direction = false;
                 } else if (this.vector2D.getX() == 15) {
                     this.direction = true;

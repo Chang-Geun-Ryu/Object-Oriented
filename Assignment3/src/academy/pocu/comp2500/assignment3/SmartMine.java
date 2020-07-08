@@ -18,18 +18,58 @@ public class SmartMine extends Mine {
 
 //        detectUnitCount = detectUnitCount - findedUnits.size() >= 0 ? detectUnitCount - findedUnits.size() : 0;
 
-        if (detectUnitCount <= findedUnits.size()) {
-            detectUnitCount = 0;
+        if (this.detectUnitCount <= findedUnits.size()) {
+            this.detectUnitCount = 0;
         }
 
         for (Unit unit : findedUnits) {
             if (calcDistance(unit.vector2D) == 0) {
-                pushCount = pushCount - 1 >= 0 ? pushCount: 0;
+                this.pushCount = this.pushCount - 1 >= 0 ? this.pushCount: 0;
             }
         }
 
-        if (pushCount == 0 || detectUnitCount == 0) {
+        if (this.pushCount == 0 || this.detectUnitCount == 0) {
             addAttack(this);
+//            for (int i = -this.aoe; i <= aoe; ++i) {
+//                for (int j = -aoe; j <= aoe; ++j) {
+//                    int x = this.vector2D.getX() + i;
+//                    int y = this.vector2D.getY() + j;
+//
+//                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+//                    int damage = aoeDamage(aoeValue, this.ap);
+//                    attackPos(this, new IntVector2D(x, y), damage);
+//                }
+//            }
         }
     }
+
+//    private void attackPos(Unit attacker, IntVector2D vector2D, int damage) {
+//        for (Unit u : SimulationManager.getInstance().getUnits()) {
+//            if (u.getPosition().hashCode() == vector2D.hashCode()) {
+//                if (u.hashCode() != attacker.hashCode()) {
+//                    if (isAttack(attacker, u)) {
+//                        u.onAttacked(damage);
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    private boolean isAttack(Unit attacker, Unit unit) {
+//        if (attacker.getTarget() == Target.LAND) {
+//            return unit.getUnitKind() != UnitKind.AIR;
+//        } else if (attacker.getTarget() == Target.AIR) {
+//            return unit.getUnitKind() == UnitKind.AIR;
+//        } else {
+//            return true;
+//        }
+//
+//    }
+//
+//    private int aoeDamage(int aoe, int damage) {
+//        double aoeDouble = (double)aoe;
+//        double damageDouble = (double)damage;
+//        int aoeDamage = (int)(damageDouble * (1.0 - (1.0 / (aoeDouble + 1.0))));
+//        return aoeDamage > 0 ? aoeDamage : damage;
+//    }
 }

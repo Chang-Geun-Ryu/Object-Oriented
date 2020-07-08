@@ -61,7 +61,33 @@ public final class SimulationManager {
 
         for (IThinkable unit : this.thinkableUnits) {
             unit.think();
+        }
 
+        for (int u = this.collisionUnits.size() - 1; u >= 0 ; --u) {
+            if (this.collisionUnits.get(u).getUnitKind() == UnitKind.UNDER) {
+                AttackIntent intent = this.collisionUnits.get(u).attack();
+                int aoe = intent.getAttacker().getAoe();
+
+                if (aoe == 0) {
+                    attackPos(intent.getAttacker(), intent.getVector2D(), intent.getDamage());
+                } else if (aoe > 0) {
+
+                    for (int i = -aoe; i <= aoe; ++i) {
+                        for (int j = -aoe; j <= aoe; ++j) {
+                            int x = intent.getVector2D().getX() + i;
+                            int y = intent.getVector2D().getY() + j;
+
+                            int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+                            int damage = aoeDamage(aoeValue, intent.getDamage());
+                            attackPos(intent.getAttacker(), new IntVector2D(x, y), damage);
+                        }
+                    }
+                } else {
+                    // negative
+                }
+                this.collisionUnits.get(u).event();
+                this.collisionUnits.remove(u);
+            }
         }
 
         this.thinkableUnits.clear();
@@ -73,7 +99,6 @@ public final class SimulationManager {
         this.movableUnits.clear();
 
         for (int u = 0; u < this.collisionUnits.size(); ++u) {
-
 
             AttackIntent intent = this.collisionUnits.get(u).attack();
             int aoe = intent.getAttacker().getAoe();
@@ -133,7 +158,9 @@ public final class SimulationManager {
     }
 
     private int aoeDamage(int aoe, int damage) {
-        int aoeDamage = (int)((double)damage * (1.d - (1.d / (double)(aoe + 1))));
+        double aoeDouble = (double)aoe;
+        double damageDouble = (double)damage;
+        int aoeDamage = (int)(damageDouble * (1.0 - (1.0 / (aoeDouble + 1.0))));
         return aoeDamage > 0 ? aoeDamage : damage;
     }
 

@@ -7,7 +7,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     private final char sign;
     protected final UnitKind unitKind;
     private int vision;
-    private int aoe;
+    protected int aoe;
     protected int ap;
     protected final Target target;
 
@@ -152,11 +152,8 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
             int y = this.vector2D.getY() + vector2D.getY();
             IntVector2D attackPos = new IntVector2D(x, y);
             for (int i = 0; i < units.size(); ++i) {
-                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() &&
-                        this.hashCode() != units.get(i).hashCode()) {
-//                    if (this.target == Target.BOTH) {
-                        attackableUnit.add(units.get(i));
-//                    }
+                if (attackPos.hashCode() == units.get(i).vector2D.hashCode() && this.hashCode() != units.get(i).hashCode()) {
+                    attackableUnit.add(units.get(i));
                 }
             }
         }
@@ -203,5 +200,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     public int hashCode() {
         return System.identityHashCode(this);
     }
+
+
 
 }

@@ -87,7 +87,7 @@ public class Program {
         }
 
         SimulationVisualizer visualizer = new SimulationVisualizer(units);
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 20; ++i) {
             clearConsole();
             visualizer.visualize(i, simulationManager.getUnits());
             simulationManager.update();

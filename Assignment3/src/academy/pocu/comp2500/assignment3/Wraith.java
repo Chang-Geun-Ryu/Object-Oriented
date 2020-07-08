@@ -90,6 +90,9 @@ public class Wraith extends Unit implements IMovable {
                 IntVector2D move = toMove(originVector2D);
                 addMove(move);
             }
+        } else {
+            IntVector2D move = toMove(originVector2D);
+            addMove(move);
         }
     }
 
