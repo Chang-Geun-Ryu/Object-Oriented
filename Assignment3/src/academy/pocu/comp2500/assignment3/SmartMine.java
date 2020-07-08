@@ -24,7 +24,7 @@ public class SmartMine extends Mine {
 
         for (Unit unit : findedUnits) {
             if (calcDistance(unit.vector2D) == 0) {
-                this.pushCount = this.pushCount - 1 >= 0 ? this.pushCount: 0;
+                this.pushCount = this.pushCount - 1 >= 0 ? this.pushCount : 0;
             }
         }
 

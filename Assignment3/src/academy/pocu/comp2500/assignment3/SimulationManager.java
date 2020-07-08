@@ -63,7 +63,7 @@ public final class SimulationManager {
             unit.think();
         }
 
-        for (int u = this.collisionUnits.size() - 1; u >= 0 ; --u) {
+        for (int u = this.collisionUnits.size() - 1; u >= 0; --u) {
             if (this.collisionUnits.get(u).getUnitKind() == UnitKind.UNDER) {
                 AttackIntent intent = this.collisionUnits.get(u).attack();
                 int aoe = intent.getAttacker().getAoe();
@@ -158,9 +158,9 @@ public final class SimulationManager {
     }
 
     private int aoeDamage(int aoe, int damage) {
-        double aoeDouble = (double)aoe;
-        double damageDouble = (double)damage;
-        int aoeDamage = (int)(damageDouble * (1.0 - (1.0 / (aoeDouble + 1.0))));
+        double aoeDouble = (double) aoe;
+        double damageDouble = (double) damage;
+        int aoeDamage = (int) (damageDouble * (1.0 - (1.0 / (aoeDouble + 1.0))));
         return aoeDamage > 0 ? aoeDamage : damage;
     }
 
