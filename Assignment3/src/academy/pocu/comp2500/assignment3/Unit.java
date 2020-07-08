@@ -19,6 +19,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     private boolean isSpawn;
     protected ArrayList<IntVector2D> pos;
     protected ArrayList<IntVector2D> move;
+    private boolean isAttack;
 
     protected Unit(IntVector2D vector2D, int hp, char sign, UnitKind unitKind, int vision, int aoe, int ap, Target target) {
         this.vector2D = vector2D;
@@ -33,6 +34,7 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
 
         this.movePos = null;
         this.isSpawn = false;
+        this.isAttack = false;
     }
 
     public final IntVector2D getPosition() {
@@ -52,7 +54,11 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
     }
 
     public final AttackIntent attack() {
-        return this.attackIntent;
+        if (this.isAttack) {
+            return this.attackIntent;
+        } else {
+            return null;
+        }
     }
 
     public void onAttacked(int damage) {
@@ -183,7 +189,8 @@ public abstract class Unit implements IThinkable, ICollisionEventable {
 
     protected void addAttack(Unit unit) {
         this.attackIntent = new AttackIntent(unit.vector2D, this.ap, this);
-        SimulationManager.getInstance().registerCollisionEventListener(this);
+        this.isAttack = true;
+//        SimulationManager.getInstance().registerCollisionEventListener(this);
     }
 
     @Override

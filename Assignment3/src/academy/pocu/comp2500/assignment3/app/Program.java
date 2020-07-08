@@ -47,40 +47,43 @@ public class Program {
 //        units.add(new Tank(new IntVector2D(0, 2)));
 
         ///// 00
-//        units.add(new Wraith(new IntVector2D(15, 0)));
-//        units.add(new Marine(new IntVector2D(4, 3)));
-//        units.add(new Marine(new IntVector2D(10, 5)));
-//        units.add(new Turret(new IntVector2D(3, 4)));
-//        units.add(new Wraith(new IntVector2D(14, 7)));
-//        units.add(new Mine(new IntVector2D(14, 6), 3));
-//        units.add(new Mine(new IntVector2D(5, 0), 3));
-//        units.add(new SmartMine(new IntVector2D(8, 0), 2, 2));
-//        units.add(new Mine(new IntVector2D(4, 2), 3));
-//        units.add(new Tank(new IntVector2D(9, 6)));
-//        units.add(new Turret(new IntVector2D(3, 7)));
-//        units.add(new SmartMine(new IntVector2D(14, 3), 3, 1));
-//        units.add(new Tank(new IntVector2D(8, 0)));
-//        units.add(new SmartMine(new IntVector2D(2, 4), 4, 1));
-//        units.add(new Wraith(new IntVector2D(10, 0)));
-//        units.add(new Wraith(new IntVector2D(4, 5)));
+        units.add(new Wraith(new IntVector2D(15, 0)));
+        units.add(new Marine(new IntVector2D(4, 3)));
+        units.add(new Marine(new IntVector2D(10, 5)));
+        units.add(new Turret(new IntVector2D(3, 4)));
+        units.add(new Wraith(new IntVector2D(14, 7)));
+        units.add(new Mine(new IntVector2D(14, 6), 3));
+        units.add(new Mine(new IntVector2D(5, 0), 3));
+        units.add(new SmartMine(new IntVector2D(8, 0), 2, 2));
+        units.add(new Mine(new IntVector2D(4, 2), 3));
+        units.add(new Tank(new IntVector2D(9, 6)));
+        units.add(new Turret(new IntVector2D(3, 7)));
+        units.add(new SmartMine(new IntVector2D(14, 3), 3, 1));
+        units.add(new Tank(new IntVector2D(8, 0)));
+        units.add(new SmartMine(new IntVector2D(2, 4), 4, 1));
+        units.add(new Wraith(new IntVector2D(10, 0)));
+        units.add(new Wraith(new IntVector2D(4, 5)));
 /////
     /// 01
-        units.add(new Tank(new IntVector2D(0, 2)));
-        units.add(new Tank(new IntVector2D(0, 6)));
-        units.add(new SmartMine(new IntVector2D(9, 7), 2, 1));
-        units.add(new Mine(new IntVector2D(7, 5), 3));
-        units.add(new SmartMine(new IntVector2D(1, 3), 2, 2));
-        units.add(new Mine(new IntVector2D(10, 6), 3));
-        units.add(new Mine(new IntVector2D(11, 7), 2));
-        units.add(new SmartMine(new IntVector2D(0, 7), 2, 2));
-        units.add(new Mine(new IntVector2D(6, 6), 4));
-        units.add(new Mine(new IntVector2D(2, 0), 3));
-        units.add(new Mine(new IntVector2D(6, 4), 1));
-        units.add(new Mine(new IntVector2D(14, 3), 4));
-        units.add(new SmartMine(new IntVector2D(11, 0), 3, 2));
-        units.add(new SmartMine(new IntVector2D(15, 2), 2, 1));
-        units.add(new Mine(new IntVector2D(12, 2), 2));
-        units.add(new SmartMine(new IntVector2D(12, 6), 4, 1));
+//        units.add(new Tank(new IntVector2D(0, 2)));
+//        units.add(new Tank(new IntVector2D(0, 6)));
+//        units.add(new SmartMine(new IntVector2D(9, 7), 2, 1));
+//        units.add(new Mine(new IntVector2D(7, 5), 3));
+//        units.add(new SmartMine(new IntVector2D(1, 3), 2, 2));
+//        units.add(new Mine(new IntVector2D(10, 6), 3));
+//        units.add(new Mine(new IntVector2D(11, 7), 2));
+//        units.add(new SmartMine(new IntVector2D(0, 7), 2, 2));
+//        units.add(new Mine(new IntVector2D(6, 6), 4));
+//        units.add(new Mine(new IntVector2D(2, 0), 3));
+//        units.add(new Mine(new IntVector2D(6, 4), 1));
+//        units.add(new Mine(new IntVector2D(14, 3), 4));
+//        units.add(new SmartMine(new IntVector2D(11, 0), 3, 2));
+//        units.add(new SmartMine(new IntVector2D(15, 2), 2, 1));
+//        units.add(new Mine(new IntVector2D(12, 2), 2));
+//        units.add(new SmartMine(new IntVector2D(12, 6), 4, 1));
+
+//        units.add(new Tank(new IntVector2D(13, 2)));
+//        units.add(new Mine(new IntVector2D(14, 2), 2));
 
         for (Unit unit : units) {
             simulationManager.spawn(unit);

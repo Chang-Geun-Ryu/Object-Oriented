@@ -27,7 +27,12 @@ public class Mine extends Unit {
 
     @Override
     public void event() {
+        if (this.getHp() == 0) {
+            return;
+        }
+
         this.hp = 0;
+//        detect();
     }
 
     @Override
@@ -36,12 +41,19 @@ public class Mine extends Unit {
             return;
         }
 
+        detect();
+    }
+
+    private void detect() {
         ArrayList<Unit> findedUnits = getFindUnits();
 
         pushCount = pushCount - findedUnits.size() >= 0 ? pushCount - findedUnits.size() : 0;
 
         if (pushCount == 0) {
-            addAttack(this);
+            for (Unit u : findedUnits) {
+                u.onAttacked(this.ap);
+            }
+            this.hp = 0;
         }
     }
 }
