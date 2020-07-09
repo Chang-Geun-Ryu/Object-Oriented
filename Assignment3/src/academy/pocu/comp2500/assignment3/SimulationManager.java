@@ -63,6 +63,12 @@ public final class SimulationManager {
             unit.think();
         }
 
+//        for (Unit u : this.spawnUnits) {
+//            if (u.getUnitKind() == UnitKind.UNDER) {
+//                this.collisionUnits.add(u);
+//            }
+//        }
+
         this.thinkableUnits.clear();
 
         for (IMovable unit : this.movableUnits) {

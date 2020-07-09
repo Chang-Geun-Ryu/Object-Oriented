@@ -8,6 +8,11 @@ public class SmartMine extends Mine {
         super(vector2D, pushCount, detectUnitCount);
     }
 
+    @Override
+    public void onAttacked(int damage) {
+        detect();
+    }
+
     protected void detect() {
         if (this.getHp() == 0) {
             return;
@@ -48,27 +53,27 @@ public class SmartMine extends Mine {
             return;
         }
 
-        ArrayList<Unit> findedUnits = getFindUnits();
-
-        if (this.detectUnitCount <= findedUnits.size()) {
-            this.detectUnitCount = 0;
-        }
-
-        if (this.detectUnitCount == 0) {
-//            addAttack(this);
-            for (int i = -aoe; i <= aoe; ++i) {
-                for (int j = -aoe; j <= aoe; ++j) {
-                    int x = this.vector2D.getX() + i;
-                    int y = this.vector2D.getY() + j;
-
-                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
-                    int damage = aoeDamage(aoeValue, this.ap);
-
-                    attackPos(this, new IntVector2D(x, y), damage);
-                }
-            }
-            this.hp = 0;
-        }
+//        ArrayList<Unit> findedUnits = getFindUnits();
+//
+//        if (this.detectUnitCount <= findedUnits.size()) {
+//            this.detectUnitCount = 0;
+//        }
+//
+//        if (this.detectUnitCount == 0) {
+////            addAttack(this);
+//            for (int i = -aoe; i <= aoe; ++i) {
+//                for (int j = -aoe; j <= aoe; ++j) {
+//                    int x = this.vector2D.getX() + i;
+//                    int y = this.vector2D.getY() + j;
+//
+//                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+//                    int damage = aoeDamage(aoeValue, this.ap);
+//
+//                    attackPos(this, new IntVector2D(x, y), damage);
+//                }
+//            }
+//            this.hp = 0;
+//        }
     }
 
     private void attackPos(Unit attacker, IntVector2D vector2D, int damage) {
