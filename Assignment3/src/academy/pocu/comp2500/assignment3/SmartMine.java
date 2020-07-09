@@ -9,21 +9,23 @@ public class SmartMine extends Mine {
     }
 
     protected void detect() {
+        if (this.getHp() == 0) {
+            return;
+        }
+
         ArrayList<Unit> findedUnits = getFindUnits();
 
-//        detectUnitCount = detectUnitCount - findedUnits.size() >= 0 ? detectUnitCount - findedUnits.size() : 0;
-
-        if (this.detectUnitCount <= findedUnits.size()) {
-            this.detectUnitCount = 0;
-        }
+//        if (this.detectUnitCount <= findedUnits.size()) {
+//            this.detectUnitCount = 0;
+//        }
 
         for (Unit unit : findedUnits) {
             if (calcDistance(unit.vector2D) == 0) {
-                this.pushCount = this.pushCount - 1 >= 0 ? this.pushCount : 0;
+                this.pushCount = this.pushCount - 1 >= 0 ? this.pushCount - 1 : 0;
             }
         }
 
-        if (this.pushCount == 0 || this.detectUnitCount == 0) {
+        if (this.pushCount == 0 ) {//|| this.detectUnitCount == 0) {
 //            addAttack(this);
             for (int i = -aoe; i <= aoe; ++i) {
                 for (int j = -aoe; j <= aoe; ++j) {
@@ -37,8 +39,6 @@ public class SmartMine extends Mine {
                 }
             }
             this.hp = 0;
-
-
         }
     }
 
@@ -48,7 +48,27 @@ public class SmartMine extends Mine {
             return;
         }
 
+        ArrayList<Unit> findedUnits = getFindUnits();
 
+        if (this.detectUnitCount <= findedUnits.size()) {
+            this.detectUnitCount = 0;
+        }
+
+        if (this.detectUnitCount == 0) {
+//            addAttack(this);
+            for (int i = -aoe; i <= aoe; ++i) {
+                for (int j = -aoe; j <= aoe; ++j) {
+                    int x = this.vector2D.getX() + i;
+                    int y = this.vector2D.getY() + j;
+
+                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+                    int damage = aoeDamage(aoeValue, this.ap);
+
+                    attackPos(this, new IntVector2D(x, y), damage);
+                }
+            }
+            this.hp = 0;
+        }
     }
 
     private void attackPos(Unit attacker, IntVector2D vector2D, int damage) {
