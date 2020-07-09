@@ -104,7 +104,21 @@ public class Marine extends Unit implements IMovable {
 //                }
 //            }
 //        }
-//        return null;
+//        return null;=
+        int min = units.get(0).getHp();
+        for (Unit u : units) {
+            if (min > u.getHp()) {
+                min = u.getHp();
+            }
+        }
+
+        for (int i = units.size() - 1; i >= 0; --i) {
+            if (min != units.get(i).getHp()) {
+                units.remove(i);
+            }
+        }
+
+
         Unit target = units.get(0);
         double max = Math.toDegrees(Math.atan2(units.get(0).vector2D.getX(), units.get(0).vector2D.getY()));
         for (Unit unit : units) {

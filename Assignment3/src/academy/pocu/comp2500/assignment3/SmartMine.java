@@ -25,7 +25,7 @@ public class SmartMine extends Mine {
             }
         }
 
-        if (this.pushCount == 0 ) {//|| this.detectUnitCount == 0) {
+        if (this.pushCount == 0) {//|| this.detectUnitCount == 0) {
 //            addAttack(this);
             for (int i = -aoe; i <= aoe; ++i) {
                 for (int j = -aoe; j <= aoe; ++j) {
