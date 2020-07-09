@@ -21,7 +21,8 @@ public class Mine extends Unit {
     public void onAttacked(int damage) {
         if (this.hp == 1) {
             this.hp = 0;
-            addAttack(this);
+//            addAttack(this);
+            detect();
         }
     }
 
