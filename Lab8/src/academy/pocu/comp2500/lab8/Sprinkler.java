@@ -3,10 +3,9 @@ package academy.pocu.comp2500.lab8;
 import java.util.ArrayList;
 
 public class Sprinkler extends SmartDevice implements ISprayable {
-    private static final int water = 15;
-    private static final ArrayList<Schedule> s = new ArrayList<>();
+    private static final int WATER = 15;
+    private static final ArrayList<Schedule> S = new ArrayList<>();
     private Schedule onSchedule;
-//  this.tick - this.switchTick;
     private int keepSprayTick;
 
 
@@ -19,7 +18,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
     }
 
     public void addSchedule(Schedule schedule) {
-        s.add(schedule);
+        S.add(schedule);
     }
 
     @Override
@@ -31,7 +30,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
         ArrayList<Schedule> removeItems = new ArrayList<>();
         Schedule pickSchedule = null;
 
-        for (Schedule schedule : s) {
+        for (Schedule schedule : S) {
             removeItems.add(schedule);
 
             if (this.tick < schedule.getStartTick() + schedule.getKeep()) {
@@ -40,7 +39,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
             }
         }
 
-        s.removeAll(removeItems);
+        S.removeAll(removeItems);
 
         return pickSchedule;
     }
@@ -92,7 +91,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
     @Override
     public void spray(Planter planter) {
         if (this.isOn) {
-            planter.sprayWater(water);
+            planter.sprayWater(WATER);
         }
     }
 

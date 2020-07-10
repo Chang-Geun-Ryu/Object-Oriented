@@ -3,7 +3,7 @@ package academy.pocu.comp2500.lab8;
 import java.util.ArrayList;
 
 public class Planter {
-    private final int useWater = 2;
+    private final int USE_WATER = 2;
     private int waterAmount;
     private ArrayList<Sprinkler> sprayableDevices;
     private ArrayList<Drainer> drainableDevices;
@@ -76,6 +76,6 @@ public class Planter {
         }
 
 
-        this.waterAmount = this.waterAmount - 2 >= 0 ? this.waterAmount - 2 : 0;
+        this.waterAmount = this.waterAmount - USE_WATER >= 0 ? this.waterAmount - USE_WATER : 0;
     }
 }
