@@ -51,11 +51,11 @@ public class Planter {
         this.waterDetectables.add(detectable);
     }
 
-    protected void sprayWater(int watarLevel) {
+    public void sprayWater(int watarLevel) {
         this.waterAmount += watarLevel;
     }
 
-    protected void drainWater(int waterLevel) {
+    public void drainWater(int waterLevel) {
         this.waterAmount -= waterLevel;
     }
 
@@ -64,6 +64,7 @@ public class Planter {
         for (IWaterDetectable iWaterDetectable : this.waterDetectables) {
             iWaterDetectable.detect(this.waterAmount);
         }
+        this.waterAmount = this.waterAmount - USE_WATER >= 0 ? this.waterAmount - USE_WATER : 0;
 
         for (Sprinkler s : this.sprayableDevices) {
             s.onTick();
@@ -76,6 +77,6 @@ public class Planter {
         }
 
 
-        this.waterAmount = this.waterAmount - USE_WATER >= 0 ? this.waterAmount - USE_WATER : 0;
+
     }
 }

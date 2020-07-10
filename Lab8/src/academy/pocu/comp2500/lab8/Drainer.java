@@ -9,12 +9,7 @@ public class Drainer extends SmartDevice implements IDrainable, IWaterDetectable
         this.isOn = false;
         this.DETECT_LEVEL = level;
         this.isDetect = false;
-//        this.detect = null;
     }
-
-//    protected void setDetect(IWaterDetectable detect) {
-//        this.detect = detect;
-//    }
 
     @Override
     public void onTick() {
