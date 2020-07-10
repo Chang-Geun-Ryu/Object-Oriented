@@ -22,4 +22,5 @@ public class AttackIntent {
     public Unit getAttacker() {
         return this.attacker;
     }
+
 }
