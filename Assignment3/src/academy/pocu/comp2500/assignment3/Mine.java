@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment3;
 
-public class Mine extends Unit {
+public class Mine extends Unit implements ICollisionEventable {
     private int pushCount;
     private int detectUnitCount;
 
@@ -16,4 +16,13 @@ public class Mine extends Unit {
         this.pushCount = pushCount;
     }
 
+
+    private boolean detectUnit() {
+
+    }
+
+    @Override
+    public void collisionEvent() {
+
+    }
 }
