@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment3;
 
-public abstract class Unit {
+public abstract class Unit implements IThinkable {
     private final char sign;
     private final UnitKind unitKind;
     private int vision;
@@ -12,8 +12,6 @@ public abstract class Unit {
     protected IntVector2D vector2D;
     protected AttackIntent attackIntent;
     protected IntVector2D movePos;
-
-    private boolean isSpawn;
 
     protected Unit(IntVector2D vector2D, int hp, char sign, UnitKind unitKind, int vision, int aoe, int ap, Target target) {
         this.vector2D = vector2D;
@@ -47,9 +45,7 @@ public abstract class Unit {
         }
     }
 
-    public final void onSpawn() {
-        this.isSpawn = true;
-    }
+    public abstract void onSpawn();
 
     public final char getSymbol() {
         return this.sign;

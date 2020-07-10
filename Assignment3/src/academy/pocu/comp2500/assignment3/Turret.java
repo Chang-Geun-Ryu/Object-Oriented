@@ -5,4 +5,13 @@ public class Turret extends Unit {
         super(vector2D, 99, 'U', UnitKind.LAND, 2, 0, 7, Target.AIR);
     }
 
+    @Override
+    public void onSpawn() {
+        SimulationManager.getInstance().registerThinkable(this);
+    }
+
+    @Override
+    public void think() {
+
+    }
 }

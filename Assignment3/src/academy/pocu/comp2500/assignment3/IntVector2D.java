@@ -29,15 +29,16 @@ public class IntVector2D {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || !(o instanceof IntVector2D)) {
+        if (this == o) { //자기자신이면 false 함 해보자!!!!!
             return false;
         }
+        if (o == null) {
+            return false;
+        }
+
         IntVector2D vector2D = (IntVector2D) o;
-        return x == vector2D.x &&
-                y == vector2D.y;
+        return this.x == vector2D.x &&
+                this.y == vector2D.y;
     }
 
     @Override

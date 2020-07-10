@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public final class SimulationManager {
     private static final SimulationManager instance = new SimulationManager();
     private ArrayList<Unit> spawnUnits;
-    private ArrayList<Unit> thinkableUnits;
-    private ArrayList<Unit> movableUnits;
-    private ArrayList<Unit> collisionUnits;
+    private ArrayList<IThinkable> thinkableUnits;
+    private ArrayList<IMovable> movableUnits;
+    private ArrayList<ICollisionEventable> collisionUnits;
 
     private SimulationManager() {
         this.spawnUnits = new ArrayList<>();
@@ -29,15 +29,15 @@ public final class SimulationManager {
         this.spawnUnits.add(unit);
     }
 
-    public void registerThinkable(Unit thinkable) {
+    public void registerThinkable(IThinkable thinkable) {
         this.thinkableUnits.add(thinkable);
     }
 
-    public void registerMovable(Unit movable) {
+    public void registerMovable(IMovable movable) {
         this.movableUnits.add(movable);
     }
 
-    public void registerCollisionEventListener(Unit listener) {
+    public void registerCollisionEventListener(ICollisionEventable listener) {
         this.collisionUnits.add(listener);
     }
 
