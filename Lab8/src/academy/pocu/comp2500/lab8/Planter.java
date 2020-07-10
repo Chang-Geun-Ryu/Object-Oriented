@@ -7,6 +7,7 @@ public class Planter {
     private int waterAmount;
     private ArrayList<Sprinkler> sprayableDevices;
     private ArrayList<Drainer> drainableDevices;
+    private ArrayList<IWaterDetectable> waterDetectables;
 
     private ISprayable sprayableCallBack = null;
 
@@ -14,6 +15,7 @@ public class Planter {
         this.waterAmount = waterAmount;
         this.sprayableDevices = new ArrayList<>();
         this.drainableDevices = new ArrayList<>();
+        this.waterDetectables = new ArrayList<>();
     }
 
     public void setSprayableCallBack(ISprayable sprayable) {
@@ -36,16 +38,32 @@ public class Planter {
     public void installDrainer(Drainer d) {
         this.drainableDevices.add(d);
 
-        IWaterDetectable detect = new IWaterDetectable() {
-            @Override
-            public void detect(int waterLevel) {
-                waterAmount -= waterLevel;
-            }
-        };
-        d.setDetect(detect);
+//        IWaterDetectable detect = new IWaterDetectable() {
+//            @Override
+//            public void detect(int waterLevel) {
+//                waterAmount -= waterLevel;
+//            }
+//        };
+//        d.setDetect(detect);
+    }
+
+    public void addDetect(IWaterDetectable detectable) {
+        this.waterDetectables.add(detectable);
+    }
+
+    protected void sprayWater(int watarLevel) {
+        this.waterAmount += watarLevel;
+    }
+
+    protected void drainWater(int waterLevel) {
+        this.waterAmount -= waterLevel;
     }
 
     public void tick() {
+
+        for (IWaterDetectable iWaterDetectable : this.waterDetectables) {
+            iWaterDetectable.detect(this.waterAmount);
+        }
 
         for (Sprinkler s : this.sprayableDevices) {
             s.onTick();
@@ -56,6 +74,7 @@ public class Planter {
             d.onTick();
             d.drain(this);
         }
+
 
         this.waterAmount = this.waterAmount - 2 >= 0 ? this.waterAmount - 2 : 0;
     }

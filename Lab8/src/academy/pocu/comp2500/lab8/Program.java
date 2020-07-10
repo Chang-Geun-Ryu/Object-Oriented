@@ -14,6 +14,8 @@ public class Program {
                     true, true, true, true, false, false};
 
             for (int i = 0; i < expectedIsOn.length; ++i) {
+                System.out.print(String.format("%d: ", i));
+                System.out.println(sprinkler.isOn());
                 assert (expectedIsOn[i] == sprinkler.isOn());
                 sprinkler.onTick();
             }
@@ -47,6 +49,13 @@ public class Program {
                     6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
             for (int i = 0; i < expectedWaterAmount.length; ++i) {
+                System.out.print(String.format("%d WaterAmount: %d ", i, planter.getWaterAmount()));
+                System.out.print(expectedWaterAmount[i] == planter.getWaterAmount());
+                System.out.print(String.format(", %d TicksSinceLastUpdate: %d ", i, sprinkler.getTicksSinceLastUpdate()));
+                System.out.print(sprinklerTicksSinceLastUpdate[i] == sprinkler.getTicksSinceLastUpdate());
+                System.out.print(String.format(", %d TicksSinceLastUpdate: %d ", i, drainer.getTicksSinceLastUpdate()));
+                System.out.println(drainerTicksSinceLastUpdate[i] == drainer.getTicksSinceLastUpdate());
+
                 assert (expectedWaterAmount[i] == planter.getWaterAmount());
                 assert (sprinklerTicksSinceLastUpdate[i] == sprinkler.getTicksSinceLastUpdate());
                 assert (drainerTicksSinceLastUpdate[i] == drainer.getTicksSinceLastUpdate());

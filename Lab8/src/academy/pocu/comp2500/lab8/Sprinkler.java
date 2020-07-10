@@ -5,22 +5,21 @@ import java.util.ArrayList;
 public class Sprinkler extends SmartDevice implements ISprayable {
     private static final int water = 15;
     private static final ArrayList<Schedule> s = new ArrayList<>();
+    private Schedule onSchedule;
 //  this.tick - this.switchTick;
+    private int keepSprayTick;
+
 
     public Sprinkler() {
+        this.tick = 0;
+        this.switchTick = 0;
         this.isOn = false;
+        this.keepSprayTick = 0;
+        this.onSchedule = null;
     }
 
     public void addSchedule(Schedule schedule) {
         s.add(schedule);
-    }
-
-    private void passSchedule() {
-        for (int i = s.size() - 1; i >= 0; --i) {
-            if (s.get(i).getStartTick() < this.tick) {
-                s.remove(i);
-            }
-        }
     }
 
     @Override
@@ -29,13 +28,21 @@ public class Sprinkler extends SmartDevice implements ISprayable {
     }
 
     private Schedule getScheduleOrNull() {
-        Schedule schedule = null;
-        if (s.size() > 0) {
-            schedule = s.get(0);
-            s.remove(0);
+        ArrayList<Schedule> removeItems = new ArrayList<>();
+        Schedule pickSchedule = null;
+
+        for (Schedule schedule : s) {
+            removeItems.add(schedule);
+
+            if (this.tick < schedule.getStartTick() + schedule.getKeep()) {
+                pickSchedule = schedule;
+                break;
+            }
         }
 
-        return schedule;
+        s.removeAll(removeItems);
+
+        return pickSchedule;
     }
 
     private boolean processeSchedule() {
@@ -43,6 +50,12 @@ public class Sprinkler extends SmartDevice implements ISprayable {
         if (schedule != null) {
             int startTick = schedule.getStartTick();
             int keepTick = schedule.getKeep();
+
+            if (this.tick > startTick) {
+
+            } else {
+
+            }
         }
 
         return false;
@@ -50,16 +63,28 @@ public class Sprinkler extends SmartDevice implements ISprayable {
 
     @Override
     public void onTick() {
-
-        if (this.isOn) {
-
-
-        } else if (s.size() > 0) {
-            this.isOn = processeSchedule();
-        } else {
-
+        // start
+        if (this.onSchedule == null) {
+            this.onSchedule = getScheduleOrNull();
         }
 
+        // process on/off
+        if (this.isOn) {
+            if (this.tick == this.onSchedule.getStartTick() + this.onSchedule.getKeep()) {
+                this.isOn = false;
+                switchTick = this.tick;
+            }
+        } else {
+            if (this.onSchedule != null && this.onSchedule.getStartTick() == this.tick) {
+                this.isOn = true;
+                switchTick = this.tick;
+            }
+        }
+
+        // end 처리
+        if (this.onSchedule != null && this.tick >= this.onSchedule.getStartTick() + this.onSchedule.getKeep()) {
+            this.onSchedule = null;
+        }
 
         this.tick += 1;
     }
@@ -67,7 +92,7 @@ public class Sprinkler extends SmartDevice implements ISprayable {
     @Override
     public void spray(Planter planter) {
         if (this.isOn) {
-//            planter.setSprayableCallBack();/
+            planter.sprayWater(water);
         }
     }
 
