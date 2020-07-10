@@ -77,6 +77,6 @@ public class Planter {
         }
 
 
-
+        this.waterAmount = this.waterAmount > 0 ? this.waterAmount : 0;
     }
 }

@@ -3,18 +3,18 @@ package academy.pocu.comp2500.lab8;
 public class Program {
 
     public static void main(String[] args) {
-        Sprinkler sprinkler = new Sprinkler();
-        sprinkler.addSchedule(new Schedule(12, 6));
-        sprinkler.addSchedule(new Schedule(19, 10));
-        sprinkler.addSchedule(new Schedule(36, 10));
-        sprinkler.addSchedule(new Schedule(51, 2));
-        sprinkler.addSchedule(new Schedule(64, 7));
-        sprinkler.addSchedule(new Schedule(86, 10));
-        sprinkler.addSchedule(new Schedule(103, 2));
-
-        Drainer drainer = new Drainer(76);
-
-        Planter planter = new Planter(96);
+//        Sprinkler sprinkler = new Sprinkler();
+//        sprinkler.addSchedule(new Schedule(12, 6));
+//        sprinkler.addSchedule(new Schedule(19, 10));
+//        sprinkler.addSchedule(new Schedule(36, 10));
+//        sprinkler.addSchedule(new Schedule(51, 2));
+//        sprinkler.addSchedule(new Schedule(64, 7));
+//        sprinkler.addSchedule(new Schedule(86, 10));
+//        sprinkler.addSchedule(new Schedule(103, 2));
+//
+//        Drainer drainer = new Drainer(76);
+//
+//        Planter planter = new Planter(96);
 
 //        Sprinkler sprinkler = new Sprinkler();
 //        sprinkler.addSchedule(new Schedule(1, 9));
@@ -29,32 +29,32 @@ public class Program {
 //
 //        Planter planter = new Planter(13);
 
-        planter.installSmartDevice(drainer);
-        planter.installSmartDevice(sprinkler);
-
-        for (int i = 0; i < 10; ++i) {
-            System.out.print(String.format("%d: ", i));
-            System.out.println(planter.getWaterAmount());
-            planter.tick();
-        }
-
-//        {
-//            Sprinkler sprinkler = new Sprinkler();
+//        planter.installSmartDevice(drainer);
+//        planter.installSmartDevice(sprinkler);
 //
-//            sprinkler.addSchedule(new Schedule(0, 4));
-//            sprinkler.addSchedule(new Schedule(2, 3));
-//            sprinkler.addSchedule(new Schedule(6, 4));
-//
-//            boolean[] expectedIsOn = new boolean[]{false, true, true, true, true, false, false,
-//                    true, true, true, true, false, false};
-//
-//            for (int i = 0; i < expectedIsOn.length; ++i) {
-//                System.out.print(String.format("%d: ", i));
-//                System.out.println(sprinkler.isOn());
-//                assert (expectedIsOn[i] == sprinkler.isOn());
-//                sprinkler.onTick();
-//            }
+//        for (int i = 0; i < 10; ++i) {
+//            System.out.print(String.format("%d: ", i));
+//            System.out.println(planter.getWaterAmount());
+//            planter.tick();
 //        }
+
+        {
+            Sprinkler sprinkler = new Sprinkler();
+
+            sprinkler.addSchedule(new Schedule(0, 4));
+            sprinkler.addSchedule(new Schedule(2, 3));
+            sprinkler.addSchedule(new Schedule(6, 4));
+
+            boolean[] expectedIsOn = new boolean[]{false, true, true, true, true, false, false,
+                    true, true, true, true, false, false};
+
+            for (int i = 0; i < expectedIsOn.length; ++i) {
+                System.out.print(String.format("%d: ", i));
+                System.out.println(sprinkler.isOn());
+                assert (expectedIsOn[i] == sprinkler.isOn());
+                sprinkler.onTick();
+            }
+        }
 //
 //        {
 //            Sprinkler sprinkler = new Sprinkler();
