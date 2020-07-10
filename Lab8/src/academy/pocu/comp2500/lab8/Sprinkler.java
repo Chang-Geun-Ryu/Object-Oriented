@@ -3,8 +3,8 @@ package academy.pocu.comp2500.lab8;
 import java.util.ArrayList;
 
 public class Sprinkler extends SmartDevice implements ISprayable {
-    private static final int WATER = 15;
-    private static final ArrayList<Schedule> S = new ArrayList<>();
+    private final int WATER = 15;
+    private final ArrayList<Schedule> S = new ArrayList<>();
     private Schedule onSchedule;
     private int keepSprayTick;
 

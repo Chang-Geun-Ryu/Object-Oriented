@@ -61,10 +61,11 @@ public class Planter {
 
     public void tick() {
 
+        this.waterAmount = this.waterAmount - USE_WATER >= 0 ? this.waterAmount - USE_WATER : 0;
+
         for (IWaterDetectable iWaterDetectable : this.waterDetectables) {
             iWaterDetectable.detect(this.waterAmount);
         }
-        this.waterAmount = this.waterAmount - USE_WATER >= 0 ? this.waterAmount - USE_WATER : 0;
 
         for (Sprinkler s : this.sprayableDevices) {
             s.onTick();
