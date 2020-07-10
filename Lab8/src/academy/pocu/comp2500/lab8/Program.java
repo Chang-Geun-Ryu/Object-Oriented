@@ -4,58 +4,58 @@ public class Program {
 
     public static void main(String[] args) {
         {
-            Sprinkler sprinkler = new Sprinkler();
-            sprinkler.addSchedule(new Schedule(12, 6));
-            sprinkler.addSchedule(new Schedule(19, 10));
-            sprinkler.addSchedule(new Schedule(36, 10));
-            sprinkler.addSchedule(new Schedule(51, 2));
-            sprinkler.addSchedule(new Schedule(64, 7));
-            sprinkler.addSchedule(new Schedule(86, 10));
-            sprinkler.addSchedule(new Schedule(103, 2));
-
-            Drainer drainer = new Drainer(76);
-
-            Planter planter = new Planter(96);
-
-//        Sprinkler sprinkler = new Sprinkler();
-//        sprinkler.addSchedule(new Schedule(1, 9));
-//        sprinkler.addSchedule(new Schedule(21, 10));
-//        sprinkler.addSchedule(new Schedule(36, 9));
-//        sprinkler.addSchedule(new Schedule(49, 7));
-//        sprinkler.addSchedule(new Schedule(72, 7));
-//        sprinkler.addSchedule(new Schedule(95, 3));
-//        sprinkler.addSchedule(new Schedule(105, 3));
+//            Sprinkler sprinkler = new Sprinkler();
+//            sprinkler.addSchedule(new Schedule(12, 6));
+//            sprinkler.addSchedule(new Schedule(19, 10));
+//            sprinkler.addSchedule(new Schedule(36, 10));
+//            sprinkler.addSchedule(new Schedule(51, 2));
+//            sprinkler.addSchedule(new Schedule(64, 7));
+//            sprinkler.addSchedule(new Schedule(86, 10));
+//            sprinkler.addSchedule(new Schedule(103, 2));
 //
-//        Drainer drainer = new Drainer(110);
+//            Drainer drainer = new Drainer(76);
 //
-//        Planter planter = new Planter(13);
+//            Planter planter = new Planter(96);
+
+        Sprinkler sprinkler = new Sprinkler();
+        sprinkler.addSchedule(new Schedule(1, 9));
+        sprinkler.addSchedule(new Schedule(21, 10));
+        sprinkler.addSchedule(new Schedule(36, 9));
+        sprinkler.addSchedule(new Schedule(49, 7));
+        sprinkler.addSchedule(new Schedule(72, 7));
+        sprinkler.addSchedule(new Schedule(95, 3));
+        sprinkler.addSchedule(new Schedule(105, 3));
+
+        Drainer drainer = new Drainer(110);
+
+        Planter planter = new Planter(13);
 
             planter.installSmartDevice(drainer);
             planter.installSmartDevice(sprinkler);
 
-            for (int i = 0; i < 10; ++i) {
+            for (int i = 0; i < 25; ++i) {
                 System.out.print(String.format("%d: ", i));
                 System.out.println(planter.getWaterAmount());
                 planter.tick();
             }
         }
-        {
-            Sprinkler sprinkler = new Sprinkler();
-
-            sprinkler.addSchedule(new Schedule(0, 4));
-            sprinkler.addSchedule(new Schedule(2, 3));
-            sprinkler.addSchedule(new Schedule(6, 4));
-
-            boolean[] expectedIsOn = new boolean[]{false, true, true, true, true, false, false,
-                    true, true, true, true, false, false};
-
-            for (int i = 0; i < expectedIsOn.length; ++i) {
-                System.out.print(String.format("%d: ", i));
-                System.out.println(sprinkler.isOn());
-                assert (expectedIsOn[i] == sprinkler.isOn());
-                sprinkler.onTick();
-            }
-        }
+//        {
+//            Sprinkler sprinkler = new Sprinkler();
+//
+//            sprinkler.addSchedule(new Schedule(0, 4));
+//            sprinkler.addSchedule(new Schedule(2, 3));
+//            sprinkler.addSchedule(new Schedule(6, 4));
+//
+//            boolean[] expectedIsOn = new boolean[]{false, true, true, true, true, false, false,
+//                    true, true, true, true, false, false};
+//
+//            for (int i = 0; i < expectedIsOn.length; ++i) {
+//                System.out.print(String.format("%d: ", i));
+//                System.out.println(sprinkler.isOn());
+//                assert (expectedIsOn[i] == sprinkler.isOn());
+//                sprinkler.onTick();
+//            }
+//        }
 //
 //        {
 //            Sprinkler sprinkler = new Sprinkler();

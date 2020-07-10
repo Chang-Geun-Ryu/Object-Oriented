@@ -27,7 +27,6 @@ public class Planter {
     }
 
     public void installSmartDevice(SmartDevice device) {
-//        devices.add(device);
         device.addInstall(this);
     }
 
@@ -37,14 +36,6 @@ public class Planter {
 
     public void installDrainer(Drainer d) {
         this.drainableDevices.add(d);
-
-//        IWaterDetectable detect = new IWaterDetectable() {
-//            @Override
-//            public void detect(int waterLevel) {
-//                waterAmount -= waterLevel;
-//            }
-//        };
-//        d.setDetect(detect);
     }
 
     public void addDetect(IWaterDetectable detectable) {
@@ -60,16 +51,8 @@ public class Planter {
     }
 
     public void tick() {
-
-        this.waterAmount = this.waterAmount - USE_WATER >= 0 ? this.waterAmount - USE_WATER : 0;
-
         for (IWaterDetectable iWaterDetectable : this.waterDetectables) {
             iWaterDetectable.detect(this.waterAmount);
-        }
-
-        for (Sprinkler s : this.sprayableDevices) {
-            s.onTick();
-            s.spray(this);
         }
 
         for (Drainer d : this.drainableDevices) {
@@ -77,7 +60,13 @@ public class Planter {
             d.drain(this);
         }
 
+        for (Sprinkler s : this.sprayableDevices) {
+            s.onTick();
+            s.spray(this);
+        }
 
-        this.waterAmount = this.waterAmount > 0 ? this.waterAmount : 0;
+
+
+        this.waterAmount = this.waterAmount - USE_WATER >= 0 ? this.waterAmount - USE_WATER : 0;
     }
 }
