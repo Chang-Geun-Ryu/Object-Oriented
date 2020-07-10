@@ -1,5 +1,7 @@
 package academy.pocu.comp2500.assignment3;
 
+import java.util.Objects;
+
 public class AttackIntent {
     private IntVector2D vector2D;
     private int damage;
@@ -21,5 +23,10 @@ public class AttackIntent {
 
     public Unit getAttacker() {
         return this.attacker;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vector2D, damage, attacker);
     }
 }
