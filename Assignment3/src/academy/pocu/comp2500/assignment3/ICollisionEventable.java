@@ -1,5 +1,8 @@
 package academy.pocu.comp2500.assignment3;
 
 public interface ICollisionEventable {
-    void collisionEvent();
+    void event();
+    AttackIntent attack();
+    void onAttacked(int damage);
+    UnitKind getUnitKind();
 }

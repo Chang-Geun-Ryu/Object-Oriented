@@ -1,9 +1,10 @@
 package academy.pocu.comp2500.assignment3;
 
-public class Mine extends Unit implements ICollisionEventable {
-    private int pushCount;
-    private int detectUnitCount;
+import java.util.ArrayList;
 
+public class Mine extends Unit implements ICollisionEventable {
+    protected int pushCount;
+    protected int detectUnitCount;
 
     public Mine(IntVector2D vector2D, int pushCount) {
         super(vector2D, 1, 'N', UnitKind.UNDER, 0, 0, 10, Target.LAND);
@@ -12,8 +13,8 @@ public class Mine extends Unit implements ICollisionEventable {
 
     protected Mine(IntVector2D vector2D, int pushCount, int detectUnitCount) {
         super(vector2D, 1, 'A', UnitKind.UNDER, 1, 1, 15, Target.LAND);
-        this.detectUnitCount = detectUnitCount;
         this.pushCount = pushCount;
+        this.detectUnitCount = detectUnitCount;
     }
 
     @Override
@@ -21,18 +22,40 @@ public class Mine extends Unit implements ICollisionEventable {
         SimulationManager.getInstance().registerCollisionEventListener(this);
     }
 
-    private boolean detectUnit() {
+    @Override
+    public void onAttacked(int damage) {
+        if (damage == 0) {
+            return;
+        }
 
-        return false;
+        if (this.hp == 1) {
+            ArrayList<Unit> findedUnits = getFindUnits();
+            for (Unit u : findedUnits) {
+                u.onAttacked(this.ap);
+            }
+            this.hp = 0;
+        }
     }
 
     @Override
-    public void collisionEvent() {
+    public void event() {
+        if (this.getHp() == 0) {
+            return;
+        }
 
+        detect();
     }
 
-    @Override
-    public void think() {
+    protected void detect() {
+        ArrayList<Unit> findedUnits = getFindUnits();
 
+        pushCount = pushCount - findedUnits.size() >= 0 ? pushCount - findedUnits.size() : 0;
+
+        if (pushCount == 0) {
+            for (Unit u : findedUnits) {
+                u.onAttacked(this.ap);
+            }
+            this.hp = 0;
+        }
     }
 }
