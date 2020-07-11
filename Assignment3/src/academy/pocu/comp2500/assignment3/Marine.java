@@ -57,6 +57,7 @@ public class Marine extends Unit implements IMovable {
         if (this.getHp() == 0) {
             return;
         }
+
         ArrayList<Unit> findedUnits = getFindUnits();
         Unit attack = canAttack(findedUnits);
 

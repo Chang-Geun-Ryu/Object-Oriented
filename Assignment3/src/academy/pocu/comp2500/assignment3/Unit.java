@@ -136,6 +136,59 @@ public abstract class Unit implements IThinkable {
     }
 
     protected Unit canAttack(ArrayList<Unit> units) {
+        if (units == null || units.size() == 0) {
+            return null;
+        }
+        ArrayList<Unit> attack = new ArrayList<>(units);
+//        ArrayList<Unit> attack = units;
+        int minHp = Integer.MAX_VALUE;
+        for (int i = attack.size() - 1; i >= 0; --i) {
+            int x = attack.get(i).getPosition().getX();
+            int y = attack.get(i).getPosition().getY();
+            boolean isEqual = false;
+            for (IntVector2D v : this.pos) {
+                if (v.getX() + this.vector2D.getX() == x && v.getY() + this.vector2D.getY() == y) {
+                    isEqual = true;
+                }
+
+                if (isEqual) {
+                    break;
+                }
+            }
+
+            if (isEqual == false) {
+                attack.remove(i);
+            } else {
+                if (minHp > attack.get(i).getHp()) {
+                    minHp = attack.get(i).getHp();
+                }
+            }
+        }
+
+        if (attack == null || attack.size() == 0) {
+            return null;
+        }
+
+        ArrayList<Unit> weaks = getWeakUnits(attack);
+
+        if (weaks.size() == 1) {
+            return weaks.get(0);
+        } else if (weaks.size() > 1) {
+            for (Unit u : weaks) {
+                if (u.getPosition().hashCode() == this.vector2D.hashCode()) {
+                    return u;
+                }
+            }
+
+            return getAnglePriority(weaks);
+
+        } else {
+            return null;
+        }
+
+    }
+
+    protected Unit canAttack1(ArrayList<Unit> units) {
 
         ArrayList<Unit> attackableUnit = new ArrayList<>();
         // 00, 북, 동, 남, 서
@@ -171,6 +224,36 @@ public abstract class Unit implements IThinkable {
         }
 
         return null;
+    }
+
+    protected ArrayList<Unit> getWeakUnits(ArrayList<Unit> units) {
+        int min = units.get(0).getHp();
+        for (Unit u : units) {
+            if (min > u.getHp()) {
+                min = u.getHp();
+            }
+        }
+
+        for (int i = units.size() - 1; i >= 0; --i) {
+            if (min != units.get(i).getHp()) {
+                units.remove(i);
+            }
+        }
+
+        return units;
+    }
+
+    protected Unit getAnglePriority(ArrayList<Unit> units) {
+        Unit target = units.get(0);
+        double max = Math.toDegrees(Math.atan2(units.get(0).vector2D.getX(), units.get(0).vector2D.getY()));
+        for (Unit unit : units) {
+            if (max < Math.toDegrees(Math.atan2(unit.vector2D.getX(), unit.vector2D.getY()))) {
+                max = Math.toDegrees(Math.atan2(unit.vector2D.getX(), unit.vector2D.getY()));
+                target = unit;
+            }
+        }
+
+        return target;
     }
 
     protected void addAttack(Unit unit) {

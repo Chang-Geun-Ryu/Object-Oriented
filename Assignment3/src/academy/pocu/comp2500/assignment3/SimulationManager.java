@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment3;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public final class SimulationManager {

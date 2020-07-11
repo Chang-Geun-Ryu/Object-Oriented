@@ -27,18 +27,18 @@ public class IntVector2D {
         this.y = y;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) {
-//            return true;
-//        }
-//        if (o == null || !(o instanceof IntVector2D)) {
-//            return false;
-//        }
-//        IntVector2D vector2D = (IntVector2D) o;
-//        return x == vector2D.x &&
-//                y == vector2D.y;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return false;
+        }
+        if (o == null) {
+            return false;
+        }
+        IntVector2D vector2D = (IntVector2D) o;
+        return x == vector2D.x &&
+                y == vector2D.y;
+    }
 
     @Override
     public int hashCode() {
