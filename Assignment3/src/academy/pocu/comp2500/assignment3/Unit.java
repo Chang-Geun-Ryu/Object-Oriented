@@ -257,7 +257,7 @@ public abstract class Unit implements IThinkable {
     }
 
     protected void addAttack(Unit unit) {
-        this.attackIntent = new AttackIntent(unit.vector2D, this.ap, this);
+        this.attackIntent = new AttackIntent(unit.getPosition(), this.ap, unit.unitKind, this);
     }
 
     @Override

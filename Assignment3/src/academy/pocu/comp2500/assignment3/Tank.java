@@ -30,11 +30,6 @@ public class Tank extends Unit implements IMovable {
 
     }
 
-    private void addEvent() {
-        this.movePos = null;
-        SimulationManager.getInstance().registerMovable(this);
-    }
-
     @Override
     public void onAttacked(int damage) {
         super.onAttacked(damage * (this.siege ? 2 : 1));
@@ -89,7 +84,6 @@ public class Tank extends Unit implements IMovable {
 
     protected void addMove(IntVector2D vector2D) {
         this.movePos = vector2D;//new IntVector2D(vector2D.getX() + this.vector2D.getX(), vector2D.getY() + this.vector2D.getY());
-        SimulationManager.getInstance().registerMovable(this);
     }
 
     @Override

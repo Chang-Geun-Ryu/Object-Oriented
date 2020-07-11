@@ -20,8 +20,7 @@ public class Wraith extends Unit implements IMovable {
     }
 
     protected void addMove(IntVector2D vector2D) {
-        this.movePos = vector2D;//new IntVector2D(vector2D.getX() + this.vector2D.getX(), vector2D.getY() + this.vector2D.getY());
-        SimulationManager.getInstance().registerMovable(this);
+        this.movePos = vector2D;
     }
 
     @Override
@@ -64,39 +63,10 @@ public class Wraith extends Unit implements IMovable {
 
         if (attack != null) {    // attack
             addAttack(attack);
+        } else if (airUnits.size() > 0) {
+            goTo(airUnits);
         } else if (findedUnits.size() > 0) { // move
-            if (findedUnits.size() > 1) {
-                int min = Integer.MAX_VALUE;
-                for (Unit unit : findedUnits) {
-                    if (min > calcDistance(unit.vector2D)) {
-                        min = calcDistance(unit.vector2D);
-                    }
-                }
-
-                for (int i = findedUnits.size() - 1; i >= 0; --i) {
-                    if (calcDistance(findedUnits.get(i).vector2D) != min) {
-                        findedUnits.remove(i);
-                    }
-                }
-
-                if (findedUnits.size() > 1) {
-                    IntVector2D move = getPriority(findedUnits);
-                    move = toMove(move);
-                    addMove(move);
-                } else if (findedUnits.size() == 1) { // move
-                    IntVector2D move = toMove(findedUnits.get(0).vector2D);
-                    addMove(move);
-                } else { // error
-                    assert false : "finded unit logic error";
-                }
-
-            } else if (findedUnits.size() == 1) { // move
-                IntVector2D move = toMove(findedUnits.get(0).vector2D);
-                addMove(move);
-            } else {    // stay
-                IntVector2D move = toMove(originVector2D);
-                addMove(move);
-            }
+            goTo(findedUnits);
         } else {
             if (this.originVector2D.hashCode() != this.vector2D.hashCode()) {
                 IntVector2D move = toMove(originVector2D);
@@ -117,6 +87,40 @@ public class Wraith extends Unit implements IMovable {
     }
 
 
+    private void goTo(ArrayList<Unit> findedUnits) {
+        if (findedUnits.size() > 1) {
+            int min = Integer.MAX_VALUE;
+            for (Unit unit : findedUnits) {
+                if (min > calcDistance(unit.vector2D)) {
+                    min = calcDistance(unit.vector2D);
+                }
+            }
+
+            for (int i = findedUnits.size() - 1; i >= 0; --i) {
+                if (calcDistance(findedUnits.get(i).vector2D) != min) {
+                    findedUnits.remove(i);
+                }
+            }
+
+            if (findedUnits.size() > 1) {
+                IntVector2D move = getPriority(findedUnits);
+                move = toMove(move);
+                addMove(move);
+            } else if (findedUnits.size() == 1) { // move
+                IntVector2D move = toMove(findedUnits.get(0).vector2D);
+                addMove(move);
+            } else { // error
+                assert false : "finded unit logic error";
+            }
+
+        } else if (findedUnits.size() == 1) { // move
+            IntVector2D move = toMove(findedUnits.get(0).vector2D);
+            addMove(move);
+        } else {    // stay
+            IntVector2D move = toMove(originVector2D);
+            addMove(move);
+        }
+    }
 
     private IntVector2D getPriority(ArrayList<Unit> units) {
 

@@ -43,7 +43,7 @@ public class Program {
 //
 //        Unit u0 = new Tank(new IntVector2D(3, 3));
 //
-//        ArrayList<Unit> units = new ArrayList<>();
+        ArrayList<Unit> units = new ArrayList<>();
 //        units.add(new Tank(new IntVector2D(0, 2)));
 
         ///// 00
@@ -119,38 +119,22 @@ public class Program {
 //        /*E*/units.add(new SmartMine(   new IntVector2D(0,  4), 1, 3));
 //        /*F*/units.add(new SmartMine(   new IntVector2D(1,  5), 3, 3));
 
-//        /*0*/units.add(new Turret(      new IntVector2D(6,  0)));
-//        /*1*/units.add(new Wraith(      new IntVector2D(5, 2)));
-//        /*2*/units.add(new Wraith(      new IntVector2D(0,  0)));
-//        /*3*/units.add(new Marine(      new IntVector2D(3, 3)));
-//        /*4*/units.add(new Tank(        new IntVector2D(6,  0)));
-//        /*5*/units.add(new SmartMine(   new IntVector2D(5, 0), 4, 1));
-//        /*6*/units.add(new Tank(        new IntVector2D(1, 0)));
-//        /*7*/units.add(new Marine(      new IntVector2D(1,  2)));
-//        /*8*/units.add(new Marine(      new IntVector2D(4, 3)));
-//        /*9*/units.add(new SmartMine(   new IntVector2D(5,  0), 1, 3));
-//        /*A*/units.add(new Tank(        new IntVector2D(1, 1)));
-//        /*B*/units.add(new Marine(      new IntVector2D(3, 0)));
-//        /*C*/units.add(new Mine(        new IntVector2D(3, 3), 3));
-//        /*D*/units.add(new Wraith(      new IntVector2D(3, 0)));
-//        /*E*/units.add(new Wraith(      new IntVector2D(1, 0)));
-//        /*F*/units.add(new SmartMine(   new IntVector2D(0,  2), 2, 2));
-
-        Unit u0 = new Mine(new IntVector2D(12, 1), 2);
-        Unit u1 = new Marine(new IntVector2D(0, 5));
-        Unit u2 = new Turret(new IntVector2D(5, 6));
-        Unit u3 = new Tank(new IntVector2D(2, 4));
-        Unit u4 = new Marine(new IntVector2D(2, 4));
-        Unit u5 = new Wraith(new IntVector2D(2, 7));
-
-        ArrayList<Unit> units = new ArrayList<>();
-
-        units.add(u0);
-        units.add(u1);
-        units.add(u2);
-        units.add(u3);
-        units.add(u4);
-        units.add(u5);
+//        /*0*/units.add(new Wraith(      new IntVector2D(15, 0)));
+        /*1 */units.add(new Marine(      new IntVector2D(4,  3)));
+//        /*2*/units.add(new Marine(      new IntVector2D(10, 5)));
+        /*3 */units.add(new Turret(      new IntVector2D(3,  4)));
+//        /*4*/units.add(new Wraith(      new IntVector2D(14, 7)));
+//        /*5*/units.add(new Mine(        new IntVector2D(14, 6), 3));
+//        /*6*/units.add(new Mine(        new IntVector2D(5,  0), 3));
+//        /*7*/units.add(new SmartMine(   new IntVector2D(8,  0), 2, 2));
+//        /*8*/units.add(new Mine(        new IntVector2D(4,  2), 3));
+//        /*9*/units.add(new Tank(        new IntVector2D(9,  6)));
+//        /*A*/units.add(new Turret(      new IntVector2D(3,  7)));
+//        /*B*/units.add(new SmartMine(   new IntVector2D(14, 3), 3, 1));
+//        /*C*/units.add(new Tank(        new IntVector2D(8,  0)));
+        /*D */units.add(new SmartMine(   new IntVector2D(2,  4), 4, 1));
+//        /*E*/units.add(new Wraith(      new IntVector2D(10, 0)));
+        /*F */units.add(new Wraith(      new IntVector2D(4,  5)));
 
 
         for (Unit unit : units) {

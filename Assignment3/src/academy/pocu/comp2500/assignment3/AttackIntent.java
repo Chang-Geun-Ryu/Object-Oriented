@@ -4,11 +4,13 @@ public class AttackIntent {
     private IntVector2D vector2D;
     private int damage;
     private Unit attacker;
+    private UnitKind kind;
 
-    public AttackIntent(IntVector2D vector2D, int damage, Unit attacker) {
+    public AttackIntent(IntVector2D vector2D, int damage, UnitKind kind, Unit attacker) {
         this.vector2D = vector2D;
         this.damage = damage;
         this.attacker = attacker;
+        this.kind = kind;
     }
 
     public IntVector2D getVector2D() {
@@ -56,14 +58,21 @@ public class AttackIntent {
     }
 
     private boolean isAttack(Unit attacker, Unit unit) {
-        if (attacker.getTarget() == Target.LAND) {
-            return unit.getUnitKind() != UnitKind.AIR;
-        } else if (attacker.getTarget() == Target.AIR) {
+        if (this.kind == UnitKind.AIR) {
             return unit.getUnitKind() == UnitKind.AIR;
+        } else if (kind == UnitKind.LAND) {
+            return unit.getUnitKind() != UnitKind.AIR;
         } else {
-            return true;
-//            return unit.getUnitKind() != UnitKind.UNDER;
+            return unit.getUnitKind() == UnitKind.LAND;
         }
+//        if (attacker.getTarget() == Target.LAND) {
+//            return unit.getUnitKind() != UnitKind.AIR;
+//        } else if (attacker.getTarget() == Target.AIR) {
+//            return unit.getUnitKind() == UnitKind.AIR;
+//        } else {
+//            return true;
+////            return unit.getUnitKind() != UnitKind.UNDER;
+//        }
 
     }
 

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public final class SimulationManager {
     private static SimulationManager instance;// = new SimulationManager();
-    private ArrayList<Unit> spawnUnits;
-    private ArrayList<IThinkable> thinkableUnits;
-    private ArrayList<IMovable> movableUnits;
-    private ArrayList<ICollisionEventable> collisionUnits;
+    private final ArrayList<Unit> spawnUnits;
+    private final ArrayList<IThinkable> thinkableUnits;
+    private final ArrayList<IMovable> movableUnits;
+    private final ArrayList<ICollisionEventable> collisionUnits;
 
     private SimulationManager() {
         this.spawnUnits = new ArrayList<>();
@@ -50,11 +50,6 @@ public final class SimulationManager {
             return;
         }
 
-        // 충돌
-        for (ICollisionEventable event : this.collisionUnits) {
-            event.event();
-        }
-
         // 결정
         for (IThinkable t : this.thinkableUnits) {
             t.think();
@@ -63,6 +58,11 @@ public final class SimulationManager {
         // 이동
         for (IMovable m : this.movableUnits) {
             m.move();
+        }
+
+        // 충돌
+        for (ICollisionEventable event : this.collisionUnits) {
+            event.event();
         }
 
         // attack
@@ -114,30 +114,30 @@ public final class SimulationManager {
 
         this.movableUnits.clear();
 
-        for (Unit u : this.spawnUnits) {
-            AttackIntent intent = u.attack();
-            if (intent != null) {
-                int aoe = intent.getAttacker().getAoe();
-
-                if (aoe == 0) {
-                    attackPos(intent.getAttacker(), intent.getVector2D(), intent.getDamage());
-                } else if (aoe > 0) {
-
-                    for (int i = -aoe; i <= aoe; ++i) {
-                        for (int j = -aoe; j <= aoe; ++j) {
-                            int x = intent.getVector2D().getX() + i;
-                            int y = intent.getVector2D().getY() + j;
-
-                            int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
-                            int damage = aoeDamage(aoeValue, intent.getDamage());
-                            attackPos(intent.getAttacker(), new IntVector2D(x, y), damage);
-                        }
-                    }
-                } else {
-                    // negative
-                }
-            }
-        }
+//        for (Unit u : this.spawnUnits) {
+//            AttackIntent intent = u.attack();
+//            if (intent != null) {
+//                int aoe = intent.getAttacker().getAoe();
+//
+//                if (aoe == 0) {
+//                    attackPos(intent.getAttacker(), intent.getVector2D(), intent.getDamage());
+//                } else if (aoe > 0) {
+//
+//                    for (int i = -aoe; i <= aoe; ++i) {
+//                        for (int j = -aoe; j <= aoe; ++j) {
+//                            int x = intent.getVector2D().getX() + i;
+//                            int y = intent.getVector2D().getY() + j;
+//
+//                            int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+//                            int damage = aoeDamage(aoeValue, intent.getDamage());
+//                            attackPos(intent.getAttacker(), new IntVector2D(x, y), damage);
+//                        }
+//                    }
+//                } else {
+//                    // negative
+//                }
+//            }
+//        }
 
         ArrayList<IntVector2D> overlabMine = new ArrayList<>();
         for (Unit u : this.spawnUnits) {
