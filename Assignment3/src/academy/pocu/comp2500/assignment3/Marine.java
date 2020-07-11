@@ -114,10 +114,15 @@ public class Marine extends Unit implements IMovable {
 
 
         Unit target = units.get(0);
-        double max = Math.toDegrees(Math.atan2(units.get(0).vector2D.getX(), units.get(0).vector2D.getY()));
+        int x =  target.getPosition().getX() - this.vector2D.getX();
+        int y =  target.getPosition().getY() - this.vector2D.getY();
+        double max = Math.toDegrees(Math.atan2(x, y));
         for (Unit unit : units) {
-            if (max < Math.toDegrees(Math.atan2(unit.vector2D.getX(), unit.vector2D.getY()))) {
-                max = Math.toDegrees(Math.atan2(unit.vector2D.getX(), unit.vector2D.getY()));
+            x = unit.vector2D.getX() - this.vector2D.getX();
+            y = unit.vector2D.getY() - this.vector2D.getY();
+
+            if (max < Math.toDegrees(Math.atan2(x, y))) {
+                max = Math.toDegrees(Math.atan2(x, y));
                 target = unit;
             }
         }

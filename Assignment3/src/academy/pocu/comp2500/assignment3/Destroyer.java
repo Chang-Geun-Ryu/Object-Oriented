@@ -2,7 +2,7 @@ package academy.pocu.comp2500.assignment3;
 
 public class Destroyer extends Unit implements IMovable {
     public Destroyer(IntVector2D vector2D) {
-        super(vector2D, 100, 'D', null, -1, -1, -1, null);
+        super(vector2D, 100, 'D', null, 1, 1, 1, null);
     }
 
     @Override
@@ -13,7 +13,6 @@ public class Destroyer extends Unit implements IMovable {
 
     @Override
     public void think() {
-        super.think();
 
     }
 

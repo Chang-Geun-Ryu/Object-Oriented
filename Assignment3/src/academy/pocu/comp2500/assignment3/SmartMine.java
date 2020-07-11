@@ -9,42 +9,20 @@ public class SmartMine extends Mine {
     }
 
     @Override
-    public void onAttacked(int damage) {
-        if (damage == 0) {
-            return;
-        }
-        for (int i = -aoe; i <= aoe; ++i) {
-            for (int j = -aoe; j <= aoe; ++j) {
-                int x = this.vector2D.getX() + i;
-                int y = this.vector2D.getY() + j;
-
-                int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
-                int d = aoeDamage(aoeValue, this.ap);
-
-                attackPos(this, new IntVector2D(x, y), d);
-            }
-        }
-        this.hp = 0;
+    public void onSpawn() {
+        SimulationManager.getInstance().registerCollisionEventListener(this);
+        SimulationManager.getInstance().registerThinkable(this);
     }
 
-    protected void detect() {
-        if (this.getHp() == 0) {
-            return;
-        }
-
+    @Override
+    public void think() {
         ArrayList<Unit> findedUnits = getFindUnits();
 
         if (this.detectUnitCount <= findedUnits.size()) {
             this.detectUnitCount = 0;
         }
 
-        for (Unit unit : findedUnits) {
-            if (calcDistance(unit.vector2D) == 0) {
-                this.pushCount = this.pushCount - 1 >= 0 ? this.pushCount - 1 : 0;
-            }
-        }
-
-        if (this.pushCount == 0 || this.detectUnitCount == 0) {
+        if (this.detectUnitCount == 0) {
 //            addAttack(this);
             for (int i = -aoe; i <= aoe; ++i) {
                 for (int j = -aoe; j <= aoe; ++j) {
@@ -55,6 +33,61 @@ public class SmartMine extends Mine {
                     int damage = aoeDamage(aoeValue, this.ap);
 
                     attackPos(this, new IntVector2D(x, y), damage);
+                }
+            }
+            this.hp = 0;
+        }
+    }
+
+    @Override
+    public void onAttacked(int damage) {
+        if (damage == 0) {
+            return;
+        }
+//        for (int i = -aoe; i <= aoe; ++i) {
+//            for (int j = -aoe; j <= aoe; ++j) {
+//                int x = this.vector2D.getX() + i;
+//                int y = this.vector2D.getY() + j;
+//
+//                int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+//                int d = aoeDamage(aoeValue, this.ap);
+//
+//                attackPos(this, new IntVector2D(x, y), d);
+//            }
+//        }
+        this.hp = 0;
+    }
+
+
+
+    protected void detect() {
+        if (this.getHp() == 0) {
+            return;
+        }
+
+        ArrayList<Unit> findedUnits = getFindUnits();
+
+//        if (this.detectUnitCount <= findedUnits.size()) {
+//            this.detectUnitCount = 0;
+//        }
+
+        for (Unit unit : findedUnits) {
+            if (calcDistance(unit.vector2D) == 0) {
+                this.pushCount = this.pushCount - 1 >= 0 ? this.pushCount - 1 : 0;
+            }
+        }
+
+        if (this.pushCount == 0) {
+//            addAttack(this);
+            for (int i = -aoe; i <= aoe; ++i) {
+                for (int j = -aoe; j <= aoe; ++j) {
+                    int x = this.vector2D.getX() + i;
+                    int y = this.vector2D.getY() + j;
+
+                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+                    int damage = aoeDamage(aoeValue, this.ap);
+
+//                    attackPos(this, new IntVector2D(x, y), damage);
                 }
             }
             this.hp = 0;
