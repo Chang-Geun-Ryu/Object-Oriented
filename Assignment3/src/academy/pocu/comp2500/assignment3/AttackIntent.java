@@ -58,21 +58,14 @@ public class AttackIntent {
     }
 
     private boolean isAttack(Unit attacker, Unit unit) {
-        if (this.kind == UnitKind.AIR) {
-            return unit.getUnitKind() == UnitKind.AIR;
-        } else if (kind == UnitKind.LAND) {
+        if (attacker.getTarget() == Target.LAND) {
             return unit.getUnitKind() != UnitKind.AIR;
+        } else if (attacker.getTarget() == Target.AIR) {
+            return unit.getUnitKind() == UnitKind.AIR;
         } else {
-            return unit.getUnitKind() == UnitKind.LAND;
+            return true;
+//            return unit.getUnitKind() != UnitKind.UNDER;
         }
-//        if (attacker.getTarget() == Target.LAND) {
-//            return unit.getUnitKind() != UnitKind.AIR;
-//        } else if (attacker.getTarget() == Target.AIR) {
-//            return unit.getUnitKind() == UnitKind.AIR;
-//        } else {
-//            return true;
-////            return unit.getUnitKind() != UnitKind.UNDER;
-//        }
 
     }
 

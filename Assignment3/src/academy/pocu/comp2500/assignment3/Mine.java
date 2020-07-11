@@ -53,7 +53,9 @@ public class Mine extends Unit implements ICollisionEventable {
 
         if (pushCount == 0) {
             for (Unit u : findedUnits) {
-                u.onAttacked(this.ap);
+                if (u.getUnitKind() != UnitKind.AIR) {
+                    u.onAttacked(this.ap);
+                }
             }
             this.hp = 0;
         }

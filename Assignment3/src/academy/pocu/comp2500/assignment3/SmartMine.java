@@ -64,7 +64,7 @@ public class SmartMine extends Mine {
     private void attackPos(Unit attacker, IntVector2D vector2D, int damage) {
         for (Unit u : SimulationManager.getInstance().getUnits()) {
             if (u.getPosition().hashCode() == vector2D.hashCode()) {
-                if (u.hashCode() != attacker.hashCode()) {
+                if (u.hashCode() != attacker.hashCode() && u.getUnitKind() != UnitKind.AIR) {
                     u.onAttacked(damage);
                 }
             }
