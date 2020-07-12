@@ -35,6 +35,7 @@ public class Mine extends Unit implements ICollisionEventable {
 //            }
 //            this.hp = 0;
 //        }
+        this.hp = 0;
     }
 
     @Override

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Destroyer extends Unit implements IMovable {
     public Destroyer(IntVector2D vector2D) {
-        super(vector2D, 100, 'D', UnitKind.LAND, 1, 1, 1, Target.BOTH);
+        super(vector2D, 100, 'D', UnitKind.LAND, 3, 0, 1, Target.BOTH);
     }
 
     @Override
