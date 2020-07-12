@@ -28,13 +28,13 @@ public class Mine extends Unit implements ICollisionEventable {
             return;
         }
 
-        if (this.hp == 1) {
-            ArrayList<Unit> findedUnits = getFindUnits();
-            for (Unit u : findedUnits) {
-                u.onAttacked(this.ap);
-            }
-            this.hp = 0;
-        }
+//        if (this.hp == 1) {
+//            ArrayList<Unit> findedUnits = getFindUnits();
+//            for (Unit u : findedUnits) {
+//                u.onAttacked(this.ap);
+//            }
+//            this.hp = 0;
+//        }
     }
 
     @Override
@@ -52,11 +52,12 @@ public class Mine extends Unit implements ICollisionEventable {
         pushCount = pushCount - findedUnits.size() >= 0 ? pushCount - findedUnits.size() : 0;
 
         if (pushCount == 0) {
-            for (Unit u : findedUnits) {
-                if (u.getUnitKind() != UnitKind.AIR) {
-                    u.onAttacked(this.ap);
-                }
-            }
+//            for (Unit u : findedUnits) {
+//                if (u.getUnitKind() != UnitKind.AIR) {
+//                    u.onAttacked(this.ap);
+//                }
+//            }
+            addAttack(this);
             this.hp = 0;
         }
     }

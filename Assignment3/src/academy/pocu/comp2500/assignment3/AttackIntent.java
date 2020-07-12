@@ -46,11 +46,16 @@ public class AttackIntent {
     }
 
     private void attackPos(Unit attacker, IntVector2D vector2D, int damage) {
+
         for (Unit u : SimulationManager.getInstance().getUnits()) {
             if (u.getPosition().hashCode() == vector2D.hashCode()) {
                 if (u.hashCode() != attacker.hashCode()) {
                     if (isAttack(attacker, u)) {
-                        u.onAttacked(damage);
+                        if (this.attacker.getSymbol() == 'D') {
+                            u.onAttacked(u.getHp());
+                        } else {
+                            u.onAttacked(damage);
+                        }
                     }
                 }
             }

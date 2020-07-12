@@ -26,18 +26,18 @@ public class SmartMine extends Mine {
         }
 
         if (this.detectUnitCount == 0) {
-//            addAttack(this);
-            for (int i = -aoe; i <= aoe; ++i) {
-                for (int j = -aoe; j <= aoe; ++j) {
-                    int x = this.vector2D.getX() + i;
-                    int y = this.vector2D.getY() + j;
-
-                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
-                    int damage = aoeDamage(aoeValue, this.ap);
-
-                    attackPos(this, new IntVector2D(x, y), damage);
-                }
-            }
+            addAttack(this);
+//            for (int i = -aoe; i <= aoe; ++i) {
+//                for (int j = -aoe; j <= aoe; ++j) {
+//                    int x = this.vector2D.getX() + i;
+//                    int y = this.vector2D.getY() + j;
+//
+//                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+//                    int damage = aoeDamage(aoeValue, this.ap);
+//
+//                    attackPos(this, new IntVector2D(x, y), damage);
+//                }
+//            }
             this.hp = 0;
         }
     }
@@ -82,17 +82,18 @@ public class SmartMine extends Mine {
 
         if (this.pushCount == 0) {
 //            addAttack(this);
-            for (int i = -aoe; i <= aoe; ++i) {
-                for (int j = -aoe; j <= aoe; ++j) {
-                    int x = this.vector2D.getX() + i;
-                    int y = this.vector2D.getY() + j;
-
-                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
-                    int damage = aoeDamage(aoeValue, this.ap);
-
+            addAttack(this);
+//            for (int i = -aoe; i <= aoe; ++i) {
+//                for (int j = -aoe; j <= aoe; ++j) {
+//                    int x = this.vector2D.getX() + i;
+//                    int y = this.vector2D.getY() + j;
+//
+//                    int aoeValue = Math.abs(i) <= Math.abs(j) ? Math.abs(j) : Math.abs(i);
+//                    int damage = aoeDamage(aoeValue, this.ap);
+//
 //                    attackPos(this, new IntVector2D(x, y), damage);
-                }
-            }
+//                }
+//            }
             this.hp = 0;
         }
     }
