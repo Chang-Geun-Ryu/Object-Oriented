@@ -2,7 +2,7 @@ package academy.pocu.comp2500.assignment3;
 
 import java.util.ArrayList;
 
-public class Destroyer extends Unit implements IMovable {
+public class Destroyer extends Unit implements IMovable, ICollisionEventable {
     public Destroyer(IntVector2D vector2D) {
         super(vector2D, 100, 'D', UnitKind.LAND, 3, 0, 1, Target.BOTH);
     }
@@ -11,11 +11,15 @@ public class Destroyer extends Unit implements IMovable {
     public void onSpawn() {
         SimulationManager.getInstance().registerThinkable(this);
         SimulationManager.getInstance().registerMovable(this);
+        SimulationManager.getInstance().registerCollisionEventListener(this);
     }
 
     protected void addMove(IntVector2D vector2D) {
         this.movePos = vector2D;
     }
+
+
+
 
     @Override
     public void think() {
@@ -23,43 +27,31 @@ public class Destroyer extends Unit implements IMovable {
         if (this.getHp() == 0) {
             return;
         }
+//
+//        ArrayList<Unit> findedUnits = SimulationManager.getInstance().getUnits();
+////        Unit attack = canAttack(findedUnits);
+//
+//        for (Unit u : findedUnits) {
+//            if (u.hashCode() != this.hashCode()) {
+////                addAttack(u);
+//                u.onAttacked(u.getHp());
+//            }
+//        }
+    }
 
-        ArrayList<Unit> findedUnits = getFindUnits();
-        Unit attack = canAttack(findedUnits);
+    @Override
+    public void event() {
+        super.think();
+        if (this.getHp() == 0) {
+            return;
+        }
 
-        if (attack != null) {    // attack
-            addAttack(attack);
-        } else if (findedUnits.size() > 0) { // move
-            if (findedUnits.size() > 1) {
-                int min = Integer.MAX_VALUE;
-                for (Unit unit : findedUnits) {
-                    if (min > calcDistance(unit.vector2D)) {
-                        min = calcDistance(unit.vector2D);
-                    }
-                }
+        ArrayList<Unit> findedUnits = SimulationManager.getInstance().getUnits();
 
-                for (int i = findedUnits.size() - 1; i >= 0; --i) {
-                    if (calcDistance(findedUnits.get(i).vector2D) != min) {
-                        findedUnits.remove(i);
-                    }
-                }
-
-                if (findedUnits.size() > 1) {
-                    IntVector2D move = getPriority(findedUnits);
-                    move = toMove(move);
-                    addMove(move);
-                } else if (findedUnits.size() == 1) { // move
-                    IntVector2D move = toMove(findedUnits.get(0).vector2D);
-                    addMove(move);
-                } else { // error
-                    assert false : "finded unit logic error";
-                }
-
-            } else if (findedUnits.size() == 1) { // move
-                IntVector2D move = toMove(findedUnits.get(0).vector2D);
-                addMove(move);
-            } else {    // stay
-
+        for (Unit u : findedUnits) {
+            if (u.hashCode() != this.hashCode()) {
+                addAttack(u);
+                u.onAttacked(u.getHp());
             }
         }
     }
