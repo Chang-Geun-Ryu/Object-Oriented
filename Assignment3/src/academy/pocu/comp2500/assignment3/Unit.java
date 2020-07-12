@@ -245,8 +245,8 @@ public abstract class Unit implements IThinkable {
 
     protected Unit getAnglePriority(ArrayList<Unit> units) {
         Unit target = units.get(0);
-        int x =  target.getPosition().getX() - this.vector2D.getX();
-        int y =  target.getPosition().getY() - this.vector2D.getY();
+        int x = target.getPosition().getX() - this.vector2D.getX();
+        int y = target.getPosition().getY() - this.vector2D.getY();
         double max = Math.toDegrees(Math.atan2(x, y));
         for (Unit unit : units) {
             x = unit.vector2D.getX() - this.vector2D.getX();

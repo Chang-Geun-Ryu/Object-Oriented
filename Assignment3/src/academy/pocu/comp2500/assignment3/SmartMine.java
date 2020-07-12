@@ -16,6 +16,9 @@ public class SmartMine extends Mine {
 
     @Override
     public void think() {
+        if (this.hp == 0) {
+            return;
+        }
         ArrayList<Unit> findedUnits = getFindUnits();
 
         if (this.detectUnitCount <= findedUnits.size()) {
