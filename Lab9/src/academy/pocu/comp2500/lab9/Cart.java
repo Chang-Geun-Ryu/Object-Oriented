@@ -5,6 +5,11 @@ import java.util.UUID;
 
 public final class Cart {
     private ArrayList<Book> books = new ArrayList<>();
+    private IPriceable pricingModel;
+
+    public void setPricing(IPriceable pricingModel) {
+        this.pricingModel = pricingModel;
+    }
 
     public Book getBookOrNull(int index) {
         if (this.books.size() <= index) {
@@ -67,12 +72,10 @@ public final class Cart {
     }
 
     public int getTotalPrice() {
-        int sum = 0;
-
-        for (Book book : this.books) {
-            sum += book.getPrice();
+        if (this.pricingModel == null) {
+            this.pricingModel = new
+        } else {
+            return this.pricingModel.getTotalPrice(this.books);
         }
-
-        return sum;
     }
 }

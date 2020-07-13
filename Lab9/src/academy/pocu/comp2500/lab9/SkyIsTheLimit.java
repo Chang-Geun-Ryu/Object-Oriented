@@ -1,0 +1,37 @@
+package academy.pocu.comp2500.lab9;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SkyIsTheLimit implements IPriceable {
+    private int price;
+
+    public SkyIsTheLimit(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public int getTotalPrice(ArrayList<Book> collections) {
+        double sum = 0;
+
+        for (Book book : collections) {
+            sum += book.getPrice();
+        }
+
+        System.out.println(collections);
+        Collections.sort(collections, (lhs, rhs) -> {
+            return Integer.compare(rhs.getPrice(), lhs.getPrice());
+        });
+
+        System.out.println(collections);
+
+        if (sum >= price) {
+            for (int i = 0; i < 2; ++i) {
+                sum -= (double) collections.get(i).getPrice();
+                sum += (double) collections.get(i).getPrice() / 2d;
+            }
+        }
+
+        return (int) sum;
+    }
+}

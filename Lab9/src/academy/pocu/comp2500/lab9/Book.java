@@ -1,5 +1,6 @@
 package academy.pocu.comp2500.lab9;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public final class Book {
@@ -29,5 +30,29 @@ public final class Book {
 
     public UUID getSku() {
         return this.sku;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return false;
+        if (o == null) return false;
+        Book book = (Book) o;
+        return price == book.price &&
+                publishedYear == book.publishedYear &&
+                Objects.equals(sku, book.sku) &&
+                Objects.equals(title, book.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sku, title, price, publishedYear);
     }
 }
