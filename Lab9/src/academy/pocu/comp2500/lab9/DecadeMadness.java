@@ -6,6 +6,10 @@ import java.util.HashMap;
 public class DecadeMadness implements IPriceable {
     @Override
     public int getTotalPrice(ArrayList<Book> collections) {
+        if (collections == null || collections.size() == 0) {
+            return 0;
+        }
+
         double sum = 0.d;
 
         HashMap<Integer, ArrayList<Integer>> decadeMap = new HashMap<>();

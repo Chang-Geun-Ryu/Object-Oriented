@@ -40,7 +40,7 @@ public class Program {
         DecadeMadness model1 = new DecadeMadness();
         SkyIsTheLimit model2 = new SkyIsTheLimit(100);
 
-        System.out.println(model0.getTotalPrice(books));
+        System.out.println(model0.getTotalPrice(null));
         System.out.println(model1.getTotalPrice(books));
         System.out.println(model2.getTotalPrice(books));
         assert (model0.getTotalPrice(books) == 105);

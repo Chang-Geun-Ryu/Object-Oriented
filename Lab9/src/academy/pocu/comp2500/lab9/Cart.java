@@ -7,6 +7,10 @@ public final class Cart {
     private ArrayList<Book> books = new ArrayList<>();
     private IPriceable pricingModel;
 
+    public Cart(ArrayList<Book> books) {
+        this.books = books;
+    }
+
     public void setPricing(IPriceable pricingModel) {
         this.pricingModel = pricingModel;
     }

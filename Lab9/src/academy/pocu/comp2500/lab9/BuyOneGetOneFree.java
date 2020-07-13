@@ -13,8 +13,11 @@ public class BuyOneGetOneFree implements IPriceable {
     }
 
     public int getTotalPrice(ArrayList<Book> collections) {
-        int sum = 0;
+        if (collections == null || collections.size() == 0) {
+            return 0;
+        }
 
+        int sum = 0;
         HashMap<UUID, Boolean> hashMap = new HashMap<>();
 
         for (UUID u : this.sku) {
@@ -22,7 +25,7 @@ public class BuyOneGetOneFree implements IPriceable {
         }
 
         for (Book book : collections) {
-            if (sku.contains(book.getSku())) {
+            if (sku.size() > 0 && sku.contains(book.getSku())) {
                 if (hashMap.get(book.getSku())) { // 공짜!
                     hashMap.replace(book.getSku(), false);
                 } else {

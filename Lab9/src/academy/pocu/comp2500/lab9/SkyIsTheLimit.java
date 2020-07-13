@@ -12,6 +12,10 @@ public class SkyIsTheLimit implements IPriceable {
 
     @Override
     public int getTotalPrice(ArrayList<Book> collections) {
+        if (collections == null || collections.size() == 0) {
+            return 0;
+        }
+
         double sum = 0;
 
         for (Book book : collections) {
