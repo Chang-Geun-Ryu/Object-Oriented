@@ -73,7 +73,8 @@ public final class Cart {
 
     public int getTotalPrice() {
         if (this.pricingModel == null) {
-            this.pricingModel = new
+            this.pricingModel = new SimplePricing();
+            return this.pricingModel.getTotalPrice(this.books);
         } else {
             return this.pricingModel.getTotalPrice(this.books);
         }
