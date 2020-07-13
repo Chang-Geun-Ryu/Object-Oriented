@@ -6,6 +6,10 @@ public class SimplePricing implements IPriceable {
 
     @Override
     public int getTotalPrice(ArrayList<Book> collections) {
+        if (collections == null) {
+            return 0;
+        }
+
         int sum = 0;
 
         for (Book book : collections) {

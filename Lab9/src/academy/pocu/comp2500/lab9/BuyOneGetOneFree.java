@@ -9,7 +9,11 @@ public class BuyOneGetOneFree implements IPriceable {
     private HashSet<UUID> sku;
 
     public BuyOneGetOneFree(HashSet<UUID> sku) {
-        this.sku = sku;
+        if (sku != null) {
+            this.sku = sku;
+        } else {
+            this.sku = new HashSet<>();
+        }
     }
 
     public int getTotalPrice(ArrayList<Book> collections) {
