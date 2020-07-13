@@ -36,7 +36,7 @@ public final class Cart {
 //        return true;
 //    }
 
-    public boolean addBooks(final ArrayList<Book> books) {
+    public void addBooks(final ArrayList<Book> books) {
 //        if (skus.length != titles.length || skus.length != prices.length || skus.length != publishedYears.length) {
 //            return false;
 //        }
@@ -48,7 +48,6 @@ public final class Cart {
         for (Book b : books) {
             addBook(b);
         }
-        return true;
     }
 
 //    public void addBook(final UUID sku, final String title, final int price, final int publishedYear) {
