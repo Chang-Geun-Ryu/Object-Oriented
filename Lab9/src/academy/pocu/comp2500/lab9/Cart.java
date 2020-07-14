@@ -18,13 +18,21 @@ public final class Cart {
         return this.books.size();
     }
 
-    public void addBooks(final ArrayList<Book> books) {
+    public void addBooks(ArrayList<Book> books) {
+        if (books == null) {
+            return;
+        }
+
         for (Book b : books) {
             addBook(b);
         }
     }
 
-    public void addBook(final Book book) {
+    public void addBook(Book book) {
+        if (book == null) {
+            return;
+        }
+
         this.books.add(book);
     }
 
