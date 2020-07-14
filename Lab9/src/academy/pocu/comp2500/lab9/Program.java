@@ -23,15 +23,15 @@ public class Program {
         ArrayList<Book> books = new ArrayList<>();
 
         books.add(book0);
-        books.add(book1);
-        books.add(book2);
-        books.add(book3);
-        books.add(book4);
-        books.add(book5);
-        books.add(book6);
-        books.add(book7);
-        books.add(book8);
-        books.add(book9);
+//        books.add(book1);
+//        books.add(book2);
+//        books.add(book3);
+//        books.add(book4);
+//        books.add(book5);
+//        books.add(book6);
+//        books.add(book7);
+//        books.add(book8);
+//        books.add(book9);
 
         HashSet<UUID> skus = new HashSet<>();
         skus.add(sku0);

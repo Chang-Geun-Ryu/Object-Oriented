@@ -24,7 +24,7 @@ public final class Cart {
         }
     }
 
-    public void addBook(Book book) {
+    public void addBook(final Book book) {
         this.books.add(book);
     }
 

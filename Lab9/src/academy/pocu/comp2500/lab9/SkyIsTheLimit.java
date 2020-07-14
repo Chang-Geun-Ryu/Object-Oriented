@@ -30,9 +30,13 @@ public class SkyIsTheLimit implements IPriceable {
 //        System.out.println(collections);
 
         if (sum >= price) {
-            for (int i = 0; i < 2; ++i) {
-                sum -= (double) collections.get(i).getPrice();
-                sum += (double) collections.get(i).getPrice() / 2d;
+//            for (int i = 0; i < 2; ++i) {
+            int index = 0;
+            for (Book b : collections) {
+                if (++index <= 2) {
+                    sum -= (double) b.getPrice();
+                    sum += (double) b.getPrice() / 2d;
+                }
             }
         }
 
