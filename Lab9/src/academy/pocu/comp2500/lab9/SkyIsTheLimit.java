@@ -22,27 +22,25 @@ public class SkyIsTheLimit implements IPriceable {
             sum += book.getPrice();
         }
 
-        System.out.println(collections);
-        if (collections.size() > 1) {
+        if (collections.size() >= 5) {
             Collections.sort(collections, (lhs, rhs) -> {
                 return Integer.compare(rhs.getPrice(), lhs.getPrice());
             });
-        }
 
-        System.out.println(collections);
-
-        if (sum >= price) {
-//            for (int i = 0; i < 2; ++i) {
-            int index = 0;
-            for (Book b : collections) {
-                if (++index <= 2) {
-                    sum -= (double) b.getPrice();
-                    sum += (double) (b.getPrice()) * 0.5d;
-                } else {
-                    break;
+            if (sum >= price) {
+                int index = 0;
+                for (Book b : collections) {
+                    if (++index <= 2) {
+                        sum -= (double) b.getPrice();
+                        sum += (double) (b.getPrice()) * 0.5d;
+                    } else {
+                        break;
+                    }
                 }
             }
         }
+
+
 
         return (int) sum;
     }
