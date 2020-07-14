@@ -46,10 +46,6 @@ public final class Cart {
         return true;
     }
 
-//    public int getTotalPrice() {
-//        return new SimplePricing().getTotalPrice(this.books);
-//    }
-
     public int getTotalPrice(IPriceable pricingModel) {
         return pricingModel.getTotalPrice(this.books);
     }
