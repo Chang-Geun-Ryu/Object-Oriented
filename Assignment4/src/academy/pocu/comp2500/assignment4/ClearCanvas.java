@@ -3,7 +3,8 @@ package academy.pocu.comp2500.assignment4;
 public class ClearCanvas implements ICommend {
     @Override
     public boolean execute(Canvas canvas) {
-        return false;
+        canvas.clear();
+        return true;
     }
 
     @Override

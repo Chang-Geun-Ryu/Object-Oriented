@@ -1,6 +1,14 @@
 package academy.pocu.comp2500.assignment4;
 
 public class IncreasePixel implements ICommend {
+    private int x;
+    private int y;
+
+    public IncreasePixel(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     @Override
     public boolean execute(Canvas canvas) {
         return false;
