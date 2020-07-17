@@ -11,6 +11,7 @@ public class IncreasePixel implements ICommend {
 
     @Override
     public boolean execute(Canvas canvas) {
+//        canvas.increasePixel(this.x, this.y);
         return false;
     }
 
