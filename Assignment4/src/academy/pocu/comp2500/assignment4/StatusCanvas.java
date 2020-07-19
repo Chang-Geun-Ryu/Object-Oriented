@@ -17,4 +17,8 @@ public final class StatusCanvas {
 
         return this.status.get(index);
     }
+
+    public void remove() {
+
+    }
 }

@@ -9,7 +9,6 @@ public class Canvas {
     private int width;
     private int height;
 
-//    private HashSet<Pixel> pixels = new HashSet<>();
     private HashMap<Integer, Pixel> pixels = new HashMap<>();
 
     public Canvas(int width, int height) {
@@ -21,6 +20,14 @@ public class Canvas {
                 this.pixels.put(Objects.hash(w, h), new Pixel());
             }
         }
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 
     public void drawPixel(int x, int y, char character) {
