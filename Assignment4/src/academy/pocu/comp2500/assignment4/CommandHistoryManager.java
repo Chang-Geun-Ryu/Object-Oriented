@@ -5,14 +5,14 @@ import java.util.Stack;
 public class CommandHistoryManager {
     private StatusCanvas status = new StatusCanvas();
     private Canvas canvas;
-    private Stack<ICommend> undoComments = new Stack<>();
-    private Stack<ICommend> redoComments = new Stack<>();
+    private Stack<ICommand> undoComments = new Stack<>();
+    private Stack<ICommand> redoComments = new Stack<>();
 
     public CommandHistoryManager(Canvas canvas) {
         this.canvas = canvas;
     }
 
-    public boolean execute(ICommend commend) {
+    public boolean execute(ICommand commend) {
         redoComments.clear();
         return undoComments.push(commend).execute(this.canvas);
     }
@@ -26,13 +26,13 @@ public class CommandHistoryManager {
     }
 
     public void undo() {
-        ICommend commend = undoComments.pop();
+        ICommand commend = undoComments.pop();
         commend.undo();
         redoComments.push(commend);
     }
 
     public void redo() {
-        ICommend redo = redoComments.pop();
+        ICommand redo = redoComments.pop();
         redo.redo();
         undoComments.push(redo);
     }

@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment4;
 
-public class DrawPixel implements ICommend {
+public class DrawPixel implements ICommand {
     private int x;
     private int y;
     private char beforeValue;

@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment4;
 
-public class DecreasePixel implements ICommend {
+public class DecreasePixel implements ICommand {
     private int x;
     private int y;
     private char beforeValue;

@@ -94,7 +94,7 @@ public class Canvas {
         return sb.toString();
     }
 
-    public void horizontalDrawing(StringBuffer sb) {
+    private void horizontalDrawing(StringBuffer sb) {
         sb.append("+");
         for (int i = 0; i < this.width; ++i) {
             sb.append("-");

@@ -24,7 +24,7 @@ public class Pixel {
     }
 
     public boolean increase() {
-        if (this.value < 0x7F) {
+        if (this.value < 0x7E) {
             this.value += 1;
             return true;
         }

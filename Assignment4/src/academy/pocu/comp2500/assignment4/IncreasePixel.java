@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment4;
 
-public class IncreasePixel implements ICommend {
+public class IncreasePixel implements ICommand {
     private int x;
     private int y;
     private char beforeValue;

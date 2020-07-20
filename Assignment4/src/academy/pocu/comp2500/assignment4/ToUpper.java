@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment4;
 
-public class ToUpper implements ICommend {
+public class ToUpper implements ICommand {
     private int x;
     private int y;
     private char beforeValue;

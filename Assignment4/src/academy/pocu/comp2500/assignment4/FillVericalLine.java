@@ -2,7 +2,7 @@ package academy.pocu.comp2500.assignment4;
 
 import java.util.ArrayList;
 
-public class FillVericalLine implements ICommend {
+public class FillVericalLine implements ICommand {
     private int x;
     private char c;
     private ArrayList<Character> beforeValues = new ArrayList<>();

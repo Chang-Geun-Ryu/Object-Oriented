@@ -2,7 +2,7 @@ package academy.pocu.comp2500.assignment4;
 
 import java.util.ArrayList;
 
-public class ClearCanvas implements ICommend {
+public class ClearCanvas implements ICommand {
     private ArrayList<Character> undos = new ArrayList<>();
     private Canvas canvas;
     private int status = 0;

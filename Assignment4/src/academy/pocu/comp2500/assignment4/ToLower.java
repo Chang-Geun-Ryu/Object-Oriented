@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.assignment4;
 
-public class ToLower implements ICommend {
+public class ToLower implements ICommand {
     private int x;
     private int y;
     private char beforeValue;
