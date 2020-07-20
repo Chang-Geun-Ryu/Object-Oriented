@@ -26,9 +26,9 @@ public class CommandHistoryManager {
     }
 
     public void undo() {
-       ICommend undo  = undoComments.pop();
-       undo.undo();
-       redoComments.push(undo);
+        ICommend commend = undoComments.pop();
+        commend.undo();
+        redoComments.push(commend);
     }
 
     public void redo() {
