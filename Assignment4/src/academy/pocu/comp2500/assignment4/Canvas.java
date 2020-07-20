@@ -38,12 +38,12 @@ public class Canvas {
         return this.pixels.get(Objects.hash(x, y)).getValue();
     }
 
-    public void increasePixel(int x, int y) {
-        this.pixels.get(Objects.hash(x, y)).increase();
+    public boolean increasePixel(int x, int y) {
+        return this.pixels.get(Objects.hash(x, y)).increase();
     }
 
-    public void decreasePixel(int x, int y) {
-        this.pixels.get(Objects.hash(x, y)).decrease();
+    public boolean decreasePixel(int x, int y) {
+        return this.pixels.get(Objects.hash(x, y)).decrease();
     }
 
     public void toUpper(int x, int y) {

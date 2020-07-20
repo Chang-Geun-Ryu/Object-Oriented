@@ -42,6 +42,7 @@ public class Pixel {
     public void toUpper() {
         if (this.value >= 0x61 && this.value <= 0x7A) {
             this.value ^= 0x20;
+            return;
         }
     }
 
