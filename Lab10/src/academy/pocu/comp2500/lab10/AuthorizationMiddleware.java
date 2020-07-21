@@ -14,6 +14,7 @@ public class AuthorizationMiddleware implements IRequestHandler {
         this.users = users;
     }
 
+    @Override
     public ResultBase handle(Request request) {
         if (isAuthorization(request.getUser())) {
             return store.handle(request);

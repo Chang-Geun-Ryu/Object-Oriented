@@ -1,10 +1,14 @@
 package academy.pocu.comp2500.lab10;
 
-import academy.pocu.comp2500.lab10.pocuflix.*;
+
+import academy.pocu.comp2500.lab10.pocuflix.Movie;
+import academy.pocu.comp2500.lab10.pocuflix.NotFoundResult;
+import academy.pocu.comp2500.lab10.pocuflix.OkResult;
+import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 
 import java.util.ArrayList;
 
-public class MovieStore implements IRequestHandler{
+public class MovieStore implements IRequestHandler {
     private ArrayList<Movie> store = new ArrayList<>();
 
     public void add(Movie movie) {
@@ -17,7 +21,8 @@ public class MovieStore implements IRequestHandler{
         }
         return false;
     }
-    
+
+    @Override
     public ResultBase handle(Request request) {
         Movie movie = getMovie(request.getTitle());
         if (movie != null) {

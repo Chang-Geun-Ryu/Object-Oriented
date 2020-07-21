@@ -12,11 +12,12 @@ public class CacheMiddleware implements IRequestHandler {
     private int expiryMax;
     private HashMap<Request, Integer> cache = new HashMap<>();
 
-    public CacheMiddleware (MovieStore store, int expiryCount) {
+    public CacheMiddleware(MovieStore store, int expiryCount) {
         this.store = store;
         this.expiryMax = expiryCount;
     }
 
+    @Override
     public ResultBase handle(Request request) {
         if (cache.containsKey(request)) {
             int expireCount = cache.get(request) - 1;
