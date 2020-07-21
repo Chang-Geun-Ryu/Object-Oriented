@@ -12,7 +12,9 @@ public class MovieStore implements IRequestHandler {
     private ArrayList<Movie> store = new ArrayList<>();
 
     public void add(Movie movie) {
-        store.add(movie);
+        if (store.contains(movie) == false) {
+            store.add(movie);
+        }
     }
     
     public boolean remove(int index) {

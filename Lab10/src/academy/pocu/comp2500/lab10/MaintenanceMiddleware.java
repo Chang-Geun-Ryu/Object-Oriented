@@ -6,11 +6,11 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 public class MaintenanceMiddleware implements IRequestHandler {
-    private MovieStore store;
+    private IRequestHandler store;
     private OffsetDateTime time;
     private ServiceUnavailableResult serviceUnavailableResult;
 
-    public MaintenanceMiddleware(MovieStore store, OffsetDateTime time) {
+    public MaintenanceMiddleware(IRequestHandler store, OffsetDateTime time) {
         this.store = store;
         this.time = time;
         OffsetDateTime end = time.plusHours(1);
@@ -19,16 +19,18 @@ public class MaintenanceMiddleware implements IRequestHandler {
 
     @Override
     public ResultBase handle(Request request) {
-        if (isMaintenance() == false) {
-            return store.handle(request);
-        } else {
+        OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
+        if (serviceUnavailableResult.getStartDateTime().isBefore(now) &&
+                serviceUnavailableResult.getEndDateTime().isAfter(now)) {
             return serviceUnavailableResult;
+        } else {
+            return store.handle(request);
         }
     }
 
-    private boolean isMaintenance() {
-        OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
-        return serviceUnavailableResult.getStartDateTime().isBefore(now) &&
-                serviceUnavailableResult.getEndDateTime().isAfter(now);
-    }
+//    private boolean isMaintenance() {
+//
+//        return serviceUnavailableResult.getStartDateTime().isBefore(now) &&
+//                serviceUnavailableResult.getEndDateTime().isAfter(now);
+//    }
 }

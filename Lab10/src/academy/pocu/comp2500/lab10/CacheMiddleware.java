@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CacheMiddleware implements IRequestHandler {
-    private MovieStore store;
+    private IRequestHandler store;
     private int expiryMax;
     private HashMap<Request, Integer> cache = new HashMap<>();
 
-    public CacheMiddleware(MovieStore store, int expiryCount) {
+    public CacheMiddleware(IRequestHandler store, int expiryCount) {
         this.store = store;
         this.expiryMax = expiryCount;
     }
