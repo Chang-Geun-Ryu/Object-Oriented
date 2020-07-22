@@ -19,12 +19,18 @@ public class MovieStore implements IRequestHandler {
             return;
         }
 
-        store.add(movie);
+        int index = getIndex(movie.getTitle());
+        if (index >= 0) {
+            store.set(index, movie);
+        } else {
+            store.add(movie);
+        }
     }
     
     public boolean remove(int index) {
         if (store.size() > index) {
-            return store.remove(index) != null;
+            store.remove(index);
+            return true;
         }
         return false;
     }
@@ -51,5 +57,15 @@ public class MovieStore implements IRequestHandler {
             }
         }
         return null;
+    }
+
+    private int getIndex(String title) {
+        for (Movie movie : this.store) {
+            if (movie.getTitle() == title) {
+                return store.indexOf(movie);
+            }
+        }
+
+        return -1;
     }
 }
