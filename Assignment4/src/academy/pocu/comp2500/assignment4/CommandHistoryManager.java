@@ -13,7 +13,7 @@ public class CommandHistoryManager {
     }
 
     public boolean execute(ICommand commend) {
-        redoComments.clear();
+//        redoComments.clear();
         return undoComments.push(commend).execute(this.canvas);
     }
 
