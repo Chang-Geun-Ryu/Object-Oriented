@@ -37,14 +37,21 @@ public class Program {
 //        manager.undo();
 
         OverdrawAnalyzer canvas = new OverdrawAnalyzer(30, 25);
-        canvas.clear();
-        canvas.fillVerticalLine(1, '.');
-        canvas.increasePixel(0, 3);
-        canvas.toUpper(1, 0);
-        canvas.fillHorizontalLine(4, 'x');
-        canvas.fillHorizontalLine(4, 'v');
-        canvas.fillVerticalLine(4, 't');
-        canvas.increasePixel(4, 2);
+        CommandHistoryManager manager = new CommandHistoryManager(canvas);
+        manager.execute(new ClearCanvas());
+        manager.execute(new FillVericalLine(1, '.'));
+        manager.execute(new IncreasePixel(0, 3));
+        manager.execute(new ToUpper(1, 0));
+        manager.execute(new FillHorizontalLine(4, 'X'));
+        manager.execute(new FillHorizontalLine(4, 'V'));
+//        canvas.clear();
+//        canvas.fillVerticalLine(1, '.');
+//        canvas.increasePixel(0, 3);
+//        canvas.toUpper(1, 0);
+//        canvas.fillHorizontalLine(4, 'x');
+//        canvas.fillHorizontalLine(4, 'v');
+//        canvas.fillVerticalLine(4, 't');
+//        canvas.increasePixel(4, 2);
 
 
                 System.out.println(canvas.getDrawing());
