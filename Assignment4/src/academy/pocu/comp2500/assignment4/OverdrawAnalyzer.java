@@ -28,8 +28,8 @@ public class OverdrawAnalyzer extends Canvas {
 
     public int getOverdrawCount(int x, int y) {
 
-        return getPixelHistory(x, y).size();//
-//        return this.overdrawCount.get(Objects.hash(x, y));
+//        return getPixelHistory(x, y).size();//
+        return this.overdrawCount.get(Objects.hash(x, y));
     }
 
     public int getOverdrawCount() {
