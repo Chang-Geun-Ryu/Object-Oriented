@@ -24,15 +24,20 @@ public class Pixel {
     }
 
     public boolean increase() {
-        if (this.value < 0x7E) {
-            this.value += 1;
-            return true;
+        if (this.value == 0x7E) {
+            this.value = 0x20;
+        } else {
+                this.value += 1;
+                return true;
         }
+
         return false;
     }
 
     public boolean decrease() {
-        if (this.value > 0x20) {
+        if (this.value == 0x20) {
+            this.value = 0x7E;
+        } else {
             this.value -= 1;
             return true;
         }

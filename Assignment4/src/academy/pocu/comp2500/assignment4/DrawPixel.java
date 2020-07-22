@@ -24,6 +24,7 @@ public class DrawPixel implements ICommand {
 
         this.beforeValue = canvas.getPixel(x, y);
         canvas.drawPixel(x, y, afterValue);
+        this.afterValue = canvas.getPixel(x, y);
         this.canvas = canvas;
         this.status = 1;
         return true;
@@ -50,7 +51,9 @@ public class DrawPixel implements ICommand {
             return false;
         }
 
-        if (canvas.getPixel(x, y) != beforeValue)
+        if (canvas.getPixel(x, y) != beforeValue) {
+            return false;
+        }
 
         this.canvas.drawPixel(x, y, afterValue);
         this.status = 1;
