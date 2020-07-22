@@ -1,7 +1,6 @@
 package academy.pocu.comp2500.assignment4.app;
 
-import academy.pocu.comp2500.assignment4.App;
-import academy.pocu.comp2500.assignment4.Canvas;
+import academy.pocu.comp2500.assignment4.*;
 import academy.pocu.comp2500.assignment4.registry.Registry;
 
 public class Program {
@@ -12,21 +11,20 @@ public class Program {
         App app = new App(registry);
         registry.validate();
 
-        Canvas canvas = new Canvas(10, 10);
+        Canvas canvas = new Canvas(30, 25);
+        CommandHistoryManager manager = new CommandHistoryManager(canvas);
 
-        canvas.drawPixel(0, 0, '*');
-        canvas.drawPixel(1, 2, '$');
-        canvas.drawPixel(0, 1, '&');
-
-        canvas.fillHorizontalLine(5, 'A');
-        canvas.fillVerticalLine(7, 'B');
-
-        canvas.increasePixel(7, 5);
-
-        canvas.decreasePixel(7, 5);
-
-        canvas.toLower(7, 5);
+        manager.undo();
+        manager.undo();
+        manager.execute(new ToLower(3, 14));
+        manager.execute(new DecreasePixel(10, 10));
+        manager.execute(new ClearCanvas());
+        manager.execute(new DrawPixel(15, 17, '!'));
+        manager.undo();
+        manager.execute(new FillVericalLine(25, 'p'));
+        manager.redo();
 
         System.out.println(canvas.getDrawing());
+
     }
 }
