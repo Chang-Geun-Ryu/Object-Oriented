@@ -14,7 +14,7 @@ public class OverdrawAnalyzer extends Canvas {
         for (int w = 0; w < width; ++w) {
             for (int h = 0; h < height; ++h) {
                 LinkedList<Character> linked = new LinkedList<>();
-                linked.add(getPixel(w, h));
+//                linked.add(getPixel(w, h));
                 this.history.put(Objects.hash(w, h), linked);
             }
         }
@@ -26,13 +26,13 @@ public class OverdrawAnalyzer extends Canvas {
 
     public int getOverdrawCount(int x, int y) {
 
-        return getPixelHistory(x, y).size() - 1;
+        return getPixelHistory(x, y).size();
     }
 
     public int getOverdrawCount() {
         int total = 0;
         for (int y = 0; y < getHeight(); ++y) {
-            for (int x = 0; x <getWidth(); ++x) {
+            for (int x = 0; x < getWidth(); ++x) {
                 total += getOverdrawCount(x, y);
             }
         }
@@ -95,7 +95,7 @@ public class OverdrawAnalyzer extends Canvas {
     public void fillHorizontalLine(int y, char character) {
         super.fillHorizontalLine(y, character);
 
-        for (int x = 0; x <getWidth(); ++x) {
+        for (int x = 0; x < getWidth(); ++x) {
             if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
                 getPixelHistory(x, y).add(getPixel(x, y));
             }
@@ -117,7 +117,7 @@ public class OverdrawAnalyzer extends Canvas {
     public void clear() {
         super.clear();
         for (int y = 0; y < getHeight(); ++y) {
-            for (int x = 0; x <getWidth(); ++x) {
+            for (int x = 0; x < getWidth(); ++x) {
                 if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
                     getPixelHistory(x, y).add(getPixel(x, y));
                 }
