@@ -16,7 +16,9 @@ public class Pixel {
     }
 
     public void setValue(char value) {
-        this.value = value;
+        if (value >= 0x20 && value <= 0x7E) {
+            this.value = value;
+        }
     }
 
     public char getValue() {
@@ -25,10 +27,9 @@ public class Pixel {
 
     public boolean increase() {
         if (this.value == 0x7E) {
-            this.value = 0x20;
-        } else {
-                this.value += 1;
-                return true;
+        } else if (value >= 0x20 && value < 0x7E) {
+            this.value += 1;
+            return true;
         }
 
         return false;
@@ -36,8 +37,7 @@ public class Pixel {
 
     public boolean decrease() {
         if (this.value == 0x20) {
-            this.value = 0x7E;
-        } else {
+        } else if (value > 0x20 && value <= 0x7E) {
             this.value -= 1;
             return true;
         }
