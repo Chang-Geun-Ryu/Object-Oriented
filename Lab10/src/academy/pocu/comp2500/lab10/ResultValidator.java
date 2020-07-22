@@ -13,7 +13,7 @@ public class ResultValidator {
     }
 
     public boolean isValid(ResultCode code) {
-        return base.getCode() == code;
+        return isInstance(code);
     }
 
     private boolean isInstance(ResultCode code) {

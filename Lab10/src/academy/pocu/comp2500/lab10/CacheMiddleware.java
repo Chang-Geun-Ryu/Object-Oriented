@@ -33,7 +33,7 @@ public class CacheMiddleware implements IRequestHandler {
             ResultBase base = store.handle(request);
 
             if (base.getCode() == ResultCode.OK && base instanceof OkResult) {
-                if (expiryMax > 0) {
+                if (expiryMax > 1) {
                     cache.put(request, expiryMax);
                 }
             }
