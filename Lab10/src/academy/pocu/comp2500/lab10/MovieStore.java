@@ -16,7 +16,7 @@ public class MovieStore implements IRequestHandler {
             return;
         }
 
-        if (isCompare(movie) == -1) {
+        if (isCompare(movie) == false) {
             store.add(movie);
         }
     }
@@ -53,15 +53,13 @@ public class MovieStore implements IRequestHandler {
         return null;
     }
 
-    private int isCompare(Movie movie) {
+    private boolean isCompare(Movie movie) {
         for (Movie m : this.store) {
-            if (m.getTitle() == movie.getTitle() &&
-            m.getPlayTime() == movie.getPlayTime() &&
-            m.getRating() == movie.getRating()) {
-                return store.indexOf(movie);
+            if (m.getTitle() == movie.getTitle() && m.getPlayTime() == movie.getPlayTime() && m.getRating() == movie.getRating()) {
+                return true;
             }
         }
 
-        return -1;
+        return false;
     }
 }
