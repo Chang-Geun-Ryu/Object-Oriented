@@ -21,9 +21,10 @@ public class CacheMiddleware implements IRequestHandler {
     public ResultBase handle(Request request) {
         if (cache.containsKey(request)) {
             int expireCount = cache.get(request) - 1;
+
             if (expireCount > 1) {
                 cache.replace(request, expireCount);
-            } else {
+            } else {//if (expireCount == 0) {
                 cache.remove(request);
             }
 
@@ -32,7 +33,9 @@ public class CacheMiddleware implements IRequestHandler {
             ResultBase base = store.handle(request);
 
             if (base.getCode() == ResultCode.OK && base instanceof OkResult) {
-                cache.put(request, expiryMax);
+                if (expiryMax > 0) {
+                    cache.put(request, expiryMax);
+                }
             }
 
             return base;
