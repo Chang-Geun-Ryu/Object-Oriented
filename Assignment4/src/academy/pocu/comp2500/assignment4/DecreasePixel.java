@@ -21,11 +21,11 @@ public class DecreasePixel implements ICommand {
             return false;
         }
         this.beforeValue = canvas.getPixel(x, y);
-        canvas.decreasePixel(x, y);
+        boolean b = canvas.decreasePixel(x, y);
         this.afterValue = canvas.getPixel(x, y);
         this.canvas = canvas;
         this.status = 1;
-        return true;
+        return b;
     }
 
     @Override

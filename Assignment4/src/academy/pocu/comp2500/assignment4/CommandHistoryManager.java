@@ -13,9 +13,10 @@ public class CommandHistoryManager {
     }
 
     public boolean execute(ICommand commend) {
-        boolean execute = undoComments.push(commend).execute(this.canvas);
+        boolean execute = commend.execute(this.canvas);
 
         if (execute) {
+            undoComments.push(commend);
             redoComments.clear();
         }
 

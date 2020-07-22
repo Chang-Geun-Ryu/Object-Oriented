@@ -21,12 +21,12 @@ public class IncreasePixel implements ICommand {
         }
 
         this.beforeValue = canvas.getPixel(x, y);
-        canvas.increasePixel(x, y);
+        boolean b = canvas.increasePixel(x, y);
         this.afterValue = canvas.getPixel(x, y);
 
         this.canvas = canvas;
         this.status = 1;
-        return true;
+        return b;
     }
 
     @Override
