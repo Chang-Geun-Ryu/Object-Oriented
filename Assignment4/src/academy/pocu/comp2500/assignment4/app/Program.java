@@ -38,11 +38,11 @@ public class Program {
 
         OverdrawAnalyzer canvas = new OverdrawAnalyzer(30, 25);
         CommandHistoryManager manager = new CommandHistoryManager(canvas);
-        manager.execute(new IncreasePixel(3, 1));
-        manager.execute(new IncreasePixel(3, 1));
+        manager.execute(new IncreasePixel(3, 1)); // 1
+        manager.execute(new IncreasePixel(1, 3));
         manager.undo();
         manager.execute(new DrawPixel(4, 4, 'p'));
-        manager.execute(new FillVericalLine(3, 'Z'));
+        manager.execute(new FillVericalLine(3, 'Z')); // 1
         manager.execute(new ToUpper(0, 4));
         manager.execute(new IncreasePixel(4, 3));
         manager.execute(new DecreasePixel(3, 2));
@@ -54,16 +54,16 @@ public class Program {
         manager.execute(new ToLower(1, 2));
         manager.execute(new DrawPixel(1, 3, '+'));
         manager.execute(new ToLower(2, 3));
-        manager.execute(new ToLower(3, 1));
-        manager.undo();
-        manager.execute(new ClearCanvas());
+        manager.execute(new ToLower(3, 1)); // 1
+        manager.undo();                             // 1
+        manager.execute(new ClearCanvas());         // 1
         manager.execute(new IncreasePixel(4, 2));
 
 
         System.out.println(canvas.getOverdrawCount(3, 1));
 
 
-                System.out.println(canvas.getDrawing());
+//                System.out.println(canvas.getDrawing());
 
     }
 }
