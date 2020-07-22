@@ -9,20 +9,20 @@ import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 
 public class MovieStore implements IRequestHandler {
-    private ArrayList<Movie> store = new ArrayList<>();
+//    private LinkedHashMap<String, Movie> store = new LinkedHashMap<>();
 //    private HashMap<Integer, Movie> store = new HashMap<>();
+    private ArrayList<Movie> store = new ArrayList<>();
 
     public void add(Movie movie) {
-        if (movie == null) {
+        if (movie == null || movie.getTitle() == null) {
             return;
         }
 
-        int index = getIndex(movie.getTitle());
-        if (index >= 0) {
-            store.set(index, movie);
-        } else {
+//        this.store.put(movie.getTitle(), movie);
+        if (getMovie(movie.getTitle()) != null) {
             store.add(movie);
         }
     }
