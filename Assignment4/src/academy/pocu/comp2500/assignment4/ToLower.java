@@ -4,6 +4,7 @@ public class ToLower implements ICommand {
     private int x;
     private int y;
     private char beforeValue;
+    private char afterValue;
     private Canvas canvas;
     private int status;
 
@@ -21,6 +22,7 @@ public class ToLower implements ICommand {
 
         this.beforeValue = canvas.getPixel(x, y);
         canvas.toLower(x, y);
+        this.afterValue = canvas.getPixel(x, y);
 
         this.canvas = canvas;
         this.status = 1;
@@ -30,6 +32,10 @@ public class ToLower implements ICommand {
     @Override
     public boolean undo() {
         if (this.status != 1) {
+            return false;
+        }
+
+        if (canvas.getPixel(x, y) != afterValue) {
             return false;
         }
 
@@ -44,7 +50,11 @@ public class ToLower implements ICommand {
             return false;
         }
 
-        this.canvas.toLower(x, y);
+        if (canvas.getPixel(x, y) != beforeValue) {
+            return false;
+        }
+
+        this.canvas.drawPixel(x, y, afterValue);
         this.status = 1;
         return true;
     }

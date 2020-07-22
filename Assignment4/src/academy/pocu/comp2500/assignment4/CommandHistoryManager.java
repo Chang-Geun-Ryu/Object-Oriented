@@ -25,16 +25,24 @@ public class CommandHistoryManager {
         return redoComments.empty() == false;
     }
 
-    public void undo() {
-        ICommand commend = undoComments.pop();
-        commend.undo();
-        redoComments.push(commend);
+    public boolean undo() {
+        if (undoComments.size() > 0) {
+            ICommand commend = undoComments.pop();
+            commend.undo();
+            redoComments.push(commend);
+            return true;
+        }
+        return false;
     }
 
-    public void redo() {
-        ICommand redo = redoComments.pop();
-        redo.redo();
-        undoComments.push(redo);
+    public boolean redo() {
+        if (redoComments.size() > 0) {
+            ICommand redo = redoComments.pop();
+            redo.redo();
+            undoComments.push(redo);
+            return true;
+        }
+        return false;
     }
 
 }

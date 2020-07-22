@@ -35,6 +35,10 @@ public class IncreasePixel implements ICommand {
             return false;
         }
 
+        if (canvas.getPixel(x, y) != afterValue) {
+            return false;
+        }
+
         canvas.drawPixel(x, y, beforeValue);
         this.status = 2;
         return true;
@@ -43,6 +47,10 @@ public class IncreasePixel implements ICommand {
     @Override
     public boolean redo() {
         if (this.status != 2) {
+            return false;
+        }
+
+        if (canvas.getPixel(x, y) != beforeValue) {
             return false;
         }
 

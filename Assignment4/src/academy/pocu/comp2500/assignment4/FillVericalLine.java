@@ -38,6 +38,12 @@ public class FillVericalLine implements ICommand {
         }
 
         for (int y = 0; y < canvas.getHeight(); ++y) {
+            if (canvas.getPixel(x, y) != c) {
+                return false;
+            }
+        }
+
+        for (int y = 0; y < canvas.getHeight(); ++y) {
             canvas.drawPixel(x, y, this.beforeValues.get(y));
         }
 
@@ -49,6 +55,12 @@ public class FillVericalLine implements ICommand {
     public boolean redo() {
         if (this.status != 2) {
             return false;
+        }
+
+        for (int y = 0; y < canvas.getHeight(); ++y) {
+            if (canvas.getPixel(x, y) != this.beforeValues.get(y)) {
+                return false;
+            }
         }
 
         canvas.fillVerticalLine(x, c);

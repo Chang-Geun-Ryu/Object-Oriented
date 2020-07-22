@@ -1,6 +1,7 @@
 package academy.pocu.comp2500.assignment4;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ClearCanvas implements ICommand {
     private ArrayList<Character> undos = new ArrayList<>();
@@ -31,6 +32,15 @@ public class ClearCanvas implements ICommand {
             return false;
         }
 
+        for (int y = 0; y < canvas.getHeight(); ++y) {
+            for (int x = 0; x < canvas.getWidth(); ++x) {
+                if (canvas.getPixel(x, y) != 0x20) {
+                    return false;
+                }
+            }
+
+        }
+
         int i = -1;
         for (int y = 0; y < this.canvas.getHeight(); ++y) {
             for (int x = 0; x < this.canvas.getWidth(); ++x) {
@@ -47,6 +57,15 @@ public class ClearCanvas implements ICommand {
     public boolean redo() {
         if (this.status != 2) {
             return false;
+        }
+
+        int i = -1;
+        for (int y = 0; y < this.canvas.getHeight(); ++y) {
+            for (int x = 0; x < this.canvas.getWidth(); ++x) {
+                if (canvas.getPixel(x, y) != this.undos.get(++i)) {
+                    return false;
+                }
+            }
         }
 
         canvas.clear();

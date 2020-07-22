@@ -34,6 +34,10 @@ public class DecreasePixel implements ICommand {
             return false;
         }
 
+        if (canvas.getPixel(x, y) != afterValue) {
+            return false;
+        }
+
         canvas.drawPixel(x, y, this.beforeValue);
         this.status = 2;
         return true;
@@ -42,6 +46,10 @@ public class DecreasePixel implements ICommand {
     @Override
     public boolean redo() {
         if (this.status != 2) {
+            return false;
+        }
+
+        if (canvas.getPixel(x, y) != beforeValue) {
             return false;
         }
 

@@ -38,6 +38,12 @@ public class FillHorizontalLine implements ICommand {
         }
 
         for (int x = 0; x < canvas.getWidth(); ++x) {
+            if (canvas.getPixel(x, y) != c) {
+                return false;
+            }
+        }
+
+        for (int x = 0; x < canvas.getWidth(); ++x) {
             canvas.drawPixel(x, y, this.brforeValues.get(x));
         }
 
@@ -49,6 +55,12 @@ public class FillHorizontalLine implements ICommand {
     public boolean redo() {
         if (this.status != 2) {
             return false;
+        }
+
+        for (int x = 0; x < canvas.getWidth(); ++x) {
+            if (canvas.getPixel(x, y) != brforeValues.get(x)) {
+                return false;
+            }
         }
 
         canvas.fillHorizontalLine(y, c);
