@@ -22,7 +22,7 @@ public class MovieStore implements IRequestHandler {
         }
 
 //        this.store.put(movie.getTitle(), movie);
-        if (getMovie(movie.getTitle()) != null) {
+        if (getMovie(movie.getTitle()) == null) {
             store.add(movie);
         }
     }
