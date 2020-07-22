@@ -16,7 +16,7 @@ public class MovieStore implements IRequestHandler {
             return;
         }
 
-        if (getMovie(movie.getTitle()) == null) {
+        if (isCompare(movie) == -1) {
             store.add(movie);
         }
     }
@@ -53,9 +53,11 @@ public class MovieStore implements IRequestHandler {
         return null;
     }
 
-    private int getIndex(String title) {
-        for (Movie movie : this.store) {
-            if (movie.getTitle() == title) {
+    private int isCompare(Movie movie) {
+        for (Movie m : this.store) {
+            if (m.getTitle() == movie.getTitle() &&
+            m.getPlayTime() == movie.getPlayTime() &&
+            m.getRating() == movie.getRating()) {
                 return store.indexOf(movie);
             }
         }
