@@ -7,13 +7,8 @@ import academy.pocu.comp2500.lab10.pocuflix.OkResult;
 import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
 
 public class MovieStore implements IRequestHandler {
-//    private LinkedHashMap<String, Movie> store = new LinkedHashMap<>();
-//    private HashMap<Integer, Movie> store = new HashMap<>();
     private ArrayList<Movie> store = new ArrayList<>();
 
     public void add(Movie movie) {
@@ -21,7 +16,6 @@ public class MovieStore implements IRequestHandler {
             return;
         }
 
-//        this.store.put(movie.getTitle(), movie);
         if (getMovie(movie.getTitle()) == null) {
             store.add(movie);
         }
