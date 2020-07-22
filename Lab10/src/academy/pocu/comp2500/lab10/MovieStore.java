@@ -46,7 +46,7 @@ public class MovieStore implements IRequestHandler {
 
     private Movie getMovie(String title) {
         for (Movie movie : this.store) {
-            if (movie.getTitle() == title) {
+            if (movie.getTitle().equals(title)) {
                 return movie;
             }
         }
@@ -55,7 +55,7 @@ public class MovieStore implements IRequestHandler {
 
     private boolean isCompare(Movie movie) {
         for (Movie m : this.store) {
-            if (m.getTitle() == movie.getTitle() && m.getPlayTime() == movie.getPlayTime() && m.getRating() == movie.getRating()) {
+            if (m.getTitle().equals(movie.getTitle())) {// && m.getPlayTime() == movie.getPlayTime() && m.getRating() == movie.getRating()) {
                 return true;
             }
         }
