@@ -15,7 +15,7 @@ public class OverdrawAnalyzer extends Canvas {
         for (int w = 0; w < width; ++w) {
             for (int h = 0; h < height; ++h) {
                 LinkedList<Character> linked = new LinkedList<>();
-//                linked.add(getPixel(w, h));
+                linked.add(getPixel(w, h));
                 this.history.put(Objects.hash(w, h), linked);
                 this.overdrawCount.put(Objects.hash(w, h), 0);
             }
@@ -23,7 +23,13 @@ public class OverdrawAnalyzer extends Canvas {
     }
 
     public LinkedList<Character> getPixelHistory(int x, int y) {
-        return this.history.get(Objects.hash(x, y));
+        LinkedList<Character> history = new LinkedList<>();
+        for (int i = 1; i < this.history.get(Objects.hash(x, y)).size(); ++i) {
+
+            history.add(this.history.get(Objects.hash(x, y)).get(i));
+        }
+        return history;
+//        return this.history.get(Objects.hash(x, y));
     }
 
     public int getOverdrawCount(int x, int y) {
@@ -42,39 +48,43 @@ public class OverdrawAnalyzer extends Canvas {
         return total;
     }
 
+    private LinkedList<Character> getPixelList(int x, int y) {
+        return this.history.get(Objects.hash(x, y));
+    }
+
     // Override
     @Override
     public void drawPixel(int x, int y, char character) {
         super.drawPixel(x, y, character);
 
-        if (getPixelHistory(x, y).size() > 0) {
-            if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                getPixelHistory(x, y).add(getPixel(x, y));
+//        if (getPixelHistory(x, y).size() > 0) {
+            if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                getPixelList(x, y).add(getPixel(x, y));
                 this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
             }
-        } else {
-            if (0x20 != getPixel(x, y)) {
-                getPixelHistory(x, y).add(getPixel(x, y));
-                this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-            }
-        }
+//        } else {
+//            if (0x20 != getPixel(x, y)) {
+//                getPixelHistory(x, y).add(getPixel(x, y));
+//                this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+//            }
+//        }
 
     }
 
     @Override
     public boolean increasePixel(int x, int y) {
         if (super.increasePixel(x, y)) {
-            if (getPixelHistory(x, y).size() > 0) {
-                if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
+//            if (getPixelHistory(x, y).size() > 0) {
+                if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                    getPixelList(x, y).add(getPixel(x, y));
                     this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
                 }
-            } else {
-                if (0x20 != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
-                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-                }
-            }
+//            } else {
+//                if (0x20 != getPixel(x, y)) {
+//                    getPixelHistory(x, y).add(getPixel(x, y));
+//                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+//                }
+//            }
 
             return true;
         } else {
@@ -85,17 +95,17 @@ public class OverdrawAnalyzer extends Canvas {
     @Override
     public boolean decreasePixel(int x, int y) {
         if (super.decreasePixel(x, y)) {
-            if (getPixelHistory(x, y).size() > 0) {
-                if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
+//            if (getPixelHistory(x, y).size() > 0) {
+                if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                    getPixelList(x, y).add(getPixel(x, y));
                     this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
                 }
-            } else {
-                if (0x20 != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
-                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-                }
-            }
+//            } else {
+//                if (0x20 != getPixel(x, y)) {
+//                    getPixelHistory(x, y).add(getPixel(x, y));
+//                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+//                }
+//            }
 
             return true;
         } else {
@@ -107,17 +117,17 @@ public class OverdrawAnalyzer extends Canvas {
     public void toUpper(int x, int y) {
         super.toUpper(x, y);
 
-        if (getPixelHistory(x, y).size() > 0) {
-            if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                getPixelHistory(x, y).add(getPixel(x, y));
+//        if (getPixelHistory(x, y).size() > 0) {
+            if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                getPixelList(x, y).add(getPixel(x, y));
                 this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
             }
-        } else {
-            if (0x20 != getPixel(x, y)) {
-                getPixelHistory(x, y).add(getPixel(x, y));
-                this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-            }
-        }
+//        } else {
+//            if (0x20 != getPixel(x, y)) {
+//                getPixelHistory(x, y).add(getPixel(x, y));
+//                this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+//            }
+//        }
 
     }
 
@@ -125,17 +135,17 @@ public class OverdrawAnalyzer extends Canvas {
     public void toLower(int x, int y) {
         super.toLower(x, y);
 
-        if (getPixelHistory(x, y).size() > 0) {
-            if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                getPixelHistory(x, y).add(getPixel(x, y));
+//        if (getPixelHistory(x, y).size() > 0) {
+            if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                getPixelList(x, y).add(getPixel(x, y));
                 this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
             }
-        } else {
-            if (0x20 != getPixel(x, y)) {
-                getPixelHistory(x, y).add(getPixel(x, y));
-                this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-            }
-        }
+//        } else {
+//            if (0x20 != getPixel(x, y)) {
+//                getPixelHistory(x, y).add(getPixel(x, y));
+//                this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+//            }
+//        }
 
     }
 
@@ -144,17 +154,17 @@ public class OverdrawAnalyzer extends Canvas {
         super.fillHorizontalLine(y, character);
 
         for (int x = 0; x < getWidth(); ++x) {
-            if (getPixelHistory(x, y).size() > 0) {
-                if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
+//            if (getPixelHistory(x, y).size() > 0) {
+                if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                    getPixelList(x, y).add(getPixel(x, y));
                     this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
                 }
-            } else {
-                if (0x20 != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
-                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-                }
-            }
+//            } else {
+//                if (0x20 != getPixel(x, y)) {
+//                    getPixelHistory(x, y).add(getPixel(x, y));
+//                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+//                }
+//            }
 
         }
     }
@@ -164,17 +174,17 @@ public class OverdrawAnalyzer extends Canvas {
         super.fillVerticalLine(x, character);
 
         for (int y = 0; y < getHeight(); ++y) {
-            if (getPixelHistory(x, y).size() > 0) {
-                if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
+//            if (getPixelHistory(x, y).size() > 0) {
+                if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                    getPixelList(x, y).add(getPixel(x, y));
                     this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
                 }
-            } else {
-                if (0x20 != getPixel(x, y)) {
-                    getPixelHistory(x, y).add(getPixel(x, y));
-                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-                }
-            }
+//            } else {
+//                if (0x20 != getPixel(x, y)) {
+//                    getPixelHistory(x, y).add(getPixel(x, y));
+//                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+//                }
+//            }
 
         }
     }
@@ -184,17 +194,17 @@ public class OverdrawAnalyzer extends Canvas {
         super.clear();
         for (int y = 0; y < getHeight(); ++y) {
             for (int x = 0; x < getWidth(); ++x) {
-                if (getPixelHistory(x, y).size() > 0) {
-                    if (getPixelHistory(x, y).getLast() != getPixel(x, y)) {
-                        getPixelHistory(x, y).add(getPixel(x, y));
+//                if (getPixelHistory(x, y).size() > 0) {
+                    if (getPixelList(x, y).getLast() != getPixel(x, y)) {
+                        getPixelList(x, y).add(getPixel(x, y));
                         this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
                     }
-                } else {
-//                    if (0x20 != getPixel(x, y)) {
-//                        getPixelHistory(x, y).add(getPixel(x, y));
-//                        this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-//                    }
-                }
+//                } else {
+////                    if (0x20 != getPixel(x, y)) {
+////                        getPixelHistory(x, y).add(getPixel(x, y));
+////                        this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
+////                    }
+//                }
             }
         }
     }
