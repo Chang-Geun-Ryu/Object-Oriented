@@ -17,14 +17,24 @@ import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 import academy.pocu.comp2500.lab10.pocuflix.ResultCode;
 import academy.pocu.comp2500.lab10.pocuflix.User;
 
+import academy.pocu.comp2500.lab10.FakeResult;
+
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 
 public class Program {
-
     public static void main(String[] args) {
+        FakeResult result = new FakeResult();
+
+        ResultValidator validator = new ResultValidator(result);
+
+        System.out.println(validator.isValid(ResultCode.UNAUTHORIZED));
+        System.out.println(validator.isValid(ResultCode.OK)); // false
+    }
+
+    public static void mainddd(String[] args) {
         MovieStore store = new MovieStore();
 
         store.add(new Movie("Harry Potter", Rating.PG13, 180));

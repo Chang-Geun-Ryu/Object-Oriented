@@ -17,15 +17,15 @@ public class ResultValidator {
     }
 
     private boolean isInstance(ResultCode code) {
-        if (this.base instanceof OkResult && code == ResultCode.OK) {
+        if (code.equals(ResultCode.OK) && base instanceof OkResult) {
             return true;
-        } else if (this.base instanceof NotFoundResult && code == ResultCode.NOT_FOUND) {
+        } else if (code.equals(ResultCode.NOT_FOUND) && base instanceof NotFoundResult) {
             return true;
-        } else if (this.base instanceof ServiceUnavailableResult && code == ResultCode.SERVICE_UNAVAILABLE) {
+        } else if (code.equals(ResultCode.SERVICE_UNAVAILABLE) && base instanceof ServiceUnavailableResult) {
             return true;
-        } else if (this.base instanceof UnauthorizedResult && code == ResultCode.UNAUTHORIZED) {
+        } else if (code.equals(ResultCode.UNAUTHORIZED) && base instanceof UnauthorizedResult) {
             return true;
-        } else if (this.base instanceof CachedResult && code == ResultCode.NOT_MODIFIED) {
+        } else if (code.equals(ResultCode.NOT_MODIFIED) && base instanceof CachedResult) {
             return true;
         } else {
             return false;
