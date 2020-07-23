@@ -19,6 +19,7 @@ import academy.pocu.comp2500.lab10.pocuflix.User;
 
 import academy.pocu.comp2500.lab10.FakeResult;
 
+import javax.xml.transform.OutputKeys;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.HashSet;
@@ -26,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Program {
     public static void main(String[] args) {
-        FakeResult result = new FakeResult();
+        OkResult result = new OkResult(new Movie("Asdf", Rating.R, 1));
 
         ResultValidator validator = new ResultValidator(result);
 
