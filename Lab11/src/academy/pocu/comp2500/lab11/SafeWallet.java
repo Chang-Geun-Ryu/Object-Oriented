@@ -1,4 +1,7 @@
-package academy.pocu.comp2500.lab11.pocu;
+package academy.pocu.comp2500.lab11;
+
+import academy.pocu.comp2500.lab11.pocu.User;
+import academy.pocu.comp2500.lab11.pocu.Wallet;
 
 public class SafeWallet extends Wallet {
     public SafeWallet(User user) throws IllegalAccessException {
