@@ -1,4 +1,6 @@
-package academy.pocu.comp2500.lab11.pocu;
+package academy.pocu.comp2500.lab11;
+
+import academy.pocu.comp2500.lab11.pocu.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

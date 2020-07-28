@@ -1,6 +1,6 @@
 package academy.pocu.comp2500.lab11.pocu.app;
 
-import academy.pocu.comp2500.lab11.pocu.App;
+import academy.pocu.comp2500.lab11.App;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
