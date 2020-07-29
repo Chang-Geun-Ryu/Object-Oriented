@@ -19,21 +19,27 @@ public class App {
 
     public void run(BufferedReader in, PrintStream out, PrintStream err) {
 
-        Warehouse warehouse = phaseOne(in, out, err);
+        try {
+            Warehouse warehouse = phaseOne(in, out, err);
 
-        if (warehouse == null) {
+            if (warehouse == null) {
+                return;
+            }
+
+            SafeWallet wallet = phaseTwo(err);
+
+            if (wallet == null) {
+                return;
+            }
+
+            phaseThree(warehouse, wallet, in, out, err);
+        } catch (OverflowException e) {
+            throw e;
+        } catch (RuntimeException e) {
             return;
         }
-
-        SafeWallet wallet = phaseTwo(err);
-
-        if (wallet == null) {
-            return;
-        }
-
-        phaseThree(warehouse, wallet, in, out, err);
-
-
+//        1. IPad              10
+//        3. Macbook Pro       15
     }
 
     private Warehouse phaseOne(BufferedReader in, PrintStream out, PrintStream err) {
@@ -67,7 +73,9 @@ public class App {
     private void phaseThree(Warehouse warehouse, SafeWallet wallet, BufferedReader in, PrintStream out, PrintStream err) {
 
         do {
-            getProduct(warehouse, wallet, in, out, err);
+            if (getProduct(warehouse, wallet, in, out, err) == -1) {
+                return;
+            }
         } while (warehouse.getProducts().size() > 0);
     }
 
@@ -76,7 +84,8 @@ public class App {
         out.println("WAREHOUSE: Choose your warehouse!");
         int index = 0;
         for (WarehouseType type : WarehouseType.values()) {
-            out.println(String.format("%d %s", ++index, type));
+//            out.println(String.format("%d. %s", ++index, type));
+            out.printf("%d. %s%s", ++index, type, System.lineSeparator());
         }
 
         int num = 0;
@@ -91,7 +100,18 @@ public class App {
                 return num = -1;
             }
 
+
             num = Integer.parseInt(s);
+
+            if (WarehouseType.values().length > 0) {
+                if (num >= 1 && num <= WarehouseType.values().length) {
+                    return num;
+                } else {
+                    return 0;
+                }
+            } else {
+                return -1;
+            }
         } catch (RuntimeException e) {
             out.println(e.getMessage());
             return 0;
@@ -99,7 +119,7 @@ public class App {
             return 0;
         }
 
-        return num;
+//        return num;
     }
 
     private SafeWallet getWalletOrNull(User user, PrintStream err) {
@@ -126,7 +146,8 @@ public class App {
         HashMap<Integer, Product> products = new HashMap<>();
         int index = 0;
         for (Product p : warehouse.getProducts()) {
-            out.println(String.format("%d. %s          %d", ++index, p.getName(), p.getPrice()));
+            out.printf("%d. %-19.19s%2.2s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
+//            out.println(String.format("%d. %s%-5d%s", ++index, p.getName(), p.getPrice(), System.lineSeparator()));
             products.put(index, p);
         }
 
@@ -148,6 +169,8 @@ public class App {
                 wallet.withdraw(products.get(num).getPrice());
             }
 
+        } catch (OverflowException e) {
+            throw e;
         } catch (RuntimeException e) {
             out.println(e.getMessage());
         } catch (Exception e) {
