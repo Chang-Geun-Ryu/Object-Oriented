@@ -18,9 +18,9 @@ import java.util.HashMap;
 public class App {
 
     public void run(BufferedReader in, PrintStream out, PrintStream err) {
-        try {
+        Warehouse warehouse = phaseOne(in, out, err);
 
-        } catch ()
+        if ()
     }
 
     public void runfail(BufferedReader in, PrintStream out, PrintStream err) {
