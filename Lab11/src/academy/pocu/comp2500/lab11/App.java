@@ -18,6 +18,12 @@ import java.util.HashMap;
 public class App {
 
     public void run(BufferedReader in, PrintStream out, PrintStream err) {
+        try {
+
+        } catch ()
+    }
+
+    public void runfail(BufferedReader in, PrintStream out, PrintStream err) {
 
         try {
             Warehouse warehouse = phaseOne(in, out, err);
@@ -36,10 +42,8 @@ public class App {
         } catch (OverflowException e) {
             throw e;
         } catch (RuntimeException e) {
-            return;
+            throw e;
         }
-//        1. IPad              10
-//        3. Macbook Pro       15
     }
 
     private Warehouse phaseOne(BufferedReader in, PrintStream out, PrintStream err) {
@@ -59,8 +63,13 @@ public class App {
                 return null;
             }
 
-            if (types.containsKey(warehouseNum)) {
-                warehouse = new Warehouse(types.get(warehouseNum));
+            try {
+                if (types.containsKey(warehouseNum)) {
+                    warehouse = new Warehouse(types.get(warehouseNum));
+                }
+            } catch (RuntimeException e) {
+                err.println(e.getMessage());
+                warehouse = null;
             }
         } while (warehouse == null);
 
@@ -68,15 +77,30 @@ public class App {
     }
 
     private SafeWallet phaseTwo(PrintStream err) {
-        User user = new User();
-        return getWalletOrNull(user, err);
+        try {
+            User user = new User();
+            return getWalletOrNull(user, err);
+        } catch (OverflowException e) {
+//            err.println(e.getMessage());
+            throw e;
+        } catch (RuntimeException e) {
+            err.println(e.getMessage());
+            return null;
+        }
     }
 
     private void phaseThree(Warehouse warehouse, SafeWallet wallet, BufferedReader in, PrintStream out, PrintStream err) {
 
         do {
-            if (getProduct(warehouse, wallet, in, out, err) == -1) {
-                return;
+            try {
+                if (getProduct(warehouse, wallet, in, out, err) == -1) {
+                    return;
+                }
+            } catch (OverflowException e) {
+//            err.println(e.getMessage());
+                throw e;
+            } catch (RuntimeException e) {
+                continue;
             }
         } while (warehouse.getProducts().size() > 0);
     }
@@ -130,6 +154,9 @@ public class App {
             SafeWallet wallet = new SafeWallet(user);
 
             return wallet;
+        } catch (OverflowException e) {
+//            err.println(e.getMessage());
+            throw e;
         } catch (IllegalArgumentException e) {
             err.println("AUTH_ERROR");
         } catch (PermanentlyClosedException e) {
@@ -175,6 +202,7 @@ public class App {
             throw e;
         } catch (RuntimeException e) {
             out.println(e.getMessage());
+            return 0;
         } catch (Exception e) {
             return 0;
         }
