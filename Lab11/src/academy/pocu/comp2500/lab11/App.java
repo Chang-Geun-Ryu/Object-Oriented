@@ -43,15 +43,17 @@ public class App {
     }
 
     private Warehouse phaseOne(BufferedReader in, PrintStream out, PrintStream err) {
-        HashMap<Integer, WarehouseType> types = new HashMap<>();
-        int index = 0;
-        for (WarehouseType type : WarehouseType.values()) {
-            types.put(++index, type);
-        }
+
 
         Warehouse warehouse = null;
 
         do {
+            HashMap<Integer, WarehouseType> types = new HashMap<>();
+            int index = 0;
+            for (WarehouseType type : WarehouseType.values()) {
+                types.put(++index, type);
+            }
+
             int warehouseNum = getWarehouse(in, out, err);
             if (warehouseNum == -1) {
                 return null;
@@ -103,7 +105,7 @@ public class App {
 
             num = Integer.parseInt(s);
 
-            if (WarehouseType.values().length > 0) {
+            if (WarehouseType.values().length >= 0) {
                 if (num >= 1 && num <= WarehouseType.values().length) {
                     return num;
                 } else {
