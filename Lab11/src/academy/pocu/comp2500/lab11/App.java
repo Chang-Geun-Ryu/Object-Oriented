@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class App {
 
-    public void run(BufferedReader in, PrintStream out, PrintStream err) throws OverflowException {
+    public void run(BufferedReader in, PrintStream out, PrintStream err) {
         Warehouse warehouse = null;
         SafeWallet wallet = null;
         User user = null;
@@ -87,12 +87,14 @@ public class App {
                     if (isWithdrawal) {
                         warehouse.removeProduct(id);
                     }
-                    wallet.deposit(Integer.MAX_VALUE);
+//                    wallet.deposit(Integer.MAX_VALUE);
                 } catch (ProductNotFoundException e) {
                     if (isWithdrawal) {
-                        wallet.deposit(price);
-
-
+                        try {
+                            wallet.deposit(price);
+                        } catch (OverflowException overE) {
+                            throw overE;
+                        }
                     }
 //                    wallet.deposit(Integer.MIN_VALUE);
                 }

@@ -9,7 +9,7 @@ public class SafeWallet extends Wallet {
     }
 
     @Override
-    public boolean deposit(int amount) throws OverflowException {
+    public boolean deposit(int amount) {
 //        if (amount <= 0) {
 //            amount = 0;
 //        }
@@ -34,9 +34,9 @@ public class SafeWallet extends Wallet {
             throw new OverflowException("OverFlow amount");
         }
 
-        if ((long) getAmount() + (long) amount < 0) {
-            throw new OverflowException("OverFlow amount");
-        }
+//        if ((long) getAmount() + (long) amount < 0) {
+//            throw new OverflowException("OverFlow amount");
+//        }
 
         return super.deposit(amount);
     }
