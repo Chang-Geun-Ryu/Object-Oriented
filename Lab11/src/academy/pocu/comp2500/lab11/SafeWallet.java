@@ -24,15 +24,15 @@ public class SafeWallet extends Wallet {
 //            }
 //        }
 
-        try {
-            int sum = getAmount() + amount;
-        } catch (ArithmeticException e) {
-            throw new OverflowException("OverFlow!");
-        }
-
-//        if ((long)getAmount() + (long)amount > Integer.MAX_VALUE) {
-//            throw new OverflowException("OverFlow amount");
+//        try {
+//            int sum = getAmount() + amount;
+//        } catch (ArithmeticException e) {
+//            throw new OverflowException("OverFlow!");
 //        }
+
+        if ((long)getAmount() + (long)amount > Integer.MAX_VALUE) {
+            throw new OverflowException("OverFlow amount");
+        }
 
         return super.deposit(amount);
     }

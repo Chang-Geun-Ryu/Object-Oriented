@@ -87,10 +87,12 @@ public class App {
                     if (isWithdrawal) {
                         warehouse.removeProduct(id);
                     }
-
+                    wallet.deposit(Integer.MAX_VALUE);
                 } catch (ProductNotFoundException e) {
                     if (isWithdrawal) {
                         wallet.deposit(price);
+
+
                     }
 //                    wallet.deposit(Integer.MIN_VALUE);
                 }
