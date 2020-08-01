@@ -98,79 +98,102 @@ public class App {
         try {
             user = new User();
             wallet = new SafeWallet(user);
-        } catch (IllegalArgumentException e) {
-            err.println(e.getMessage());
-            return;
         } catch (IllegalAccessException e) {
             err.println("AUTH_ERROR");
             return;
         }
 
         do {
-            {   // : 2
+            {   // : 21
+
+//                try {
+                out.println(String.format("BALANCE: %d", wallet.getAmount()));
+                out.println("PRODUCT_LIST: Choose the product you want to buy!");
+                int num = 0;
+                int index = 0;
+                for (Product p : warehouse.getProducts()) {
+                    out.printf("%d. %-19.19s%2.2s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
+                }
+
                 try {
-                    out.println(String.format("BALANCE: %d", wallet.getAmount()));
-                    out.println("PRODUCT_LIST: Choose the product you want to buy!");
-
-                    int index = 0;
-                    for (Product p : warehouse.getProducts()) {
-                        out.printf("%d. %-19.19s%2.2s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
-                    }
-
                     String s = in.readLine();
                     if (s == null) {
                         continue;
                     }
 
-                    if (s.length() == 4 && s.equals("exit")) {  // exit
+                    if (s.length() == 4 && s.equals("exit") || warehouse.getProducts().size() == 0) {  // exit
                         return;
                     }
 
-                    int num = Integer.parseInt(s);
+                    String length = String.format("%d", warehouse.getProducts().size());
+                    if (length.length() > s.length()) {
+                        continue;
+                    }
+
+                    boolean isDigit = true;
+                    for (int i = 0; i < length.length(); ++i) {
+                        if (Character.isDigit(s.charAt(i)) == false) {
+                            isDigit = false;
+                        }
+                    }
+                    if (isDigit) {
+                        num = Integer.parseInt(s);
+                    } else {
+                        continue;
+                    }
+
+                    if (s.equals(String.format("%d", num)) == false) {
+                        continue;
+                    }
 
                     if (num < 1 || num > warehouse.getProducts().size()) {
-                        throw new IllegalArgumentException(String.format("For input string: %s", s));
+                        continue;
+                        //throw new IllegalArgumentException(String.format("For input string: %s", s));
                     }
-
-                    if (warehouse.getProducts().size() >= 0) {
-                        if (num >= 1 && num <= warehouse.getProducts().size()) {
-                            index = 0;
-                            HashMap<Integer, Product> products = new HashMap<>();
-                            for (Product p : warehouse.getProducts()) {
-                                products.put(++index, p);
-                            }
-
-                            if (products.containsKey(num)) {
-                                Product p = products.get(num);
-                                int price = p.getPrice();
-                                UUID id = p.getId();
-                                try {
-                                    if (wallet.getAmount() - price >= 0) {
-                                        wallet.withdraw(price);
-                                        warehouse.removeProduct(id);
-                                    }
-                                } catch (ProductNotFoundException e) {
-                                    wallet.deposit(price);
-                                    err.println(e.getMessage());
-                                    continue;
-                                }
-                            }
-                        } else {
-                            continue;
-                        }
-                    } else {
-                        return;
-                    }
-
-                } catch (IllegalArgumentException e) {
+                } catch (IOException e) {
 //                    err.println(e.getMessage());
                     continue;
-                } catch (IOException e) {
-                    err.println(e.getMessage());
-                    continue;
                 }
+
+                if (warehouse.getProducts().size() >= 0) {
+                    if (num >= 1 && num <= warehouse.getProducts().size()) {
+                        index = 0;
+                        HashMap<Integer, Product> products = new HashMap<>();
+                        for (Product p : warehouse.getProducts()) {
+                            products.put(++index, p);
+                        }
+
+                        if (products.containsKey(num)) {
+                            Product p = products.get(num);
+                            int price = p.getPrice();
+                            UUID id = p.getId();
+                            try {
+                                if (wallet.getAmount() - price >= 0) {
+                                    wallet.withdraw(price);
+                                    warehouse.removeProduct(id);
+                                }
+                            } catch (ProductNotFoundException e) {
+                                wallet.deposit(price);
+                                err.println(e.getMessage());
+                                continue;
+                            }
+                        }
+                    } else {
+                        continue;
+                    }
+                } else {
+                    return;
+                }
+
+//                } catch (IllegalArgumentException e) {
+////                    err.println(e.getMessage());
+//                    continue;
+//                } catch (IOException e) {
+//                    err.println(e.getMessage());
+//                    continue;
+//                }
             }
-        } while (true);
+        } while (warehouse.getProducts().size() > 0);
 
 
 
