@@ -130,47 +130,53 @@ public class App {
                     products.put(index, p);
                 }
 
-                try {
-                    String s = in.readLine();
-                    if (s == null) {
-                        continue;
-                    }
+//                try {
+//                    String s = in.readLine();
+//                    if (s == null) {
+//                        continue;
+//                    }
+//
+//                    if (s.length() == 4 && s.equals("exit") || warehouse.getProducts().size() == 0) {  // exit
+//                        return;
+//                    }
+//
+//                    String length = String.format("%d", warehouse.getProducts().size());
+//                    if (length.length() > s.length()) {
+//                        continue;
+//                    }
+//
+//                    boolean isDigit = true;
+//                    for (int i = 0; i < length.length(); ++i) {
+//                        if (Character.isDigit(s.charAt(i)) == false) {
+//                            isDigit = false;
+//                        }
+//                    }
+//                    if (isDigit) {
+//                        num = Integer.parseInt(s);
+//                    } else {
+//                        continue;
+//                    }
+//
+//                    if (s.equals(String.format("%d", num)) == false) {
+//                        continue;
+//                    }
+//
+//                    if (num < 1 || num > warehouse.getProducts().size()) {
+//                        continue;
+//                        //throw new IllegalArgumentException(String.format("For input string: %s", s));
+//                    }
+//                } catch (IOException e) {
+////                    err.println(e.getMessage());
+//                    continue;
+//                } catch (NumberFormatException e) {
+////                    err.println(e.getMessage());
+//                    continue;
+//                }
 
-                    if (s.length() == 4 && s.equals("exit") || warehouse.getProducts().size() == 0) {  // exit
-                        return;
-                    }
+                num = getProductIndex(warehouse, in, out, err);
 
-                    String length = String.format("%d", warehouse.getProducts().size());
-                    if (length.length() > s.length()) {
-                        continue;
-                    }
-
-                    boolean isDigit = true;
-                    for (int i = 0; i < length.length(); ++i) {
-                        if (Character.isDigit(s.charAt(i)) == false) {
-                            isDigit = false;
-                        }
-                    }
-                    if (isDigit) {
-                        num = Integer.parseInt(s);
-                    } else {
-                        continue;
-                    }
-
-                    if (s.equals(String.format("%d", num)) == false) {
-                        continue;
-                    }
-
-                    if (num < 1 || num > warehouse.getProducts().size()) {
-                        continue;
-                        //throw new IllegalArgumentException(String.format("For input string: %s", s));
-                    }
-                } catch (IOException e) {
-//                    err.println(e.getMessage());
-                    continue;
-                } catch (NumberFormatException e) {
-//                    err.println(e.getMessage());
-                    continue;
+                if (num == -1) {
+                    return;
                 }
 
                 if (num >= 1 && num <= warehouse.getProducts().size()) {
@@ -186,7 +192,7 @@ public class App {
                             }
                         } catch (ProductNotFoundException e) {
                             wallet.deposit(price);
-                            err.println(e.getMessage());
+//                            err.println(e.getMessage());
                             continue;
                         }
                     }
@@ -200,8 +206,6 @@ public class App {
 
     private int getWareHouseIndex(BufferedReader in, PrintStream out, PrintStream err) {
         int num = 0;
-
-
         try {
             String s = in.readLine();
             if (s == null) {
@@ -238,6 +242,51 @@ public class App {
                 //throw new IllegalArgumentException(String.format("For input string: %s", s));
             }
 
+            return num;
+        } catch (IOException e) {
+            return 0;
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    private int getProductIndex(Warehouse warehouse, BufferedReader in, PrintStream out, PrintStream err) {
+        try {
+            int num = 0;
+            String s = in.readLine();
+            if (s == null) {
+                return 0;
+            }
+
+            if (s.length() == 4 && s.equals("exit") || warehouse.getProducts().size() == 0) {  // exit
+                return -1;
+            }
+
+            String length = String.format("%d", warehouse.getProducts().size());
+            if (length.length() > s.length()) {
+                return 0;
+            }
+
+            boolean isDigit = true;
+            for (int i = 0; i < length.length(); ++i) {
+                if (Character.isDigit(s.charAt(i)) == false) {
+                    isDigit = false;
+                }
+            }
+            if (isDigit) {
+                num = Integer.parseInt(s);
+            } else {
+                return 0;
+            }
+
+            if (s.equals(String.format("%d", num)) == false) {
+                return 0;
+            }
+
+            if (num < 1 || num > warehouse.getProducts().size()) {
+                return 0;
+                //throw new IllegalArgumentException(String.format("For input string: %s", s));
+            }
             return num;
         } catch (IOException e) {
 //                    err.println(e.getMessage());
