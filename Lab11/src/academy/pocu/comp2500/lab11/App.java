@@ -38,7 +38,7 @@ public class App {
                         continue;
                     }
 
-                    if (s.length() == 4 && s.equals("exit")) {  // exit
+                    if (s.length() == 4 && s.equals("exit") || WarehouseType.values().length == 0) {  // exit
                         return;
                     }
 
@@ -59,6 +59,10 @@ public class App {
                         continue;
                     }
 
+                    if (s.equals(String.format("%d", num)) == false) {
+                        continue;
+                    }
+
                     if (num < 1 || num > WarehouseType.values().length) {
                         continue;
                         //throw new IllegalArgumentException(String.format("For input string: %s", s));
@@ -73,7 +77,6 @@ public class App {
 
                 if (WarehouseType.values().length >= 0) {
                     if (num >= 1 && num <= WarehouseType.values().length) {
-                        //try {
                         index = 0;
                         HashMap<Integer, WarehouseType> types = new HashMap<>();
                         for (WarehouseType type : WarehouseType.values()) {
@@ -83,12 +86,6 @@ public class App {
                         if (types.containsKey(num)) {
                             warehouse = new Warehouse(types.get(num));
                         }
-//                        } catch (IllegalArgumentException e) { // 생성자 매개변수가 올바르지 않은 경우에 발생
-//                            err.println(e.getMessage());
-//                            continue;
-//                        } //catch (PermanentlyClosedException e) { // 시스템이 창고를 찾지 못한 경우에 발생 크래쉬!
-
-                        // }
                     } else {
                         continue;
                     }
