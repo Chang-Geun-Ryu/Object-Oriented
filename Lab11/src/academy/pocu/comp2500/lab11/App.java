@@ -42,8 +42,13 @@ public class App {
                         return;
                     }
 
-                    boolean isDigit = s.length() > 10 ? false : true;
-                    for (int i = 0; i < 1; ++i) {
+                    String length = String.format("%d", WarehouseType.values().length);
+                    if (length.length() > s.length()) {
+                        continue;
+                    }
+
+                    boolean isDigit = true;
+                    for (int i = 0; i < length.length(); ++i) {
                         if (Character.isDigit(s.charAt(i)) == false) {
                             isDigit = false;
                         }
