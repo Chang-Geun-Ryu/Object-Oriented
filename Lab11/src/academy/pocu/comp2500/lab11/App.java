@@ -70,10 +70,10 @@ public class App {
                 } catch (IOException e) {
 //                    err.println(e.getMessage());
                     continue;
-                } /*catch (NumberFormatException e) {
-                    err.println(e.getMessage());
+                } catch (RuntimeException e) {
+//                    err.println(e.getMessage());
                     continue;
-                }*/
+                }
 
                 if (WarehouseType.values().length >= 0) {
                     if (num >= 1 && num <= WarehouseType.values().length) {
@@ -152,10 +152,10 @@ public class App {
                 } catch (IOException e) {
 //                    err.println(e.getMessage());
                     continue;
-                } /*catch (NumberFormatException e) {
-                    err.println(e.getMessage());
+                } catch (RuntimeException e) {
+//                    err.println(e.getMessage());
                     continue;
-                }*/
+                }
 
 //                if (warehouse.getProducts().size() >= 0) {
                 if (num >= 1 && num <= warehouse.getProducts().size()) {
@@ -180,6 +180,9 @@ public class App {
                         } catch (ProductNotFoundException e) {
                             wallet.deposit(price);
                             err.println(e.getMessage());
+                            continue;
+                        } catch (RuntimeException e) {
+//                    err.println(e.getMessage());
                             continue;
                         }
                     }
