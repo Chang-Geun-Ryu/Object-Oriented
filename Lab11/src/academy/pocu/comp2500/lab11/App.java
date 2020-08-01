@@ -61,37 +61,38 @@ public class App {
         }
 
         do {
-            {   // : 21
-                out.println(String.format("BALANCE: %d", wallet.getAmount()));
-                out.println("PRODUCT_LIST: Choose the product you want to buy!");
-                int num = 0;
-                int index = 0;
-                HashMap<Integer, Product> products = new HashMap<>();
-                for (Product p : warehouse.getProducts()) {
-                    out.printf("%d. %-19.19s%10s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
-                    products.put(index, p);
-                }
+            out.println(String.format("BALANCE: %d", wallet.getAmount()));
+            out.println("PRODUCT_LIST: Choose the product you want to buy!");
+            int num = 0;
+            int index = 0;
+            HashMap<Integer, Product> products = new HashMap<>();
+            for (Product p : warehouse.getProducts()) {
+                out.printf("%d. %-19.19s%10s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
+                products.put(index, p);
+            }
 
-                num = getProductIndex(warehouse, in, out, err);
+            num = getProductIndex(warehouse, in, out, err);
 
-                if (num == -1) {
-                    return;
-                }
+            if (num == -1) {
+                return;
+            }
 
-                if (products.containsKey(num)) {
-                    Product p = products.get(num);
-                    int price = p.getPrice();
-                    UUID id = p.getId();
-                    try {
-                        if (wallet.withdraw(price)) {
-                            warehouse.removeProduct(id);
-                        } else {
-                            continue;
-                        }
-                    } catch (ProductNotFoundException e) {
-                        wallet.deposit(price);
-                        continue;
+            if (products.containsKey(num)) {
+                Product p = products.get(num);
+                int price = p.getPrice();
+                UUID id = p.getId();
+                boolean isWithdrawal = false;
+                try {
+                    isWithdrawal = wallet.withdraw(price);
+                    if (isWithdrawal) {
+                        warehouse.removeProduct(id);
                     }
+
+                } catch (ProductNotFoundException e) {
+                    if (isWithdrawal) {
+                        wallet.deposit(price);
+                    }
+//                    wallet.deposit(Integer.MIN_VALUE);
                 }
             }
         } while (true);
