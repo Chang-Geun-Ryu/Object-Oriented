@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class App {
 
-    public void run(BufferedReader in, PrintStream out, PrintStream err) {
+    public void run(BufferedReader in, PrintStream out, PrintStream err) throws OverflowException {
         Warehouse warehouse = null;
         SafeWallet wallet = null;
         User user = null;
