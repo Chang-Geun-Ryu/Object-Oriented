@@ -179,10 +179,7 @@ public class App {
                             }
                         } catch (ProductNotFoundException e) {
                             wallet.deposit(price);
-                            err.println(e.getMessage());
-                            continue;
-                        } catch (RuntimeException e) {
-//                    err.println(e.getMessage());
+//                            err.println(e.getMessage());
                             continue;
                         }
                     }
