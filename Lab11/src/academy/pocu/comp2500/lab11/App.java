@@ -110,8 +110,10 @@ public class App {
                 out.println("PRODUCT_LIST: Choose the product you want to buy!");
                 int num = 0;
                 int index = 0;
+                HashMap<Integer, Product> products = new HashMap<>();
                 for (Product p : warehouse.getProducts()) {
                     out.printf("%d. %-19.19s%2.2s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
+                    products.put(index, p);
                 }
 
                 try {
@@ -159,11 +161,11 @@ public class App {
 
 //                if (warehouse.getProducts().size() >= 0) {
                 if (num >= 1 && num <= warehouse.getProducts().size()) {
-                    index = 0;
-                    HashMap<Integer, Product> products = new HashMap<>();
-                    for (Product p : warehouse.getProducts()) {
-                        products.put(++index, p);
-                    }
+//                    index = 0;
+//                    HashMap<Integer, Product> products = new HashMap<>();
+//                    for (Product p : warehouse.getProducts()) {
+//                        products.put(++index, p);
+//                    }
 
                     if (products.containsKey(num)) {
                         Product p = products.get(num);
