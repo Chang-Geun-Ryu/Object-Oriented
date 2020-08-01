@@ -178,6 +178,8 @@ public class App {
                                 } else {
                                     continue;
                                 }
+                            } else {
+                                continue;
                             }
                         } catch (ProductNotFoundException e) {
                             wallet.deposit(price);
