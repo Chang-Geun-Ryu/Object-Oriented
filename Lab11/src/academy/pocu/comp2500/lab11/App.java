@@ -105,7 +105,6 @@ public class App {
 
         do {
             {   // : 21
-
 //                try {
                 out.println(String.format("BALANCE: %d", wallet.getAmount()));
                 out.println("PRODUCT_LIST: Choose the product you want to buy!");
@@ -153,7 +152,10 @@ public class App {
                 } catch (IOException e) {
 //                    err.println(e.getMessage());
                     continue;
-                }
+                } /*catch (NumberFormatException e) {
+                    err.println(e.getMessage());
+                    continue;
+                }*/
 
                 if (warehouse.getProducts().size() >= 0) {
                     if (num >= 1 && num <= warehouse.getProducts().size()) {
@@ -193,7 +195,7 @@ public class App {
 //                    continue;
 //                }
             }
-        } while (warehouse.getProducts().size() > 0);
+        } while (true);
 
 
 
