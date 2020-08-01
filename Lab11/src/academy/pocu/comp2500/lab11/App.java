@@ -77,7 +77,6 @@ public class App {
 //                }
 
                 int index = 0;
-
                 HashMap<Integer, WarehouseType> types = new HashMap<>();
                 out.println("WAREHOUSE: Choose your warehouse!");
                 for (WarehouseType type : WarehouseType.values()) {
@@ -86,6 +85,10 @@ public class App {
                 }
 
                 int num = getWareHouseIndex(in, out, err);
+
+                if (num == -1) {
+                    return;
+                }
 
                 if (WarehouseType.values().length >= 0) {
                     if (num >= 1 && num <= WarehouseType.values().length) {
