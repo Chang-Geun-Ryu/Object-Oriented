@@ -158,34 +158,34 @@ public class App {
                 }*/
 
 //                if (warehouse.getProducts().size() >= 0) {
-                    if (num >= 1 && num <= warehouse.getProducts().size()) {
-                        index = 0;
-                        HashMap<Integer, Product> products = new HashMap<>();
-                        for (Product p : warehouse.getProducts()) {
-                            products.put(++index, p);
-                        }
-
-                        if (products.containsKey(num)) {
-                            Product p = products.get(num);
-                            int price = p.getPrice();
-                            UUID id = p.getId();
-                            try {
-                                if (wallet.getAmount() - price >= 0) {
-                                    if (wallet.withdraw(price)) {
-                                        warehouse.removeProduct(id);
-                                    } else {
-                                        continue;
-                                    }
-                                }
-                            } catch (ProductNotFoundException e) {
-                                wallet.deposit(price);
-                                err.println(e.getMessage());
-                                continue;
-                            }
-                        }
-                    } else {
-                        continue;
+                if (num >= 1 && num <= warehouse.getProducts().size()) {
+                    index = 0;
+                    HashMap<Integer, Product> products = new HashMap<>();
+                    for (Product p : warehouse.getProducts()) {
+                        products.put(++index, p);
                     }
+
+                    if (products.containsKey(num)) {
+                        Product p = products.get(num);
+                        int price = p.getPrice();
+                        UUID id = p.getId();
+                        try {
+                            if (wallet.getAmount() - price >= 0) {
+                                if (wallet.withdraw(price)) {
+                                    warehouse.removeProduct(id);
+                                } else {
+                                    continue;
+                                }
+                            }
+                        } catch (ProductNotFoundException e) {
+                            wallet.deposit(price);
+                            err.println(e.getMessage());
+                            continue;
+                        }
+                    }
+                } else {
+                    continue;
+                }
 //                } else {
 //                    return;
 //                }
