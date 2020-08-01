@@ -70,7 +70,7 @@ public class App {
                 } catch (IOException e) {
 //                    err.println(e.getMessage());
                     continue;
-                } catch (RuntimeException e) {
+                } catch (NumberFormatException e) {
 //                    err.println(e.getMessage());
                     continue;
                 }
@@ -84,7 +84,11 @@ public class App {
                         }
 
                         if (types.containsKey(num)) {
-                            warehouse = new Warehouse(types.get(num));
+                            if (types.get(num) != null) {
+                                warehouse = new Warehouse(types.get(num));
+                            } else {
+                                continue;
+                            }
                         }
                     } else {
                         continue;
@@ -155,7 +159,7 @@ public class App {
                 } catch (IOException e) {
 //                    err.println(e.getMessage());
                     continue;
-                } catch (RuntimeException e) {
+                } catch (NumberFormatException e) {
 //                    err.println(e.getMessage());
                     continue;
                 }
@@ -167,11 +171,11 @@ public class App {
                         UUID id = p.getId();
                         try {
 //                            if (wallet.getAmount() - price >= 0) {
-                                if (wallet.withdraw(price)) {
-                                    warehouse.removeProduct(id);
-                                } else {
-                                    continue;
-                                }
+                            if (wallet.withdraw(price)) {
+                                warehouse.removeProduct(id);
+                            } else {
+                                continue;
+                            }
 //                            } else {
 //                                continue;
 //                            }
