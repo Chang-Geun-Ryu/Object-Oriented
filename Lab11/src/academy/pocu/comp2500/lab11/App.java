@@ -43,7 +43,7 @@ public class App {
                     }
 
                     boolean isDigit = s.length() > 10 ? false : true;
-                    for (int i = 0; i < s.length(); ++i) {
+                    for (int i = 0; i < 1; ++i) {
                         if (Character.isDigit(s.charAt(i)) == false) {
                             isDigit = false;
                         }
@@ -67,15 +67,15 @@ public class App {
                 if (WarehouseType.values().length >= 0) {
                     if (num >= 1 && num <= WarehouseType.values().length) {
                         //try {
-                            index = 0;
-                            HashMap<Integer, WarehouseType> types = new HashMap<>();
-                            for (WarehouseType type : WarehouseType.values()) {
-                                types.put(++index, type);
-                            }
+                        index = 0;
+                        HashMap<Integer, WarehouseType> types = new HashMap<>();
+                        for (WarehouseType type : WarehouseType.values()) {
+                            types.put(++index, type);
+                        }
 
-                            if (types.containsKey(num)) {
-                                warehouse = new Warehouse(types.get(num));
-                            }
+                        if (types.containsKey(num)) {
+                            warehouse = new Warehouse(types.get(num));
+                        }
 //                        } catch (IllegalArgumentException e) { // 생성자 매개변수가 올바르지 않은 경우에 발생
 //                            err.println(e.getMessage());
 //                            continue;
@@ -159,7 +159,7 @@ public class App {
                     }
 
                 } catch (IllegalArgumentException e) {
-                    err.println(e.getMessage());
+//                    err.println(e.getMessage());
                     continue;
                 } catch (IOException e) {
                     err.println(e.getMessage());
