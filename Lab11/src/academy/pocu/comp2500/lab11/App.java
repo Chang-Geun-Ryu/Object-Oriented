@@ -55,6 +55,9 @@ public class App {
         } catch (IllegalAccessException e) {
             err.println("AUTH_ERROR");
             return;
+        } catch (IllegalArgumentException e) {
+            err.println("AUTH_ERROR");
+            return;
         }
 
         do {
@@ -91,7 +94,7 @@ public class App {
                     }
                 }
             }
-        } while (warehouse.getProducts().size() > 0);
+        } while (true);
     }
 
     private int getWareHouseIndex(BufferedReader in, PrintStream out, PrintStream err) {
