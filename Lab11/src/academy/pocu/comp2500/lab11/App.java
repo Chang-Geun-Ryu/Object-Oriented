@@ -68,7 +68,7 @@ public class App {
                         //throw new IllegalArgumentException(String.format("For input string: %s", s));
                     }
                 } catch (IOException e) {
-                    err.println(e.getMessage());
+//                    err.println(e.getMessage());
                     continue;
                 } /*catch (NumberFormatException e) {
                     err.println(e.getMessage());
