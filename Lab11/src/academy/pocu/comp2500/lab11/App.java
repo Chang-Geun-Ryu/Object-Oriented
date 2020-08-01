@@ -42,22 +42,31 @@ public class App {
                         return;
                     }
 
-                    num = Integer.parseInt(s);
+                    boolean isDigit = s.length() > 10 ? false : true;
+                    for (int i = 0; i < s.length(); ++i) {
+                        if (Character.isDigit(s.charAt(i)) == false) {
+                            isDigit = false;
+                        }
+                    }
+                    if (isDigit) {
+                        num = Integer.parseInt(s);
+                    }
 
                     if (num < 1 || num > WarehouseType.values().length) {
-                        throw new IllegalArgumentException(String.format("For input string: %s", s));
+                        continue;
+                        //throw new IllegalArgumentException(String.format("For input string: %s", s));
                     }
                 } catch (IOException e) {
                     err.println(e.getMessage());
                     continue;
-                } catch (IllegalArgumentException e) {
+                } /*catch (NumberFormatException e) {
                     err.println(e.getMessage());
                     continue;
-                }
+                }*/
 
                 if (WarehouseType.values().length >= 0) {
                     if (num >= 1 && num <= WarehouseType.values().length) {
-                        try {
+                        //try {
                             index = 0;
                             HashMap<Integer, WarehouseType> types = new HashMap<>();
                             for (WarehouseType type : WarehouseType.values()) {
@@ -67,10 +76,10 @@ public class App {
                             if (types.containsKey(num)) {
                                 warehouse = new Warehouse(types.get(num));
                             }
-                        } catch (IllegalArgumentException e) { // 생성자 매개변수가 올바르지 않은 경우에 발생
-                            err.println(e.getMessage());
-                            continue;
-                        } //catch (PermanentlyClosedException e) { // 시스템이 창고를 찾지 못한 경우에 발생 크래쉬!
+//                        } catch (IllegalArgumentException e) { // 생성자 매개변수가 올바르지 않은 경우에 발생
+//                            err.println(e.getMessage());
+//                            continue;
+//                        } //catch (PermanentlyClosedException e) { // 시스템이 창고를 찾지 못한 경우에 발생 크래쉬!
 
                         // }
                     } else {
@@ -85,7 +94,7 @@ public class App {
         try {
             user = new User();
             wallet = new SafeWallet(user);
-        }  catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             err.println(e.getMessage());
             return;
         } catch (IllegalAccessException e) {
