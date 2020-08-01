@@ -14,8 +14,14 @@ public class SafeWallet extends Wallet {
             amount = 0;
         }
 
-        if (amount > Integer.MAX_VALUE - getAmount()) {
-            throw new OverflowException("OverFlow!");
+        if (getAmount() > 0) {
+            if (amount > Integer.MAX_VALUE - getAmount()) {
+                throw new OverflowException("OverFlow!");
+            }
+        } else {
+            if (amount < Integer.MIN_VALUE - getAmount()) {
+                throw new OverflowException("UnderFlow!");
+            }
         }
 
         return super.deposit(amount);
