@@ -82,12 +82,20 @@ public class App {
             }
         } while (warehouse == null);
 
+        try {
+            user = new User();
+            wallet = new SafeWallet(user);
+        }  catch (IllegalArgumentException e) {
+            err.println(e.getMessage());
+            return;
+        } catch (IllegalAccessException e) {
+            err.println("AUTH_ERROR");
+            return;
+        }
+
         do {
             {   // : 2
                 try {
-                    user = new User();
-                    wallet = new SafeWallet(user);
-
                     out.println(String.format("BALANCE: %d", wallet.getAmount()));
                     out.println("PRODUCT_LIST: Choose the product you want to buy!");
 
@@ -144,9 +152,6 @@ public class App {
                 } catch (IllegalArgumentException e) {
                     err.println(e.getMessage());
                     continue;
-                } catch (IllegalAccessException e) {
-                    err.println("AUTH_ERROR");
-                    return;
                 } catch (IOException e) {
                     err.println(e.getMessage());
                     continue;
