@@ -157,7 +157,7 @@ public class App {
                     continue;
                 }*/
 
-                if (warehouse.getProducts().size() >= 0) {
+//                if (warehouse.getProducts().size() >= 0) {
                     if (num >= 1 && num <= warehouse.getProducts().size()) {
                         index = 0;
                         HashMap<Integer, Product> products = new HashMap<>();
@@ -169,7 +169,7 @@ public class App {
                             Product p = products.get(num);
                             int price = p.getPrice();
                             UUID id = p.getId();
-//                            try {
+                            try {
                                 if (wallet.getAmount() - price >= 0) {
                                     if (wallet.withdraw(price)) {
                                         warehouse.removeProduct(id);
@@ -177,20 +177,20 @@ public class App {
                                         continue;
                                     }
                                 }
-//                            } catch (ProductNotFoundException e) {
-//                                wallet.deposit(price);
-//                                err.println(e.getMessage());
-//                                continue;
-//                            }
+                            } catch (ProductNotFoundException e) {
+                                wallet.deposit(price);
+                                err.println(e.getMessage());
+                                continue;
+                            }
                         }
                     } else {
                         continue;
                     }
-                } else {
-                    return;
-                }
+//                } else {
+//                    return;
+//                }
             }
-        } while (true);
+        } while (warehouse.getProducts().size() > 0);
 
     }
 }
