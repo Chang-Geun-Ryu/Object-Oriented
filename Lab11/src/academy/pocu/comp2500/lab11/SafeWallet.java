@@ -10,9 +10,9 @@ public class SafeWallet extends Wallet {
 
     @Override
     public boolean deposit(int amount) {
-        if (amount <= 0) {
-            amount = 0;
-        }
+//        if (amount <= 0) {
+//            amount = 0;
+//        }
 
         if (getAmount() > 0) {
             if (amount > Integer.MAX_VALUE - getAmount()) {

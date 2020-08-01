@@ -112,7 +112,8 @@ public class App {
                 int index = 0;
                 HashMap<Integer, Product> products = new HashMap<>();
                 for (Product p : warehouse.getProducts()) {
-                    out.printf("%d. %-19.19s%2.2s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
+//                    out.printf("%d. %-19.19s%2.2s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
+                    out.printf("%d. %-19.19s%10s%s", ++index, p.getName(), String.format("%d", p.getPrice()), System.lineSeparator());
                     products.put(index, p);
                 }
 
@@ -159,31 +160,24 @@ public class App {
                     continue;
                 }
 
-//                if (warehouse.getProducts().size() >= 0) {
                 if (num >= 1 && num <= warehouse.getProducts().size()) {
-//                    index = 0;
-//                    HashMap<Integer, Product> products = new HashMap<>();
-//                    for (Product p : warehouse.getProducts()) {
-//                        products.put(++index, p);
-//                    }
-
                     if (products.containsKey(num)) {
                         Product p = products.get(num);
                         int price = p.getPrice();
                         UUID id = p.getId();
                         try {
-                            if (wallet.getAmount() - price >= 0) {
+//                            if (wallet.getAmount() - price >= 0) {
                                 if (wallet.withdraw(price)) {
                                     warehouse.removeProduct(id);
                                 } else {
                                     continue;
                                 }
-                            } else {
-                                continue;
-                            }
+//                            } else {
+//                                continue;
+//                            }
                         } catch (ProductNotFoundException e) {
                             wallet.deposit(price);
-//                            err.println(e.getMessage());
+                            err.println(e.getMessage());
                             continue;
                         }
                     }
