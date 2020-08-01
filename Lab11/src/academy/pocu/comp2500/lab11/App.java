@@ -50,6 +50,8 @@ public class App {
                     }
                     if (isDigit) {
                         num = Integer.parseInt(s);
+                    } else {
+                        continue;
                     }
 
                     if (num < 1 || num > WarehouseType.values().length) {
