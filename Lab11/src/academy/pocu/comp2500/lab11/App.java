@@ -24,65 +24,71 @@ public class App {
 
         do {
             { // : 1
-                int index = 0;
-                int num = 0;
+//                int index = 0;
+//                int num = 0;
+//                HashMap<Integer, WarehouseType> types = new HashMap<>();
+//                out.println("WAREHOUSE: Choose your warehouse!");
+//                for (WarehouseType type : WarehouseType.values()) {
+//                    out.printf("%d. %s%s", ++index, type, System.lineSeparator());
+//                    types.put(index, type);
+//                }
+//
+//                try {
+//                    String s = in.readLine();
+//                    if (s == null) {
+//                        continue;
+//                    }
+//
+//                    if (s.length() == 4 && s.equals("exit") || WarehouseType.values().length == 0) {  // exit
+//                        return;
+//                    }
+//
+//                    String length = String.format("%d", WarehouseType.values().length);
+//                    if (length.length() > s.length()) {
+//                        continue;
+//                    }
+//
+//                    boolean isDigit = true;
+//                    for (int i = 0; i < length.length(); ++i) {
+//                        if (Character.isDigit(s.charAt(i)) == false) {
+//                            isDigit = false;
+//                        }
+//                    }
+//                    if (isDigit) {
+//                        num = Integer.parseInt(s);
+//                    } else {
+//                        continue;
+//                    }
+//
+//                    if (s.equals(String.format("%d", num)) == false) {
+//                        continue;
+//                    }
+//
+//                    if (num < 1 || num > WarehouseType.values().length) {
+//                        continue;
+//                        //throw new IllegalArgumentException(String.format("For input string: %s", s));
+//                    }
+//                } catch (IOException e) {
+////                    err.println(e.getMessage());
+//                    continue;
+//                } catch (NumberFormatException e) {
+////                    err.println(e.getMessage());
+//                    continue;
+//                }
 
+                int index = 0;
+
+                HashMap<Integer, WarehouseType> types = new HashMap<>();
                 out.println("WAREHOUSE: Choose your warehouse!");
                 for (WarehouseType type : WarehouseType.values()) {
                     out.printf("%d. %s%s", ++index, type, System.lineSeparator());
+                    types.put(index, type);
                 }
 
-                try {
-                    String s = in.readLine();
-                    if (s == null) {
-                        continue;
-                    }
-
-                    if (s.length() == 4 && s.equals("exit") || WarehouseType.values().length == 0) {  // exit
-                        return;
-                    }
-
-                    String length = String.format("%d", WarehouseType.values().length);
-                    if (length.length() > s.length()) {
-                        continue;
-                    }
-
-                    boolean isDigit = true;
-                    for (int i = 0; i < length.length(); ++i) {
-                        if (Character.isDigit(s.charAt(i)) == false) {
-                            isDigit = false;
-                        }
-                    }
-                    if (isDigit) {
-                        num = Integer.parseInt(s);
-                    } else {
-                        continue;
-                    }
-
-                    if (s.equals(String.format("%d", num)) == false) {
-                        continue;
-                    }
-
-                    if (num < 1 || num > WarehouseType.values().length) {
-                        continue;
-                        //throw new IllegalArgumentException(String.format("For input string: %s", s));
-                    }
-                } catch (IOException e) {
-//                    err.println(e.getMessage());
-                    continue;
-                } catch (NumberFormatException e) {
-//                    err.println(e.getMessage());
-                    continue;
-                }
+                int num = getWareHouseIndex(in, out, err);
 
                 if (WarehouseType.values().length >= 0) {
                     if (num >= 1 && num <= WarehouseType.values().length) {
-                        index = 0;
-                        HashMap<Integer, WarehouseType> types = new HashMap<>();
-                        for (WarehouseType type : WarehouseType.values()) {
-                            types.put(++index, type);
-                        }
-
                         if (types.containsKey(num)) {
                             if (types.get(num) != null) {
                                 warehouse = new Warehouse(types.get(num));
@@ -170,15 +176,11 @@ public class App {
                         int price = p.getPrice();
                         UUID id = p.getId();
                         try {
-//                            if (wallet.getAmount() - price >= 0) {
                             if (wallet.withdraw(price)) {
                                 warehouse.removeProduct(id);
                             } else {
                                 continue;
                             }
-//                            } else {
-//                                continue;
-//                            }
                         } catch (ProductNotFoundException e) {
                             wallet.deposit(price);
                             err.println(e.getMessage());
@@ -188,11 +190,58 @@ public class App {
                 } else {
                     continue;
                 }
-//                } else {
-//                    return;
-//                }
             }
         } while (warehouse.getProducts().size() > 0);
 
+    }
+
+    private int getWareHouseIndex(BufferedReader in, PrintStream out, PrintStream err) {
+        int num = 0;
+
+
+        try {
+            String s = in.readLine();
+            if (s == null) {
+                return 0;
+            }
+
+            if (s.length() == 4 && s.equals("exit") || WarehouseType.values().length == 0) {  // exit
+                return -1;
+            }
+
+            String length = String.format("%d", WarehouseType.values().length);
+            if (length.length() > s.length()) {
+                return 0;
+            }
+
+            boolean isDigit = true;
+            for (int i = 0; i < length.length(); ++i) {
+                if (Character.isDigit(s.charAt(i)) == false) {
+                    isDigit = false;
+                }
+            }
+            if (isDigit) {
+                num = Integer.parseInt(s);
+            } else {
+                return 0;
+            }
+
+            if (s.equals(String.format("%d", num)) == false) {
+                return 0;
+            }
+
+            if (num < 1 || num > WarehouseType.values().length) {
+                return 0;
+                //throw new IllegalArgumentException(String.format("For input string: %s", s));
+            }
+
+            return num;
+        } catch (IOException e) {
+//                    err.println(e.getMessage());
+            return 0;
+        } catch (NumberFormatException e) {
+//                    err.println(e.getMessage());
+            return 0;
+        }
     }
 }
