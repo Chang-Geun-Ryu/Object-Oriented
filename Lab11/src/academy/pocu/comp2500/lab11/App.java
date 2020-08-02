@@ -4,6 +4,7 @@ import academy.pocu.comp2500.lab11.pocu.Product;
 import academy.pocu.comp2500.lab11.pocu.User;
 import academy.pocu.comp2500.lab11.pocu.Warehouse;
 import academy.pocu.comp2500.lab11.pocu.WarehouseType;
+import academy.pocu.comp2500.lab11.pocu.ProductNotFoundException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -78,26 +79,22 @@ public class App {
                 int price = p.getPrice();
                 UUID id = p.getId();
 
-//                if (warehouse.getProducts().size() == products.size()) {
-//                    if (wallet.getAmount() - price >= 0) {
                 if (wallet.withdraw(price)) {
                     try {
                         warehouse.removeProduct(id);
-                    } catch (RuntimeException e) {
+                    } catch (ProductNotFoundException e) {
                         try {
                             wallet.deposit(price);
                         } catch (OverflowException over) {
                             throw over;
                         }
 //                                continue;
-                        err.println(e.getLocalizedMessage());
+//                        err.println(e.getLocalizedMessage());
                         continue;
                     }
                 } else {
                     continue;
                 }
-//                    }
-//                }
             }
         } while (true);
     }
