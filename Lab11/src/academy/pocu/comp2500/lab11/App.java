@@ -82,13 +82,14 @@ public class App {
                 int price = p.getPrice();
                 UUID id = p.getId();
                 boolean isWithdrawal = false;
-                try {
+//                try {
                     isWithdrawal = wallet.withdraw(price);
                     if (isWithdrawal) {
+//                        warehouse.getProducts()
                         warehouse.removeProduct(id);
                     }
 //                    wallet.deposit(Integer.MAX_VALUE);
-                } catch (ProductNotFoundException e) {
+//                } catch (ProductNotFoundException e) {
                     if (isWithdrawal) {
                         try {
                             wallet.deposit(price);
@@ -97,7 +98,7 @@ public class App {
                         }
                     }
 //                    wallet.deposit(Integer.MIN_VALUE);
-                }
+//                }
             }
         } while (true);
     }
