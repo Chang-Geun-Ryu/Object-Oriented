@@ -78,22 +78,26 @@ public class App {
                 int price = p.getPrice();
                 UUID id = p.getId();
 
-                if (warehouse.getProducts().size() == products.size()) {
-                    if (wallet.getAmount() - price >= 0) {
-                        if (wallet.withdraw(price)) {
-                            try {
-                                warehouse.removeProduct(id);
-                            } catch (RuntimeException e) {
-                                wallet.deposit(price);
-//                                continue;
-                                err.println(e.getLocalizedMessage());
-                                continue;
-                            }
-                        } else {
-                            continue;
+//                if (warehouse.getProducts().size() == products.size()) {
+//                    if (wallet.getAmount() - price >= 0) {
+                if (wallet.withdraw(price)) {
+                    try {
+                        warehouse.removeProduct(id);
+                    } catch (RuntimeException e) {
+                        try {
+                            wallet.deposit(price);
+                        } catch (OverflowException over) {
+                            throw over;
                         }
+//                                continue;
+                        err.println(e.getLocalizedMessage());
+                        continue;
                     }
+                } else {
+                    continue;
                 }
+//                    }
+//                }
             }
         } while (true);
     }
