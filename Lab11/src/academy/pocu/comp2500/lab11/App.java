@@ -85,6 +85,8 @@ public class App {
                                 warehouse.removeProduct(id);
                             } catch (RuntimeException e) {
                                 wallet.deposit(price);
+//                                continue;
+                                err.println(e.getLocalizedMessage());
                                 continue;
                             }
                         } else {
