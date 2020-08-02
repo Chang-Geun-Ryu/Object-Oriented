@@ -79,7 +79,18 @@ public class App {
                 UUID id = p.getId();
 
                 if (warehouse.getProducts().size() == products.size()) {
-
+                    if (wallet.getAmount() - price >= 0) {
+                        if (wallet.withdraw(price)) {
+                            try {
+                                warehouse.removeProduct(id);
+                            } catch (RuntimeException e) {
+                                wallet.deposit(price);
+                                continue;
+                            }
+                        } else {
+                            continue;
+                        }
+                    }
                 }
             }
         } while (true);
