@@ -52,7 +52,7 @@ public class Pixel {
     }
 
     public void toLower() {
-        if (this.value >= 0x41 && this.value < 0x5A) {
+        if (this.value >= 0x41 && this.value <= 0x5A) {
             this.value ^= 0x20;
         }
     }
