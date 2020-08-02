@@ -1,13 +1,9 @@
 package academy.pocu.comp2500.lab11;
 
 import academy.pocu.comp2500.lab11.pocu.Product;
-import academy.pocu.comp2500.lab11.pocu.Wallet;
 import academy.pocu.comp2500.lab11.pocu.User;
 import academy.pocu.comp2500.lab11.pocu.Warehouse;
 import academy.pocu.comp2500.lab11.pocu.WarehouseType;
-import academy.pocu.comp2500.lab11.pocu.Department;
-import academy.pocu.comp2500.lab11.pocu.PermanentlyClosedException;
-import academy.pocu.comp2500.lab11.pocu.ProductNotFoundException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -81,27 +77,33 @@ public class App {
                 Product p = products.get(num);
                 int price = p.getPrice();
                 UUID id = p.getId();
-                boolean isWithdrawal = false;
-//                try {
-                    isWithdrawal = wallet.withdraw(price);
-                    if (isWithdrawal) {
-//                        warehouse.getProducts()
-                        warehouse.removeProduct(id);
-                    }
-//                    wallet.deposit(Integer.MAX_VALUE);
-//                } catch (ProductNotFoundException e) {
-                    if (isWithdrawal) {
-                        try {
-                            wallet.deposit(price);
-                        } catch (OverflowException overE) {
-                            throw overE;
-                        }
-                    }
-//                    wallet.deposit(Integer.MIN_VALUE);
-//                }
+
+                if (warehouse.getProducts().size() == products.size()) {
+
+                }
             }
         } while (true);
     }
+
+
+//    boolean isWithdrawal = false;
+////                try {
+//    isWithdrawal = wallet.withdraw(price);
+//                    if (isWithdrawal) {
+////                        warehouse.getProducts()
+//        warehouse.removeProduct(id);
+//    }
+////                    wallet.deposit(Integer.MAX_VALUE);
+////                } catch (ProductNotFoundException e) {
+//                    if (isWithdrawal) {
+//        try {
+//            wallet.deposit(price);
+//        } catch (OverflowException overE) {
+//            throw overE;
+//        }
+//    }
+////                    wallet.deposit(Integer.MIN_VALUE);
+////                }
 
     private int getWareHouseIndex(BufferedReader in, PrintStream out, PrintStream err) {
         int num = 0;
