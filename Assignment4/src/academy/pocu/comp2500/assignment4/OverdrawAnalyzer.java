@@ -8,6 +8,7 @@ import java.util.Objects;
 public class OverdrawAnalyzer extends Canvas {
     private HashMap<Integer, LinkedList<Character>> history = new HashMap<>();
     private HashMap<Integer, Integer> overdrawCount = new HashMap<>();
+    private HashMap<Integer, Integer> overdrawCountTest = new HashMap<>();
 
     public OverdrawAnalyzer(int width, int height) {
         super(width, height);
@@ -18,6 +19,7 @@ public class OverdrawAnalyzer extends Canvas {
                 linked.add(getPixel(w, h));
                 this.history.put(Objects.hash(w, h), linked);
                 this.overdrawCount.put(Objects.hash(w, h), 0);
+                overdrawCountTest.put(Objects.hash(w, h), 0);
             }
         }
     }
@@ -29,20 +31,23 @@ public class OverdrawAnalyzer extends Canvas {
             history.add(this.history.get(Objects.hash(x, y)).get(i));
         }
         return history;
-//        return this.history.get(Objects.hash(x, y));
     }
 
     public int getOverdrawCount(int x, int y) {
 
-        return getPixelHistory(x, y).size();//
-//        return this.overdrawCount.get(Objects.hash(x, y));
+        return overdrawCountTest.get(Objects.hash(x, y));
+    }
+
+    private int getSingle(int x, int y) {
+
+        return getPixelHistory(x, y).size();
     }
 
     public int getOverdrawCount() {
         int total = 0;
         for (int y = 0; y < getHeight(); ++y) {
             for (int x = 0; x < getWidth(); ++x) {
-                total += getOverdrawCount(x, y);
+                total += getSingle(x, y);
             }
         }
         return total;
@@ -52,40 +57,32 @@ public class OverdrawAnalyzer extends Canvas {
         return this.history.get(Objects.hash(x, y));
     }
 
+    private void addOne(int x, int y) {
+        int num = overdrawCountTest.get(Objects.hash(x, y));
+        overdrawCountTest.replace(Objects.hash(x, y), num + 1);
+    }
+
     // Override
     @Override
     public void drawPixel(int x, int y, char character) {
         super.drawPixel(x, y, character);
 
-//        if (getPixelHistory(x, y).size() > 0) {
         if (getPixelList(x, y).getLast() != getPixel(x, y)) {
             getPixelList(x, y).add(getPixel(x, y));
             this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
         }
-//        } else {
-//            if (0x20 != getPixel(x, y)) {
-//                getPixelHistory(x, y).add(getPixel(x, y));
-//                this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-//            }
-//        }
-
+        addOne(x, y);
     }
 
     @Override
     public boolean increasePixel(int x, int y) {
         if (super.increasePixel(x, y)) {
-//            if (getPixelHistory(x, y).size() > 0) {
             if (getPixelList(x, y).getLast() != getPixel(x, y)) {
                 getPixelList(x, y).add(getPixel(x, y));
                 this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
             }
-//            } else {
-//                if (0x20 != getPixel(x, y)) {
-//                    getPixelHistory(x, y).add(getPixel(x, y));
-//                    this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
-//                }
-//            }
 
+            addOne(x, y);
             return true;
         } else {
             return false;
@@ -95,12 +92,12 @@ public class OverdrawAnalyzer extends Canvas {
     @Override
     public boolean decreasePixel(int x, int y) {
         if (super.decreasePixel(x, y)) {
-//            if (getPixelHistory(x, y).size() > 0) {
             if (getPixelList(x, y).getLast() != getPixel(x, y)) {
                 getPixelList(x, y).add(getPixel(x, y));
                 this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
             }
 
+            addOne(x, y);
             return true;
         } else {
             return false;
@@ -116,6 +113,7 @@ public class OverdrawAnalyzer extends Canvas {
             this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
         }
 
+        addOne(x, y);
     }
 
     @Override
@@ -127,6 +125,7 @@ public class OverdrawAnalyzer extends Canvas {
             this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
         }
 
+        addOne(x, y);
     }
 
     @Override
@@ -139,6 +138,7 @@ public class OverdrawAnalyzer extends Canvas {
                 this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
             }
 
+            addOne(x, y);
         }
     }
 
@@ -152,6 +152,7 @@ public class OverdrawAnalyzer extends Canvas {
                 this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
             }
 
+            addOne(x, y);
         }
     }
 
@@ -164,6 +165,7 @@ public class OverdrawAnalyzer extends Canvas {
                     getPixelList(x, y).add(getPixel(x, y));
                     this.overdrawCount.replace(Objects.hash(x, y), this.overdrawCount.get(Objects.hash(x, y)) + 1);
                 }
+                addOne(x, y);
             }
         }
     }
