@@ -66,6 +66,6 @@ public class Warehouse {
     }
 
     private static boolean isProductOutOfStockMock(int index) {
-        return index == 3;
+        return index == 0;
     }
 }

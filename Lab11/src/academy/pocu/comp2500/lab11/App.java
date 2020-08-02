@@ -173,7 +173,7 @@ public class App {
                 return 0;
             }
 
-            if (s.length() == 4 && s.equals("exit") || warehouse.getProducts().size() == 0) {  // exit
+            if (s.length() == 4 && s.equals("exit")) {// || warehouse.getProducts().size() == 0) {  // exit
                 return -1;
             }
 
