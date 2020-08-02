@@ -153,7 +153,7 @@ public class Program {
 //        /*E*/units.add(new Mine(      new IntVector2D(12, 2), 2));
 //        /*F*/units.add(new SmartMine( new IntVector2D(12, 6), 4, 1));
 
-        simulationTest(units);
+        simulationTest0_2(units);
         //
 //        /*0*/units.add(new Wraith(      new IntVector2D(6, 5)));
 //        /*1*/units.add(new SmartMine(      new IntVector2D(11, 4), 4, 3));
@@ -255,7 +255,7 @@ public class Program {
     }
     public static void simulationTest0_0(ArrayList<Unit> units) {
         units.clear();
-        Unit u0 = new Wraith(new IntVector2D(15, 0));
+        Unit u0 = new Destroyer(new IntVector2D(15, 0));
         Unit u1 = new Marine(new IntVector2D(4, 3));
         Unit u2 = new Marine(new IntVector2D(10, 5));
         Unit u3 = new Turret(new IntVector2D(3, 4));
@@ -290,7 +290,7 @@ public class Program {
     }
     public static void simulationTest0_1(ArrayList<Unit> units) {
         units.clear();
-        Unit u0 = new Marine(new IntVector2D(0xC, 6));
+        Unit u0 = new Destroyer(new IntVector2D(0xC, 6));
         Unit u1 = new Turret(new IntVector2D(7, 4));
         Unit u2 = new SmartMine(new IntVector2D(2, 5), 2, 2);
         Unit u3 = new Mine(new IntVector2D(7, 3), 2);
@@ -306,26 +306,26 @@ public class Program {
         Unit uD = new Marine(new IntVector2D(0xC, 6));
         Unit uE = new Wraith(new IntVector2D(8, 7));
         Unit uF = new Wraith(new IntVector2D(0xF, 7));
-//        units.add(u0);
-//        units.add(u1);
-//        units.add(u2);
-//        units.add(u3);
-//        units.add(u4);
-//        units.add(u5);
-//        units.add(u6);
-//        units.add(u7);
-//        units.add(u8);
-//        units.add(u9);
-//        units.add(uA);
-//        units.add(uB);
-//        units.add(uC);
-//        units.add(uD);
-//        units.add(uE);
-//        units.add(uF);
+        units.add(u0);
+        units.add(u1);
+        units.add(u2);
+        units.add(u3);
+        units.add(u4);
+        units.add(u5);
+        units.add(u6);
+        units.add(u7);
+        units.add(u8);
+        units.add(u9);
+        units.add(uA);
+        units.add(uB);
+        units.add(uC);
+        units.add(uD);
+        units.add(uE);
+        units.add(uF);
     }
     public static void simulationTest0_2(ArrayList<Unit> units) {
         units.clear();
-        Unit u0 = new Turret(new IntVector2D(0xE, 2));
+        Unit u0 = new Destroyer(new IntVector2D(0xE, 2));
         Unit u1 = new Tank(new IntVector2D(0xB, 4));
         Unit u2 = new Turret(new IntVector2D(7, 2));
         Unit u3 = new SmartMine(new IntVector2D(0xD, 2), 2, 2);
