@@ -35,7 +35,7 @@ public class Comment {
     }
 
     public final void setComment(String comment, String userId) {
-        if (userId == this.userId) {
+        if (userId.contains(this.userId)) {
             this.sComment = comment;
         }
     }
